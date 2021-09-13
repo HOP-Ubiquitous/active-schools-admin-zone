@@ -1,83 +1,769 @@
-.browsehappy {
-  margin: 0.2em 0;
-  background: #ccc;
-  color: #000;
-  padding: 0.2em 0;
-}
-
 body {
+  margin: 0;
   padding: 0;
+  font-family: 'Montserrat';
+}
+.login-container{
+  width: 100vw;
+  height: 100vh;
+  background: url(../images/Admin_Zone_bg.svg) no-repeat center top;
+  background-size: cover;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.login-overlay{
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  top: 0;
+  left: 0;
+  mix-blend-mode: multiply;
+  background: rgb(255,174,112);
+background: linear-gradient(180deg, rgba(255,174,112,1) 0%, rgba(207,89,0,1) 100%);
 }
 
-/* Everything but the jumbotron gets side spacing for mobile first views */
-.header,
-.marketing,
-.footer {
-  padding-left: 15px;
-  padding-right: 15px;
-}
-
-/* Custom page header */
-.header {
-  border-bottom: 1px solid #e5e5e5;
-  margin-bottom: 10px;
-}
-/* Make the masthead heading the same height as the navigation */
-.header h3 {
-  margin-top: 0;
-  margin-bottom: 0;
-  line-height: 40px;
-  padding-bottom: 19px;
-}
-
-/* Custom page footer */
-.footer {
-  padding-top: 19px;
-  color: #777;
-  border-top: 1px solid #e5e5e5;
-}
-
-.container-narrow > hr {
-  margin: 30px 0;
-}
-
-/* Main marketing message and sign up button */
-.jumbotron {
+.text-container{
   text-align: center;
-  border-bottom: 1px solid #e5e5e5;
-}
-.jumbotron .btn {
-  font-size: 21px;
-  padding: 14px 24px;
+  border: 1px solid #FF6F00;
+  width: 449px;
+  height: 449px;
+  background-color: white;
+  margin: auto;
+  margin-top: 10%;
+  padding-top: 20px;
+  padding-bottom: 20px;
+  box-shadow: 1px 1px 1px;
+  z-index: 1;
+
+
+
 }
 
-/* Supporting marketing content */
-.marketing {
-  margin: 40px 0;
-}
-.marketing p + h4 {
-  margin-top: 28px;
+.text-container-recover{
+  text-align: center;
+  border: 1px solid #FF6F00;
+  width: 449px;
+  height: 449px;
+  background-color: white;
+  margin: auto;
+  margin-top: 10%;
+  padding-top: 20px;
+  box-shadow: 1px 1px 1px;
+  z-index: 4;
+
+
+
+
 }
 
-/* Responsive: Portrait tablets and up */
-@media screen and (min-width: 768px) {
-  .container {
-    max-width: 730px;
-  }
+.color-font{
+  color: #bebebe;
+  font-size: 11.57pt;
+  font-weight: lighter;
 
-  /* Remove the padding we set earlier */
-  .header,
-  .marketing,
-  .footer {
-    padding-left: 0;
-    padding-right: 0;
-  }
-  /* Space out the masthead */
-  .header {
-    margin-bottom: 30px;
-  }
-  /* Remove the bottom border on the jumbotron for visual effect */
-  .jumbotron {
-    border-bottom: 0;
-  }
 }
+.admin-zone{
+  color: #803800;
+  font-weight: bold;
+  font-size: 14pt;
+}
+
+.recover-zone{
+  color: #999999;
+  font-weight: bold;
+  font-size: 14pt;
+}
+input{
+  border-bottom: 1px solid #00A195;
+  border-top: 0ch;
+  border-left: 0ch;
+  border-right: 0ch;
+  width: 90%;
+  font-size: 14pt;
+  font-weight: lighter;
+}
+
+
+::placeholder { color: #00A195; font-weight:lighter;  font-size: 14px;}
+.button{
+  width: 90%;
+  border: 1px solid #FF6F00;
+  background-color: #FF6F00;
+  color: white;
+ -webkit-clip-path: polygon(25px 0%, calc(100% - 25px) 0%, 100% 50%, calc(100% - 25px) 100%, 20px 100%, 0% 25px);
+  clip-path: polygon(25px 0%, calc(100% - 25px) 0%, 100% 50%, calc(100% - 25px) 100%, 20px 100%, 0% 20px);
+}
+
+::-webkit-input-placeholder {
+  text-align: center;
+
+}
+
+.place::-webkit-input-placeholder {
+  text-align: left;
+}
+
+.rombo-space{
+  margin:160px;
+}
+
+
+
+.size{
+  width: 50%;
+}
+
+.table{
+  margin: 0 auto;
+  margin-left: 10px;
+}
+
+th{
+  background-color: #00A195;
+  color: white;
+  text-align: center;
+  font-weight: normal;
+}
+td{
+  color: #00A195;
+  text-align: center;
+  font-weight: normal;
+}
+tr{
+  height: 35px;
+}
+
+.options-table{
+  float: left;
+
+
+}
+.center-td-challenge{
+  padding-left: 30px;
+}
+.center-td-post{
+  padding-left: 50px;
+}
+
+
+.rombo-table-write {
+  background: #007BFF;
+  clip-path: polygon(50% 0%, 100% 50%, 50% 100%, 0% 50%);
+  float: left;
+
+
+
+
+}
+.rombo-table-delete {
+  background: #DC3545;
+  clip-path: polygon(50% 0%, 100% 50%, 50% 100%, 0% 50%);
+  float: left;
+
+
+
+}
+.rombo-table-see {
+  background: #00A195;
+  clip-path: polygon(50% 0%, 100% 50%, 50% 100%, 0% 50%);
+  float: left;
+
+
+
+}
+
+.rombo-table-write:hover .logo1{
+  background: white ;
+  color: #007BFF;
+
+
+}
+
+.rombo-table-delete:hover .logo2{
+  background: white;
+  color: #DC3545;
+}
+
+.rombo-table-see:hover .logo3{
+  background: white;
+  color: #00A195;
+}
+.logo1{
+  color: white;
+  width: 40px;
+
+}
+.logo2{
+  color: white;
+  width: 40px;
+
+}
+.logo3{
+  color: white;
+  width: 40px;
+
+}
+.rombo {
+  width: 40px;
+  height: 40px;
+  box-sizing: border-box;
+  /*border: 3px solid white;*/
+
+  background: rgba(255,255,255,0.2);
+
+  clip-path: polygon(50% 0%, 100% 50%, 50% 100%, 0% 50%);
+  /*
+  -webkit-clip-path: polygon(25px 0%, calc(100% - 25px) 0%, 100% 50%, calc(100% - 25px) 100%, 20px 100%, 0% 20px);
+  clip-path: polygon(25px 0%, calc(100% - 25px) 0%, 100% 50%, calc(100% - 25px) 100%, 25px 100%, 0% 20px);
+  */
+  /*margin-left: 25px;*/
+ margin: 33px auto 0 auto;
+  transition: 0.3s ease all;
+  /*margin: 0 auto;*/
+
+
+
+
+
+}
+
+/*
+.romboPortada{
+  width: 40px;
+  height: 40px;
+  border: 1px solid white;
+  background: white;
+  -webkit-transform: rotate(45deg);
+  -moz-transform: rotate(45deg);
+  -ms-transform: rotate(45deg);
+  -o-transform: rotate(45deg);
+  transform: rotate(45deg);
+  margin-left: 25px;
+  margin-top: 15px;
+
+}
+
+*/
+
+.image-rombo{
+  color: white;
+
+  margin-top: 12px;
+  margin-bottom: 15px;
+  margin-left: 15px;
+  margin-right: 10px;
+  transition: 0.3s ease all;
+}
+
+.image-rombo-route{
+  color: white;
+
+  margin-top: 12px;
+  margin-bottom: 15px;
+  margin-left: 10px;
+  margin-right: 10px;
+
+
+
+  /*
+  -webkit-transform: rotate(315deg);
+  -moz-transform: rotate(315deg);
+
+  -ms-transform: rotate(315deg);
+  -o-transform: rotate(315deg);
+  transform: rotate(315deg);
+  */
+  transition: 0.3s ease all;
+}
+
+.image-rombo-newroute{
+  color: white;
+  margin-top: 12px;
+  margin-bottom: 15px;
+  margin-left: 13px;
+  margin-right: 10px;
+  transition: 0.3s ease all;
+}
+
+
+.image-rombo-table{
+  color: white;
+  margin-top: 12px;
+  margin-bottom: 15px;
+  margin-left: 13px;
+  margin-right: 10px;
+  transition: 0.3s ease all;
+
+}
+.rombo-new-route:hover{
+  width: 180px;
+  height: 40px;
+  transition: 0.3s ease all;
+  -webkit-clip-path: polygon(25px 0%, calc(100% - 25px) 0%, 100% 50%, calc(100% - 25px) 100%, 20px 100%, 0% 20px);
+  clip-path: polygon(25px 0%, calc(100% - 25px) 0%, 100% 50%, calc(100% - 25px) 100%, 20px 100%, 0% 20px);
+  background-color: #00A195;
+  color: white;
+
+
+
+
+}
+
+.rombo-new-route{
+  width: 40px;
+  height: 40px;
+  border: 1px solid white;
+  background: #00A195;
+  background: linear-gradient(180deg, rgba(255,174,112,1));
+  clip-path: polygon(50% 0%, 100% 50%, 50% 100%, 0% 50%);
+  margin-left: 25px;
+  margin-top: 33px;
+  transition: 0.3s ease all;
+  float: right;
+  display: block;
+  position:absolute;
+    bottom:20px;
+    right:20px;
+    overflow: hidden;
+}
+.nombre{
+  text-decoration: none;
+  text-align: center;
+  color: white;
+}
+.new-route-nombre{
+  text-decoration: none;
+  text-align: center;
+  color: white;
+}
+
+
+
+.tabla{
+  width: 100%;
+  background-size: cover;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+}
+.space-nav{
+  margin-top: 29px;
+  width: 50px;
+  color: white;
+}
+
+.sidebar:hover .space-nav{
+  width: 160px;
+}
+.sidebar {
+  display: flex;
+  justify-content: center;
+  padding: 0;
+  width: 70px;
+  background: linear-gradient(180deg, rgba(255,174,112,1) 0%, rgba(207,89,0,1) 100%);
+  position: fixed;
+  height: 100%;
+  overflow: hidden;
+  transition: 0.3s ease all;
+  margin: auto;
+
+
+
+}
+
+.sidebar a {
+  display: block;
+  text-decoration: none;
+  text-align: left;
+}
+.sidebar:hover .logo{
+width: 80px;
+clip-path: polygon(0 0, 100% 0,  100% 100%, 0 100%);
+
+}
+
+
+.logo{
+  width: 80px;
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: 34px;
+  clip-path: polygon(0 0, 100% 0,  100% calc(100% - 10px), 0 calc(100% - 10px));
+  transition: 0.3s ease all;
+}
+
+.logo-post{
+  width: 75px;
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: 33px;
+}
+div.content {
+  width: 100%;
+
+}
+
+.main-container{
+  width: calc(100% - 70px);
+  transition: 0.3s ease all;
+  float: right;
+  padding: 0px 20px;
+}
+
+
+/*sidebar*/
+.sidebar:hover{
+width: 200px;
+
+
+}
+
+.sidebar:hover .rombo{
+ /* clip-path: polygon(20px 0, calc(100%-20px) 0, 100% 20px, calc(100%-20px) 40px, 20px 40px, 0 20px);*/
+  /*clip-path: polygon(75% 0, 100% 50%, 75% 100%, 25% 100%, 0 50%, 25% 0);*/
+  -webkit-clip-path: polygon(25px 0%, calc(100% - 25px) 0%, 100% 50%, calc(100% - 25px) 100%, 20px 100%, 0% 20px);
+  clip-path: polygon(25px 0%, calc(100% - 25px) 0%, 100% 50%, calc(100% - 25px) 100%, 20px 100%, 0% 20px);
+  width: 150px;
+
+
+
+}
+
+.sidebar:hover~.main-container{
+  width: calc(100% - 200px);
+}
+
+.sidebar:hover~.main-container .new-route-form{
+  width: calc(100% - 725px);
+  transition: 0.3s ease all;
+
+
+
+}
+/*
+.sidebar:hover .new-route-form{
+  width: calc(100% - 500px);
+}
+*/
+
+
+.rombo:hover{
+  background-color: white;
+  clip-path: polygon(75% 0, 100% 50%, 75% 100%, 25% 100%, 0 50%, 25% 0);
+  width: 150px;
+
+}
+.rombo:hover .nombre{
+  color: #FF6F00;
+
+}
+.rombo:hover .image-rombo {
+
+  color: #FF6F00;
+
+
+}
+.rombo:hover .image-rombo-route {
+
+  color: #FF6F00;
+
+
+}
+
+.image-challenge{
+  width: 280px;
+}
+.space-route{
+  border-color: #FF6F00;
+  margin-top: 16px;
+  width: 100%;
+
+  margin-right: 5px;
+}
+
+.space{
+  margin-top: 8px;
+  margin-left: 5px;
+  margin-right: 5px;
+  border-color: #FF6F00;
+  width: 100%;
+}
+
+
+
+
+.content{
+  text-align: left;
+}
+
+.container-1{
+  float: right;
+  justify-content: right;
+  top:-30px;
+  position: relative;
+}
+
+.container-2{
+  float: right;
+  justify-content: right;
+  top:-24px;
+  position: relative;
+}
+.search{
+  color: #00A195;
+
+}
+
+/*New Routes*/
+.new-route-map{
+  border: 1px solid white;
+  width: 708px;
+  height: 579px;
+  background: grey;
+
+  float: left;
+}
+.new-route-form{
+  width:510px;
+  height: 579px;
+  border: 1px solid white;
+  float: right;
+  top:-100px;
+}
+.formulario{
+  width: 100%;
+  max-width: 600px;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+
+}
+.cuadro-texto{
+  margin: 10px;
+  width: 100%;
+}
+.space-new-route{
+  border-color: #FF6F00;
+  margin-top: 10px;
+  width: 100%;
+}
+/*Select new routes*/
+.select{
+
+  -webkit-clip-path: polygon(25px 0%, calc(100% - 25px) 0%, 100% 50%, calc(100% - 25px) 100%, 20px 100%, 0% 20px);
+  clip-path: polygon(25px 0%, calc(100% - 25px) 0%, 100% 50%, calc(100% - 25px) 100%, 25px 100%, 0% 20px);
+  background: white;
+  width: 100%;
+  height: 40px;
+  text-align: left;
+  color:#00A195;
+  border: 1px solid #00A195;
+
+  display: block;
+  position:relative;
+
+}
+.span-add-challenge{
+  /*
+  margin-left: 15px;
+  margin-top: 8px;
+  display: block;
+  position:relative;*/
+  position: relative;
+  top: 25%;
+  left: 40%;
+}
+.rombo-select{
+  width: 40px;
+  height: 40px;
+  background: #00A195;
+  clip-path: polygon(50% 0%, 100% 50%, 50% 100%, 0% 50%);
+  margin-left: 25px;
+  margin-top: 33px;
+  transition: 0.3s ease all;
+  display: block;
+  position:absolute;
+  bottom:-1px;
+  right:1px;
+
+}
+
+.rombo-select-left{
+  width: 40px;
+  height: 40px;
+  clip-path: polygon(50% 0%, 100% 50%, 50% 100%, 0% 50%);
+  margin-left: 25px;
+  margin-top: 33px;
+  transition: 0.3s ease all;
+  display: block;
+  position:absolute;
+  bottom:-1px;
+
+}
+.image-rombo-select{
+  color: white;
+  margin-top: 12px;
+  margin-bottom: 15px;
+  margin-left: 13px;
+  margin-right: 10px;
+  transition: 0.3s ease all;
+}
+.buton-route{
+  /*
+  clip-path: polygon(75% 0, 100% 50%, 75% 100%, 25% 100%, 0 50%, 25% 0);*/
+  -webkit-clip-path: polygon(25px 0%, calc(100% - 25px) 0%, 100% 50%, calc(100% - 25px) 100%, 20px 100%, 0% 20px);
+  clip-path: polygon(25px 0%, calc(100% - 25px) 0%, 100% 50%, calc(100% - 25px) 100%, 25px 100%, 0% 20px);
+  background: rgb(255, 111, 0);
+  width: 100%;
+  height: 40px;
+  text-align: center;
+  color: white;
+  float: center;
+  display: block;
+  position:relative;
+    top:435px;
+}
+
+.buton-challenge{
+  -webkit-clip-path: polygon(25px 0%, calc(100% - 25px) 0%, 100% 50%, calc(100% - 25px) 100%, 20px 100%, 0% 20px);
+  clip-path: polygon(25px 0%, calc(100% - 25px) 0%, 100% 50%, calc(100% - 25px) 100%, 25px 100%, 0% 20px);
+  background: rgb(255, 111, 0);
+  width: 100%;
+  height: 30px;
+  text-align: center;
+  color: white;
+  float: center;
+  display: block;
+  position:relative;
+    top:75px;
+}
+.buton-post{
+  -webkit-clip-path: polygon(25px 0%, calc(100% - 25px) 0%, 100% 50%, calc(100% - 25px) 100%, 20px 100%, 0% 20px);
+  clip-path: polygon(25px 0%, calc(100% - 25px) 0%, 100% 50%, calc(100% - 25px) 100%, 25px 100%, 0% 20px);
+  background: rgb(255, 111, 0);
+  width: 90%;
+  height: 30px;
+  text-align: center;
+  color: white;
+  float: center;
+  display: block;
+  position:relative;
+    top:75px;
+
+
+
+}
+
+.close-new-route{
+  float: right;
+  justify-content: right;
+  top:-24px;
+  position: relative;
+}
+/*Boton cerrar nueva ruta*/
+.close-rombo-newroute{
+  color: white;
+  margin-top: 12px;
+  margin-bottom: 15px;
+  margin-left: 15px;
+  margin-right: 10px;
+  transition: 0.3s ease all;
+}
+
+.close-rombo-new-route{
+  width: 40px;
+  height: 40px;
+
+  background: #DC3545;
+  background: linear-gradient(180deg, rgba(255,174,112,1));
+  clip-path: polygon(50% 0%, 100% 50%, 50% 100%, 0% 50%);
+  margin-left: 25px;
+  margin-top: 33px;
+  transition: 0.3s ease all;
+  float: right;
+  display: block;
+  position:absolute;
+    top:20px;
+    right:20px;
+}
+.save-new-route{
+  position: relative;
+  top: 25%;
+}
+/*New challenges*/
+ul.tabs {
+  text-align: center;
+}
+
+ul.tabs li {
+  float: none !important;
+  display: inline-block;
+}
+.new-challenge-video{
+  width: 100%;
+  height: 250px;
+  border: 1px solid white;
+
+
+}
+.new-challenge-table{
+  border: 1px solid white;
+  width: 708px;
+  height: 579px;
+  background: white;
+
+  float: left;
+}
+
+.table-challenge{
+  margin: 0 auto;
+  width: 100%;
+}
+/*NEW POST*/
+.new-post-textArea{
+  border: 1px solid #00A195;
+  width: 100%;
+  height: 250px;
+}
+.post-tab {
+  height: 50px;
+  width: 100%;
+  border: 1px solid #249191;
+  text-align: center;
+  cursor: pointer;
+  opacity: 0.3;
+  transition: 0.3s ease all;
+}
+
+.post-tab:hover {
+  opacity: 1;
+}
+
+.post-tab span {
+  line-height: 50px;
+  color: #249191;
+}
+
+.post-tab-selected {
+  border-width: 1px;
+  border-style: solid;
+  border-color: #249191 #249191 transparent #249191;
+  opacity: 1;
+}
+.post-tabs-container {
+  height: 50px;
+  width: 100%;
+  position:relative;
+  top: 0;
+  left: 0;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+
+

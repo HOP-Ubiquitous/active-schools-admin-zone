@@ -1,0 +1,134 @@
+<div class="root" ng-controller="routesCtrl as routes">
+  <div class="sidebar">
+
+    <div id="menu-items">
+
+
+        <div class="logo">
+          <img src="../images/active-schools-logo-bl.svg" alt="">
+        </div>
+      <hr class="space-nav">
+      <div class="rombo">
+        <a href="#routes" class="">
+          <i class="fas fa-route image-rombo-route"></i>
+          <span class="nombre">Routes</span>
+
+        </a>
+      </div>
+
+
+      <div class="rombo">
+        <a href="#challenges">
+          <i class="fas fa-walking image-rombo"></i>
+          <span class="nombre">Challenges</span>
+
+        </a>
+      </div>
+
+      <div class="rombo ">
+        <a href="#posts">
+          <i class="fas fa-file-alt image-rombo"></i>
+          <span class="nombre">Posts</span>
+
+        </a>
+      </div>
+      <div class="rombo-space">
+
+      </div>
+      <div class="rombo">
+        <a href="#login">
+         <i class="fas fa-user image-rombo"></i>
+          <span class="nombre">Username</span>
+
+        </a>
+      </div>
+
+
+      <div class="rombo">
+        <a href="#login">
+          <i class="fas fa-sign-out-alt image-rombo"></i>
+          <span class="nombre">Exit</span>
+
+        </a>
+      </div>
+    </div>
+  </div>
+<div class="main-container">
+  <div class="content">
+    <img src="../images/rutas.png" style="margin-top: 33px;">
+  </div>
+
+  <div class="container-2">
+    <span class="icon"><i class="fa fa-search search"></i></span>
+    <input type="search" id="search" placeholder="Search"  class="place">
+</div>
+<br>
+
+<hr class="space-route">
+
+
+  <div class="tabla">
+
+    <table class="table">
+            <tr>
+                <th>Date</th>
+                <th>Name</th>
+                <th>City</th>
+                <th>Province</th>
+                <th>Country</th>
+                <th>Challenges</th>
+                <th>Options</th>
+            </tr>
+            <tr ng-repeat="route in routes.routes">
+
+                <td>{{route.date | date : 'dd/MM/yyyy'}}</td>
+                <td>{{route.name}}</td>
+                <td>{{route.city}}</td>
+                <td>{{route.province}}</td>
+                <td>{{route.country}}</td>
+                <td>{{route.challenges}}</td>
+                <td class="margin-table">
+
+                  <div class="rombo-table-write" ng-click="routes.editRoute($index)">
+                    <i class="fas fa-edit logo1"></i>
+                  </div>
+
+                  <div class="rombo-table-delete" ng-click="routes.deleteRow($index)">
+                    <i class="fas fa-trash-alt logo2"></i>
+                  </div>
+
+                  <div class="rombo-table-see" ng-click="">
+                    <i class="fas fa-eye logo3"></i>
+                  </div>
+            </td>
+            </tr>
+        </table>
+
+  </div>
+
+
+
+  <div>
+
+
+
+
+    <div class="rombo-new-route" ng-click="routes.goToNewRoute()">
+     <!--<a href="#/routes/new_route">-->
+        <div class="icono">
+          <i class="fas fa-plus image-rombo-newroute"></i>
+          <span class="new-route-nombre">New Route</span>
+        </div>
+     <!--</a>-->
+    </div>
+
+
+
+</div>
+
+
+
+
+  </div>
+
+</div>

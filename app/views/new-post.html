@@ -1,0 +1,159 @@
+<div class="root2" ng-controller="newRouteCtrl as newRoute">
+  <div class="sidebar">
+
+    <div id="menu-items">
+
+      <div class="logo">
+        <img src="../images/active-schools-logo-bl.svg" alt="">
+      </div>
+    <hr class="space-nav">
+      <div class="rombo">
+        <a href="#routes" class="">
+          <i class="fas fa-route image-rombo-route"></i>
+          <span class="nombre">Routes</span>
+
+        </a>
+      </div>
+
+
+      <div class="rombo">
+        <a href="#challenges">
+          <i class="fas fa-walking image-rombo"></i>
+          <span class="nombre">Challenges</span>
+
+        </a>
+      </div>
+
+      <div class="rombo ">
+        <a href="#posts">
+          <i class="fas fa-file-alt image-rombo"></i>
+          <span class="nombre">Posts</span>
+
+        </a>
+      </div>
+      <div class="rombo-space">
+
+      </div>
+      <div class="rombo">
+        <a href="#login">
+         <i class="fas fa-user image-rombo"></i>
+          <span class="nombre">Username</span>
+
+        </a>
+      </div>
+
+      <div class="rombo">
+        <a href="#login">
+          <i class="fas fa-sign-out-alt image-rombo"></i>
+          <span class="nombre">Exit</span>
+
+        </a>
+      </div>
+
+    </div>
+  </div>
+<div class="main-container">
+  <div class="content">
+    <img src="../images/new-post.png" style="margin-top: 35px;">
+  </div>
+  <div class="close-rombo-new-route" ng-click="newPost.goToPost()">
+    <!--<a href="#new-post">-->
+
+        <i class="fas fa-times close-rombo-newroute"></i>
+         <span class="new-route-nombre">New post</span>
+
+    <!--</a>-->
+   </div>
+<!--
+  <div class="container-2">
+    <span class="icon"><i class="fa fa-search search"></i></span>
+    <input type="search" id="search" placeholder="Search">
+</div>
+-->
+
+<br>
+<hr class="space-route">
+
+<div class="new-challenge-table">
+  <div class="tabla">
+
+    <table class="table-challenge" id="tabla">
+      <thead>
+        <tr>
+          <th scope="col">Date</th>
+          <th scope="col">Title</th>
+          <th scope="col">Image</th>
+          <th scope="col">Post Published (Countries)</th>
+          <th scope="col">Options</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>23-03-21</td>
+          <td>Ruta1</td>
+          <td>Archena</td>
+          <td>Murcia</td>
+
+          <td class="center-td-post">
+
+            <div class="rombo-table-write" ng-click="routes.editRoute($index)">
+              <i class="fas fa-edit logo1"></i>
+            </div>
+
+            <div class="rombo-table-delete" ng-click="routes.deleteRow($index)">
+              <i class="fas fa-trash-alt logo2"></i>
+            </div>
+
+
+
+
+        </tr>
+
+      </tbody>
+    </table>
+
+  </div>
+
+
+</div>
+
+<div class="new-route-form">
+  <form class="formulario">
+
+    <input type="text" id="title" placeholder="Title" class="cuadro-texto">
+
+    <textarea name="post" id="post" placeholder="Post Text" class="new-post-textArea" ></textarea>
+    <!--
+    <div class="centered" >
+      <ul class="nav nav-tabs tabs">
+        <li><a href="#">External Image</a></li>
+        <li><a href="#">Upload Image</a></li>
+      </ul>
+      <br>
+      <input type="url" id="url" placeholder="Image Url" class="cuadro-texto" style="width: 400px;">
+
+    </div>
+-->
+<hr class="space-new-route">
+<div class="post-tabs-container">
+
+  <div class="post-tab">
+    <span>External Image</span>
+  </div>
+
+  <div class="post-tab">
+        <span>Upload Image</span>
+  </div>
+</div>
+<input type="url" id="url" placeholder="Image Url" class="cuadro-texto" >
+<hr class="space-new-route">
+
+    <a href="" class="buton-challenge">Save New Route</a>
+  </form>
+
+</div>
+
+
+  </div>
+</div>
+

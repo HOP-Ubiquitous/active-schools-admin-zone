@@ -1,0 +1,128 @@
+<div class="root" ng-controller="postsCtrl as posts">
+  <div class="sidebar">
+
+    <div id="menu-items">
+
+      <div class="logo">
+        <img src="../images/active-schools-logo-bl.svg" alt="">
+      </div>
+    <hr class="space-nav">
+      <div class="rombo">
+        <a href="#routes" class="">
+          <i class="fas fa-route image-rombo-route"></i>
+          <span class="nombre">Routes</span>
+
+        </a>
+      </div>
+
+
+      <div class="rombo">
+        <a href="#challenges">
+          <i class="fas fa-walking image-rombo"></i>
+          <span class="nombre">Challenges</span>
+
+        </a>
+      </div>
+
+      <div class="rombo ">
+        <a href="#posts">
+          <i class="fas fa-file-alt image-rombo"></i>
+          <span class="nombre">Posts</span>
+
+        </a>
+      </div>
+      <div class="rombo-space">
+
+      </div>
+      <div class="rombo">
+        <a href="#login">
+         <i class="fas fa-user image-rombo"></i>
+          <span class="nombre">Username</span>
+
+        </a>
+      </div>
+
+      <div class="rombo">
+        <a href="#login">
+          <i class="fas fa-sign-out-alt image-rombo"></i>
+          <span class="nombre">Exit</span>
+
+        </a>
+      </div>
+    </div>
+  </div>
+<div class="main-container">
+  <div class="content">
+    <img src="../images/posts.png" style="margin-top: 30px;">
+  </div>
+
+  <div class="container-1">
+    <span class="icon"><i class="fa fa-search search"></i></span>
+    <input type="search" id="search" placeholder="Search" class="place">
+</div>
+<br>
+
+  <hr class="space">
+  <div class="tabla">
+
+    <table class="table">
+      <thead>
+        <tr>
+          <th scope="col">Date</th>
+          <th scope="col">Title</th>
+          <th scope="col">Image</th>
+          <th scope="col">Post Published (Countries)</th>
+          <th scope="col">Options</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr ng-repeat="post in posts.posts">
+
+          <td>{{post.date | date : 'dd/MM/yyyy'}}</td>
+          <td>{{post.title}}</td>
+          <td>{{post.image}}</td>
+          <td>{{post.postPublished}}</td>
+          <td>
+
+
+            <div class="rombo-table-write">
+              <i class="fas fa-edit logo1"></i>
+            </div>
+
+            <div class="rombo-table-delete" ng-click="posts.deleteRow($index)">
+              <i class="fas fa-trash-alt logo2"></i>
+            </div>
+
+
+        </tr>
+
+      </tbody>
+    </table>
+
+  </div>
+
+  <div>
+
+
+
+
+    <div class="rombo-new-route" ng-click="posts.goToNewPost()">
+     <!--<a href="#new-post">-->
+        <div class="icono">
+          <i class="fas fa-plus image-rombo-newroute"></i>
+          <span class="new-route-nombre">New post</span>
+        </div>
+     <!--</a>-->
+    </div>
+
+
+
+</div>
+
+
+
+
+  </div>
+
+</div>
+

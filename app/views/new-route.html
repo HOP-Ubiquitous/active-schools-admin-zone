@@ -1,0 +1,108 @@
+<div class="root2">
+  <div class="sidebar">
+
+    <div id="menu-items">
+
+      <div class="logo">
+        <img src="../images/active-schools-logo-bl.svg" alt="">
+      </div>
+    <hr class="space-nav">
+      <div class="rombo">
+        <a href="#routes" class="">
+          <i class="fas fa-route image-rombo-route"></i>
+          <span class="nombre">Routes</span>
+
+        </a>
+      </div>
+
+
+      <div class="rombo">
+        <a href="#challenges">
+          <i class="fas fa-walking image-rombo"></i>
+          <span class="nombre">Challenges</span>
+
+        </a>
+      </div>
+
+      <div class="rombo ">
+        <a href="#posts">
+          <i class="fas fa-file-alt image-rombo"></i>
+          <span class="nombre">Posts</span>
+
+        </a>
+      </div>
+      <div class="rombo-space">
+
+      </div>
+      <div class="rombo">
+        <a href="#login">
+         <i class="fas fa-user image-rombo"></i>
+          <span class="nombre">Username</span>
+
+        </a>
+      </div>
+
+      <div class="rombo">
+        <a href="#login">
+          <i class="fas fa-sign-out-alt image-rombo"></i>
+          <span class="nombre">Exit</span>
+
+        </a>
+      </div>
+
+    </div>
+  </div>
+<div class="main-container">
+  <div class="content">
+    <img src="../images/new-route.png" style="margin-top: 34px;">
+  </div>
+      <div class="close-rombo-new-route" ng-click="newRoute.goToRoute()">
+        <!--<a href="#new-post">-->
+
+            <i class="fas fa-times close-rombo-newroute"></i>
+            <span class="new-route-nombre">New post</span>
+
+        <!--</a>-->
+      </div>
+          <!--
+            <div class="container-2">
+              <span class="icon"><i class="fa fa-search search"></i></span>
+              <input type="search" id="search" placeholder="Search">
+          </div>
+          -->
+
+      <br>
+      <hr class="space-route">
+
+    <div class="new-route-map">
+
+
+    </div>
+
+    <div class="new-route-form" ng-click="handleAction()">
+      <form method="POST" class="formulario" name="user">
+        <input type="text" id="name" placeholder="Name" class="cuadro-texto" ng-model="newRoute.name">
+        <input type="text" id="city" placeholder="City" class="cuadro-texto" ng-model="newRoute.city">
+        <input type="text" id="province" placeholder="Province" class="cuadro-texto" ng-model="newRoute.province">
+        <input type="text" id="country" placeholder="Country" class="cuadro-texto" ng-model="newRoute.country">
+        <hr class="space-new-route">
+        <div class="select">
+          <span class="span-add-challenge">Add challenge</span>
+          <div class="rombo-select" ng-click="newRoute.save()">
+            <i class="fas fa-chevron-down image-rombo-select"></i>
+          </div>
+
+
+        </div>
+
+
+
+        <div class="buton-route">
+          <div class="save-new-route">Save New Route</div>
+        </div>
+      </form>
+
+    </div>
+  </div>
+</div>
+

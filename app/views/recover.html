@@ -1,0 +1,23 @@
+<div class="login-container" ng-controller="recoverCtrl as recover">
+  <div class="login-overlay"></div>
+  <div class="text-container-recover">
+
+
+    <img src="../images/active-schools-logo-color.svg" class="size">
+
+    <h5 class="admin-zone">Admin zone</h5>
+    <br>
+
+    <h5 class="recover-zone">Recover password</h5>
+    <br>
+    <div class="form-container">
+      <form class="login-form">
+        <input id="useremail" type="email" placeholder="E-mail" ng-model="alias" required>
+        <br><br>
+        <input class="button" type="submit" value="Send" ng-disabled="!alias" ng-click="recover.recover()">
+      </form>
+    </div>
+
+  </div>
+</div>
+
