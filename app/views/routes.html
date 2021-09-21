@@ -2,55 +2,70 @@
   <div class="sidebar">
 
     <div id="menu-items">
-
-
         <div class="logo">
           <img src="../images/active-schools-logo-bl.svg" alt="">
         </div>
       <hr class="space-nav">
-      <div class="rombo">
-        <a href="#routes" class="">
-          <i class="fas fa-route image-rombo-route"></i>
-          <span class="nombre">Routes</span>
 
-        </a>
+      <div class="rombo-top">
+
+        <div class="border-rombo">
+          <div class="rombo">
+            <a href="#routes">
+            <i class="fas fa-route image-rombo-route"></i>
+            <span class="nombre-routes">Routes</span>
+          </a>
+          </div>
+
+
+        </div>
+
+        <div class="border-rombo">
+          <div class="rombo">
+            <a href="#challenges">
+              <i class="fas fa-walking image-rombo"></i>
+              <span class="nombre">Challenges</span>
+
+            </a>
+          </div>
+        </div>
+
+        <div class="border-rombo">
+          <div class="rombo">
+            <a href="#posts">
+              <i class="fas fa-file-alt image-rombo"></i>
+              <span class="nombre-posts">Posts</span>
+            </a>
+          </div>
+        </div>
+
       </div>
 
 
-      <div class="rombo">
-        <a href="#challenges">
-          <i class="fas fa-walking image-rombo"></i>
-          <span class="nombre">Challenges</span>
+      <div class="rombo-bottom">
 
-        </a>
-      </div>
+        <div class="border-rombo">
+          <div class="rombo-user">
+            <a href="#login">
+             <i class="fas fa-user image-rombo"></i>
+              <span class="nombre">Username</span>
+            </a>
+          </div>
+        </div>
 
-      <div class="rombo ">
-        <a href="#posts">
-          <i class="fas fa-file-alt image-rombo"></i>
-          <span class="nombre">Posts</span>
 
-        </a>
-      </div>
-      <div class="rombo-space">
-
-      </div>
-      <div class="rombo">
-        <a href="#login">
-         <i class="fas fa-user image-rombo"></i>
-          <span class="nombre">Username</span>
-
-        </a>
+        <div class="border-rombo">
+          <div class="rombo-exit">
+            <a href="#login">
+              <i class="fas fa-sign-out-alt image-rombo"></i>
+              <span class="nombre-exit">Exit</span>
+            </a>
+          </div>
+        </div>
       </div>
 
 
-      <div class="rombo">
-        <a href="#login">
-          <i class="fas fa-sign-out-alt image-rombo"></i>
-          <span class="nombre">Exit</span>
 
-        </a>
-      </div>
     </div>
   </div>
 <div class="main-container">
@@ -59,17 +74,13 @@
   </div>
 
   <div class="container-2">
-    <span class="icon"><i class="fa fa-search search"></i></span>
+    <span class="icon"><i class="fa fa-search search" ng-click="handleAction()"></i></span>
     <input type="search" id="search" placeholder="Search"  class="place">
-</div>
-<br>
+  </div>
+      <br>
+            <hr class="space-route">
 
-<hr class="space-route">
-
-
-  <div class="tabla">
-
-    <table class="table">
+        <table class="table ">
             <tr>
                 <th>Date</th>
                 <th>Name</th>
@@ -87,48 +98,75 @@
                 <td>{{route.province}}</td>
                 <td>{{route.country}}</td>
                 <td>{{route.challenges}}</td>
-                <td class="margin-table">
+                <td class="option">
 
-                  <div class="rombo-table-write" ng-click="routes.editRoute($index)">
+                    <div class="rombo-table-write" ng-click="routes.editRoute($index)">
+                      <i class="fas fa-edit logo1"></i>
+                    </div>
+
+                    <div class="rombo-table-delete" ng-click="routes.deleteRow($index)">
+                      <i class="fas fa-trash-alt logo2"></i>
+                    </div>
+
+                    <div class="rombo-table-see" ng-click="showOptions[$index] = !showOptions[$index]">
+                      <i class="fas fa-eye logo3"></i>
+                    </div>
+
+                </td>
+            </tr>
+
+            <table class="table-2" ng-show="showOptions[$index]">
+
+              <tr>
+                <th scope="col">Date</th>
+                <th scope="col">Name</th>
+                <th scope="col">Video</th>
+                <th scope="col">Bonus</th>
+                <th scope="col">Min. Time / Max. Time</th>
+                <th scope="col">Images</th>
+                <th scope="col">Options</th>
+              </tr>
+
+
+              <tr ng-repeat="challenge in challenges.challenge">
+                <td>{{challenge.date | date : 'dd/MM/yyyy'}}</td>
+                <td>{{challenge.name}}</td>
+                <td>{{challenge.video}}</td>
+                <td>{{challenge.bonus}}</td>
+                <td>{{challenge.minMax}}</td>
+                <td>{{challenge.images}}</td>
+                <td class="option">
+
+
+                  <div class="rombo-table-write">
                     <i class="fas fa-edit logo1"></i>
                   </div>
 
-                  <div class="rombo-table-delete" ng-click="routes.deleteRow($index)">
+                  <div class="rombo-table-delete" ng-click="challenges.deleteRow($index)">
                     <i class="fas fa-trash-alt logo2"></i>
                   </div>
+              </tr>
 
-                  <div class="rombo-table-see" ng-click="">
-                    <i class="fas fa-eye logo3"></i>
-                  </div>
-            </td>
-            </tr>
+
+            </table>
         </table>
 
-  </div>
 
 
 
-  <div>
+
+
 
 
 
 
     <div class="rombo-new-route" ng-click="routes.goToNewRoute()">
      <!--<a href="#/routes/new_route">-->
+
         <div class="icono">
           <i class="fas fa-plus image-rombo-newroute"></i>
           <span class="new-route-nombre">New Route</span>
         </div>
      <!--</a>-->
     </div>
-
-
-
-</div>
-
-
-
-
-  </div>
-
 </div>

@@ -2,53 +2,69 @@
   <div class="sidebar">
 
     <div id="menu-items">
+        <div class="logo">
+          <img src="../images/active-schools-logo-bl.svg" alt="">
+        </div>
+      <hr class="space-nav">
 
-      <div class="logo">
-        <img src="../images/active-schools-logo-bl.svg" alt="">
+      <div class="rombo-top">
+
+        <div class="border-rombo">
+          <div class="rombo">
+            <a href="#routes">
+            <i class="fas fa-route image-rombo-route"></i>
+            <span class="nombre-routes">Routes</span>
+          </a>
+          </div>
+
+
+        </div>
+
+        <div class="border-rombo">
+          <div class="rombo">
+            <a href="#challenges">
+              <i class="fas fa-walking image-rombo"></i>
+              <span class="nombre">Challenges</span>
+
+            </a>
+          </div>
+        </div>
+
+        <div class="border-rombo">
+          <div class="rombo">
+            <a href="#posts">
+              <i class="fas fa-file-alt image-rombo"></i>
+              <span class="nombre-posts">Posts</span>
+            </a>
+          </div>
+        </div>
+
       </div>
-    <hr class="space-nav">
-      <div class="rombo">
-        <a href="#routes" class="">
-          <i class="fas fa-route image-rombo-route"></i>
-          <span class="nombre">Routes</span>
 
-        </a>
+
+      <div class="rombo-bottom">
+
+        <div class="border-rombo">
+          <div class="rombo-user">
+            <a href="#login">
+             <i class="fas fa-user image-rombo"></i>
+              <span class="nombre">Username</span>
+            </a>
+          </div>
+        </div>
+
+
+        <div class="border-rombo">
+          <div class="rombo-exit">
+            <a href="#login">
+              <i class="fas fa-sign-out-alt image-rombo"></i>
+              <span class="nombre-exit">Exit</span>
+            </a>
+          </div>
+        </div>
       </div>
 
 
-      <div class="rombo">
-        <a href="#challenges">
-          <i class="fas fa-walking image-rombo"></i>
-          <span class="nombre">Challenges</span>
-
-        </a>
-      </div>
-
-      <div class="rombo ">
-        <a href="#posts">
-          <i class="fas fa-file-alt image-rombo"></i>
-          <span class="nombre">Posts</span>
-
-        </a>
-      </div>
-      <div class="rombo-space">
-
-      </div>
-      <div class="rombo">
-        <a href="#login">
-         <i class="fas fa-user image-rombo"></i>
-          <span class="nombre">Username</span>
-
-        </a>
-      </div>
-
-      <div class="rombo">
-        <a href="#login">
-          <i class="fas fa-sign-out-alt image-rombo"></i>
-          <span class="nombre">Exit</span>
-
-        </a>
-      </div>
 
     </div>
   </div>
@@ -77,8 +93,8 @@
 <div class="new-challenge-table">
   <div class="tabla">
 
-    <table class="table-challenge" id="tabla">
-      <thead>
+    <table class="table" id="tabla">
+
         <tr>
           <th scope="col">Date</th>
           <th scope="col">Title</th>
@@ -86,15 +102,14 @@
           <th scope="col">Post Published (Countries)</th>
           <th scope="col">Options</th>
         </tr>
-      </thead>
-      <tbody>
+
         <tr>
           <td>23-03-21</td>
           <td>Ruta1</td>
           <td>Archena</td>
           <td>Murcia</td>
 
-          <td class="center-td-post">
+          <td class="option">
 
             <div class="rombo-table-write" ng-click="routes.editRoute($index)">
               <i class="fas fa-edit logo1"></i>
@@ -103,13 +118,9 @@
             <div class="rombo-table-delete" ng-click="routes.deleteRow($index)">
               <i class="fas fa-trash-alt logo2"></i>
             </div>
-
-
-
-
         </tr>
 
-      </tbody>
+
     </table>
 
   </div>
@@ -123,32 +134,56 @@
     <input type="text" id="title" placeholder="Title" class="cuadro-texto">
 
     <textarea name="post" id="post" placeholder="Post Text" class="new-post-textArea" ></textarea>
-    <!--
-    <div class="centered" >
-      <ul class="nav nav-tabs tabs">
-        <li><a href="#">External Image</a></li>
-        <li><a href="#">Upload Image</a></li>
-      </ul>
-      <br>
-      <input type="url" id="url" placeholder="Image Url" class="cuadro-texto" style="width: 400px;">
+
+    <hr class="space-new-route">
+    <div class="post-tabs-container">
+
+      <div class="post-tab">
+        <span>External Image</span>
+      </div>
+
+      <div class="post-tab">
+            <span>Upload Image</span>
+      </div>
+    </div>
+    <input type="url" id="url" placeholder="Image Url" class="cuadro-texto" >
+    <hr class="space-new-route">
+    <div class="layer-select">
+      <div class="select" ng-click="showOptions = !showOptions">
+        <span class="span-add-challenge">Add challenge</span>
+        <div class="rombo-select" >
+          <i class="fas fa-chevron-down image-rombo-select"></i>
+        </div>
+      </div>
+    </div>
+    <div class="select-options" ng-show="showOptions">
+
+      <table class="table-options">
+
+        <tr ng-repeat="routes in newRoute.routes">
+
+            <td ng-click="handleAction()">{{routes.challenges}}</td>
+            <td class="option-newRoute">
+
+                <div class="rombo-table-write" ng-click="newRoute.editRoute($index)">
+                  <i class="fas fa-edit logo-write-newChallenge"></i>
+                </div>
+
+                <div class="rombo-table-delete" ng-click="newRoute.deleteRow($index)">
+                  <i class="fas fa-trash-alt logo-delete-newChallenge"></i>
+                </div>
+
+
+            </td>
+        </tr>
+
+      </table>
 
     </div>
--->
-<hr class="space-new-route">
-<div class="post-tabs-container">
 
-  <div class="post-tab">
-    <span>External Image</span>
-  </div>
-
-  <div class="post-tab">
-        <span>Upload Image</span>
-  </div>
-</div>
-<input type="url" id="url" placeholder="Image Url" class="cuadro-texto" >
-<hr class="space-new-route">
-
-    <a href="" class="buton-challenge">Save New Route</a>
+    <div class="buton-route" ng-click="newRoute.save()">
+      <div class="save-new-route">Save New Route</div>
+    </div>
   </form>
 
 </div>

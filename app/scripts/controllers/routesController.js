@@ -14,6 +14,9 @@ angular.module('activeSchoolsAdminZoneApp')
     vm.goToNewRoute = function(){
       $location.path('routes/new_route');
     }
+    vm.goToRoute = function(){
+      $location.path('routes');
+    }
 
     vm.deleteRow = function(i){
       vm.routes.splice(i, 1);
@@ -31,12 +34,5 @@ angular.module('activeSchoolsAdminZoneApp')
        { 'id': '05', 'date': '09/03/2021','name': 'Ruta 5', 'city': 'Ceuti', 'province': 'Murcia', 'country': 'España', 'challenges': 5 }
 
     ]
-
-
-
-
-
-
-
   }]);
 

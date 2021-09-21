@@ -1,185 +1,165 @@
-<div class="root2" ng-controller="newRouteCtrl as newRoute">
+<div class="root">
   <div class="sidebar">
 
     <div id="menu-items">
+        <div class="logo">
+          <img src="../images/active-schools-logo-bl.svg" alt="">
+        </div>
+      <hr class="space-nav">
 
-      <div class="logo">
-        <img src="../images/active-schools-logo-bl.svg" alt="">
+      <div class="rombo-top">
+
+        <div class="border-rombo">
+          <div class="rombo">
+            <a href="#routes">
+            <i class="fas fa-route image-rombo-route"></i>
+            <span class="nombre-routes">Routes</span>
+          </a>
+          </div>
+
+
+        </div>
+
+        <div class="border-rombo">
+          <div class="rombo">
+            <a href="#challenges">
+              <i class="fas fa-walking image-rombo"></i>
+              <span class="nombre">Challenges</span>
+
+            </a>
+          </div>
+        </div>
+
+        <div class="border-rombo">
+          <div class="rombo">
+            <a href="#posts">
+              <i class="fas fa-file-alt image-rombo"></i>
+              <span class="nombre-posts">Posts</span>
+            </a>
+          </div>
+        </div>
+
       </div>
-    <hr class="space-nav">
-      <div class="rombo">
-        <a href="#routes" class="">
-          <i class="fas fa-route image-rombo-route"></i>
-          <span class="nombre">Routes</span>
 
-        </a>
+
+      <div class="rombo-bottom">
+
+        <div class="border-rombo">
+          <div class="rombo-user">
+            <a href="#login">
+             <i class="fas fa-user image-rombo"></i>
+              <span class="nombre">Username</span>
+            </a>
+          </div>
+        </div>
+
+
+        <div class="border-rombo">
+          <div class="rombo-exit">
+            <a href="#login">
+              <i class="fas fa-sign-out-alt image-rombo"></i>
+              <span class="nombre-exit">Exit</span>
+            </a>
+          </div>
+        </div>
       </div>
 
 
-      <div class="rombo">
-        <a href="#challenges">
-          <i class="fas fa-walking image-rombo"></i>
-          <span class="nombre">Challenges</span>
-
-        </a>
-      </div>
-
-      <div class="rombo ">
-        <a href="#posts">
-          <i class="fas fa-file-alt image-rombo"></i>
-          <span class="nombre">Posts</span>
-
-        </a>
-      </div>
-      <div class="rombo-space">
-
-      </div>
-      <div class="rombo">
-        <a href="#login">
-         <i class="fas fa-user image-rombo"></i>
-          <span class="nombre">Username</span>
-
-        </a>
-      </div>
-
-      <div class="rombo">
-        <a href="#login">
-          <i class="fas fa-sign-out-alt image-rombo"></i>
-          <span class="nombre">Exit</span>
-
-        </a>
-      </div>
 
     </div>
   </div>
-<div class="main-container">
-  <div class="content">
-    <img src="../images/new-challenge.png" style="margin-top: 33px;">
-  </div>
-  <div class="close-rombo-new-route" ng-click="newChallenge.goToChallenge()">
-    <!--<a href="#new-post">-->
+  <div class="main-container">
+    <div class="content">
+      <img src="../images/new-challenge.png" style="margin-top: 33px;">
+    </div>
+    <div class="close-rombo-new-route" ng-click="newChallenge.goToChallenge()">
+      <!--<a href="#new-post">-->
 
-        <i class="fas fa-times close-rombo-newroute"></i>
-         <span class="new-route-nombre">New post</span>
+          <i class="fas fa-times close-rombo-newroute"></i>
+          <span class="new-route-nombre">New post</span>
 
-    <!--</a>-->
-   </div>
-<!--
-  <div class="container-2">
-    <span class="icon"><i class="fa fa-search search"></i></span>
-    <input type="search" id="search" placeholder="Search">
-</div>
--->
-
-<br>
-<hr class="space-route">
-
-<div class="new-challenge-table">
-  <div class="tabla">
-
-    <table class="table-challenge" id="tabla">
-      <thead >
-        <tr>
-          <th scope="col">Date</th>
-          <th scope="col">Name</th>
-          <th scope="col">Video</th>
-          <th scope="col">Bonus</th>
-          <th scope="col">Min. Time / Max. Time</th>
-          <th scope="col">Images</th>
-          <th scope="col">Options</th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr >
-          <td>23-03-21</td>
-          <td>Ruta1</td>
-          <td>Archena</td>
-          <td>Murcia</td>
-          <td>España</td>
-          <td>1</td>
-          <td class="center-td-challenge">
-              <!--
-                <a href="#" class="rombo-table-write"><i class="fas fa-edit logo1 "></i></a>
-                <a href="#" class="rombo-table-delete"><i class="fas fa-trash-alt logo2 "></i></a>
-              -->
-              <div class="rombo-table-write" ng-click="routes.editRoute($index)">
-                <i class="fas fa-edit logo1"></i>
-              </div>
-
-              <div class="rombo-table-delete" ng-click="routes.deleteRow($index)">
-                <i class="fas fa-trash-alt logo2"></i>
-              </div>
-        </tr>
-
-      </tbody>
-    </table>
-
-  </div>
+      <!--</a>-->
+    </div>
 
 
-</div>
+        <br>
+    <hr class="space-route">
 
-<div class="new-route-form">
-  <form class="formulario">
-    <input type="text" id="name" placeholder="Name" class="cuadro-texto">
-    <input type="text" id="bonus" placeholder="Bonus" class="cuadro-texto">
-    <input type="text" id="minTime" placeholder="Min. Time" class="cuadro-texto">
-    <input type="text" id="maxTime" placeholder="Max. Time" class="cuadro-texto">
+    <div class="new-challenge-table">
 
-    <hr class="space-new-route">
-    <!--
-    <div class="centered" >
-      <ul class="nav nav-tabs tabs">
-        <li><a href="#">Youtube Video</a></li>
-        <li><a href="#">Upload Video</a></li>
-      </ul>
+
+      <table class="table" id="tabla">
+
+          <tr>
+            <th scope="col">Date</th>
+            <th scope="col">Name</th>
+            <th scope="col">Video</th>
+            <th scope="col">Bonus</th>
+            <th scope="col">Min. Time / Max. Time</th>
+            <th scope="col">Images</th>
+            <th scope="col">Options</th>
+          </tr>
+
+
+          <tr >
+            <td>23-03-21</td>
+            <td>Ruta1</td>
+            <td>Archena</td>
+            <td>Murcia</td>
+            <td>España</td>
+            <td>1</td>
+            <td class="option">
+                <div class="rombo-table-write" ng-click="routes.editRoute($index)">
+                  <i class="fas fa-edit logo1"></i>
+                </div>
+
+                <div class="rombo-table-delete" ng-click="routes.deleteRow($index)">
+                  <i class="fas fa-trash-alt logo2"></i>
+                </div>
+          </tr>
+
+
+      </table>
+
+    </div>
+
+
+
+
+  <div class="new-route-form">
+    <form class="formulario">
+      <input type="text" id="name" placeholder="Name" class="cuadro-texto">
+      <input type="text" id="bonus" placeholder="Bonus" class="cuadro-texto">
+      <input type="text" id="minTime" placeholder="Min. Time" class="cuadro-texto">
+      <input type="text" id="maxTime" placeholder="Max. Time" class="cuadro-texto">
+
+      <hr class="space-new-route">
+
+      <div class="post-tabs-container">
+
+        <div class="post-tab">
+          <span>Youtube Video</span>
+        </div>
+
+        <div class="post-tab">
+              <span>Upload Video</span>
+        </div>
+      </div>
+      <input type="url" id="url" placeholder="Youtube URL" class="cuadro-texto" >
       <br>
-      <input type="url" id="url" placeholder="Youtube URL" class="cuadro-texto" style="width: 400px;">
+      <div class="new-challenge-video">
+        <iframe width="100%" height="100%" src="https://www.youtube.com/embed/tgbNymZ7vqY">
+        </iframe>
 
-    </div>
--->
-    <div class="post-tabs-container">
-
-      <div class="post-tab">
-        <span>Youtube Video</span>
       </div>
 
-      <div class="post-tab">
-            <span>Upload Video</span>
+
+      <div class="buton-route" ng-click="newRoute.save()">
+        <div class="save-new-route">Save New Route</div>
       </div>
-    </div>
-    <input type="url" id="url" placeholder="Youtube URL" class="cuadro-texto" >
-    <br>
-    <div class="new-challenge-video">
-      <iframe width="100%" height="100%" src="https://www.youtube.com/embed/tgbNymZ7vqY">
-      </iframe>
-
-    </div>
-
-
-    <a href="" class="buton-challenge">Save New Route</a>
-  </form>
-
-</div>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+    </form>
 
   </div>
+</div>
 </div>
 

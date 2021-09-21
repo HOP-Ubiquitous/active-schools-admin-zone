@@ -2,53 +2,70 @@
   <div class="sidebar">
 
     <div id="menu-items">
+        <div class="logo">
+          <img src="../images/active-schools-logo-bl.svg" alt="">
+        </div>
+      <hr class="space-nav">
 
-      <div class="logo">
-        <img src="../images/active-schools-logo-bl.svg" alt="">
+      <div class="rombo-top">
+
+        <div class="border-rombo">
+          <div class="rombo">
+            <a href="#routes">
+            <i class="fas fa-route image-rombo-route"></i>
+            <span class="nombre-routes">Routes</span>
+          </a>
+          </div>
+
+
+        </div>
+
+        <div class="border-rombo">
+          <div class="rombo">
+            <a href="#challenges">
+              <i class="fas fa-walking image-rombo"></i>
+              <span class="nombre">Challenges</span>
+
+            </a>
+          </div>
+        </div>
+
+        <div class="border-rombo">
+          <div class="rombo">
+            <a href="#posts">
+              <i class="fas fa-file-alt image-rombo"></i>
+              <span class="nombre-posts">Posts</span>
+            </a>
+          </div>
+        </div>
+
       </div>
-    <hr class="space-nav">
-      <div class="rombo">
-        <a href="#routes" class="">
-          <i class="fas fa-route image-rombo-route"></i>
-          <span class="nombre">Routes</span>
 
-        </a>
+
+      <div class="rombo-bottom">
+
+        <div class="border-rombo">
+          <div class="rombo-user">
+            <a href="#login">
+             <i class="fas fa-user image-rombo"></i>
+              <span class="nombre">Username</span>
+            </a>
+          </div>
+        </div>
+
+
+        <div class="border-rombo">
+          <div class="rombo-exit">
+            <a href="#login">
+              <i class="fas fa-sign-out-alt image-rombo"></i>
+              <span class="nombre-exit">Exit</span>
+            </a>
+          </div>
+        </div>
       </div>
 
 
-      <div class="rombo">
-        <a href="#challenges">
-          <i class="fas fa-walking image-rombo"></i>
-          <span class="nombre">Challenges</span>
 
-        </a>
-      </div>
-
-      <div class="rombo ">
-        <a href="#posts">
-          <i class="fas fa-file-alt image-rombo"></i>
-          <span class="nombre">Posts</span>
-
-        </a>
-      </div>
-      <div class="rombo-space">
-
-      </div>
-      <div class="rombo">
-        <a href="#login">
-         <i class="fas fa-user image-rombo"></i>
-          <span class="nombre">Username</span>
-
-        </a>
-      </div>
-
-      <div class="rombo">
-        <a href="#login">
-          <i class="fas fa-sign-out-alt image-rombo"></i>
-          <span class="nombre">Exit</span>
-
-        </a>
-      </div>
     </div>
   </div>
 <div class="main-container">
@@ -59,14 +76,14 @@
   <div class="container-1">
     <span class="icon"><i class="fa fa-search search"></i></span>
     <input type="search" id="search" placeholder="Search" class="place">
-</div>
-<br>
+  </div>
+    <br>
 
-  <hr class="space">
-  <div class="tabla">
+    <hr class="space-post">
+
 
     <table class="table">
-      <thead>
+
         <tr>
           <th scope="col">Date</th>
           <th scope="col">Title</th>
@@ -74,15 +91,15 @@
           <th scope="col">Post Published (Countries)</th>
           <th scope="col">Options</th>
         </tr>
-      </thead>
-      <tbody>
+
+
         <tr ng-repeat="post in posts.posts">
 
           <td>{{post.date | date : 'dd/MM/yyyy'}}</td>
           <td>{{post.title}}</td>
           <td>{{post.image}}</td>
           <td>{{post.postPublished}}</td>
-          <td>
+          <td class="option">
 
 
             <div class="rombo-table-write">
@@ -96,10 +113,10 @@
 
         </tr>
 
-      </tbody>
+
     </table>
 
-  </div>
+
 
   <div>
 
@@ -110,7 +127,7 @@
      <!--<a href="#new-post">-->
         <div class="icono">
           <i class="fas fa-plus image-rombo-newroute"></i>
-          <span class="new-route-nombre">New post</span>
+          <span class="new-post-nombre">New post</span>
         </div>
      <!--</a>-->
     </div>
