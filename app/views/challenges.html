@@ -1,4 +1,4 @@
-<div class="root" ng-controller="challengesCtrl as challenges">
+<div class="root">
   <div class="sidebar">
 
     <div id="menu-items">
@@ -102,7 +102,7 @@
           <td class="option">
 
 
-            <div class="rombo-table-write">
+            <div class="rombo-table-write" ng-click="challenges.editChallenge(challenge.id)">
               <i class="fas fa-edit logo1"></i>
             </div>
 
@@ -113,11 +113,6 @@
 
 
     </table>
-
-
-
-
-
     <div class="rombo-new-route" ng-click="challenges.goToNewChallenge()">
       <!--<a href="#new-post">-->
          <div class="icono">
@@ -126,15 +121,6 @@
          </div>
       <!--</a>-->
      </div>
-
-
-
-
-
-
-
-
-
 
   </div>
 

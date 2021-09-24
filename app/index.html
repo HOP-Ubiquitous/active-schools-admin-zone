@@ -23,7 +23,7 @@
     <div app-view-segment="0" ng-show="('login' | routeSegmentEqualsTo) || ('recover' | routeSegmentEqualsTo) || ('routes' | routeSegmentEqualsTo) || ('challenges' | routeSegmentEqualsTo) || ('posts' | routeSegmentEqualsTo) "></div>
 
     <div app-view-segment="1" ng-show="('routes.new_route' | routeSegmentEqualsTo) || ('challenges.new_challenge' | routeSegmentEqualsTo) || ('posts.new_post' | routeSegmentEqualsTo)"></div>
-
+    <div app-view-segment="2" ng-show="('routes.edit_route.route_id' | routeSegmentEqualsTo) || ('challenges.edit_challenge.challenge_id' | routeSegmentEqualsTo) || ('posts.edit_post.post_id' | routeSegmentEqualsTo)"></div>
      <script>
        !function(A,n,g,u,l,a,r){A.GoogleAnalyticsObject=l,A[l]=A[l]||function(){
        (A[l].q=A[l].q||[]).push(arguments)},A[l].l=+new Date,a=n.createElement(g),
@@ -75,11 +75,11 @@
 
     <script src="scripts/services/route_service_api.js"></script>
     <script src="scripts/services/route_service.js"></script>
-    <script src="scripts/services/login_service_data.js"></script>
+    <script src="scripts/services/route_service_data.js"></script>
 
     <script src="scripts/services/recover_service_api.js"></script>
     <script src="scripts/services/recover_service_data.js"></script>
-    <script src="scripts/services/route_service.js"></script>
+    <script src="scripts/services/recover_service.js"></script>
 
     <script src="scripts/services/challenge_service_api.js"></script>
     <script src="scripts/services/challenge_service_data.js"></script>

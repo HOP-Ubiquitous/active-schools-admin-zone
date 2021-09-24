@@ -69,17 +69,21 @@
     </div>
   </div>
 <div class="main-container">
-  <div class="content">
-    <img src="../images/new-post.png" style="margin-top: 35px;">
+  <div class="content" ng-show="('posts.new_post' | routeSegmentEqualsTo)">
+    <img src="../images/new_post.png" style="margin-top: 35px;">
   </div>
-  <div class="close-rombo-new-route" ng-click="newPost.goToPost()">
-    <!--<a href="#new-post">-->
 
+  <div class="content" ng-show="('posts.edit_post.post_id' | routeSegmentEqualsTo)">
+    <img src="../images/editPost.png" style="margin-top: 35px;">
+  </div>
+<!--boton cerrar new post-->
+  <div class="close-rombo-new-route" ng-click="newPost.goToPost()" ng-show="('posts.new_post' | routeSegmentEqualsTo)">
         <i class="fas fa-times close-rombo-newroute"></i>
-         <span class="new-route-nombre">New post</span>
-
-    <!--</a>-->
    </div>
+<!--boton cerrar edit post-->
+   <div class="close-rombo-new-route" ng-click="editPost.goToPost()" ng-show="('posts.edit_post.post_id' | routeSegmentEqualsTo)">
+    <i class="fas fa-times close-rombo-newroute"></i>
+  </div>
 <!--
   <div class="container-2">
     <span class="icon"><i class="fa fa-search search"></i></span>
@@ -150,7 +154,7 @@
     <hr class="space-new-route">
     <div class="layer-select">
       <div class="select" ng-click="showOptions = !showOptions">
-        <span class="span-add-challenge">Add challenge</span>
+        <span class="span-add-challenge">Select country where to publish</span>
         <div class="rombo-select" >
           <i class="fas fa-chevron-down image-rombo-select"></i>
         </div>

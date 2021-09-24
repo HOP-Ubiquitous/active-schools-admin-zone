@@ -91,7 +91,7 @@ var app = angular.module('activeSchoolsAdminZoneApp', [
       controllerAs:'newRoute'
     })
 
-    .within()
+
 
     .segment('edit_route', {
     })
@@ -109,7 +109,6 @@ var app = angular.module('activeSchoolsAdminZoneApp', [
 
     .up()
     .up()
-    .up()
 
     .segment('challenges', {
       templateUrl: 'views/challenges.html',
@@ -125,7 +124,7 @@ var app = angular.module('activeSchoolsAdminZoneApp', [
       controllerAs:'newChallenge'
     })
 
-    .within()
+
 
     .segment('edit_challenge', {
     })
@@ -137,7 +136,7 @@ var app = angular.module('activeSchoolsAdminZoneApp', [
       dependencies: ['challenge_id']
     })
 
-    .up()
+
     .up()
     .up()
 
@@ -155,7 +154,7 @@ var app = angular.module('activeSchoolsAdminZoneApp', [
       controllerAs:'newPost'
     })
 
-    .within()
+    //.within()
 
     .segment('edit_post', {
     })

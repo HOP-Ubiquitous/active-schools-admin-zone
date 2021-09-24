@@ -8,9 +8,9 @@
  * Controller of the activeSchoolsAdminZoneApp
  */
 angular.module('activeSchoolsAdminZoneApp')
-  .controller('challengesCtrl', ['$location', 'challengeServiceData', function ($location, challengeServiceData) {
+  .controller('challengesCtrl', ['$location', 'challengeServiceData', '$routeParams', function ($location, challengeServiceData, $routeParams) {
     var vm = this;
-    vm.challengeServiceData = challengeServiceData;
+
     vm.goToNewChallenge = function(){
       $location.path('challenges/new_challenge');
     }
@@ -21,18 +21,14 @@ angular.module('activeSchoolsAdminZoneApp')
     vm.deleteRow = function(i){
       vm.challenges.splice(i, 1);
     };
-    //debugger;
-    vm.challenges = vm.challengeServiceData.challenges;
-    console.log(vm.challenges);
-/*
-    function getChallenge(){
-      return challengeServiceData.challenges;
+
+    vm.editChallenge = function(challenge_id){
+      $routeParams.challenge_id = challenge_id;
+      $location.path('challenges/edit_challenge/' + $routeParams.challenge_id);
     }
 
-    getChallenge();
-    console.log(getChallenge());
-*/
-
-
+    vm.challengeServiceData = challengeServiceData;
+    vm.challenges = vm.challengeServiceData.getData();
+    console.log(vm.challenges);
 
   }]);

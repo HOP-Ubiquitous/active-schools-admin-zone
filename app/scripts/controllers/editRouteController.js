@@ -10,7 +10,10 @@
 angular.module('activeSchoolsAdminZoneApp')
   .controller('editRouteCtrl', ['$location', function ($location) {
 
-
+    var vm = this;
+    vm.goToRoute = function(){
+      $location.path('/routes');
+    }
 
 
 

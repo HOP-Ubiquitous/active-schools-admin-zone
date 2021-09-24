@@ -116,8 +116,18 @@ input{
 }
 .table-2{
   margin: 0 auto;
-  text-align: center;
+  display: block;
+
+
   width: 100%;
+  top: -100px;
+
+
+}
+#table-2{
+  display:none;
+  width: 100%;
+  position: relative;
 
 }
 
@@ -677,7 +687,7 @@ width: 200px;
 .new-route-map{
   border: 1px solid white;
   width: 59%;
-  height: 570px;
+  height: 579px;
   background: grey;
   transition: 0.3 ease all;
   float: left;
@@ -685,8 +695,8 @@ width: 200px;
 }
 .new-route-form{
   width:39%;
-  height: 570px;
-  border: 1px solid white;
+  height: 650px;
+
   float: right;
 
   transition: 0.3 ease all;
@@ -799,11 +809,10 @@ width: 200px;
   height: 43px;
   text-align: center;
   color: white;
-  display:block;
+  display:inline-block;
   position:relative;
-  top:50px
-
-
+  bottom:0;
+  top: 50px;
 }
 
 .buton-challenge{

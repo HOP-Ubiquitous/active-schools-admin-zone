@@ -10,7 +10,10 @@
 angular.module('activeSchoolsAdminZoneApp')
   .controller('editPostCtrl', ['$location', function ($location) {
 
-
+    var vm = this;
+    vm.goToPost = function(){
+      $location.path('/posts');
+    }
 
 
 

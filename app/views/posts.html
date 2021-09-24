@@ -1,4 +1,4 @@
-<div class="root" ng-controller="postsCtrl as posts">
+<div class="root">
   <div class="sidebar">
 
     <div id="menu-items">
@@ -102,7 +102,7 @@
           <td class="option">
 
 
-            <div class="rombo-table-write">
+            <div class="rombo-table-write" ng-click="posts.editPost(post.id)">
               <i class="fas fa-edit logo1"></i>
             </div>
 

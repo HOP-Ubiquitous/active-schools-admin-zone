@@ -69,13 +69,22 @@
     </div>
   </div>
 <div class="main-container">
-  <div class="content">
+  <div class="content" ng-show="('routes.new_route' | routeSegmentEqualsTo)" >
     <img src="../images/new-route.png" style="margin-top: 34px;">
   </div>
-      <div class="close-rombo-new-route" ng-click="newRoute.goToRoute()">
+
+  <div class="content" ng-show="('routes.edit_route.route_id' | routeSegmentEqualsTo)">
+    <img src="../images/EditRoute.png" style="margin-top: 34px;">
+  </div>
+
+
+
+      <div class="close-rombo-new-route" ng-click="newRoute.goToRoute()" ng-show="('routes.new_route' | routeSegmentEqualsTo)">
             <i class="fas fa-times close-rombo-newroute"></i>
-            <span class="new-route-nombre">New post</span>
       </div>
+      <div class="close-rombo-new-route" ng-click="editRoute.goToRoute()" ng-show="('routes.edit_route.route_id' | routeSegmentEqualsTo)">
+        <i class="fas fa-times close-rombo-newroute"></i>
+  </div>
           <!--
             <div class="container-2">
               <span class="icon"><i class="fa fa-search search"></i></span>
@@ -90,8 +99,8 @@
 
 
     </div>
-
-    <div class="new-route-form">
+<!--Formulario new-route-->
+    <div class="new-route-form" ng-show="('routes.new_route' | routeSegmentEqualsTo)">
       <form method="POST" class="formulario" name="user">
         <input type="text" id="name" placeholder="Name" class="cuadro-texto" ng-model="newRoute.name" required>
         <input type="text" id="city" placeholder="City" class="cuadro-texto" ng-model="newRoute.city" required>
@@ -136,6 +145,55 @@
           <div class="save-new-route">Save New Route</div>
         </div>
       </form>
+
+    </div>
+<!--Formulario edit-route-->
+    <div class="new-route-form" ng-show="('routes.edit_route.route_id' | routeSegmentEqualsTo)">
+      <form method="POST" class="formulario" name="user">
+        <input type="text" id="name" placeholder="Name" class="cuadro-texto" ng-model="newRoute.name" required>
+        <input type="text" id="city" placeholder="City" class="cuadro-texto" ng-model="newRoute.city" required>
+        <input type="text" id="province" placeholder="Province" class="cuadro-texto" ng-model="newRoute.province" required>
+        <input type="text" id="country" placeholder="Country" class="cuadro-texto" ng-model="newRoute.country" required>
+        <hr class="space-new-route">
+        <div class="layer-select">
+          <div class="select" ng-click="showOptions = !showOptions">
+            <span class="span-add-challenge">Add challenge</span>
+            <div class="rombo-select" >
+              <i class="fas fa-chevron-down image-rombo-select"></i>
+            </div>
+          </div>
+        </div>
+
+        <div class="select-options" ng-show="showOptions" id="challenges">
+
+          <table class="table-options">
+            <!---->
+            <tr ng-repeat="routes in newRoute.routes">
+
+                <td class="boton-color" ng-click="saveChallenge()">{{routes.challenges}}</td>
+                <td class="option-newRoute">
+
+                    <div class="rombo-table-write" ng-click="newRoute.editRoute($index)">
+                      <i class="fas fa-edit logo-write-newChallenge"></i>
+                    </div>
+
+                    <div class="rombo-table-delete" ng-click="newRoute.deleteRow($index)">
+                      <i class="fas fa-trash-alt logo-delete-newChallenge"></i>
+                    </div>
+
+
+                </td>
+            </tr>
+
+          </table>
+
+        </div>
+
+        <div class="buton-route" ng-click="newRoute.save()">
+          <div class="save-new-route">Save New Route</div>
+        </div>
+      </form>
+
     </div>
   </div>
 </div>

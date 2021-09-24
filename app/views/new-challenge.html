@@ -69,16 +69,19 @@
     </div>
   </div>
   <div class="main-container">
-    <div class="content">
-      <img src="../images/new-challenge.png" style="margin-top: 33px;">
+    <div class="content" ng-show="('challenges.new_challenge' | routeSegmentEqualsTo)">
+      <img src="../images/new_challenge.png" style="margin-top: 33px;">
     </div>
-    <div class="close-rombo-new-route" ng-click="newChallenge.goToChallenge()">
-      <!--<a href="#new-post">-->
 
+    <div class="content" ng-show="('challenges.edit_challenge.challenge_id' | routeSegmentEqualsTo)">
+      <img src="../images/editChallenge.png" style="margin-top: 33px;">
+    </div>
+
+    <div class="close-rombo-new-route" ng-click="newChallenge.goToChallenge()" ng-show="('challenges.new_challenge' | routeSegmentEqualsTo)">
           <i class="fas fa-times close-rombo-newroute"></i>
-          <span class="new-route-nombre">New post</span>
-
-      <!--</a>-->
+    </div>
+    <div class="close-rombo-new-route" ng-click="editChallenge.goToChallenge()" ng-show="('challenges.edit_challenge.challenge_id' | routeSegmentEqualsTo)">
+      <i class="fas fa-times close-rombo-newroute"></i>
     </div>
 
 
@@ -101,13 +104,13 @@
           </tr>
 
 
-          <tr >
-            <td>23-03-21</td>
-            <td>Ruta1</td>
-            <td>Archena</td>
-            <td>Murcia</td>
-            <td>España</td>
-            <td>1</td>
+          <tr ng-repeat="challenge in challenges.challenges">
+            <td>{{challenge.date | date : 'dd/MM/yyyy'}}</td>
+            <td>{{challenge.name}}</td>
+            <td>{{challenge.video}}</td>
+            <td>{{challenge.bonus}}</td>
+            <td>{{challenge.minMax}}</td>
+            <td>{{challenge.images}}</td>
             <td class="option">
                 <div class="rombo-table-write" ng-click="routes.editRoute($index)">
                   <i class="fas fa-edit logo1"></i>
@@ -126,7 +129,43 @@
 
 
 
-  <div class="new-route-form">
+  <div class="new-route-form" ng-show="('challenges.new_challenge' | routeSegmentEqualsTo)">
+    <form class="formulario">
+      <input type="text" id="name" placeholder="Name" class="cuadro-texto">
+      <input type="text" id="bonus" placeholder="Bonus" class="cuadro-texto">
+      <input type="text" id="minTime" placeholder="Min. Time" class="cuadro-texto">
+      <input type="text" id="maxTime" placeholder="Max. Time" class="cuadro-texto">
+
+      <hr class="space-new-route">
+
+      <div class="post-tabs-container">
+
+        <div class="post-tab">
+          <span>Youtube Video</span>
+        </div>
+
+        <div class="post-tab">
+              <span>Upload Video</span>
+        </div>
+      </div>
+      <input type="url" id="url" placeholder="Youtube URL" class="cuadro-texto" >
+      <br>
+      <div class="new-challenge-video">
+        <iframe width="100%" height="100%" src="https://www.youtube.com/embed/tgbNymZ7vqY">
+        </iframe>
+
+      </div>
+
+
+      <div class="buton-route" ng-click="newRoute.save()">
+        <div class="save-new-route">Save New Route</div>
+      </div>
+    </form>
+
+  </div>
+
+
+  <div class="new-route-form" ng-show="('challenges.edit_challenge.challenge_id' | routeSegmentEqualsTo)">
     <form class="formulario">
       <input type="text" id="name" placeholder="Name" class="cuadro-texto">
       <input type="text" id="bonus" placeholder="Bonus" class="cuadro-texto">

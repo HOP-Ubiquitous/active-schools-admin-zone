@@ -38,7 +38,7 @@ app.service('challengeService', ['challengeServiceApi', 'challengeServiceData', 
     challengeServiceApi.get_login()
       .then(
         function succes(response){
-          loginServiceData.ChallengeList = response.data;
+          challengeServiceData.ChallengeList = response.data;
           service.challengeLoaded = true;
           console.log('\x1b[32m%s\x1b[0m', 'Cargados todos los datos del challenge! :)');
 

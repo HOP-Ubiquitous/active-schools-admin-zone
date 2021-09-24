@@ -1,4 +1,4 @@
-<div class="root" ng-controller="routesCtrl as routes">
+<div class="root">
   <div class="sidebar">
 
     <div id="menu-items">
@@ -68,19 +68,19 @@
 
     </div>
   </div>
-<div class="main-container">
-  <div class="content">
-    <img src="../images/rutas.png" style="margin-top: 33px;">
-  </div>
+  <div class="main-container">
+    <div class="content">
+      <img src="../images/rutas.png" style="margin-top: 33px;">
+    </div>
 
-  <div class="container-2">
-    <span class="icon"><i class="fa fa-search search" ng-click="handleAction()"></i></span>
-    <input type="search" id="search" placeholder="Search"  class="place">
-  </div>
+    <div class="container-2">
+      <span class="icon"><i class="fa fa-search search" ng-click="handleAction()"></i></span>
+      <input type="search" id="search" placeholder="Search"  class="place">
+    </div>
       <br>
             <hr class="space-route">
 
-        <table class="table ">
+        <table class="table">
             <tr>
                 <th>Date</th>
                 <th>Name</th>
@@ -100,63 +100,56 @@
                 <td>{{route.challenges}}</td>
                 <td class="option">
 
-                    <div class="rombo-table-write" ng-click="routes.editRoute($index)">
+                    <div class="rombo-table-write" ng-click="routes.editRoute(route.id)">
                       <i class="fas fa-edit logo1"></i>
                     </div>
 
                     <div class="rombo-table-delete" ng-click="routes.deleteRow($index)">
                       <i class="fas fa-trash-alt logo2"></i>
                     </div>
-
-                    <div class="rombo-table-see" ng-click="showOptions[$index] = !showOptions[$index]">
+    <!--ng-click="showOptions[$index] = !showOptions[$index]"-->
+                    <div class="rombo-table-see" ng-click="routes.show(id)">
                       <i class="fas fa-eye logo3"></i>
                     </div>
 
                 </td>
             </tr>
-
-            <table class="table-2" ng-show="showOptions[$index]">
-
-              <tr>
-                <th scope="col">Date</th>
-                <th scope="col">Name</th>
-                <th scope="col">Video</th>
-                <th scope="col">Bonus</th>
-                <th scope="col">Min. Time / Max. Time</th>
-                <th scope="col">Images</th>
-                <th scope="col">Options</th>
-              </tr>
+    <!--ng-show="showOptions[$index]"-->
 
 
-              <tr ng-repeat="challenge in challenges.challenge">
-                <td>{{challenge.date | date : 'dd/MM/yyyy'}}</td>
-                <td>{{challenge.name}}</td>
-                <td>{{challenge.video}}</td>
-                <td>{{challenge.bonus}}</td>
-                <td>{{challenge.minMax}}</td>
-                <td>{{challenge.images}}</td>
-                <td class="option">
-
-
-                  <div class="rombo-table-write">
-                    <i class="fas fa-edit logo1"></i>
-                  </div>
-
-                  <div class="rombo-table-delete" ng-click="challenges.deleteRow($index)">
-                    <i class="fas fa-trash-alt logo2"></i>
-                  </div>
-              </tr>
-
-
-            </table>
         </table>
+        <div>
+
+        </div>
 
 
+          <table id="table-2" class="table-2">
+            <tr>
+              <th scope="col">Date</th>
+              <th scope="col">Name</th>
+              <th scope="col">Video</th>
+              <th scope="col">Bonus</th>
+              <th scope="col">Min. Time / Max. Time</th>
+              <th scope="col">Images</th>
+              <th scope="col">Options</th>
+            </tr>
+            <tr ng-repeat="challenge in challenges.challenges">
+              <td>{{challenge.date | date : 'dd/MM/yyyy'}}</td>
+              <td>{{challenge.name}}</td>
+              <td>{{challenge.video}}</td>
+              <td>{{challenge.bonus}}</td>
+              <td>{{challenge.minMax}}</td>
+              <td>{{challenge.images}}</td>
+              <td class="option">
+                <div class="rombo-table-write">
+                  <i class="fas fa-edit logo1"></i>
+                </div>
 
-
-
-
-
+                <div class="rombo-table-delete" ng-click="challenges.deleteRow($index)">
+                  <i class="fas fa-trash-alt logo2"></i>
+                </div>
+            </tr>
+          </table>
 
 
 
@@ -169,4 +162,8 @@
         </div>
      <!--</a>-->
     </div>
+
+  </div>
+
+
 </div>

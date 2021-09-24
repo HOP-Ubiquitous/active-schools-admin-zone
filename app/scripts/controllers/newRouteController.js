@@ -8,9 +8,11 @@
  * Controller of the activeSchoolsAdminZoneApp
  */
 angular.module('activeSchoolsAdminZoneApp')
-  .controller('newRouteCtrl', ['$location', function ($location) {
+  .controller('newRouteCtrl', ['$location', 'routeServiceData', function ($location, routeServiceData) {
+
 
     var vm = this;
+
     vm.goToRoute = function(){
       $location.path('/routes');
     }
@@ -19,7 +21,7 @@ angular.module('activeSchoolsAdminZoneApp')
       vm.routes.splice(i, 1);
     };
 
-
+/*
     vm.routes = [
       { 'id': '01', 'date': '05/06/2021', 'name': 'Ruta 1', 'city': 'Archena', 'province': 'Murcia', 'country': 'España', 'challenges': "challenge #1" },
       { 'id': '02', 'date': '06/07/2021','name': 'Ruta 2', 'city': 'Ricote', 'province': 'Murcia', 'country': 'España', 'challenges': "challenge #2" },
@@ -27,21 +29,18 @@ angular.module('activeSchoolsAdminZoneApp')
       { 'id': '04', 'date': '08/09/2021','name': 'Ruta 4', 'city': 'Villanuea', 'province': 'Murcia', 'country': 'España', 'challenges': "challenge #4" },
       { 'id': '05', 'date': '09/03/2021','name': 'Ruta 5', 'city': 'Ceuti', 'province': 'Murcia', 'country': 'España', 'challenges': "challenge #5" }
 
-   ]
+   ]*/
 
 
    vm.save = function(){
 debugger;
-     vm.routes.push({
+     routeServiceData.addRow({
+       date: new Date(),
        name:vm.name,
        city:vm.city,
        province:vm.province,
-       country:vm.country,
-
-
+       country:vm.country
      });
-
-
    }
 
    vm.saveChallenge = function(){
