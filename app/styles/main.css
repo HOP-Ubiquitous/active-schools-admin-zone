@@ -116,19 +116,18 @@ input{
   width: 100%;
 }
 
-#table-2{
-  display:none;
+/*#table-2{*/
+  /*display:none;*/
+/*}*/
 
-}
 .table-see{
   margin: 0 auto;
-
   width: 100%;
   position:relative;
   text-align: center;
   background-size: auto;
-
 }
+
 .table-see th{
   background: rgb(255, 111, 0);
 }
@@ -157,7 +156,7 @@ td{
 tr{
   height: 35px;
 }
-table tr:nth-child(odd){
+table tbody:nth-child(odd) tr{
   background: rgb(242, 242, 242);
 
 }
