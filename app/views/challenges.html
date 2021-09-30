@@ -79,7 +79,7 @@
   </div>
     <br>
     <hr class="space">
-    <table class="table">
+    <table class="tabla">
 
         <tr>
           <th scope="col">Date</th>
@@ -106,7 +106,7 @@
               <i class="fas fa-edit logo1"></i>
             </div>
 
-            <div class="rombo-table-delete" ng-click="challenges.deleteRow($index)">
+            <div class="rombo-table-delete"  ng-click="challenges.mostrarPopUp($index)">
               <i class="fas fa-trash-alt logo2"></i>
             </div>
         </tr>
@@ -121,6 +121,17 @@
          </div>
       <!--</a>-->
      </div>
+
+     <div id="main" class="popUp" ng-show="challenges.deletePopUp === true">
+      <div class="divPopUp">
+          <h4 style="text-align: center; color: black;">Are you sure you want to delete the marked route?</h4>
+          <div class="botones">
+            <button type="submit" class="btn btn-danger" ng-click="challenges.deleteRow($index); challenges.deletePopUp = false">Ok</button>
+            <button type="submit" class="btn btn-light"  ng-click="challenges.deletePopUp=== false">Cancel</button>
+          </div>
+      </div>
+
+    </div>
 
   </div>
 

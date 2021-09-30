@@ -17,7 +17,6 @@
           </a>
           </div>
 
-
         </div>
 
         <div class="border-rombo">
@@ -41,7 +40,6 @@
 
       </div>
 
-
       <div class="rombo-bottom">
 
         <div class="border-rombo">
@@ -53,7 +51,6 @@
           </div>
         </div>
 
-
         <div class="border-rombo">
           <div class="rombo-exit">
             <a href="#login">
@@ -63,21 +60,15 @@
           </div>
         </div>
       </div>
-
-
-
     </div>
   </div>
 <div class="main-container">
   <div class="content" ng-show="('routes.new_route' | routeSegmentEqualsTo)" >
     <img src="../images/new-route.png" style="margin-top: 34px;">
   </div>
-
   <div class="content" ng-show="('routes.edit_route.route_id' | routeSegmentEqualsTo)">
     <img src="../images/EditRoute.png" style="margin-top: 34px;">
   </div>
-
-
 
       <div class="close-rombo-new-route" ng-click="newRoute.goToRoute()" ng-show="('routes.new_route' | routeSegmentEqualsTo)">
             <i class="fas fa-times close-rombo-newroute"></i>
@@ -108,7 +99,7 @@
         <input type="text" id="country" placeholder="Country" class="cuadro-texto" ng-model="newRoute.country" required>
         <hr class="space-new-route">
         <div class="layer-select">
-          <div class="select" ng-click="showOptions = !showOptions">
+          <div class="select" ng-click="(showOptions = !showOptions)">
             <span class="span-add-challenge">Add challenge</span>
             <div class="rombo-select" >
               <i class="fas fa-chevron-down image-rombo-select"></i>
@@ -120,9 +111,9 @@
 
           <table class="table-options">
             <!---->
-            <tr ng-repeat="routes in newRoute.routes">
+            <tr ng-repeat="newRoutes in newRoute.challenges">
 
-                <td class="boton-color" ng-click="saveChallenge()">{{routes.challenges}}</td>
+                <td class="boton-color" ng-click="newRoute.saveChallenge($index)" >{{newRoutes.name}}</td>
                 <td class="option-newRoute">
 
                     <div class="rombo-table-write" ng-click="newRoute.editRoute($index)">
@@ -150,10 +141,10 @@
 <!--Formulario edit-route-->
     <div class="new-route-form" ng-show="('routes.edit_route.route_id' | routeSegmentEqualsTo)">
       <form method="POST" class="formulario" name="user">
-        <input type="text" id="name" placeholder="Name" class="cuadro-texto" ng-model="newRoute.name" required>
-        <input type="text" id="city" placeholder="City" class="cuadro-texto" ng-model="newRoute.city" required>
-        <input type="text" id="province" placeholder="Province" class="cuadro-texto" ng-model="newRoute.province" required>
-        <input type="text" id="country" placeholder="Country" class="cuadro-texto" ng-model="newRoute.country" required>
+        <input type="text" id="name" placeholder="Name" class="cuadro-texto" ng-model="editRoute.name" required>
+        <input type="text" id="city" placeholder="City" class="cuadro-texto" ng-model="editRoute.city" required>
+        <input type="text" id="province" placeholder="Province" class="cuadro-texto" ng-model="editRoute.province" required>
+        <input type="text" id="country" placeholder="Country" class="cuadro-texto" ng-model="editRoute.country" required>
         <hr class="space-new-route">
         <div class="layer-select">
           <div class="select" ng-click="showOptions = !showOptions">
@@ -168,18 +159,20 @@
 
           <table class="table-options">
             <!---->
-            <tr ng-repeat="routes in newRoute.routes">
+            <tr ng-repeat="editRoutes in editRoute.challenges">
 
-                <td class="boton-color" ng-click="saveChallenge()">{{routes.challenges}}</td>
+                <td class="boton-color" ng-click="saveChallenge()">{{editRoutes.name}}</td>
                 <td class="option-newRoute">
 
-                    <div class="rombo-table-write" ng-click="newRoute.editRoute($index)">
+                    <div class="rombo-table-write" ng-click="editRoute.editRoute($index)">
                       <i class="fas fa-edit logo-write-newChallenge"></i>
                     </div>
 
-                    <div class="rombo-table-delete" ng-click="newRoute.deleteRow($index)">
+                    <div class="rombo-table-delete" ng-click="editRoute.deleteRow($index)">
                       <i class="fas fa-trash-alt logo-delete-newChallenge"></i>
                     </div>
+
+
 
 
                 </td>
@@ -189,7 +182,7 @@
 
         </div>
 
-        <div class="buton-route" ng-click="newRoute.save()">
+        <div class="buton-route" ng-click="editRoute.editRoutes()">
           <div class="save-new-route">Save New Route</div>
         </div>
       </form>

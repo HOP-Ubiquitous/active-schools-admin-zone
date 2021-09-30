@@ -8,7 +8,7 @@
  * Controller of the activeSchoolsAdminZoneApp
  */
 angular.module('activeSchoolsAdminZoneApp')
-  .controller('routesCtrl', ['$location', 'routeServiceData', '$routeParams', function ($location, routeServiceData, $routeParams) {
+  .controller('routesCtrl', ['$location', 'routeServiceData', '$routeParams', 'challengeServiceData',  function ($location, routeServiceData, $routeParams, challengeServiceData) {
     var vm = this;
 
     vm.goToNewRoute = function(){
@@ -17,11 +17,29 @@ angular.module('activeSchoolsAdminZoneApp')
     vm.goToRoute = function(){
       $location.path('routes');
     }
+    vm.editChallenge = function(challenge_id){
+      $routeParams.challenge_id = challenge_id;
+      $location.path('challenges/edit_challenge/' + $routeParams.challenge_id);
+    }
 
-    vm.deleteRow = function(i){
 
+    vm.deleteRow = function(){
+      console.log();
+      debugger;
+      vm.routeServiceData.splice(vm.deleteIndex, 1);
+    }
+    /*
+    vm.deleteRow = function(index){
+      console.log();
+      debugger;
+        vm.routeServiceData.deleteRow(index);
+    }
+*/
+
+    vm.deleteRow_2 = function(i){
+debugger;
       if (confirm("¿Quieres borrar la ruta seleccionada?")) {
-        vm.routeServiceData.deleteRow(i);
+        vm.challengeServiceData.deleteRow(i);
       }
 
     }
@@ -32,8 +50,10 @@ angular.module('activeSchoolsAdminZoneApp')
       $location.path('routes/edit_route/' + $routeParams.route_id);
     }
 
+    //Mostrar tabla al pulsar el boton ver
+
     var show = false;
-      var div = document.getElementById("table-2");
+    var div = document.getElementById("table-2");
     vm.show = function(){
 
       if(show ^= true){
@@ -43,19 +63,50 @@ angular.module('activeSchoolsAdminZoneApp')
       }
 
     }
-    /*
-    vm.routes = [
-       { 'id': '01', 'date': '05/06/2021', 'name': 'Ruta 1', 'city': 'Archena', 'province': 'Murcia', 'country': 'España', 'challenges': 1 },
-       { 'id': '02', 'date': '06/07/2021','name': 'Ruta 2', 'city': 'Ricote', 'province': 'Murcia', 'country': 'España', 'challenges': 2 },
-       { 'id': '03', 'date': '07/08/2021', 'name': 'Ruta 3', 'city': 'Ojós', 'province': 'Murcia', 'country': 'España', 'challenges': 3 },
-       { 'id': '04', 'date': '08/09/2021','name': 'Ruta 4', 'city': 'Villanuea', 'province': 'Murcia', 'country': 'España', 'challenges': 4 },
-       { 'id': '05', 'date': '09/03/2021','name': 'Ruta 5', 'city': 'Ceuti', 'province': 'Murcia', 'country': 'España', 'challenges': 5 }
 
-    ]*/
-    //debugger;
+    /*
+    var clic = 1;
+    vm.show = function(){
+      debugger;
+      if(clic==1){
+        document.getElementById("table-2").style.height = "100px";
+        clic = clic +1;
+      }else{
+        document.getElementById("table-2").style.height = "0px";
+        clic = 1;
+      }
+    }*/
+//mostrar div popup
+    var show_popup = false;
+    var popUp = document.getElementById("main");
+    vm.deletePopUp = false;
+
+
+    vm.mostrarPopUp = function(status){
+      vm.deletePopUp = ! vm.deletePopUp;
+      vm.deleteIndex = status;
+
+    }
+
+    /*vm.borrar = function(id){
+      var pop = this.mostrarPopUp(undefined);
+      debugger;
+      if(pop != undefined && pop){
+        vm.routeServiceData.deleteRow(i);
+      }
+    }*/
+
+
+
+
+
 
     vm.routeServiceData = routeServiceData;
-    vm.routes = vm.routeServiceData.getData();
+    vm.routes = vm.routeServiceData;
     console.log(vm.routes);
+
+    vm.challengeServiceData = challengeServiceData;
+    vm.challenges = vm.challengeServiceData;
+    console.log(vm.challenges);
   }]);
 

@@ -8,10 +8,11 @@
  * Controller of the activeSchoolsAdminZoneApp
  */
 angular.module('activeSchoolsAdminZoneApp')
-  .controller('newRouteCtrl', ['$location', 'routeServiceData', function ($location, routeServiceData) {
+  .controller('newRouteCtrl', ['$location', 'routeServiceData', 'challengeServiceData', function ($location, routeServiceData,challengeServiceData) {
 
 
     var vm = this;
+    let challengeName = [];
 
     vm.goToRoute = function(){
       $location.path('/routes');
@@ -21,37 +22,33 @@ angular.module('activeSchoolsAdminZoneApp')
       vm.routes.splice(i, 1);
     };
 
-/*
-    vm.routes = [
-      { 'id': '01', 'date': '05/06/2021', 'name': 'Ruta 1', 'city': 'Archena', 'province': 'Murcia', 'country': 'España', 'challenges': "challenge #1" },
-      { 'id': '02', 'date': '06/07/2021','name': 'Ruta 2', 'city': 'Ricote', 'province': 'Murcia', 'country': 'España', 'challenges': "challenge #2" },
-      { 'id': '03', 'date': '07/08/2021', 'name': 'Ruta 3', 'city': 'Ojós', 'province': 'Murcia', 'country': 'España', 'challenges': "challenge #3" },
-      { 'id': '04', 'date': '08/09/2021','name': 'Ruta 4', 'city': 'Villanuea', 'province': 'Murcia', 'country': 'España', 'challenges': "challenge #4" },
-      { 'id': '05', 'date': '09/03/2021','name': 'Ruta 5', 'city': 'Ceuti', 'province': 'Murcia', 'country': 'España', 'challenges': "challenge #5" }
-
-   ]*/
-
 
    vm.save = function(){
 debugger;
-     routeServiceData.addRow({
+routeServiceData.push({
        date: new Date(),
        name:vm.name,
        city:vm.city,
        province:vm.province,
-       country:vm.country
+       country:vm.country,
+       challenges: vm.challenges[2].name
      });
    }
 
-   vm.saveChallenge = function(){
-    let challenges = [];
-    vm.challenges.push({
-      challenges:vm.challenges
+   vm.saveChallenge = function(id){
+     debugger;
+
+     challengeName.push({
+      challenges:vm.challenges[id].name
     });
+
+    console.log(challengeName);
 
   }
 
+debugger;
 
+    vm.challengeServiceData = challengeServiceData;
+    vm.challenges = vm.challengeServiceData;
 
-console.log(vm.routes);
   }]);

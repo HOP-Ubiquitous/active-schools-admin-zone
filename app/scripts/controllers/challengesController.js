@@ -18,17 +18,29 @@ angular.module('activeSchoolsAdminZoneApp')
       $location.path('challenges');
     }
 
-    vm.deleteRow = function(i){
-      vm.challenges.splice(i, 1);
-    };
+    vm.deleteRow = function(){
+      console.log();
+      debugger;
+      vm.challengeServiceData.splice(vm.deleteIndex, 1);
+    }
 
     vm.editChallenge = function(challenge_id){
       $routeParams.challenge_id = challenge_id;
       $location.path('challenges/edit_challenge/' + $routeParams.challenge_id);
     }
 
+    //mostrar popup
+
+    vm.mostrarPopUp = function(status){
+      vm.deletePopUp = ! vm.deletePopUp;
+      vm.deleteIndex = status;
+
+    }
+
+
+
     vm.challengeServiceData = challengeServiceData;
-    vm.challenges = vm.challengeServiceData.getData();
+    vm.challenges = vm.challengeServiceData;
     console.log(vm.challenges);
 
   }]);

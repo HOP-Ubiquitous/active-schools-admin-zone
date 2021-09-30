@@ -15,18 +15,25 @@ angular.module('activeSchoolsAdminZoneApp')
       $location.path('posts/new_post');
     }
 
-    vm.deleteRow = function(i){
-      vm.posts.splice(i, 1);
-    };
+    vm.deleteRow = function(){
+      console.log();
+      debugger;
+      vm.postServiceData.splice(vm.deleteIndex, 1);
+    }
     vm.editPost = function(post_id){
       $routeParams.post_id = post_id;
       $location.path('posts/edit_post/' + $routeParams.post_id);
     }
 
+    vm.mostrarPopUp = function(status){
+      vm.deletePopUp = ! vm.deletePopUp;
+      vm.deleteIndex = status;
+
+    }
 
 
     vm.postServiceData = postServiceData;
-    vm.posts = vm.postServiceData.getData();
+    vm.posts = vm.postServiceData;
 
 
   }]);
