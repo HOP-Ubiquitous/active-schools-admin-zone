@@ -9,20 +9,9 @@
  */
 app.service('postServiceData', ['$cookies', function($cookies){
   var servicePost = {};
+  var postPublished = {};
   var vm = this;
 
-  /*
-  vm.getData = function (){
-
-  }
-  vm.addRow = function(row){
-    serviceRoute.push(row);
-  }
-
-  vm.deleteRow = function(row){
-    serviceRoute.splice(row, 1);
-  }
-*/
 
   servicePost = [
     { 'id': '01', 'date': '05/06/2021', 'title': 'Ruta 1', 'image': 'image1', 'postPublished': 'All'},
@@ -32,7 +21,9 @@ app.service('postServiceData', ['$cookies', function($cookies){
     { 'id': '05', 'date': '09/03/2021','title': 'Ruta 5', 'image': 'image5', 'postPublished': 'Italy'}
 
  ]
-
  return servicePost;
+
+
+
 
 }]);

@@ -110,24 +110,25 @@
         <div class="select-options" ng-show="showOptions" id="challenges">
 
           <table class="table-options">
+            <tbody ng-repeat="newRoutes in newRoute.challenges">
             <!---->
-            <tr ng-repeat="newRoutes in newRoute.challenges">
+            <tr >
 
-                <td class="boton-color" ng-click="newRoute.saveChallenge($index)" >{{newRoutes.name}}</td>
+                <td class="boton-color" ng-click="newRoute.saveChallenge(newRoutes.name)" >{{newRoutes.name}}</td>
                 <td class="option-newRoute">
 
                     <div class="rombo-table-write" ng-click="newRoute.editRoute($index)">
                       <i class="fas fa-edit logo-write-newChallenge"></i>
                     </div>
 
-                    <div class="rombo-table-delete" ng-click="newRoute.deleteRow($index)">
+                    <div class="rombo-table-delete" ng-click="newRoute.mostrarPopUp($index)">
                       <i class="fas fa-trash-alt logo-delete-newChallenge"></i>
                     </div>
 
 
                 </td>
             </tr>
-
+          </tbody>
           </table>
 
         </div>
@@ -136,6 +137,17 @@
           <div class="save-new-route">Save New Route</div>
         </div>
       </form>
+
+      <div id="main" class="popUp" ng-show="newRoute.deletePopUp === true">
+        <div class="divPopUp">
+            <h4 style="text-align: center; color: black;">Are you sure you want to delete the marked challenge?</h4>
+            <div class="botones">
+              <button type="submit" class="btn btn-danger" ng-click="newRoute.deleteRow($index); newRoute.deletePopUp = false">Ok</button>
+              <button type="submit" class="btn btn-light"  ng-click="newRoute.deletePopUp = false">Cancel</button>
+            </div>
+        </div>
+
+      </div>
 
     </div>
 <!--Formulario edit-route-->
@@ -158,10 +170,10 @@
         <div class="select-options" ng-show="showOptions" id="challenges">
 
           <table class="table-options">
-            <!---->
-            <tr ng-repeat="editRoutes in editRoute.challenges">
+            <tbody ng-repeat="editRoutes in editRoute.challenges">
+            <tr>
 
-                <td class="boton-color" ng-click="saveChallenge()">{{editRoutes.name}}</td>
+                <td class="boton-color" ng-click="editRoute.saveChallenge(editRoutes.name)">{{editRoutes.name}}</td>
                 <td class="option-newRoute">
 
                     <div class="rombo-table-write" ng-click="editRoute.editRoute($index)">
@@ -177,15 +189,17 @@
 
                 </td>
             </tr>
-
+          </tbody>
           </table>
 
         </div>
 
-        <div class="buton-route" ng-click="editRoute.editRoutes()">
+        <div class="buton-route" ng-click="editRoute.editRoute()">
           <div class="save-new-route">Save New Route</div>
         </div>
       </form>
+
+
 
     </div>
   </div>

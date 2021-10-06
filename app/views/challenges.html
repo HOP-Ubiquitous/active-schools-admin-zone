@@ -80,7 +80,7 @@
     <br>
     <hr class="space">
     <table class="tabla">
-
+      <thead>
         <tr>
           <th scope="col">Date</th>
           <th scope="col">Name</th>
@@ -90,9 +90,10 @@
           <th scope="col">Images</th>
           <th scope="col">Options</th>
         </tr>
+      </thead>
+      <tbody ng-repeat="challenge in challenges.challenges">
 
-
-        <tr ng-repeat="challenge in challenges.challenges">
+        <tr>
           <td>{{challenge.date | date : 'dd/MM/yyyy'}}</td>
           <td>{{challenge.name}}</td>
           <td>{{challenge.video}}</td>
@@ -111,7 +112,7 @@
             </div>
         </tr>
 
-
+      </tbody>
     </table>
     <div class="rombo-new-route" ng-click="challenges.goToNewChallenge()">
       <!--<a href="#new-post">-->
@@ -124,10 +125,10 @@
 
      <div id="main" class="popUp" ng-show="challenges.deletePopUp === true">
       <div class="divPopUp">
-          <h4 style="text-align: center; color: black;">Are you sure you want to delete the marked route?</h4>
+          <h4 style="text-align: center; color: black;">Are you sure you want to delete the marked challenge?</h4>
           <div class="botones">
             <button type="submit" class="btn btn-danger" ng-click="challenges.deleteRow($index); challenges.deletePopUp = false">Ok</button>
-            <button type="submit" class="btn btn-light"  ng-click="challenges.deletePopUp=== false">Cancel</button>
+            <button type="submit" class="btn btn-light"  ng-click="challenges.deletePopUp = false">Cancel</button>
           </div>
       </div>
 

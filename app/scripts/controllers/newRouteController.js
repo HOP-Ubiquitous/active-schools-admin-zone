@@ -13,14 +13,16 @@ angular.module('activeSchoolsAdminZoneApp')
 
     var vm = this;
     let challengeName = [];
+    let selectedChallenge = [];
 
     vm.goToRoute = function(){
       $location.path('/routes');
     }
 
-    vm.deleteRow = function(i){
-      vm.routes.splice(i, 1);
-    };
+    vm.deleteRow = function(){
+      debugger;
+      vm.challengeServiceData.splice(vm.deleteIndex, 1);
+    }
 
 
    vm.save = function(){
@@ -31,18 +33,25 @@ routeServiceData.push({
        city:vm.city,
        province:vm.province,
        country:vm.country,
-       challenges: vm.challenges[2].name
+       challenges: selectedChallenge.toString()
      });
    }
 
-   vm.saveChallenge = function(id){
+   vm.saveChallenge = function(name){
      debugger;
 
-     challengeName.push({
+     /*challengeName.push({
       challenges:vm.challenges[id].name
-    });
+    });*/
+    selectedChallenge.push(name);
 
-    console.log(challengeName);
+
+  }
+
+  vm.mostrarPopUp = function(status){
+   // debugger;
+    vm.deletePopUp = ! vm.deletePopUp;
+    vm.deleteIndex = status;
 
   }
 
@@ -50,5 +59,8 @@ debugger;
 
     vm.challengeServiceData = challengeServiceData;
     vm.challenges = vm.challengeServiceData;
+
+    vm.routeServiceData = routeServiceData;
+    vm.routes = vm.routeServiceData;
 
   }]);

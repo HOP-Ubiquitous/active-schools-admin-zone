@@ -96,9 +96,9 @@
 
 <div class="new-challenge-table">
   <div class="tabla">
-
-    <table class="table" id="tabla">
-
+<!--tabla newPost-->
+    <table class="tabla" id="tabla" ng-show="('posts.new_post' | routeSegmentEqualsTo)">
+      <thead>
         <tr>
           <th scope="col">Date</th>
           <th scope="col">Title</th>
@@ -106,12 +106,13 @@
           <th scope="col">Post Published (Countries)</th>
           <th scope="col">Options</th>
         </tr>
-
+      </thead>
+      <tbody ng-repeat="post in newPost.posts">
         <tr>
-          <td>23-03-21</td>
-          <td>Ruta1</td>
-          <td>Archena</td>
-          <td>Murcia</td>
+          <td>{{post.date | date : 'dd/MM/yyyy'}}</td>
+            <td>{{post.title}}</td>
+            <td>{{post.image}}</td>
+            <td>{{post.postPublished}}</td>
 
           <td class="option">
 
@@ -119,25 +120,145 @@
               <i class="fas fa-edit logo1"></i>
             </div>
 
-            <div class="rombo-table-delete" ng-click="routes.deleteRow($index)">
+            <div class="rombo-table-delete" ng-click="newPost.mostrarPopUp($index)">
               <i class="fas fa-trash-alt logo2"></i>
             </div>
         </tr>
 
-
+      </tbody>
     </table>
+
+    <div id="main" class="popUp" ng-show="newPost.deletePopUp === true">
+      <div class="divPopUp">
+          <h4 style="text-align: center; color: black;">Are you sure you want to delete the marked post?</h4>
+          <div class="botones">
+
+            <button type="submit" class="btn btn-danger" ng-click="newPost.deleteRow($index); newPost.deletePopUp = false">Ok</button>
+            <button type="submit" class="btn btn-light"  ng-click="newPost.deletePopUp = false">Cancel</button>
+          </div>
+      </div>
+
+    </div>
+
+<!--tabla editPost-->
+    <table class="tabla" id="tabla" ng-show="('posts.edit_post.post_id' | routeSegmentEqualsTo)">
+      <thead>
+      <tr>
+        <th scope="col">Date</th>
+        <th scope="col">Title</th>
+        <th scope="col">Image</th>
+        <th scope="col">Post Published (Countries)</th>
+        <th scope="col">Options</th>
+      </tr>
+    </thead>
+    <tbody  ng-repeat="post in editPost.posts">
+      <tr>
+        <td>{{post.date | date : 'dd/MM/yyyy'}}</td>
+          <td>{{post.title}}</td>
+          <td>{{post.image}}</td>
+          <td>{{post.postPublished}}</td>
+
+        <td class="option">
+
+          <div class="rombo-table-write" ng-click="routes.editRoute($index)">
+            <i class="fas fa-edit logo1"></i>
+          </div>
+
+          <div class="rombo-table-delete" ng-click="editPost.mostrarPopUp($index)">
+            <i class="fas fa-trash-alt logo2"></i>
+          </div>
+      </tr>
+
+    </tbody>
+  </table>
+
+  <div id="main" class="popUp" ng-show="editPost.deletePopUp === true">
+    <div class="divPopUp">
+        <h4 style="text-align: center; color: black;">Are you sure you want to delete the marked post?</h4>
+        <div class="botones">
+
+          <button type="submit" class="btn btn-danger" ng-click="editPost.deleteRow($index); editPost.deletePopUp = false">Ok</button>
+          <button type="submit" class="btn btn-light"  ng-click="editPost.deletePopUp = false">Cancel</button>
+        </div>
+    </div>
+
+  </div>
 
   </div>
 
 
 </div>
+<!--newPost-->
+<div class="new-route-form" ng-show="('posts.new_post' | routeSegmentEqualsTo)">
+  <form class="formulario">
+    <input type="text" id="title" placeholder="Title" class="cuadro-texto" ng-model="newPost.title" required>
 
-<div class="new-route-form">
+    <textarea name="post" id="post" placeholder="Post Text" class="new-post-textArea" ng-model="newPost.post" required></textarea>
+
+    <hr class="space-new-route">
+    <div class="post-tabs-container" >
+
+      <div class="post-tab" ng-click="showExternalImage[$index] = !showExternalImage[$index]">
+        <span>External Image</span>
+      </div>
+
+      <div class="post-tab" ng-click="showUploadImage[$index] = !showUploadImage[$index]">
+            <span>Upload Image</span>
+      </div>
+    </div>
+    <input type="text" id="url" placeholder="Image Url" class="cuadro-texto" ng-model="newPost.image" ng-show="showExternalImage[$index] === true" required>
+    <input type="text" id="url" placeholder="Upload Image" class="cuadro-texto" ng-model="newPost.image" ng-show="showUploadImage[$index] === true" required>
+    <hr class="space-new-route">
+    <div class="layer-select">
+
+      <div class="select" ng-click="showOptions = !showOptions">
+        <span class="span-add-challenge">Select country where to publish</span>
+        <div class="rombo-select" >
+          <i class="fas fa-chevron-down image-rombo-select"></i>
+        </div>
+      </div>
+
+    </div>
+    <div class="select-options" ng-show="showOptions">
+
+      <table class="table-options">
+        <tbody ng-repeat="newPosts in newPost.posts">
+
+        <tr>
+            <td class="boton-color" ng-click="newPost.savePost(newPosts.postPublished)">
+              {{newPosts.postPublished}}
+            </td>
+            <td class="option-newRoute">
+
+                <div class="rombo-table-write" ng-click="newPost.editRoute($index)">
+                  <i class="fas fa-edit logo-write-newChallenge"></i>
+                </div>
+
+                <div class="rombo-table-delete" ng-click="newPost.mostrarPopUp($index)">
+                  <i class="fas fa-trash-alt logo-delete-newChallenge"></i>
+                </div>
+            </td>
+        </tr>
+      </tbody>
+      </table>
+
+    </div>
+
+    <div class="buton-route" ng-click="newPost.save()">
+      <div class="save-new-route">Save New Route</div>
+    </div>
+  </form>
+
+</div>
+
+<!--editPost-->
+
+<div class="new-route-form" ng-show="('posts.edit_post.post_id' | routeSegmentEqualsTo)">
   <form class="formulario">
 
-    <input type="text" id="title" placeholder="Title" class="cuadro-texto">
+    <input type="text" id="title" placeholder="Title" class="cuadro-texto" ng-model="editRoute.name" required>
 
-    <textarea name="post" id="post" placeholder="Post Text" class="new-post-textArea" ></textarea>
+    <textarea name="post" id="post" placeholder="Post Text" class="new-post-textArea" ng-model="editRoute.name" required ></textarea>
 
     <hr class="space-new-route">
     <div class="post-tabs-container">
@@ -150,7 +271,7 @@
             <span>Upload Image</span>
       </div>
     </div>
-    <input type="url" id="url" placeholder="Image Url" class="cuadro-texto" >
+    <input type="url" id="url" placeholder="Image Url" class="cuadro-texto" ng-model="editRoute.name" required>
     <hr class="space-new-route">
     <div class="layer-select">
       <div class="select" ng-click="showOptions = !showOptions">
@@ -163,10 +284,10 @@
     <div class="select-options" ng-show="showOptions">
 
       <table class="table-options">
+        <tbody ng-repeat="editPosts in editPost.posts">
+        <tr>
 
-        <tr ng-repeat="routes in newRoute.routes">
-
-            <td ng-click="handleAction()">{{routes.challenges}}</td>
+            <td class="boton-color" ng-click="handleAction()">{{routes.challenges}}</td>
             <td class="option-newRoute">
 
                 <div class="rombo-table-write" ng-click="newRoute.editRoute($index)">
@@ -180,7 +301,7 @@
 
             </td>
         </tr>
-
+        </tbody>
       </table>
 
     </div>

@@ -53,4 +53,10 @@
     return promise;
   }
 
+
+            vm.routeServiceData = routeServiceData;
+             vm.routes = vm.routeServiceData;
+             console.log(vm.routes);
+
+
 }]);

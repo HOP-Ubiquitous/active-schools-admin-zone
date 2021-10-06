@@ -138,7 +138,7 @@
                         <i class="fas fa-edit logo1"></i>
                       </div>
 
-                      <div class="rombo-table-delete" ng-click="routes.deleteRow_2($index)">
+                      <div class="rombo-table-delete" ng-click="routes.mostrarPopUp_2($index)">
                         <i class="fas fa-trash-alt logo2"></i>
                       </div>
                   </tr>
@@ -179,6 +179,21 @@
       </div>
 
     </div>
+
+    <div id="main" class="popUp" ng-show="routes.delete === true">
+      <div class="divPopUp">
+          <h4 style="text-align: center; color: black;">Are you sure you want to delete the marked challenge?</h4>
+          <div class="botones">
+
+            <button type="submit" class="btn btn-danger" ng-click="routes.deleteRow_2($index); routes.delete = false">Ok</button>
+            <button type="submit" class="btn btn-light"  ng-click="routes.delete = false">Cancel</button>
+          </div>
+      </div>
+
+    </div>
+
+
+
 
   </div>
 

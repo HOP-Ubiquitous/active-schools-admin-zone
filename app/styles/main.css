@@ -160,6 +160,7 @@ table tbody:nth-child(odd) tr{
   background: rgb(242, 242, 242);
 
 }
+
 .option{
   justify-content: center;
   display:flex;
@@ -976,6 +977,10 @@ ul.tabs li {
 }
 
 .post-tab:hover {
+  opacity: 1;
+  border-bottom: transparent;
+}
+.post-tab:active{
   opacity: 1;
 }
 

@@ -24,24 +24,15 @@ angular.module('activeSchoolsAdminZoneApp')
 
 
     vm.deleteRow = function(){
-      console.log();
+
       debugger;
       vm.routeServiceData.splice(vm.deleteIndex, 1);
     }
-    /*
-    vm.deleteRow = function(index){
-      console.log();
+
+    vm.deleteRow_2 = function(){
+
       debugger;
-        vm.routeServiceData.deleteRow(index);
-    }
-*/
-
-    vm.deleteRow_2 = function(i){
-debugger;
-      if (confirm("¿Quieres borrar la ruta seleccionada?")) {
-        vm.challengeServiceData.deleteRow(i);
-      }
-
+      vm.challengeServiceData.splice(vm.deleteIndex, 1);
     }
 
 
@@ -64,18 +55,6 @@ debugger;
 
     }
 
-    /*
-    var clic = 1;
-    vm.show = function(){
-      debugger;
-      if(clic==1){
-        document.getElementById("table-2").style.height = "100px";
-        clic = clic +1;
-      }else{
-        document.getElementById("table-2").style.height = "0px";
-        clic = 1;
-      }
-    }*/
 //mostrar div popup
     var show_popup = false;
     var popUp = document.getElementById("main");
@@ -84,6 +63,13 @@ debugger;
 
     vm.mostrarPopUp = function(status){
       vm.deletePopUp = ! vm.deletePopUp;
+      vm.deleteIndex = status;
+
+    }
+
+
+    vm.mostrarPopUp_2 = function(status){
+      vm.delete = ! vm.delete;
       vm.deleteIndex = status;
 
     }
@@ -109,4 +95,3 @@ debugger;
     vm.challenges = vm.challengeServiceData;
     console.log(vm.challenges);
   }]);
-

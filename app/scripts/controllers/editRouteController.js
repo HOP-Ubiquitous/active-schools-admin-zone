@@ -8,59 +8,46 @@
  * Controller of the activeSchoolsAdminZoneApp
  */
 angular.module('activeSchoolsAdminZoneApp')
-  .controller('editRouteCtrl', ['$location', 'routeServiceData', 'challengeServiceData', function ($location, routeServiceData, challengeServiceData) {
+  .controller('editRouteCtrl', ['$location', 'routeServiceData', 'challengeServiceData', '$routeParams', function ($location, routeServiceData, challengeServiceData, $routeParams) {
 
     var vm = this;
+    let challengeName = [];
     vm.goToRoute = function(){
       $location.path('/routes');
     }
 
-    /*vm.save = function(){
-      debugger;
-      routeServiceData.addRow({
-             date: new Date(),
-             name:vm.name,
-             city:vm.city,
-             province:vm.province,
-             country:vm.country,
 
-           });
-         }
+vm.editRoute = function() {
 
-*/
-         vm.editRoutes = function(){
-          debugger;
-          this.editRoute();
-          routeServiceData.editRoute({
-                  id: 3,
-                 date: new Date(),
-                 name:vm.name,
-                 city:vm.city,
-                 province:vm.province,
-                 country:vm.country,
-                 challenges: vm.challenge
-               });
-             }
+    routeServiceData.forEach(function(row) {
+      if(row.id === $routeParams.route_id) {
 
-             vm.editRoute = function(row){
-              debugger;
+      row.date = new Date();
+      row.name = vm.name;
+      row.city = vm.city;
+      row.province = vm.province;
+      row.country = vm.country;
+      row.challenges = challengeName.toString();
 
-              for(var i=0; i<routeServiceData.length; i++){
+      }
 
-                if(row.id === parseInt(routeServiceData[i].id)){
-                  routeServiceData.splice(i,1);
+    })
 
-                break;
-                  }
-
-                }
-                routeServiceData.push(row);
+  }
 
 
-            }
+  vm.saveChallenge = function(name){
+    //debugger;
+   challengeName.push(name);
 
-             vm.challengeServiceData = challengeServiceData;
-             vm.challenges = vm.challengeServiceData;
-             console.log(vm.challenges);
+ }
+
+ vm.challengeServiceData = challengeServiceData;
+ vm.challenges = vm.challengeServiceData;
+ console.log(vm.challenges);
+
+ vm.routeServiceData = routeServiceData;
+ vm.routes = vm.routeServiceData;
+ console.log(vm.routes);
 
   }]);
