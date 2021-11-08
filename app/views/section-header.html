@@ -1,0 +1,20 @@
+<div class="section-header">
+
+  <div class="section-header-left" ng-class="{ 'section-header-left-50' : showClose }">
+    <div class="rombo-header">
+      <span class="{{icon}}"></span>
+    </div>
+    <h1>{{title}}</h1>
+  </div>
+
+  <div class="section-header-right" ng-class="{ 'section-header-right-50' : showClose }">
+    <div class="section-header-right-left">
+      <span class="search-icon"><i class="fa fa-search search" ng-click="handleAction()"></i></span>
+      <input type="search" id="search" placeholder="Search" class="search-input">
+    </div>
+    <div class="close-rombo" ng-click="closeFunction()" ng-show="showClose">
+      <i class="fas fa-times close-rombo-newroute"></i>
+    </div>
+  </div>
+
+</div>

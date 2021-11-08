@@ -1,138 +1,59 @@
 <div class="root">
-  <div class="sidebar">
 
-    <div id="menu-items">
-        <div class="logo">
-          <img src="../images/active-schools-logo-bl.svg" alt="">
-        </div>
-      <hr class="space-nav">
+  <main-menu></main-menu>
 
-      <div class="rombo-top">
-
-        <div class="border-rombo">
-          <div class="rombo">
-            <a href="#routes">
-            <i class="fas fa-route image-rombo-route"></i>
-            <span class="nombre-routes">Routes</span>
-          </a>
-          </div>
-
-
-        </div>
-
-        <div class="border-rombo">
-          <div class="rombo">
-            <a href="#challenges">
-              <i class="fas fa-walking image-rombo"></i>
-              <span class="nombre">Challenges</span>
-
-            </a>
-          </div>
-        </div>
-
-        <div class="border-rombo">
-          <div class="rombo">
-            <a href="#posts">
-              <i class="fas fa-file-alt image-rombo"></i>
-              <span class="nombre-posts">Posts</span>
-            </a>
-          </div>
-        </div>
-
-      </div>
-
-
-      <div class="rombo-bottom">
-
-        <div class="border-rombo">
-          <div class="rombo-user">
-            <a href="#login">
-             <i class="fas fa-user image-rombo"></i>
-              <span class="nombre">Username</span>
-            </a>
-          </div>
-        </div>
-
-
-        <div class="border-rombo">
-          <div class="rombo-exit">
-            <a href="#login">
-              <i class="fas fa-sign-out-alt image-rombo"></i>
-              <span class="nombre-exit">Exit</span>
-            </a>
-          </div>
-        </div>
-      </div>
-
-
-
-    </div>
-  </div>
 <div class="main-container">
-  <div class="content">
-    <img src="../images/posts.png" style="margin-top: 30px;">
-  </div>
 
-  <div class="container-1">
-    <span class="icon"><i class="fa fa-search search"></i></span>
-    <input type="search" id="search" placeholder="Search" class="place">
-  </div>
-    <br>
+  <section-header title="Posts" icon="fas fa-file-alt"></section-header>
 
-    <hr class="space-post">
-
+  <div class="main-container-inner">
 
     <table class="tabla">
       <thead>
 
-        <tr>
-          <th scope="col">Date</th>
-          <th scope="col">Title</th>
-          <th scope="col">Image</th>
-          <th scope="col">Post Published (Countries)</th>
-          <th scope="col">Options</th>
-        </tr>
+      <tr>
+        <th scope="col">Date</th>
+        <th scope="col">Title</th>
+        <th scope="col">Image</th>
+        <th scope="col">Post Published (Countries)</th>
+        <th scope="col">Options</th>
+      </tr>
       </thead>
 
       <tbody ng-repeat="post in posts.posts">
-        <tr>
+      <tr>
 
-          <td>{{post.date | date : 'dd/MM/yyyy'}}</td>
-          <td>{{post.title}}</td>
-          <td>{{post.image}}</td>
-          <td>{{post.postPublished}}</td>
-          <td class="option">
-
-
-            <div class="rombo-table-write" ng-click="posts.editPost(post.id)">
-              <i class="fas fa-edit logo1"></i>
-            </div>
-
-            <div class="rombo-table-delete" ng-click="posts.mostrarPopUp($index)">
-              <i class="fas fa-trash-alt logo2"></i>
-            </div>
+        <td>{{post.date | date : 'dd/MM/yyyy'}}</td>
+        <td>{{post.title}}</td>
+        <td>{{post.image}}</td>
+        <td>{{post.postPublished}}</td>
+        <td class="option">
 
 
-        </tr>
+          <div class="rombo-table-write" ng-click="posts.editPost(post.id)">
+            <i class="fas fa-edit logo1"></i>
+          </div>
+
+          <div class="rombo-table-delete" ng-click="posts.mostrarPopUp($index)">
+            <i class="fas fa-trash-alt logo2"></i>
+          </div>
+
+
+      </tr>
 
       </tbody>
     </table>
 
+  </div>
+
+
+  <new-button icon="fas fa-plus"
+              title="New Post"
+              button-function="posts.goToNewPost()">
+  </new-button>
 
 
   <div>
-
-
-
-
-    <div class="rombo-new-route" ng-click="posts.goToNewPost()">
-     <!--<a href="#new-post">-->
-        <div class="icono">
-          <i class="fas fa-plus image-rombo-newroute"></i>
-          <span class="new-post-nombre">New post</span>
-        </div>
-     <!--</a>-->
-    </div>
 
     <div id="main" class="popUp" ng-show="posts.deletePopUp === true">
       <div class="divPopUp">
@@ -144,8 +65,6 @@
       </div>
 
     </div>
-
-
 
 </div>
 

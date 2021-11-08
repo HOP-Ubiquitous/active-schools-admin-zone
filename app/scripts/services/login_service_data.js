@@ -10,10 +10,12 @@
 app.service('loginServiceData', ['$cookies', function($cookies){
 
   var loginService = {};
+
   loginService.loginList = {
-    username: 'ruben',
-    password: '1234'
+    username: 'admin',
+    password: 'admin'
   };
+
   return loginService;
 
 }]);

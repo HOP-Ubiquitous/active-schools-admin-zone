@@ -10,29 +10,28 @@
 angular.module('activeSchoolsAdminZoneApp')
   .controller('loginCtrl', ['$location', 'loginServiceData', function ($location, loginServiceData) {
 
-var vm = this;
-vm.user = {};
-vm.errorMessage = '';
-//vm.userService = userService;
-//vm.rootService = rootService;
-console.log(loginServiceData.loginList);
+    var vm = this;
+    vm.user = {};
+    vm.errorMessage = '';
 
-vm.login = function(){
+    console.log(loginServiceData.loginList);
 
-if(vm.user.username === loginServiceData.loginList.username && vm.user.password === loginServiceData.loginList.password){
-  $location.path('/routes');
-}else{
-  vm.errorMessage = "usuario o password incorrecto"
-}
+    vm.login = function(){
 
-  /*var user = {
-    username: vm.user.username,
-    password: vm.user.password
-  };*/
+      if(vm.user.username === loginServiceData.loginList.username && vm.user.password === loginServiceData.loginList.password){
+        $location.path('/routes');
+      }else{
+        vm.errorMessage = "usuario o password incorrecto"
+      }
 
-  //this.userService.openMessageWindow = false;
-  //this.userService.login(user);
+      /*var user = {
+        username: vm.user.username,
+        password: vm.user.password
+      };*/
 
-}
+      //this.userService.openMessageWindow = false;
+      //this.userService.login(user);
+
+    };
 
   }]);

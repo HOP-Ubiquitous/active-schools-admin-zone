@@ -20,13 +20,11 @@ angular.module('activeSchoolsAdminZoneApp')
     }
 
     vm.deleteRow = function(){
-      debugger;
       vm.challengeServiceData.splice(vm.deleteIndex, 1);
     }
 
 
    vm.save = function(){
-debugger;
 routeServiceData.push({
        date: new Date(),
        name:vm.name,
@@ -38,7 +36,6 @@ routeServiceData.push({
    }
 
    vm.saveChallenge = function(name){
-     debugger;
 
      /*challengeName.push({
       challenges:vm.challenges[id].name
@@ -54,8 +51,6 @@ routeServiceData.push({
     vm.deleteIndex = status;
 
   }
-
-debugger;
 
     vm.challengeServiceData = challengeServiceData;
     vm.challenges = vm.challengeServiceData;

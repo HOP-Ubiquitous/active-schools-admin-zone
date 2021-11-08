@@ -1,8 +1,29 @@
+:root {
+  --orange: #ff6f00;
+  --dark-orange: #803800;
+  --light-orange: #ffae70;
+
+  --dark-orange-table: #ffc599;
+  --light-orange-table: #ffe2cc;
+
+  --green: #00a195;
+  --green-selected: #0c515c;
+  --blue: #007bff;
+  --blue-selected: #003e80;
+  --red: #dc3545;
+  --red-selected: #872732;
+}
+
 body {
   margin: 0;
   padding: 0;
   font-family: 'Montserrat';
 }
+
+a, a:hover {
+  text-decoration: none;
+}
+
 .login-container{
   width: 100vw;
   height: 100vh;
@@ -12,6 +33,7 @@ body {
   justify-content: center;
   align-items: center;
 }
+
 .login-overlay{
   width: 100%;
   height: 100%;
@@ -19,30 +41,23 @@ body {
   top: 0;
   left: 0;
   mix-blend-mode: multiply;
-  background: rgb(255,174,112);
-background: linear-gradient(180deg, rgba(255,174,112,1) 0%, rgba(207,89,0,1) 100%);
+  background: var(--light-orange);
+  background: linear-gradient(180deg, var(--light-orange) 0%, var(--orange) 100%);
 }
 
 .text-container{
   text-align: center;
-  border: 1px solid #FF6F00;
   width: 449px;
-  height: 449px;
+  height: auto;
   background-color: white;
   margin: auto;
-  margin-top: 10%;
   padding-top: 20px;
-  padding-bottom: 20px;
-  box-shadow: 1px 1px 1px;
   z-index: 1;
-
-
-
 }
 
 .text-container-recover{
   text-align: center;
-  border: 1px solid #FF6F00;
+  border: 1px solid var(--orange);
   width: 449px;
   height: 449px;
   background-color: white;
@@ -51,74 +66,409 @@ background: linear-gradient(180deg, rgba(255,174,112,1) 0%, rgba(207,89,0,1) 100
   padding-top: 20px;
   box-shadow: 1px 1px 1px;
   z-index: 4;
-
-
-
-
 }
 
-.color-font{
-  color: #bebebe;
-  font-size: 11.57pt;
-  font-weight: lighter;
-
-}
-.admin-zone{
-  color: #803800;
-  font-weight: bold;
-  font-size: 14pt;
+.text-container img {
+  width: 50%;
+  height: auto;
+  margin-top: 40px;
 }
 
-.recover-zone{
-  color: #999999;
-  font-weight: bold;
-  font-size: 14pt;
+.text-container h5:nth-child(2) {
+  color: var(--dark-orange);
+  font-weight: 700;
+  font-size: 18px;
 }
+
+.text-container h5:nth-child(3) {
+  color: #999;
+  font-weight: 700;
+  font-size: 18px;
+  margin-top: 40px;
+}
+
 input{
-  border-bottom: 1px solid #00A195;
-  border-top: 0ch;
-  border-left: 0ch;
-  border-right: 0ch;
-  width: 90%;
-  font-size: 14pt;
-  font-weight: lighter;
+  width: calc(100% - 40px);
+  height: 40px;
+  margin-top: 20px;
+  border-bottom: 1px solid var(--green);
+  border-top: 0;
+  border-left: 0;
+  border-right: 0;
+  font-size: 14px;
+  font-weight: 300;
+  text-align: center;
+  outline: none;
 }
 
+::placeholder {
+  color: var(--green);
+  font-weight: 300;
+  font-size: 14px;
+}
 
-::placeholder { color: #00A195; font-weight:lighter;  font-size: 14px;}
 .button{
-  width: 90%;
-  border: 1px solid #FF6F00;
-  background-color: #FF6F00;
-  color: white;
- -webkit-clip-path: polygon(25px 0%, calc(100% - 25px) 0%, 100% 50%, calc(100% - 25px) 100%, 20px 100%, 0% 25px);
-  clip-path: polygon(25px 0%, calc(100% - 25px) 0%, 100% 50%, calc(100% - 25px) 100%, 20px 100%, 0% 20px);
+  width: calc(100% - 40px);
+  height: 40px;
+  border: 1px solid var(--orange);
+  background: var(--orange);
+  color: #fff;
+  font-weight: 400;
+  font-size: 14px;
+ -webkit-clip-path: polygon(20px 0%, calc(100% - 20px) 0%, 100% 20px, calc(100% - 20px) 100%, 20px 100%, 0% 20px);
+  clip-path: polygon(20px 0%, calc(100% - 20px) 0%, 100% 20px, calc(100% - 20px) 100%, 20px 100%, 0% 20px);
+  margin-bottom: 20px;
 }
 
 ::-webkit-input-placeholder {
   text-align: center;
-
 }
 
 .place::-webkit-input-placeholder {
   text-align: left;
 }
 
-
-
-.size{
-  width: 50%;
+.term-container {
+  width: calc(100% - 40px);
+  height: 40px;
+  margin: 0 auto 20px auto;
 }
 
-.tabla{
+.term-container a {
+  color: #ababab;
+  line-height: 40px;
+  transition: 0.3s ease all;
+}
+
+.term-container a:hover {
+  color: var(--orange);
+}
+
+/*---- Nav Menu ----*/
+
+.sidebar hr{
+  margin-top: 29px;
+  width: calc(100% - 30px);
+  color: #fff;
+  transition: 0.3s ease all;
+}
+
+.sidebar:hover hr{
+  width: 100%;
+}
+
+.sidebar {
+  display: flex;
+  justify-content: center;
+  padding: 0 15px;
+  width: 70px;
+  background: linear-gradient(180deg, rgba(255,174,112,1) 0%, rgba(207,89,0,1) 100%);
+  position: fixed;
+  height: 100%;
+  overflow: hidden;
+  transition: 0.3s ease all;
+  margin: auto;
+}
+
+.sidebar a {
+  display: block;
+  text-decoration: none;
+  text-align: left;
+}
+
+.logo {
+  width: calc(100% - 30px);
+  height: 80px;
+  margin: auto auto 20px auto;
+  padding: 15px 0;
+  text-align: center;
+  border-bottom: 1px solid #fff;
+  transition: 0.3s ease all;
+}
+
+.logo img {
+  height: 50px;
+  /*width: 100%;*/
+  object-fit: cover;
+  object-position: -14px 6px;
+  clip-path: polygon(0 0, 100% 0,  100% calc(100% - 4px), 0 calc(100% - 4px));
+  transition: 0.3s ease all;
+}
+
+.sidebar:hover .logo {
+  width: calc(100% - 30px);
+}
+
+.sidebar:hover .logo img{
+  object-position: center center;
+  clip-path: polygon(0 0, 100% 0,  100% 100%, 0 100%);
+}
+
+.sidebar:hover{
+  width: 200px;
+}
+
+.sidebar:hover .rombo{
+  -webkit-clip-path: polygon(20px 0, calc(100% - 20px) 0%, 100% 20px, calc(100% - 20px) 40px, 20px 40px, 0 20px);
+  clip-path: polygon(20px 0, calc(100% - 20px) 0%, 100% 20px, calc(100% - 20px) 40px, 20px 40px, 0 20px);
+  width: 100%;
+  transition: 0.3s ease all;
+}
+
+main-menu:hover~.main-container{
+  width: calc(100% - 200px);
+}
+
+main-menu:hover~.main-container .new-route-form{
+  width: calc(100% - 60%);
+  transition: 0.3s ease all;
+}
+
+.rombo-bottom{
+  position: absolute;
+  text-align: center;
+  left: 15px;
+  right: 15px;
+  bottom: 0;
+  width: calc(100% - 30px);
+}
+
+.rombo-top{
+  text-align: center;
+}
+
+.rombo {
+  width: 40px;
+  height: 40px;
+  display:inline-block;
+  position: relative;
+  overflow: hidden;
+  clip-path: polygon(20px 0, 40px 20px, 20px 40px, 0 20px);
+  background: rgba(255, 255, 255, 0.3);
+  margin: 10px 0;
+  transition: 0.3s ease all;
+}
+
+.rombo span {
+  font-size: 14px;
+  line-height: 40px;
+  color: #fff;
+}
+
+.rombo span:first-child {
+  display: block;
+  width: 40px;
+  line-height: 40px;
+  color: #fff;
+  transition: 0.3s ease all;
+}
+
+.rombo span:nth-child(2) {
+  opacity: 0;
+  color: #fff;
+  line-height: 40px;
+  transition: 0.3s ease all;
+}
+
+.sidebar:hover .rombo span:first-child {
+  float: left;
+  display: block;
+  width: 60px;
+  text-align: center;
+}
+
+.sidebar:hover .rombo span:nth-child(2) {
+  float: right;
+  display: block;
+  width: calc(100% - 60px);
+  text-align: left;
+  opacity: 1;
+}
+
+.rombo:hover{
+  background-color: #fff;
+  -webkit-clip-path: polygon(20px 0, calc(100% - 20px) 0, 100% 20px, calc(100% - 20px) 40px, 20px 40px, 0 20px);
+  clip-path: polygon(20px 0, calc(100% - 20px) 0, 100% 20px, calc(100% - 20px) 40px, 20px 40px, 0 20px);
+  width: 100%;
+}
+
+.rombo:hover span {
+  color: var(--orange);
+}
+
+/*---- Section Header ----*/
+
+.section-header {
+  width: 100%;
+  height: 80px;
+  border-bottom: 1px solid var(--orange);
+}
+
+.section-header-left {
+  display: inline-block;
+  float: left;
+  width: calc(100% - 200px);
+  transition: 0.3s ease all;
+}
+
+.section-header-left-50 {
+  width: calc(100% - 250px);
+}
+
+.section-header-right {
+  display: inline-block;
+  float: right;
+  width: 200px;
+  transition: 0.3s ease all;
+}
+
+.section-header-right-50 {
+  width: 250px;
+}
+
+.section-header-right-left {
+  width: 200px;
+  float: left;
+  text-align: left;
+}
+
+.rombo-header {
+  width: 40px;
+  height: 40px;
+  display: inline-block;
+  position: relative;
+  overflow: hidden;
+  clip-path: polygon(20px 0, 40px 20px, 20px 40px, 0 20px);
+  background: var(--orange);
+  margin: 20px 0;
+  text-align: center;
+  float: left;
+}
+
+.rombo-header span {
+  color: #fff;
+  line-height: 40px;
+}
+
+.section-header-left h1 {
+  display: inline-block;
+  margin: 0 10px;
+  color: var(--orange);
+  font-size: 24px;
+  font-weight: 700;
+  line-height: 80px;
+}
+
+.search-icon {
+  width: 20px;
+  display: block;
+  float: left;
+  line-height: 80px;
+}
+
+.search-input {
+  width: calc(100% - 20px);
+  display: block;
+  float: right;
+}
+
+.close-rombo {
+  width: 40px;
+  height: 40px;
+  background: #DC3545;
+  clip-path: polygon(50% 0%, 100% 50%, 50% 100%, 0% 50%);
+  margin-top: 20px;
+  transition: 0.3s ease all;
+  float: right;
+  display: block;
+  position: relative;
+}
+
+/*---- Main Container ---*/
+
+.main-container{
+  width: calc(100% - 70px);
+  transition: 0.3s ease all;
+  float: right;
+  padding: 0 20px;
+}
+
+.main-container-inner {
+  height: calc(100vh - 80px);
+  width: 100%;
+  padding: 20px 0;
+}
+
+/*---- Botón flotante (New Route...) ----*/
+
+.rombo-new-route{
+  width: 40px;
+  height: 40px;
+  background: var(--green);
+  position:absolute;
+  bottom:20px;
+  right:20px;
+  overflow: hidden;
+  clip-path: polygon(20px 0, 40px 20px, 20px 40px, 0 20px);
+  transition: 0.3s ease all;
+}
+
+.rombo-new-route span {
+  font-size: 14px;
+  line-height: 40px;
+  color: #fff;
+}
+
+.rombo-new-route span:first-child {
+  display: block;
+  width: 40px;
+  text-align: center;
+  line-height: 40px;
+  color: #fff;
+  transition: 0.3s ease all;
+}
+
+.rombo-new-route span:nth-child(2) {
+  opacity: 0;
+  color: #fff;
+  line-height: 40px;
+  transition: 0.3s ease all;
+}
+
+.rombo-new-route:hover{
+  width: 180px;
+  height: 40px;
+  -webkit-clip-path: polygon(20px 0%, calc(100% - 20px) 0%, 100% 20px, calc(100% - 20px) 100%, 20px 100%, 0% 20px);
+  clip-path: polygon(20px 0%, calc(100% - 20px) 0%, 100% 20px, calc(100% - 20px) 100%, 20px 100%, 0% 20px);
+  background: var(--green-selected);
+  color: #fff;
+  transition: 0.3s ease all;
+}
+
+.rombo-new-route:hover span:first-child {
+  float: left;
+  display: block;
+  width: 60px;
+  text-align: center;
+}
+
+.rombo-new-route:hover span:nth-child(2) {
+  float: right;
+  display: block;
+  width: calc(100% - 60px);
+  text-align: left;
+  opacity: 1;
+  left: -10px;
+  position: relative;
+}
+
+/*---- Tabla ----*/
+
+table {
   margin: 0 auto;
   text-align: center;
   width: 100%;
 }
-
-/*#table-2{*/
-  /*display:none;*/
-/*}*/
 
 .table-see{
   margin: 0 auto;
@@ -129,293 +479,109 @@ input{
 }
 
 .table-see th{
-  background: rgb(255, 111, 0);
+  background: var(--orange);
 }
 
 .table-see tr:nth-child(odd){
-  background: rgb(255, 226, 204);
-
+  background: var(--light-orange-table);
 }
+
 .table-see tr:nth-child(even){
-  background: rgb(255, 197, 153);
-
+  background: var(--dark-orange-table);
 }
 
-
-th{
-  background-color: #00A195;
-  color: white;
+th {
+  background: var(--green);
+  color: #fff;
   text-align: center;
   font-weight: normal;
 }
-td{
-  color: #00A195;
+
+td {
+  color: var(--green);
   font-weight: normal;
+}
 
+tr {
+  height: 40px;
 }
-tr{
-  height: 35px;
-}
+
 table tbody:nth-child(odd) tr{
-  background: rgb(242, 242, 242);
-
+  background: #f2f2f2;
 }
 
-.option{
+.option {
   justify-content: center;
   display:flex;
+  padding: 5px 0;
 }
 
 .option-newRoute{
   justify-content: right;
   display:flex;
 }
-.boton-color:active{background: grey;}
 
+.boton-color:active{
+  background: grey;}
 
-.boton-color:visited{background: red;}
 .rombo-table-write {
   width: 30px;
   height: 30px;
-  background: #007BFF;
+  background: var(--blue);
   clip-path: polygon(50% 0%, 100% 50%, 50% 100%, 0% 50%);
-
-
-  margin-right: 10px;
+  margin: 0 5px;
+  transition: 0.3s ease all;
 }
+
+.rombo-table-write:hover {
+  background: var(--blue-selected);
+}
+
 .rombo-table-delete {
   width: 30px;
   height: 30px;
-  background: #DC3545;
+  background: var(--red);
   clip-path: polygon(50% 0%, 100% 50%, 50% 100%, 0% 50%);
-
-  margin-right: 10px;
-
+  margin: 0 5px;
+  transition: 0.3s ease all;
 }
+
+.rombo-table-delete:hover {
+  background: var(--red-selected);
+}
+
 .rombo-table-see {
   width: 30px;
   height: 30px;
-  background: #00A195;
+  background: var(--green);
   clip-path: polygon(50% 0%, 100% 50%, 50% 100%, 0% 50%);
+  margin: 0 5px;
+  transition: 0.3s ease all;
+}
 
+.rombo-table-see:hover {
+  background: var(--green-selected);
+}
 
-
+.rombo-table-write i, .rombo-table-delete i, .rombo-table-see i {
+  line-height: 30px;
+  font-size: 12px;
+  color: #fff;
 }
 
 .centrado{
   margin-left: 200px;
 }
 
-.rombo-table-write:hover .logo1 {
-
-  color: #007BFF;
-  transition: 0.3s ease all;
-
-}
-
-.rombo-table-delete:hover .logo2{
-
-  color: #DC3545;
-  transition: 0.3s ease all;
-}
-
-.rombo-table-see:hover .logo3{
-
-  color: #00A195;
-  transition: 0.3s ease all;
-}
-
-.rombo-table-write:hover{
-  transition: 0.3s ease all;
-  background: white;
-}
-.rombo-table-delete:hover{
-  transition: 0.3s ease all;
-  background: white;
-}
-.rombo-table-see:hover{
-  transition: 0.3s ease all;
-  background: white;
-}
-.logo1{
-  color: white;
-  margin-top: 8px;
-
-}
-.logo2{
-  color: white;
-  margin-top: 8px;
 
 
-}
-.logo3{
-  color: white;
-  margin-top: 8px;
-
-
-}
-
-.rombo {
-
-  width: 40px;
-  height: 40px;
-  border: 1px solid white;
-  transition: 0.3s ease all;
-  display:inline-block;
-  position: relative;
-  overflow: hidden;
-  clip-path: polygon(50% 0%, 100% 50%, 50% 100%, 0% 50%);
-  background: rgb(229, 145, 73);
-  margin: 10px;
-}
-.rombo-bottom{
-  position: absolute;
-  bottom: 0px;
-  text-align: center;
-  left: 0px;
-  right: 0px;
-
-}
-.rombo-top{
-
-  text-align: center;
-
-
-
-}
-
-.border-rombo{
-  filter: drop-shadow(0px 0px 0px white)
-  drop-shadow(0px 0px 0px white)
-  drop-shadow(0px 1px 0px white)
-  drop-shadow(1px -1px 0px white)
-  drop-shadow(1px 0px 0px white)
-  drop-shadow(-1px -1px 0px white)
-  drop-shadow(-1px 1px 0px white)
-  drop-shadow(0px 0px 0px white);
-}
-
-
-/*
-.rombo {
-  width: 38px;
-  height: 38px;
-  clip-path: polygon(50% 0%, 100% 50%, 50% 100%, 0% 50%);
-  background: linear-gradient(180deg, rgba(255,174,112,1) 0%, rgba(207,89,0,1) 100%);
-  transition: 0.3s ease all;
-  display:block;
-  margin-left: 1px;
-  margin-top: 1px;
-
-}
-.layer-rombo {
-  width: 40px;
-  height: 40px;
-  clip-path: polygon(50% 0%, 100% 50%, 50% 100%, 0% 50%);
-background: white;
-  transition: 0.3s ease all;
-  display:block;
-  margin: 20px;
-  margin-top: 1px;
-}*/
-.rombo-user {
-  width: 40px;
-  height: 40px;
-  border: 1px solid white;
-  transition: 0.3s ease all;
-  display:inline-block;
-  position: relative;
-  margin: 10px;
-  overflow: hidden;
-  clip-path: polygon(50% 0%, 100% 50%, 50% 100%, 0% 50%);
-  background: rgb(230, 130, 54);
-
-
-
-
-
-}
-.rombo-exit {
-  width: 40px;
-  height: 40px;
-  border: 1px solid white;
-  transition: 0.3s ease all;
-  display:inline-block;
-  position: relative;
-  margin: 10px;
-  overflow: hidden;
-  clip-path: polygon(50% 0%, 100% 50%, 50% 100%, 0% 50%);
-  background: rgb(226, 122, 44);
-
-}
-
-.image-rombo{
-  color: white;
-  margin-top: 10px;
-  margin-bottom: 15px;
-  margin-left: 13px;
-  margin-right: 10px;
-  transition: 0.3s ease all;
-}
-
-.image-rombo-route{
-  color: white;
-  margin-top: 10px;
-  margin-bottom: 15px;
-  margin-left: 10px;
-  margin-right: 10px;
-  transition: 0.3s ease all;
-}
-
-
-.image-rombo-newroute{
-  color: white;
-  margin-top: 12px;
-  margin-bottom: 15px;
-  margin-left: 13px;
-  margin-right: 10px;
-  transition: 0.3s ease all;
-}
-
-
-.image-rombo-table{
-  color: white;
-  margin-top: 12px;
-  margin-bottom: 15px;
-  margin-left: 13px;
-  margin-right: 10px;
-  transition: 0.3s ease all;
-
-}
-.rombo-new-route:hover{
-  width: 180px;
-  height: 40px;
-  transition: 0.3s ease all;
-  -webkit-clip-path: polygon(25px 0%, calc(100% - 25px) 0%, 100% 50%, calc(100% - 25px) 100%, 20px 100%, 0% 20px);
-  clip-path: polygon(25px 0%, calc(100% - 25px) 0%, 100% 50%, calc(100% - 25px) 100%, 20px 100%, 0% 20px);
-  background-color: #00A195;
-  color: white;
-}
-
-.rombo-new-route{
-  width: 40px;
-  height: 40px;
-  border: 1px solid white;
-  background: #00A195;
-  background: linear-gradient(180deg, rgba(255,174,112,1));
-  clip-path: polygon(50% 0%, 100% 50%, 50% 100%, 0% 50%);
-  transition: 0.3s ease all;
-  position:absolute;
-  bottom:20px;
-  right:20px;
-  overflow: hidden;
-}
 .nombre{
   text-decoration: none;
   text-align: center;
   color: white;
   justify-content: center;
 }
+
 .nombre-routes{
   text-decoration: none;
   text-align: center;
@@ -423,6 +589,7 @@ background: white;
   justify-content: center;
   margin-left: 10px;
 }
+
 .nombre-posts{
   text-decoration: none;
   text-align: center;
@@ -460,185 +627,8 @@ background: white;
 
 }
 
-.space-nav{
-  margin-top: 29px;
-  width: 50px;
-  color: white;
-}
-
-.sidebar:hover .space-nav{
-  width: 160px;
-}
-.sidebar {
-  display: flex;
-  justify-content: center;
-  padding: 0;
-  width: 70px;
-  background: linear-gradient(180deg, rgba(255,174,112,1) 0%, rgba(207,89,0,1) 100%);
-  position: fixed;
-  height: 100%;
-  overflow: hidden;
-  transition: 0.3s ease all;
-  margin: auto;
-}
-
-.sidebar a {
-  display: block;
-  text-decoration: none;
-  text-align: left;
-}
-.sidebar:hover .logo{
-width: 80px;
-clip-path: polygon(0 0, 100% 0,  100% 100%, 0 100%);
-}
-
-
-.logo{
-  width: 80px;
-  margin-left: auto;
-  margin-right: auto;
-  margin-top: 34px;
-  clip-path: polygon(0 0, 100% 0,  100% calc(100% - 10px), 0 calc(100% - 10px));
-  transition: 0.3s ease all;
-}
-
-.logo-post{
-  width: 75px;
-  margin-left: auto;
-  margin-right: auto;
-  margin-top: 33px;
-}
 div.content {
   width: 100%;
-
-}
-
-.main-container{
-  width: calc(100% - 70px);
-  transition: 0.3s ease all;
-  float: right;
-  padding: 0px 20px;
-}
-
-
-/*sidebar*/
-.sidebar:hover{
-width: 200px;
-
-
-}
-
-.sidebar:hover .rombo{
- /* clip-path: polygon(20px 0, calc(100%-20px) 0, 100% 20px, calc(100%-20px) 40px, 20px 40px, 0 20px);*/
-  /*clip-path: polygon(75% 0, 100% 50%, 75% 100%, 25% 100%, 0 50%, 25% 0);*/
-  -webkit-clip-path: polygon(25px 0%, calc(100% - 25px) 0%, 100% 50%, calc(100% - 25px) 100%, 20px 100%, 0% 20px);
-  clip-path: polygon(25px 0%, calc(100% - 25px) 0%, 100% 50%, calc(100% - 25px) 100%, 20px 100%, 0% 20px);
-  width: 150px;
-
-
-
-}
-
-.sidebar:hover .rombo-user{
-  /* clip-path: polygon(20px 0, calc(100%-20px) 0, 100% 20px, calc(100%-20px) 40px, 20px 40px, 0 20px);*/
-   /*clip-path: polygon(75% 0, 100% 50%, 75% 100%, 25% 100%, 0 50%, 25% 0);*/
-   -webkit-clip-path: polygon(25px 0%, calc(100% - 25px) 0%, 100% 50%, calc(100% - 25px) 100%, 20px 100%, 0% 20px);
-   clip-path: polygon(25px 0%, calc(100% - 25px) 0%, 100% 50%, calc(100% - 25px) 100%, 20px 100%, 0% 20px);
-   width: 150px;
-
-
-
- }
- .sidebar:hover .rombo-exit{
-  /* clip-path: polygon(20px 0, calc(100%-20px) 0, 100% 20px, calc(100%-20px) 40px, 20px 40px, 0 20px);*/
-   /*clip-path: polygon(75% 0, 100% 50%, 75% 100%, 25% 100%, 0 50%, 25% 0);*/
-   -webkit-clip-path: polygon(25px 0%, calc(100% - 25px) 0%, 100% 50%, calc(100% - 25px) 100%, 20px 100%, 0% 20px);
-   clip-path: polygon(25px 0%, calc(100% - 25px) 0%, 100% 50%, calc(100% - 25px) 100%, 20px 100%, 0% 20px);
-   width: 150px;
-
-
-
- }
-
-.sidebar:hover~.main-container{
-  width: calc(100% - 200px);
-}
-
-.sidebar:hover~.main-container .new-route-form{
-  width: calc(100% - 60%);
-  transition: 0.3s ease all;
-}
-/*
-.sidebar:hover .new-route-form{
-  width: calc(100% - 500px);
-}
-*/
-
-
-.rombo:hover{
-  background-color: white;
-  -webkit-clip-path: polygon(25px 0%, calc(100% - 25px) 0%, 100% 50%, calc(100% - 25px) 100%, 20px 100%, 0% 20px);
-  clip-path: polygon(25px 0%, calc(100% - 25px) 0%, 100% 50%, calc(100% - 25px) 100%, 25px 100%, 0% 20px);
-  width: 150px;
-
-}
-.rombo-user:hover{
-  background-color: white;
-  -webkit-clip-path: polygon(25px 0%, calc(100% - 25px) 0%, 100% 50%, calc(100% - 25px) 100%, 20px 100%, 0% 20px);
-  clip-path: polygon(25px 0%, calc(100% - 25px) 0%, 100% 50%, calc(100% - 25px) 100%, 25px 100%, 0% 20px);
-  width: 150px;
-
-}
-.rombo-exit:hover{
-  background-color: white;
-  -webkit-clip-path: polygon(25px 0%, calc(100% - 25px) 0%, 100% 50%, calc(100% - 25px) 100%, 20px 100%, 0% 20px);
-  clip-path: polygon(25px 0%, calc(100% - 25px) 0%, 100% 50%, calc(100% - 25px) 100%, 25px 100%, 0% 20px);
-  width: 150px;
-
-}
-.rombo:hover .nombre{
-  color: #FF6F00;
-
-}
-.rombo:hover .nombre-routes{
-  color: #FF6F00;
-
-}
-.rombo:hover .nombre-posts{
-  color: #FF6F00;
-
-}
-
-.rombo-user:hover .nombre{
-  color: #FF6F00;
-
-}
-.rombo-exit:hover .nombre-exit{
-  color: #FF6F00;
-
-}
-.rombo:hover .image-rombo {
-
-  color: #FF6F00;
-
-
-}
-.rombo-user:hover .image-rombo {
-
-  color: #FF6F00;
-
-
-}
-.rombo-exit:hover .image-rombo {
-
-  color: #FF6F00;
-
-
-}
-.rombo:hover .image-rombo-route {
-
-  color: #FF6F00;
-
 
 }
 
@@ -872,21 +862,6 @@ width: 200px;
   transition: 0.3s ease all;
 }
 
-.close-rombo-new-route{
-  width: 40px;
-  height: 40px;
-
-  background: #DC3545;
-  clip-path: polygon(50% 0%, 100% 50%, 50% 100%, 0% 50%);
-  margin-left: 25px;
-  margin-top: 33px;
-  transition: 0.3s ease all;
-  float: right;
-  display: block;
-  position:absolute;
-    top:20px;
-    right:20px;
-}
 .save-new-route{
   position: relative;
   top: 25%;

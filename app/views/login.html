@@ -5,16 +5,12 @@
     <img src="../images/active-schools-logo-color.svg" class="size">
     <h5 class="admin-zone">Admin zone</h5>
 
-
     <div class="form-container">
       <form class="login-form">
         <input id="username" type="text" placeholder="User" ng-model="login.user.username" required>
-        <br><br>
         <input id="password" type="password" placeholder="Password" ng-model="login.user.password"  required>
-        <br><br>
         <input class="button" type="submit" value="Enter" ng-click="login.login()">
       </form>
-      <br>
       <span ng-show="login.errorMessage !== ''">{{ login.errorMessage }}</span>
 
       <div class="term-container">
