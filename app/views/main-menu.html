@@ -8,17 +8,23 @@
 
     <div class="rombo-top">
 
-      <div class="rombo" ng-click="mainMenu.goToRoutes()">
+      <div class="rombo"
+           ng-class="{ 'rombo-selected': ('routes' | routeSegmentStartsWith) }"
+           ng-click="mainMenu.goToRoutes()">
         <span class="fas fa-route"></span>
         <span>Routes</span>
       </div>
 
-      <div class="rombo" ng-click="mainMenu.goToChallenges()">
+      <div class="rombo"
+           ng-class="{ 'rombo-selected': ('challenges' | routeSegmentStartsWith) }"
+           ng-click="mainMenu.goToChallenges()">
         <span class="fas fa-walking"></span>
         <span>Challenges</span>
       </div>
 
-      <div class="rombo" ng-click="mainMenu.goToPosts()">
+      <div class="rombo"
+           ng-class="{ 'rombo-selected': ('posts' | routeSegmentStartsWith) }"
+           ng-click="mainMenu.goToPosts()">
         <span class="fas fa-file-alt"></span>
         <span>Posts</span>
       </div>
@@ -28,7 +34,9 @@
 
     <div class="rombo-bottom">
 
-      <div class="rombo" ng-click="mainMenu.goToProfile()">
+      <div class="rombo"
+           ng-class="{ 'rombo-selected': ('profile' | routeSegmentStartsWith) }"
+           ng-click="mainMenu.goToProfile()">
         <span class="fas fa-user"></span>
         <span>Username</span>
       </div>

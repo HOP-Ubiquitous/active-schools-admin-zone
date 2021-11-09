@@ -13,21 +13,21 @@ angular.module('activeSchoolsAdminZoneApp')
 
     vm.goToNewChallenge = function(){
       $location.path('challenges/new_challenge');
-    }
+    };
+
     vm.goToChallenges = function(){
       $location.path('challenges');
-    }
+    };
 
     vm.deleteRow = function(){
       console.log();
-      debugger;
       vm.challengeServiceData.splice(vm.deleteIndex, 1);
-    }
+    };
 
     vm.editChallenge = function(challenge_id){
       $routeParams.challenge_id = challenge_id;
       $location.path('challenges/edit_challenge/' + $routeParams.challenge_id);
-    }
+    };
 
     //mostrar popup
 

@@ -17,7 +17,7 @@
 body {
   margin: 0;
   padding: 0;
-  font-family: 'Montserrat';
+  font-family: 'Montserrat', sans-serif;
 }
 
 a, a:hover {
@@ -219,11 +219,6 @@ main-menu:hover~.main-container{
   width: calc(100% - 200px);
 }
 
-main-menu:hover~.main-container .new-route-form{
-  width: calc(100% - 60%);
-  transition: 0.3s ease all;
-}
-
 .rombo-bottom{
   position: absolute;
   text-align: center;
@@ -268,6 +263,14 @@ main-menu:hover~.main-container .new-route-form{
   color: #fff;
   line-height: 40px;
   transition: 0.3s ease all;
+}
+
+.rombo-selected {
+  background: #fff;
+}
+
+.rombo-selected span:first-child, .rombo-selected span:nth-child(2) {
+  color: var(--orange);
 }
 
 .sidebar:hover .rombo span:first-child {
@@ -375,13 +378,17 @@ main-menu:hover~.main-container .new-route-form{
 .close-rombo {
   width: 40px;
   height: 40px;
-  background: #DC3545;
+  background: var(--red);
   clip-path: polygon(50% 0%, 100% 50%, 50% 100%, 0% 50%);
   margin-top: 20px;
-  transition: 0.3s ease all;
   float: right;
   display: block;
   position: relative;
+  transition: 0.3s ease all;
+}
+
+.close-rombo:hover {
+  background: var(--red-selected);
 }
 
 /*---- Main Container ---*/
@@ -399,15 +406,31 @@ main-menu:hover~.main-container .new-route-form{
   padding: 20px 0;
 }
 
+.main-container-inner-left {
+  height: calc(100vh - 80px);
+  width: calc(100% - 450px);
+  padding: 20px 0;
+  float: left;
+  transition: 0.3s ease all;
+}
+
+.main-container-inner-right {
+  height: calc(100vh - 80px);
+  width: 450px;
+  padding: 20px 0 20px 20px;
+  float: right;
+  transition: 0.3s ease all;
+}
+
 /*---- Botón flotante (New Route...) ----*/
 
 .rombo-new-route{
   width: 40px;
   height: 40px;
   background: var(--green);
-  position:absolute;
-  bottom:20px;
-  right:20px;
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
   overflow: hidden;
   clip-path: polygon(20px 0, 40px 20px, 20px 40px, 0 20px);
   transition: 0.3s ease all;
@@ -559,7 +582,7 @@ table tbody:nth-child(odd) tr{
   transition: 0.3s ease all;
 }
 
-.rombo-table-see:hover {
+.rombo-table-see:hover, .rombo-table-see-selected {
   background: var(--green-selected);
 }
 
@@ -679,31 +702,33 @@ div.content {
   top:-24px;
   position: relative;
 }
+
 .search{
   color: #00A195;
-
 }
 
-/*New Routes*/
+/*--- New Routes ---*/
+
 .new-route-map{
   border: 1px solid white;
-  width: 59%;
-  height: 579px;
+  width: calc(100% - 450px);
+  height: 100%;
   background: grey;
-  transition: 0.3 ease all;
+  transition: 0.3s ease all;
+  overflow: hidden;
   float: left;
   margin-bottom: 10px;
 }
+
+/*---- Formularios ----*/
+
 .new-route-form{
-  width:39%;
-  height: 650px;
-
+  width: 450px;
+  height: 100%;
+  padding-left: 20px;
   float: right;
-
-  transition: 0.3 ease all;
-
+  transition: 0.3s ease all;
 }
-
 
 .formulario{
   width: 100%;
@@ -713,8 +738,8 @@ div.content {
   flex-direction: column;
   justify-content: center;
   align-items: center;
-
 }
+
 .cuadro-texto{
   margin: 10px;
   width: 100%;
@@ -724,60 +749,38 @@ div.content {
   margin-top: 10px;
   width: 100%;
 }
-/*Select new routes*/
-.select{
-  -webkit-clip-path: polygon(25px 0%, calc(100% - 25px) 0%, 100% 50%, calc(100% - 25px) 100%, 20px 100%, 0% 20px);
-  clip-path: polygon(25px 0%, calc(100% - 25px) 0%, 100% 50%, calc(100% - 25px) 100%, 25px 100%, 0% 20px);
-  background: white;
+/*---- Select new routes ----*/
+
+.dropdown-challenge {
+  -webkit-clip-path: polygon(20px 0%, calc(100% - 20px) 0, 100% 20px, calc(100% - 20px) 40px, 20px 40px, 0 20px);
+  clip-path: polygon(20px 0%, calc(100% - 20px) 0, 100% 20px, calc(100% - 20px) 40px, 20px 40px, 0 20px);
+  background: #ccecea;
   width: 100%;
-  height: 43px;
+  height: 40px;
   text-align: left;
-  color:#00A195;
-  border: 1px solid #00A195;
-  margin-top: -1px;
-
-
+  color: var(--green);
   display: block;
   position:relative;
-
+  margin-bottom: 20px;
 }
-.layer-select{
-  -webkit-clip-path: polygon(25px 0%, calc(100% - 25px) 0%, 100% 50%, calc(100% - 25px) 100%, 20px 100%, 0% 20px);
-  clip-path: polygon(25px 0%, calc(100% - 25px) 0%, 100% 50%, calc(100% - 25px) 100%, 25px 100%, 0% 20px);
-  background: #00A195;
-  width: 100%;
-  height: 43px;
-  text-align: left;
-  color:#00A195;
-  border: 1px solid #00A195;
 
-  display: block;
-  position:relative;
-
-}
 .span-add-challenge{
-  /*
-  margin-left: 15px;
-  margin-top: 8px;
-  display: block;
-  position:relative;*/
   position: relative;
   top: 25%;
   left: 5%;
 }
+
 .rombo-select{
-  width: 43.7px;
-  height: 43.7px;
-  background: #00A195;
-  clip-path: polygon(50% 0%, 100% 50%, 50% 100%, 0% 50%);
-  /*margin-left: 25px;
-  margin-top: 33px;*/
+  width: 40px;
+  height: 40px;
+  background: var(--green);
+  clip-path: polygon(20px 0, 40px 20px, 20px 40px, 0 20px);
   transition: 0.3s ease all;
   display: block;
-  position:absolute;
-  bottom:-1px;
-  right:-2px;
-
+  position: absolute;
+  top: 0;
+  right: 0;
+  text-align: center;
 }
 
 .rombo-select-left{
@@ -790,60 +793,60 @@ div.content {
   display: block;
   position:absolute;
   bottom:-1px;
-
 }
-.image-rombo-select{
+
+.rombo-select span{
   color: white;
-  margin-top: 15px;
-  margin-bottom: 15px;
-  margin-left: 15px;
-  margin-right: 10px;
+  line-height: 40px;
   transition: 0.3s ease all;
 }
-.buton-route{
-  /*
-  clip-path: polygon(75% 0, 100% 50%, 75% 100%, 25% 100%, 0 50%, 25% 0);*/
-  -webkit-clip-path: polygon(25px 0%, calc(100% - 25px) 0%, 100% 50%, calc(100% - 25px) 100%, 20px 100%, 0% 20px);
-  clip-path: polygon(25px 0%, calc(100% - 25px) 0%, 100% 50%, calc(100% - 25px) 100%, 25px 100%, 0% 20px);
-  background: rgb(255, 111, 0);
+
+.dropdown-challenge-container {
   width: 100%;
-  height: 43px;
+  height: auto;
+  max-height: calc(100vh - 472px);
+  padding-top: 20px;
+  top: -40px;
+  position: relative;
+  z-index: -1;
+  overflow: auto;
+  background: red;
+}
+
+.dropdown-option {
+
+}
+
+.dropdown-option-left {
+
+}
+
+.dropdown-option-left span {
+
+}
+
+
+
+.button-form {
+  -webkit-clip-path: polygon(20px 0, calc(100% - 20px) 0, 100% 20px, calc(100% - 20px) 40px, 20px 40px, 0 20px);
+  clip-path: polygon(20px 0, calc(100% - 20px) 0, 100% 20px, calc(100% - 20px) 40px, 20px 40px, 0 20px);
+  background: var(--orange);
+  width: 100%;
+  height: 40px;
   text-align: center;
-  color: white;
+  color: #fff;
   display:inline-block;
   position:relative;
-  bottom:0;
-  top: 50px;
+  transition: 0.3s ease all;
 }
 
-.buton-challenge{
-  -webkit-clip-path: polygon(25px 0%, calc(100% - 25px) 0%, 100% 50%, calc(100% - 25px) 100%, 20px 100%, 0% 20px);
-  clip-path: polygon(25px 0%, calc(100% - 25px) 0%, 100% 50%, calc(100% - 25px) 100%, 25px 100%, 0% 20px);
-  background: rgb(255, 111, 0);
-  width: 100%;
-  height: 30px;
-  text-align: center;
-  color: white;
-  float: center;
-  display: block;
-  position:relative;
-    top:75px;
+.button-form:hover {
+  background: var(--dark-orange);
 }
-.buton-post{
-  -webkit-clip-path: polygon(25px 0%, calc(100% - 25px) 0%, 100% 50%, calc(100% - 25px) 100%, 20px 100%, 0% 20px);
-  clip-path: polygon(25px 0%, calc(100% - 25px) 0%, 100% 50%, calc(100% - 25px) 100%, 25px 100%, 0% 20px);
-  background: rgb(255, 111, 0);
-  width: 90%;
-  height: 30px;
-  text-align: center;
-  color: white;
-  float: center;
-  display: block;
-  position:relative;
-    top:75px;
 
-
-
+.button-form span {
+  line-height: 40px;
+  color: #fff;
 }
 
 .close-new-route{
@@ -881,30 +884,6 @@ div.content {
   margin-top: 10px;
 }
 
-.logo-write-newChallenge{
-  color: white;
-  margin-top: 8px;
-  margin-left: 8px;
-
-}
-.logo-delete-newChallenge{
-  color: white;
-  margin-top: 8px;
-  margin-left: 8px;
-
-}
-.rombo-table-write:hover .logo-write-newChallenge {
-
-  color: #007BFF;
-  transition: 0.3s ease all;
-
-}
-
-.rombo-table-delete:hover .logo-delete-newChallenge{
-
-  color: #DC3545;
-  transition: 0.3s ease all;
-}
 /*New challenges*/
 ul.tabs {
   text-align: center;

@@ -4,9 +4,29 @@
 
 <div class="main-container">
 
-  <section-header title="Posts" icon="fas fa-file-alt"></section-header>
+  <section-header ng-show="('posts' | routeSegmentEqualsTo)"
+                  title="Posts"
+                  icon="fas fa-file-alt"
+                  show-search-input="true">
+  </section-header>
 
-  <div class="main-container-inner">
+  <section-header ng-show="('posts.new_post' | routeSegmentEqualsTo)"
+                  title="Posts - New Post"
+                  icon="fas fa-file-alt"
+                  show-search-input="true"
+                  show-close="true"
+                  close-function="posts.goToPosts()">
+  </section-header>
+
+  <section-header ng-show="('posts.edit_post.post_id' | routeSegmentEqualsTo)"
+                  title="Posts - Edit Post"
+                  icon="fas fa-file-alt"
+                  show-search-input="true"
+                  show-close="true"
+                  close-function="posts.goToPosts()">
+  </section-header>
+
+  <div class="main-container-inner" ng-class="{ 'main-container-inner-left' : ('posts.new_post' | routeSegmentEqualsTo) || ('posts.edit_post.post_id' | routeSegmentEqualsTo) }">
 
     <table class="tabla">
       <thead>
@@ -46,10 +66,14 @@
 
   </div>
 
+  <div app-view-segment="1" ng-show="('posts.new_post' | routeSegmentEqualsTo)"></div>
+
+  <div app-view-segment="2" ng-show="('posts.edit_post.post_id' | routeSegmentEqualsTo)"></div>
 
   <new-button icon="fas fa-plus"
               title="New Post"
-              button-function="posts.goToNewPost()">
+              button-function="posts.goToNewPost()"
+              ng-hide="('posts.new_post' | routeSegmentEqualsTo)">
   </new-button>
 
 

@@ -1,108 +1,114 @@
 <!doctype html>
 <html>
-  <head>
-    <meta charset="utf-8">
-    <title></title>
-    <meta name="description" content="">
+<head>
+  <meta charset="utf-8">
+  <title></title>
+  <meta name="description" content="">
 
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <!-- Place favicon.ico and apple-touch-icon.png in the root directory -->
-    <!-- build:css(.) styles/vendor.css -->
-    <!-- bower:css -->
-    <link rel="stylesheet" href="bower_components/bootstrap/dist/css/bootstrap.css" />
-    <!-- endbower -->
-    <!-- endbuild -->
-    <!-- build:css(.tmp) styles/main.css -->
-    <link rel="stylesheet" href="styles/main.css">
-    <script src="https://kit.fontawesome.com/b4d651f5d6.js" crossorigin="anonymous"></script>
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
-    <!-- endbuild -->
-  </head>
-  <body ng-app="activeSchoolsAdminZoneApp">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <!-- Place favicon.ico and apple-touch-icon.png in the root directory -->
+  <!-- build:css(.) styles/vendor.css -->
+  <!-- bower:css -->
+  <link rel="stylesheet" href="bower_components/bootstrap/dist/css/bootstrap.css" />
+  <!-- endbower -->
+  <!-- endbuild -->
+  <!-- build:css(.tmp) styles/main.css -->
+  <link rel="stylesheet" href="styles/main.css">
+  <link rel="stylesheet" href="scripts/vendor/leaflet/dist/leaflet.css">
+  <link rel="stylesheet" href="scripts/vendor/leaflet-routing-machine/dist/leaflet-routing-machine.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;700;800&display=swap" rel="stylesheet">
+  <script src="https://kit.fontawesome.com/b4d651f5d6.js" crossorigin="anonymous"></script>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+  <!-- endbuild -->
+</head>
+<body ng-app="activeSchoolsAdminZoneApp">
 
-    <div app-view-segment="0" ng-show="('login' | routeSegmentEqualsTo) || ('recover' | routeSegmentEqualsTo) || ('routes' | routeSegmentEqualsTo) || ('challenges' | routeSegmentEqualsTo) || ('posts' | routeSegmentEqualsTo) "></div>
+<div app-view-segment="0"></div>
 
-    <div app-view-segment="1" ng-show="('routes.new_route' | routeSegmentEqualsTo) || ('challenges.new_challenge' | routeSegmentEqualsTo) || ('posts.new_post' | routeSegmentEqualsTo)"></div>
-    <div app-view-segment="2" ng-show="('routes.edit_route.route_id' | routeSegmentEqualsTo) || ('challenges.edit_challenge.challenge_id' | routeSegmentEqualsTo) || ('posts.edit_post.post_id' | routeSegmentEqualsTo)"></div>
-     <script>
-       !function(A,n,g,u,l,a,r){A.GoogleAnalyticsObject=l,A[l]=A[l]||function(){
-       (A[l].q=A[l].q||[]).push(arguments)},A[l].l=+new Date,a=n.createElement(g),
-       r=n.getElementsByTagName(g)[0],a.src=u,r.parentNode.insertBefore(a,r)
-       }(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+<script>
+  !function(A,n,g,u,l,a,r){A.GoogleAnalyticsObject=l,A[l]=A[l]||function(){
+    (A[l].q=A[l].q||[]).push(arguments)},A[l].l=+new Date,a=n.createElement(g),
+    r=n.getElementsByTagName(g)[0],a.src=u,r.parentNode.insertBefore(a,r)
+  }(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
 
-       ga('create', 'UA-XXXXX-X');
-       ga('send', 'pageview');
-    </script>
+  ga('create', 'UA-XXXXX-X');
+  ga('send', 'pageview');
+</script>
 
-    <!-- build:js(.) scripts/vendor.js -->
-    <!-- bower:js -->
-    <script src="bower_components/jquery/dist/jquery.js"></script>
-    <script src="bower_components/angular/angular.js"></script>
-    <script src="bower_components/bootstrap/dist/js/bootstrap.js"></script>
-    <script src="bower_components/angular-animate/angular-animate.js"></script>
-    <script src="bower_components/angular-aria/angular-aria.js"></script>
-    <script src="bower_components/angular-cookies/angular-cookies.js"></script>
-    <script src="bower_components/angular-messages/angular-messages.js"></script>
-    <script src="bower_components/angular-resource/angular-resource.js"></script>
-    <script src="bower_components/angular-route/angular-route.js"></script>
-    <script src="bower_components/angular-sanitize/angular-sanitize.js"></script>
-    <script src="bower_components/angular-touch/angular-touch.js"></script>
-    <script src="bower_components/angular-route-segment/build/angular-route-segment.js"></script>
-    <!-- endbower -->
-    <!-- endbuild -->
+<!-- build:js(.) scripts/vendor.js -->
+<!-- bower:js -->
+<script src="bower_components/jquery/dist/jquery.js"></script>
+<script src="bower_components/angular/angular.js"></script>
+<script src="bower_components/bootstrap/dist/js/bootstrap.js"></script>
+<script src="bower_components/angular-animate/angular-animate.js"></script>
+<script src="bower_components/angular-aria/angular-aria.js"></script>
+<script src="bower_components/angular-cookies/angular-cookies.js"></script>
+<script src="bower_components/angular-messages/angular-messages.js"></script>
+<script src="bower_components/angular-resource/angular-resource.js"></script>
+<script src="bower_components/angular-route/angular-route.js"></script>
+<script src="bower_components/angular-sanitize/angular-sanitize.js"></script>
+<script src="bower_components/angular-touch/angular-touch.js"></script>
+<script src="bower_components/angular-route-segment/build/angular-route-segment.js"></script>
+<!-- endbower -->
+<!-- endbuild -->
 
-    <!-- build:js({.tmp,app}) scripts/scripts.js -->
-    <script src="scripts/app.js"></script>
-    <script src="scripts/controllers/main.js"></script>
-    <script src="scripts/controllers/about.js"></script>
-    <script src="scripts/controllers/loginController.js"></script>
-    <script src="scripts/controllers/challengesController.js"></script>
-    <script src="scripts/controllers/editChallengeController.js"></script>
-    <script src="scripts/controllers/editPostController.js"></script>
-    <script src="scripts/controllers/loginController.js"></script>
-    <script src="scripts/controllers/newChallengeController.js"></script>
-    <script src="scripts/controllers/newPostController.js"></script>
-    <script src="scripts/controllers/newRouteController.js"></script>
-    <script src="scripts/controllers/postsController.js"></script>
-    <script src="scripts/controllers/recoverController.js"></script>
-    <script src="scripts/controllers/routesController.js"></script>
-    <script src="scripts/controllers/editRouteController.js"></script>
+<!-- build:js({.tmp,app}) scripts/scripts.js -->
+<script src="scripts/vendor/leaflet/dist/leaflet.js"></script>
+<script src="scripts/vendor/leaflet-routing-machine/dist/leaflet-routing-machine.js"></script>
 
-    <!--components-->
-    <script src="scripts/components/main-menu/main_menu_directive.js"></script>
-    <script src="scripts/components/main-menu/main_menu_controller.js"></script>
+<script src="scripts/app.js"></script>
+<script src="scripts/controllers/main.js"></script>
+<script src="scripts/controllers/about.js"></script>
+<script src="scripts/controllers/loginController.js"></script>
+<script src="scripts/controllers/challengesController.js"></script>
+<script src="scripts/controllers/editChallengeController.js"></script>
+<script src="scripts/controllers/editPostController.js"></script>
+<script src="scripts/controllers/loginController.js"></script>
+<script src="scripts/controllers/newChallengeController.js"></script>
+<script src="scripts/controllers/newPostController.js"></script>
+<script src="scripts/controllers/newRouteController.js"></script>
+<script src="scripts/controllers/postsController.js"></script>
+<script src="scripts/controllers/recoverController.js"></script>
+<script src="scripts/controllers/routesController.js"></script>
+<script src="scripts/controllers/editRouteController.js"></script>
 
-    <script src="scripts/components/section-header/section_header_directive.js"></script>
-    <script src="scripts/components/section-header/section_header_controller.js"></script>
+<!--components-->
+<script src="scripts/components/main-menu/main_menu_directive.js"></script>
+<script src="scripts/components/main-menu/main_menu_controller.js"></script>
 
-    <script src="scripts/components/new-button/new_button_directive.js"></script>
-    <script src="scripts/components/new-button/new_button_controller.js"></script>
+<script src="scripts/components/section-header/section_header_directive.js"></script>
+<script src="scripts/components/section-header/section_header_controller.js"></script>
 
-    <!--services-->
-    <script src="scripts/services/login_service_api.js"></script>
-    <script src="scripts/services/login_service.js"></script>
-    <script src="scripts/services/login_service_data.js"></script>
+<script src="scripts/components/new-button/new_button_directive.js"></script>
+<script src="scripts/components/new-button/new_button_controller.js"></script>
 
-    <script src="scripts/services/route_service_api.js"></script>
-    <script src="scripts/services/route_service.js"></script>
-    <script src="scripts/services/route_service_data.js"></script>
+<!--services-->
+<script src="scripts/services/login_service_api.js"></script>
+<script src="scripts/services/login_service.js"></script>
+<script src="scripts/services/login_service_data.js"></script>
 
-    <script src="scripts/services/recover_service_api.js"></script>
-    <script src="scripts/services/recover_service_data.js"></script>
-    <script src="scripts/services/recover_service.js"></script>
+<script src="scripts/services/route_service_api.js"></script>
+<script src="scripts/services/route_service.js"></script>
+<script src="scripts/services/route_service_data.js"></script>
 
-    <script src="scripts/services/challenge_service_api.js"></script>
-    <script src="scripts/services/challenge_service_data.js"></script>
-    <script src="scripts/services/challenge_service.js"></script>
+<script src="scripts/services/recover_service_api.js"></script>
+<script src="scripts/services/recover_service_data.js"></script>
+<script src="scripts/services/recover_service.js"></script>
 
-    <script src="scripts/services/post_service_api.js"></script>
-    <script src="scripts/services/post_service_data.js"></script>
-    <script src="scripts/services/post_service.js"></script>
+<script src="scripts/services/challenge_service_api.js"></script>
+<script src="scripts/services/challenge_service_data.js"></script>
+<script src="scripts/services/challenge_service.js"></script>
+
+<script src="scripts/services/post_service_api.js"></script>
+<script src="scripts/services/post_service_data.js"></script>
+<script src="scripts/services/post_service.js"></script>
 
 
 
 
-    <!-- endbuild -->
+<!-- endbuild -->
 
 </body>
 </html>

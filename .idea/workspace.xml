@@ -2,33 +2,190 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="7e18ae2d-97d7-4311-bd7d-700e9004f59c" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/scripts/components/main-menu/main_menu_controller.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/scripts/components/main-menu/main_menu_directive.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/scripts/components/new-button/new_button_controller.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/scripts/components/new-button/new_button_directive.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/scripts/components/section-header/section_header_controller.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/scripts/components/section-header/section_header_directive.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/views/main-menu.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/views/new-button.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/views/section-header.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/images/marker-icon.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/images/marker-shadow.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/scripts/controllers/route.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/scripts/vendor/leaflet-routing-machine/.jshintrc" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/scripts/vendor/leaflet-routing-machine/.travis.yml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/scripts/vendor/leaflet-routing-machine/CHANGELOG.md" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/scripts/vendor/leaflet-routing-machine/ISSUE_TEMPLATE.md" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/scripts/vendor/leaflet-routing-machine/LICENSE.md" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/scripts/vendor/leaflet-routing-machine/README.md" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/scripts/vendor/leaflet-routing-machine/bower.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/scripts/vendor/leaflet-routing-machine/dist/leaflet-routing-machine.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/scripts/vendor/leaflet-routing-machine/dist/leaflet-routing-machine.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/scripts/vendor/leaflet-routing-machine/dist/leaflet-routing-machine.min.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/scripts/vendor/leaflet-routing-machine/dist/leaflet.routing.icons.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/scripts/vendor/leaflet-routing-machine/dist/leaflet.routing.icons.svg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/scripts/vendor/leaflet-routing-machine/dist/routing-icon.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/scripts/vendor/leaflet-routing-machine/examples/Control.Geocoder.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/scripts/vendor/leaflet-routing-machine/examples/config.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/scripts/vendor/leaflet-routing-machine/examples/index.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/scripts/vendor/leaflet-routing-machine/examples/index.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/scripts/vendor/leaflet-routing-machine/examples/index.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/scripts/vendor/leaflet-routing-machine/examples/localized.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/scripts/vendor/leaflet-routing-machine/examples/localized.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/scripts/vendor/leaflet-routing-machine/examples/mapbox.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/scripts/vendor/leaflet-routing-machine/examples/mapbox.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/scripts/vendor/leaflet-routing-machine/package.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/scripts/vendor/leaflet-routing-machine/scripts/publish.sh" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/scripts/vendor/leaflet-routing-machine/src/autocomplete.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/scripts/vendor/leaflet-routing-machine/src/control.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/scripts/vendor/leaflet-routing-machine/src/error-control.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/scripts/vendor/leaflet-routing-machine/src/formatter.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/scripts/vendor/leaflet-routing-machine/src/geocoder-element.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/scripts/vendor/leaflet-routing-machine/src/index.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/scripts/vendor/leaflet-routing-machine/src/itinerary-builder.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/scripts/vendor/leaflet-routing-machine/src/itinerary.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/scripts/vendor/leaflet-routing-machine/src/line.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/scripts/vendor/leaflet-routing-machine/src/localization.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/scripts/vendor/leaflet-routing-machine/src/mapbox.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/scripts/vendor/leaflet-routing-machine/src/osrm-v1.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/scripts/vendor/leaflet-routing-machine/src/plan.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/scripts/vendor/leaflet-routing-machine/src/waypoint.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/scripts/vendor/leaflet-routing-machine/test/SpecRunner.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/scripts/vendor/leaflet-routing-machine/test/lib/jasmine-2.0.0/boot.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/scripts/vendor/leaflet-routing-machine/test/lib/jasmine-2.0.0/console.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/scripts/vendor/leaflet-routing-machine/test/lib/jasmine-2.0.0/jasmine-html.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/scripts/vendor/leaflet-routing-machine/test/lib/jasmine-2.0.0/jasmine.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/scripts/vendor/leaflet-routing-machine/test/lib/jasmine-2.0.0/jasmine.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/scripts/vendor/leaflet-routing-machine/test/lib/jasmine-2.0.0/jasmine_favicon.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/scripts/vendor/leaflet-routing-machine/test/spec/formatter-spec.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/scripts/vendor/leaflet-routing-machine/test/spec/osrmv1-spec.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/scripts/vendor/leaflet/CHANGELOG.md" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/scripts/vendor/leaflet/LICENSE" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/scripts/vendor/leaflet/README.md" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/scripts/vendor/leaflet/dist/images/layers-2x.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/scripts/vendor/leaflet/dist/images/layers.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/scripts/vendor/leaflet/dist/images/marker-icon-2x.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/scripts/vendor/leaflet/dist/images/marker-icon.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/scripts/vendor/leaflet/dist/images/marker-shadow.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/scripts/vendor/leaflet/dist/leaflet-src.esm.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/scripts/vendor/leaflet/dist/leaflet-src.esm.js.map" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/scripts/vendor/leaflet/dist/leaflet-src.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/scripts/vendor/leaflet/dist/leaflet-src.js.map" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/scripts/vendor/leaflet/dist/leaflet.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/scripts/vendor/leaflet/dist/leaflet.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/scripts/vendor/leaflet/dist/leaflet.js.map" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/scripts/vendor/leaflet/dist/reference-1.6.0-newleafdoc.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/scripts/vendor/leaflet/dist/reference-1.6.0-oldleafdoc.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/scripts/vendor/leaflet/dist/reference-1.6.0.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/scripts/vendor/leaflet/package.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/scripts/vendor/leaflet/src/Leaflet.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/scripts/vendor/leaflet/src/control/Control.Attribution.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/scripts/vendor/leaflet/src/control/Control.Layers.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/scripts/vendor/leaflet/src/control/Control.Scale.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/scripts/vendor/leaflet/src/control/Control.Zoom.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/scripts/vendor/leaflet/src/control/Control.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/scripts/vendor/leaflet/src/control/index.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/scripts/vendor/leaflet/src/core/Browser.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/scripts/vendor/leaflet/src/core/Class.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/scripts/vendor/leaflet/src/core/Class.leafdoc" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/scripts/vendor/leaflet/src/core/Events.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/scripts/vendor/leaflet/src/core/Events.leafdoc" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/scripts/vendor/leaflet/src/core/Handler.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/scripts/vendor/leaflet/src/core/Util.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/scripts/vendor/leaflet/src/core/index.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/scripts/vendor/leaflet/src/dom/DomEvent.DoubleTap.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/scripts/vendor/leaflet/src/dom/DomEvent.Pointer.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/scripts/vendor/leaflet/src/dom/DomEvent.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/scripts/vendor/leaflet/src/dom/DomUtil.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/scripts/vendor/leaflet/src/dom/Draggable.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/scripts/vendor/leaflet/src/dom/PosAnimation.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/scripts/vendor/leaflet/src/dom/index.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/scripts/vendor/leaflet/src/geo/LatLng.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/scripts/vendor/leaflet/src/geo/LatLngBounds.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/scripts/vendor/leaflet/src/geo/crs/CRS.EPSG3395.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/scripts/vendor/leaflet/src/geo/crs/CRS.EPSG3857.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/scripts/vendor/leaflet/src/geo/crs/CRS.EPSG4326.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/scripts/vendor/leaflet/src/geo/crs/CRS.Earth.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/scripts/vendor/leaflet/src/geo/crs/CRS.Simple.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/scripts/vendor/leaflet/src/geo/crs/CRS.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/scripts/vendor/leaflet/src/geo/crs/index.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/scripts/vendor/leaflet/src/geo/index.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/scripts/vendor/leaflet/src/geo/projection/Projection.LonLat.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/scripts/vendor/leaflet/src/geo/projection/Projection.Mercator.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/scripts/vendor/leaflet/src/geo/projection/Projection.SphericalMercator.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/scripts/vendor/leaflet/src/geo/projection/index.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/scripts/vendor/leaflet/src/geometry/Bounds.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/scripts/vendor/leaflet/src/geometry/LineUtil.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/scripts/vendor/leaflet/src/geometry/Point.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/scripts/vendor/leaflet/src/geometry/PolyUtil.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/scripts/vendor/leaflet/src/geometry/Transformation.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/scripts/vendor/leaflet/src/geometry/index.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/scripts/vendor/leaflet/src/images/layers.svg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/scripts/vendor/leaflet/src/images/logo.svg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/scripts/vendor/leaflet/src/images/marker-clean (1).svg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/scripts/vendor/leaflet/src/images/marker-manual-pass-orig-coords.svg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/scripts/vendor/leaflet/src/images/marker-manual-pass.svg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/scripts/vendor/leaflet/src/images/marker.min.svg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/scripts/vendor/leaflet/src/images/marker.svg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/scripts/vendor/leaflet/src/images/marker.svgomg.svg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/scripts/vendor/leaflet/src/images/shadow-clean (1).svg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/scripts/vendor/leaflet/src/images/shadow.svg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/scripts/vendor/leaflet/src/layer/DivOverlay.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/scripts/vendor/leaflet/src/layer/FeatureGroup.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/scripts/vendor/leaflet/src/layer/GeoJSON.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/scripts/vendor/leaflet/src/layer/ImageOverlay.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/scripts/vendor/leaflet/src/layer/Layer.Interactive.leafdoc" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/scripts/vendor/leaflet/src/layer/Layer.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/scripts/vendor/leaflet/src/layer/LayerGroup.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/scripts/vendor/leaflet/src/layer/Popup.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/scripts/vendor/leaflet/src/layer/SVGOverlay.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/scripts/vendor/leaflet/src/layer/Tooltip.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/scripts/vendor/leaflet/src/layer/VideoOverlay.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/scripts/vendor/leaflet/src/layer/index.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/scripts/vendor/leaflet/src/layer/marker/DivIcon.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/scripts/vendor/leaflet/src/layer/marker/Icon.Default.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/scripts/vendor/leaflet/src/layer/marker/Icon.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/scripts/vendor/leaflet/src/layer/marker/Marker.Drag.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/scripts/vendor/leaflet/src/layer/marker/Marker.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/scripts/vendor/leaflet/src/layer/marker/index.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/scripts/vendor/leaflet/src/layer/tile/GridLayer.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/scripts/vendor/leaflet/src/layer/tile/TileLayer.WMS.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/scripts/vendor/leaflet/src/layer/tile/TileLayer.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/scripts/vendor/leaflet/src/layer/tile/index.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/scripts/vendor/leaflet/src/layer/vector/Canvas.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/scripts/vendor/leaflet/src/layer/vector/Circle.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/scripts/vendor/leaflet/src/layer/vector/CircleMarker.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/scripts/vendor/leaflet/src/layer/vector/Path.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/scripts/vendor/leaflet/src/layer/vector/Polygon.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/scripts/vendor/leaflet/src/layer/vector/Polyline.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/scripts/vendor/leaflet/src/layer/vector/Rectangle.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/scripts/vendor/leaflet/src/layer/vector/Renderer.getRenderer.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/scripts/vendor/leaflet/src/layer/vector/Renderer.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/scripts/vendor/leaflet/src/layer/vector/SVG.Util.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/scripts/vendor/leaflet/src/layer/vector/SVG.VML.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/scripts/vendor/leaflet/src/layer/vector/SVG.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/scripts/vendor/leaflet/src/layer/vector/index.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/scripts/vendor/leaflet/src/map/Map.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/scripts/vendor/leaflet/src/map/Map.methodOptions.leafdoc" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/scripts/vendor/leaflet/src/map/handler/Map.BoxZoom.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/scripts/vendor/leaflet/src/map/handler/Map.DoubleClickZoom.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/scripts/vendor/leaflet/src/map/handler/Map.Drag.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/scripts/vendor/leaflet/src/map/handler/Map.Keyboard.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/scripts/vendor/leaflet/src/map/handler/Map.ScrollWheelZoom.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/scripts/vendor/leaflet/src/map/handler/Map.Tap.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/scripts/vendor/leaflet/src/map/handler/Map.TouchZoom.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/scripts/vendor/leaflet/src/map/index.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/app/index.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/scripts/controllers/loginController.js" beforeDir="false" afterPath="$PROJECT_DIR$/app/scripts/controllers/loginController.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/scripts/components/section-header/section_header_directive.js" beforeDir="false" afterPath="$PROJECT_DIR$/app/scripts/components/section-header/section_header_directive.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/scripts/controllers/challengesController.js" beforeDir="false" afterPath="$PROJECT_DIR$/app/scripts/controllers/challengesController.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/scripts/controllers/newRouteController.js" beforeDir="false" afterPath="$PROJECT_DIR$/app/scripts/controllers/newRouteController.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/scripts/services/login_service_data.js" beforeDir="false" afterPath="$PROJECT_DIR$/app/scripts/services/login_service_data.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/scripts/controllers/postsController.js" beforeDir="false" afterPath="$PROJECT_DIR$/app/scripts/controllers/postsController.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/scripts/controllers/routesController.js" beforeDir="false" afterPath="$PROJECT_DIR$/app/scripts/controllers/routesController.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/styles/main.css" beforeDir="false" afterPath="$PROJECT_DIR$/app/styles/main.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/views/about.html" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/app/views/challenges.html" beforeDir="false" afterPath="$PROJECT_DIR$/app/views/challenges.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/views/login.html" beforeDir="false" afterPath="$PROJECT_DIR$/app/views/login.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/views/main.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/views/main-menu.html" beforeDir="false" afterPath="$PROJECT_DIR$/app/views/main-menu.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/views/new-challenge.html" beforeDir="false" afterPath="$PROJECT_DIR$/app/views/new-challenge.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/views/new-post.html" beforeDir="false" afterPath="$PROJECT_DIR$/app/views/new-post.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/views/new-route.html" beforeDir="false" afterPath="$PROJECT_DIR$/app/views/new-route.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/views/posts.html" beforeDir="false" afterPath="$PROJECT_DIR$/app/views/posts.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/views/recover.html" beforeDir="false" afterPath="$PROJECT_DIR$/app/views/recover.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/views/routes.html" beforeDir="false" afterPath="$PROJECT_DIR$/app/views/routes.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/views/section-header.html" beforeDir="false" afterPath="$PROJECT_DIR$/app/views/section-header.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/package-lock.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/.tmp/" />
     <ignored path="$PROJECT_DIR$/temp/" />
@@ -41,20 +198,11 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file pinned="false" current-in-tab="false">
+      <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/app/styles/main.css">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="141">
-              <caret line="461" column="13" selection-start-line="461" selection-start-column="13" selection-end-line="461" selection-end-column="13" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/.gitignore">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="115">
-              <caret line="5" column="6" selection-start-line="5" selection-start-column="6" selection-end-line="5" selection-end-column="6" />
+            <state relative-caret-position="329">
+              <caret line="808" column="13" lean-forward="true" selection-start-line="808" selection-start-column="13" selection-end-line="808" selection-end-column="13" />
             </state>
           </provider>
         </entry>
@@ -62,35 +210,17 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app/index.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="480">
-              <caret line="78" column="71" selection-start-line="78" selection-start-column="71" selection-end-line="78" selection-end-column="71" />
+            <state relative-caret-position="391">
+              <caret line="17" column="104" selection-start-line="17" selection-start-column="104" selection-end-line="17" selection-end-column="104" />
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/scripts/components/new-button/new_button_controller.js">
+        <entry file="file://$PROJECT_DIR$/app/scripts/controllers/newRouteController.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state>
-              <caret column="25" selection-start-column="25" selection-end-column="25" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/scripts/components/new-button/new_button_directive.js">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="161">
-              <caret line="7" column="20" selection-start-line="7" selection-start-column="6" selection-end-line="7" selection-end-column="20" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/views/new-button.html">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="23">
-              <caret line="1" column="34" lean-forward="true" selection-start-line="1" selection-start-column="34" selection-end-line="1" selection-end-column="34" />
+            <state relative-caret-position="142">
+              <caret line="33" column="7" lean-forward="true" selection-start-line="33" selection-start-column="7" selection-end-line="33" selection-end-column="7" />
             </state>
           </provider>
         </entry>
@@ -98,26 +228,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app/views/routes.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="264">
-              <caret line="87" column="33" selection-start-line="87" selection-start-column="33" selection-end-line="87" selection-end-column="33" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/views/challenges.html">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="172">
-              <caret line="48" column="2" selection-start-line="48" selection-start-column="2" selection-end-line="51" selection-end-column="15" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/views/posts.html">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="368">
-              <caret line="66" column="10" selection-start-line="66" selection-start-column="10" selection-end-line="66" selection-end-column="10" />
+            <state relative-caret-position="184">
+              <caret line="8" column="39" selection-start-line="8" selection-start-column="39" selection-end-line="8" selection-end-column="39" />
             </state>
           </provider>
         </entry>
@@ -125,11 +237,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app/views/new-route.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="345">
-              <caret line="21" lean-forward="true" selection-start-line="21" selection-end-line="21" />
-              <folding>
-                <element signature="n#style#0;n#h4#0;n#div#0;n#div#0;n#div#1;n#div#2;n#div#0;n#div#0;n#!!top" expanded="true" />
-              </folding>
+            <state relative-caret-position="330">
+              <caret line="72" column="29" selection-start-line="72" selection-start-column="29" selection-end-line="72" selection-end-column="29" />
             </state>
           </provider>
         </entry>
@@ -155,6 +264,15 @@
       <find>close-rombo-new-route</find>
       <find>section-header-le</find>
       <find>.logo</find>
+      <find>main-container</find>
+      <find>main-menu:hover~.main-container .new-route-form</find>
+      <find>.rombo-new-route</find>
+      <find>rombo-table-see</find>
+      <find>close-rombo</find>
+      <find>map</find>
+      <find>select</find>
+      <find>.logo-write-newChallenge</find>
+      <find>.buton-route</find>
     </findStrings>
   </component>
   <component name="Git.Settings">
@@ -169,28 +287,32 @@
         <option value="$PROJECT_DIR$/app/scripts/controllers/loginController.js" />
         <option value="$PROJECT_DIR$/app/scripts/services/login_service_data.js" />
         <option value="$PROJECT_DIR$/app/scripts/components/main-menu/main_menu_controller.js" />
-        <option value="$PROJECT_DIR$/app/views/main-menu.html" />
         <option value="$PROJECT_DIR$/app/scripts/components/section-header/section_header_controller.js" />
-        <option value="$PROJECT_DIR$/app/scripts/controllers/newRouteController.js" />
-        <option value="$PROJECT_DIR$/app/scripts/components/section-header/section_header_directive.js" />
-        <option value="$PROJECT_DIR$/app/views/section-header.html" />
-        <option value="$PROJECT_DIR$/app/views/new-post.html" />
-        <option value="$PROJECT_DIR$/app/views/new-challenge.html" />
-        <option value="$PROJECT_DIR$/app/views/new-route.html" />
         <option value="$PROJECT_DIR$/app/scripts/components/new-button/new_button_controller.js" />
-        <option value="$PROJECT_DIR$/app/index.html" />
+        <option value="$PROJECT_DIR$/app/scripts/components/new-button/new_button_directive.js" />
+        <option value="$PROJECT_DIR$/app/views/new-button.html" />
+        <option value="$PROJECT_DIR$/.gitignore" />
+        <option value="$PROJECT_DIR$/app/views/new-challenge.html" />
+        <option value="$PROJECT_DIR$/app/scripts/controllers/challengesController.js" />
+        <option value="$PROJECT_DIR$/app/scripts/controllers/routesController.js" />
+        <option value="$PROJECT_DIR$/app/scripts/controllers/postsController.js" />
+        <option value="$PROJECT_DIR$/app/views/new-post.html" />
+        <option value="$PROJECT_DIR$/app/views/main-menu.html" />
+        <option value="$PROJECT_DIR$/app/views/section-header.html" />
+        <option value="$PROJECT_DIR$/app/views/routes.html" />
         <option value="$PROJECT_DIR$/app/views/challenges.html" />
         <option value="$PROJECT_DIR$/app/views/posts.html" />
-        <option value="$PROJECT_DIR$/app/scripts/components/new-button/new_button_directive.js" />
-        <option value="$PROJECT_DIR$/app/views/routes.html" />
-        <option value="$PROJECT_DIR$/app/views/new-button.html" />
+        <option value="$PROJECT_DIR$/app/scripts/components/section-header/section_header_directive.js" />
+        <option value="$PROJECT_DIR$/app/index.html" />
+        <option value="$PROJECT_DIR$/app/scripts/controllers/newRouteController.js" />
+        <option value="$PROJECT_DIR$/app/scripts/controllers/route.json" />
+        <option value="$PROJECT_DIR$/app/views/new-route.html" />
         <option value="$PROJECT_DIR$/app/styles/main.css" />
-        <option value="$PROJECT_DIR$/.gitignore" />
       </list>
     </option>
   </component>
   <component name="ProjectFrameBounds" extendedState="6">
-    <option name="x" value="-1928" />
+    <option name="x" value="-8" />
     <option name="y" value="-8" />
     <option name="width" value="1936" />
     <option name="height" value="1056" />
@@ -208,6 +330,79 @@
               <item name="active-schools-admin-zone" type="b2602c69:ProjectViewProjectNode" />
               <item name="active-schools-admin-zone" type="462c0819:PsiDirectoryNode" />
             </path>
+            <path>
+              <item name="active-schools-admin-zone" type="b2602c69:ProjectViewProjectNode" />
+              <item name="active-schools-admin-zone" type="462c0819:PsiDirectoryNode" />
+              <item name="app" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="active-schools-admin-zone" type="b2602c69:ProjectViewProjectNode" />
+              <item name="active-schools-admin-zone" type="462c0819:PsiDirectoryNode" />
+              <item name="app" type="462c0819:PsiDirectoryNode" />
+              <item name="scripts" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="active-schools-admin-zone" type="b2602c69:ProjectViewProjectNode" />
+              <item name="active-schools-admin-zone" type="462c0819:PsiDirectoryNode" />
+              <item name="app" type="462c0819:PsiDirectoryNode" />
+              <item name="scripts" type="462c0819:PsiDirectoryNode" />
+              <item name="components" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="active-schools-admin-zone" type="b2602c69:ProjectViewProjectNode" />
+              <item name="active-schools-admin-zone" type="462c0819:PsiDirectoryNode" />
+              <item name="app" type="462c0819:PsiDirectoryNode" />
+              <item name="scripts" type="462c0819:PsiDirectoryNode" />
+              <item name="controllers" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="active-schools-admin-zone" type="b2602c69:ProjectViewProjectNode" />
+              <item name="active-schools-admin-zone" type="462c0819:PsiDirectoryNode" />
+              <item name="app" type="462c0819:PsiDirectoryNode" />
+              <item name="scripts" type="462c0819:PsiDirectoryNode" />
+              <item name="vendor" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="active-schools-admin-zone" type="b2602c69:ProjectViewProjectNode" />
+              <item name="active-schools-admin-zone" type="462c0819:PsiDirectoryNode" />
+              <item name="app" type="462c0819:PsiDirectoryNode" />
+              <item name="scripts" type="462c0819:PsiDirectoryNode" />
+              <item name="vendor" type="462c0819:PsiDirectoryNode" />
+              <item name="leaflet-routing-machine" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="active-schools-admin-zone" type="b2602c69:ProjectViewProjectNode" />
+              <item name="active-schools-admin-zone" type="462c0819:PsiDirectoryNode" />
+              <item name="app" type="462c0819:PsiDirectoryNode" />
+              <item name="scripts" type="462c0819:PsiDirectoryNode" />
+              <item name="vendor" type="462c0819:PsiDirectoryNode" />
+              <item name="leaflet-routing-machine" type="462c0819:PsiDirectoryNode" />
+              <item name="dist" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="active-schools-admin-zone" type="b2602c69:ProjectViewProjectNode" />
+              <item name="active-schools-admin-zone" type="462c0819:PsiDirectoryNode" />
+              <item name="app" type="462c0819:PsiDirectoryNode" />
+              <item name="styles" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="active-schools-admin-zone" type="b2602c69:ProjectViewProjectNode" />
+              <item name="active-schools-admin-zone" type="462c0819:PsiDirectoryNode" />
+              <item name="node_modules" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="active-schools-admin-zone" type="b2602c69:ProjectViewProjectNode" />
+              <item name="active-schools-admin-zone" type="462c0819:PsiDirectoryNode" />
+              <item name="node_modules" type="462c0819:PsiDirectoryNode" />
+              <item name="leaflet-routing-machine" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="active-schools-admin-zone" type="b2602c69:ProjectViewProjectNode" />
+              <item name="active-schools-admin-zone" type="462c0819:PsiDirectoryNode" />
+              <item name="node_modules" type="462c0819:PsiDirectoryNode" />
+              <item name="leaflet-routing-machine" type="462c0819:PsiDirectoryNode" />
+              <item name="dist" type="462c0819:PsiDirectoryNode" />
+            </path>
           </expand>
           <select />
         </subPane>
@@ -224,9 +419,12 @@
     <property name="node.js.selected.package.jscs" value="E:\WebstormProjects\active-schools-admin-zone\node_modules\jscs" />
     <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
     <property name="nodejs_npm_path_reset_for_default_project" value="true" />
+    <property name="nodejs_package_manager_path" value="npm" />
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="E:\Webstorm\active-schools-admin-zone\app\images" />
+      <recent name="E:\Webstorm\active-schools-admin-zone\app\scripts\vendor" />
       <recent name="E:\WebstormProjects\active-schools-admin-zone\app\scripts\components\new-button" />
       <recent name="E:\WebstormProjects\active-schools-admin-zone\app\scripts\components\section-header" />
       <recent name="E:\WebstormProjects\active-schools-admin-zone\app\scripts\components\main-menu" />
@@ -256,17 +454,19 @@
       <updated>1629905148800</updated>
       <workItem from="1629905150354" duration="137000" />
       <workItem from="1636363991995" duration="19986000" />
+      <workItem from="1636450888448" duration="5707000" />
+      <workItem from="1636457831771" duration="11250000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="20123000" />
+    <option name="totallyTimeSpent" value="37080000" />
   </component>
   <component name="ToolWindowManager">
-    <frame x="-1928" y="-8" width="1936" height="1056" extended-state="6" />
+    <frame x="-8" y="-8" width="1936" height="1056" extended-state="6" />
     <editor active="true" />
     <layout>
-      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.24973656" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.16385669" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="npm" order="2" side_tool="true" />
       <window_info id="Grunt " order="3" side_tool="true" />
@@ -281,7 +481,7 @@
       <window_info anchor="bottom" id="Docker" order="7" show_stripe_button="false" />
       <window_info anchor="bottom" id="Version Control" order="8" />
       <window_info anchor="bottom" id="Event Log" order="9" side_tool="true" />
-      <window_info anchor="bottom" id="Terminal" order="10" visible="true" weight="0.32998884" />
+      <window_info anchor="bottom" id="Terminal" order="10" visible="true" weight="0.33333334" />
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
       <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
@@ -333,30 +533,12 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/views/about.html">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/views/main.html">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
+    <entry file="file://$PROJECT_DIR$/app/views/about.html" />
+    <entry file="file://$PROJECT_DIR$/app/views/main.html" />
     <entry file="file://$PROJECT_DIR$/app/scripts/components/section-header/section_header_controller.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="92">
           <caret line="4" column="20" selection-start-line="4" selection-start-column="20" selection-end-line="4" selection-end-column="20" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/views/main-menu.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="299">
-          <caret line="16" column="21" selection-start-line="16" selection-start-column="21" selection-end-line="16" selection-end-column="35" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/scripts/controllers/newRouteController.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="195">
-          <caret line="52" column="3" lean-forward="true" selection-start-line="52" selection-start-column="3" selection-end-line="52" selection-end-column="3" />
         </state>
       </provider>
     </entry>
@@ -367,76 +549,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/scripts/components/section-header/section_header_directive.js">
+    <entry file="file://$PROJECT_DIR$/.gitignore">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="184">
-          <caret line="8" column="19" selection-start-line="8" selection-start-column="19" selection-end-line="8" selection-end-column="19" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/views/section-header.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="230">
-          <caret line="10" column="16" lean-forward="true" selection-start-line="10" selection-start-column="16" selection-end-line="10" selection-end-column="41" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/views/new-post.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="184">
-          <caret line="20" column="2" selection-start-line="20" selection-start-column="2" selection-end-line="20" selection-end-column="36" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/views/new-challenge.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="207">
-          <caret line="9" column="20" selection-start-line="9" selection-start-column="20" selection-end-line="10" selection-end-column="65" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/views/new-route.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="345">
-          <caret line="21" lean-forward="true" selection-start-line="21" selection-end-line="21" />
-          <folding>
-            <element signature="n#style#0;n#h4#0;n#div#0;n#div#0;n#div#1;n#div#2;n#div#0;n#div#0;n#!!top" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/views/challenges.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="172">
-          <caret line="48" column="2" selection-start-line="48" selection-start-column="2" selection-end-line="51" selection-end-column="15" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/views/posts.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="368">
-          <caret line="66" column="10" selection-start-line="66" selection-start-column="10" selection-end-line="66" selection-end-column="10" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/index.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="480">
-          <caret line="78" column="71" selection-start-line="78" selection-start-column="71" selection-end-line="78" selection-end-column="71" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/views/routes.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="264">
-          <caret line="87" column="33" selection-start-line="87" selection-start-column="33" selection-end-line="87" selection-end-column="33" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/scripts/components/new-button/new_button_directive.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="161">
-          <caret line="7" column="20" selection-start-line="7" selection-start-column="6" selection-end-line="7" selection-end-column="20" />
+        <state relative-caret-position="115">
+          <caret line="5" column="6" selection-start-line="5" selection-start-column="6" selection-end-line="5" selection-end-column="6" />
         </state>
       </provider>
     </entry>
@@ -447,24 +563,137 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/app/scripts/components/new-button/new_button_directive.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="161">
+          <caret line="7" column="20" selection-start-line="7" selection-start-column="6" selection-end-line="7" selection-end-column="20" />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/app/views/new-button.html">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="23">
-          <caret line="1" column="34" lean-forward="true" selection-start-line="1" selection-start-column="34" selection-end-line="1" selection-end-column="34" />
+          <caret line="1" column="34" selection-start-line="1" selection-start-column="34" selection-end-line="1" selection-end-column="34" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/scripts/controllers/routesController.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="558">
+          <caret line="37" column="6" lean-forward="true" selection-start-line="37" selection-start-column="6" selection-end-line="37" selection-end-column="6" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/views/new-challenge.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="23">
+          <caret line="1" lean-forward="true" selection-start-line="1" selection-end-line="1" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$USER_HOME$/Downloads/aws-s3_rev7.json">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-2898" />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/views/main-menu.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="851">
+          <caret line="37" column="80" lean-forward="true" selection-start-line="37" selection-start-column="80" selection-end-line="37" selection-end-column="80" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/scripts/controllers/challengesController.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="414">
+          <caret line="18" column="35" lean-forward="true" selection-start-line="18" selection-start-column="35" selection-end-line="18" selection-end-column="35" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/scripts/controllers/postsController.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="345">
+          <caret line="15" column="30" lean-forward="true" selection-start-line="15" selection-start-column="30" selection-end-line="15" selection-end-column="30" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/views/new-post.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="207">
+          <caret line="9" column="34" lean-forward="true" selection-start-line="9" selection-start-column="34" selection-end-line="9" selection-end-column="34" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/views/challenges.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="529">
+          <caret line="23" column="42" selection-start-line="23" selection-start-column="42" selection-end-line="23" selection-end-column="42" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/views/posts.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="529">
+          <caret line="23" column="42" selection-start-line="23" selection-start-column="42" selection-end-line="23" selection-end-column="42" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/views/section-header.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="230">
+          <caret line="10" column="67" selection-start-line="10" selection-start-column="52" selection-end-line="10" selection-end-column="67" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/scripts/components/section-header/section_header_directive.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="207">
+          <caret line="9" column="26" lean-forward="true" selection-start-line="9" selection-start-column="26" selection-end-line="9" selection-end-column="26" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/scripts/vendor/leaflet-routing-machine/src/line.js">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/scripts/controllers/route.json">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="46">
+          <caret line="2" column="13" lean-forward="true" selection-start-line="2" selection-start-column="13" selection-end-line="2" selection-end-column="13" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/index.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="391">
+          <caret line="17" column="104" selection-start-line="17" selection-start-column="104" selection-end-line="17" selection-end-column="104" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/scripts/controllers/newRouteController.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="142">
+          <caret line="33" column="7" lean-forward="true" selection-start-line="33" selection-start-column="7" selection-end-line="33" selection-end-column="7" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/views/routes.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="184">
+          <caret line="8" column="39" selection-start-line="8" selection-start-column="39" selection-end-line="8" selection-end-column="39" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/views/new-route.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="330">
+          <caret line="72" column="29" selection-start-line="72" selection-start-column="29" selection-end-line="72" selection-end-column="29" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/app/styles/main.css">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="141">
-          <caret line="461" column="13" selection-start-line="461" selection-start-column="13" selection-end-line="461" selection-end-column="13" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/.gitignore">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="115">
-          <caret line="5" column="6" selection-start-line="5" selection-start-column="6" selection-end-line="5" selection-end-column="6" />
+        <state relative-caret-position="329">
+          <caret line="808" column="13" lean-forward="true" selection-start-line="808" selection-start-column="13" selection-end-line="808" selection-end-column="13" />
         </state>
       </provider>
     </entry>

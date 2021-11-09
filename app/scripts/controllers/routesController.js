@@ -11,35 +11,31 @@ angular.module('activeSchoolsAdminZoneApp')
   .controller('routesCtrl', ['$location', 'routeServiceData', '$routeParams', 'challengeServiceData',  function ($location, routeServiceData, $routeParams, challengeServiceData) {
     var vm = this;
 
-    vm.goToNewRoute = function(){
+    vm.goToNewRoute = function() {
       $location.path('routes/new_route');
-    }
-    vm.goToRoute = function(){
+    };
+
+    vm.goToRoutes = function() {
       $location.path('routes');
-    }
-    vm.editChallenge = function(challenge_id){
+    };
+
+    vm.editChallenge = function(challenge_id) {
       $routeParams.challenge_id = challenge_id;
       $location.path('challenges/edit_challenge/' + $routeParams.challenge_id);
-    }
-
+    };
 
     vm.deleteRow = function(){
-
-      debugger;
       vm.routeServiceData.splice(vm.deleteIndex, 1);
-    }
+    };
 
     vm.deleteRow_2 = function(){
-
-      debugger;
       vm.challengeServiceData.splice(vm.deleteIndex, 1);
-    }
-
+    };
 
     vm.editRoute = function(route_id){
       $routeParams.route_id = route_id;
       $location.path('routes/edit_route/' + $routeParams.route_id);
-    }
+    };
 
     //Mostrar tabla al pulsar el boton ver
 

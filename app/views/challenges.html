@@ -4,9 +4,29 @@
 
 <div class="main-container">
 
-  <section-header title="Challenges" icon="fas fa-walking"></section-header>
+  <section-header ng-show="('challenges' | routeSegmentEqualsTo)"
+                  title="Challenges"
+                  icon="fas fa-walking"
+                  show-search-input="true">
+  </section-header>
 
-  <div class="main-container-inner">
+  <section-header ng-show="('challenges.new_challenge' | routeSegmentEqualsTo)"
+                  title="Challenges - New Challenge"
+                  icon="fas fa-walking"
+                  show-search-input="true"
+                  show-close="true"
+                  close-function="challenges.goToChallenges()">
+  </section-header>
+
+  <section-header ng-show="('challenges.edit_challenge.challenge_id' | routeSegmentEqualsTo)"
+                  title="Challenges - Edit Challenge"
+                  icon="fas fa-walking"
+                  show-search-input="true"
+                  show-close="true"
+                  close-function="challenges.goToChallenges()">
+  </section-header>
+
+  <div class="main-container-inner" ng-class="{ 'main-container-inner-left' : ('challenges.new_challenge' | routeSegmentEqualsTo) || ('challenges.edit_challenge.challenge_id' | routeSegmentEqualsTo) }">
 
     <table class="tabla">
       <thead>
@@ -46,9 +66,14 @@
 
   </div>
 
+  <div app-view-segment="1" ng-show="('challenges.new_challenge' | routeSegmentEqualsTo)"></div>
+
+  <div app-view-segment="2" ng-show="('challenges.edit_challenge.challenge_id' | routeSegmentEqualsTo)"></div>
+
   <new-button icon="fas fa-plus"
               title="New Challenge"
-              button-function="challenges.goToNewChallenge()">
+              button-function="challenges.goToNewChallenge()"
+              ng-hide="('challenges.new_challenge' | routeSegmentEqualsTo)">
   </new-button>
 
      <div id="main" class="popUp" ng-show="challenges.deletePopUp === true">

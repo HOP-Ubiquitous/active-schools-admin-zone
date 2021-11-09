@@ -1,205 +1,78 @@
-<div class="root">
+<div class="main-container-inner-right">
 
-  <main-menu></main-menu>
+  <div class="new-route-form" ng-show="('challenges.new_challenge' | routeSegmentEqualsTo)">
+    <form class="formulario">
+      <input type="text" id="name" placeholder="Name" class="cuadro-texto" ng-model="newChallenge.name" required>
+      <input type="text" id="bonus" placeholder="Bonus" class="cuadro-texto" ng-model="newChallenge.bonus" required>
+      <input type="text" id="minMax" placeholder="Min. Time" class="cuadro-texto" ng-model="newChallenge.minMax" required>
+      <input type="text" id="maxMin" placeholder="Max. Time" class="cuadro-texto" ng-model="newChallenge.maxMin" required>
 
-  <div class="main-container">
+      <hr class="space-new-route">
 
-    <section-header ng-show="('challenges.new_challenge' | routeSegmentEqualsTo)"
-                    title="Challenges - New Challenge"
-                    icon="fas fa-walking"
-                    show-close="true"
-                    close-function="newChallenge.goToChallenge()">
-    </section-header>
+      <div class="post-tabs-container">
 
-    <section-header ng-show="('challenges.edit_challenge.challenge_id' | routeSegmentEqualsTo)"
-                    title="Challenges - Edit Challenge"
-                    icon="fas fa-walking"
-                    show-close="true"
-                    close-function="editChallenge.goToChallenge()">
-    </section-header>
-
-    <div class="main-container-inner">
-
-      <div class="new-challenge-table">
-
-        <!--tabla newChallenge-->
-        <table class="tabla" id="tabla" ng-show="('challenges.new_challenge' | routeSegmentEqualsTo)">
-          <tbody>
-          <tr>
-            <th scope="col">Date</th>
-            <th scope="col">Name</th>
-            <th scope="col">Video</th>
-            <th scope="col">Bonus</th>
-            <th scope="col">Min. Time / Max. Time</th>
-            <th scope="col">Images</th>
-            <th scope="col">Options</th>
-          </tr>
-          </tbody>
-          <tbody  ng-repeat="challenge in newChallenge.challenges">
-
-          <tr>
-            <td>{{challenge.date | date : 'dd/MM/yyyy'}}</td>
-            <td>{{challenge.name}}</td>
-            <td>{{challenge.video}}</td>
-            <td>{{challenge.bonus}}</td>
-            <td>{{challenge.minMax}}/{{challenge.maxMin}}</td>
-            <td>{{challenge.images}}</td>
-            <td class="option">
-              <div class="rombo-table-write" ng-click="routes.editRoute($index)">
-                <i class="fas fa-edit logo1"></i>
-              </div>
-
-              <div class="rombo-table-delete" ng-click="newChallenge.mostrarPopUp($index)">
-                <i class="fas fa-trash-alt logo2"></i>
-              </div>
-          </tr>
-
-          </tbody>
-        </table>
-
-        <div id="main" class="popUp" ng-show="newChallenge.deletePopUp === true">
-          <div class="divPopUp">
-            <h4 style="text-align: center; color: black;">Are you sure you want to delete the marked challenge?</h4>
-            <div class="botones">
-
-              <button type="submit" class="btn btn-danger" ng-click="newChallenge.deleteRow($index); newChallenge.deletePopUp = false">Ok</button>
-              <button type="submit" class="btn btn-light"  ng-click="newChallenge.deletePopUp = false">Cancel</button>
-            </div>
-          </div>
-
-        </div>
-        <!--tabla editChallenge-->
-        <table class="tabla" id="tabla" ng-show="('challenges.edit_challenge.challenge_id' | routeSegmentEqualsTo)">
-          <thead>
-          <tr>
-            <th scope="col">Date</th>
-            <th scope="col">Name</th>
-            <th scope="col">Video</th>
-            <th scope="col">Bonus</th>
-            <th scope="col">Min. Time / Max. Time</th>
-            <th scope="col">Images</th>
-            <th scope="col">Options</th>
-          </tr>
-
-          </thead>
-          <tbody ng-repeat="challenge in editChallenge.challenges">
-
-          <tr>
-            <td>{{challenge.date | date : 'dd/MM/yyyy'}}</td>
-            <td>{{challenge.name}}</td>
-            <td>{{challenge.video}}</td>
-            <td>{{challenge.bonus}}</td>
-            <td>{{challenge.minMax}} / {{challenge.maxMin}}</td>
-            <td>{{challenge.images}}</td>
-            <td class="option">
-              <div class="rombo-table-write" ng-click="routes.editRoute($index)">
-                <i class="fas fa-edit logo1"></i>
-              </div>
-
-              <div class="rombo-table-delete" ng-click="editChallenge.mostrarPopUp($index)">
-                <i class="fas fa-trash-alt logo2"></i>
-              </div>
-          </tr>
-
-          </tbody>
-        </table>
-
-        <div id="main" class="popUp" ng-show="editChallenge.deletePopUp === true">
-          <div class="divPopUp">
-            <h4 style="text-align: center; color: black;">Are you sure you want to delete the marked challenge?</h4>
-            <div class="botones">
-
-              <button type="submit" class="btn btn-danger" ng-click="editChallenge.deleteRow($index); editChallenge.deletePopUp = false">Ok</button>
-              <button type="submit" class="btn btn-light"  ng-click="editChallenge.deletePopUp = false">Cancel</button>
-            </div>
-          </div>
-
+        <div class="post-tab" ng-click="showUrlVideo[$index] = !showUrlVideo[$index]">
+          <span>Youtube Video</span>
         </div>
 
+        <div class="post-tab" ng-click="showUploadVideo[$index] = !showUploadVideo[$index]">
+          <span>Upload Video</span>
+        </div>
+      </div>
+      <input type="url" id="url" placeholder="Youtube URL" class="cuadro-texto" ng-model="newChallenge.video" ng-show="showUrlVideo[$index] === true" required>
+      <input type="url" id="ruta" placeholder="Upload Video" class="cuadro-texto" ng-model="newChallenge.video" ng-show="showUploadVideo[$index] === true" required>
+      <br>
+      <div class="new-challenge-video">
+        <iframe width="100%" height="100%" src="{{video}}"  >
+
+        </iframe>
       </div>
 
 
+      <div class="buton-route" ng-click="newChallenge.save()">
+        <div class="save-new-route">Save New Route</div>
+      </div>
+    </form>
 
 
 
-      <!--NewChallenge-->
-      <div class="new-route-form" ng-show="('challenges.new_challenge' | routeSegmentEqualsTo)">
-        <form class="formulario">
-          <input type="text" id="name" placeholder="Name" class="cuadro-texto" ng-model="newChallenge.name" required>
-          <input type="text" id="bonus" placeholder="Bonus" class="cuadro-texto" ng-model="newChallenge.bonus" required>
-          <input type="text" id="minMax" placeholder="Min. Time" class="cuadro-texto" ng-model="newChallenge.minMax" required>
-          <input type="text" id="maxMin" placeholder="Max. Time" class="cuadro-texto" ng-model="newChallenge.maxMin" required>
+  </div>
 
-          <hr class="space-new-route">
+  <!--Edit challenge-->
+  <div class="new-route-form" ng-show="('challenges.edit_challenge.challenge_id' | routeSegmentEqualsTo)">
+    <form class="formulario">
+      <input type="text" id="name" placeholder="Name" class="cuadro-texto" ng-model="editChallenge.name" required>
+      <input type="text" id="bonus" placeholder="Bonus" class="cuadro-texto" ng-model="editChallenge.bonus" required>
+      <input type="text" id="minMax" placeholder="Min. Time" class="cuadro-texto" ng-model="editChallenge.minMax" required>
+      <input type="text" id="maxMin" placeholder="Max. Time" class="cuadro-texto" ng-model="editChallenge.maxMin" required>
 
-          <div class="post-tabs-container">
+      <hr class="space-new-route">
 
-            <div class="post-tab" ng-click="showUrlVideo[$index] = !showUrlVideo[$index]">
-              <span>Youtube Video</span>
-            </div>
+      <div class="post-tabs-container">
 
-            <div class="post-tab" ng-click="showUploadVideo[$index] = !showUploadVideo[$index]">
-              <span>Upload Video</span>
-            </div>
-          </div>
-          <input type="url" id="url" placeholder="Youtube URL" class="cuadro-texto" ng-model="newChallenge.video" ng-show="showUrlVideo[$index] === true" required>
-          <input type="url" id="ruta" placeholder="Upload Video" class="cuadro-texto" ng-model="newChallenge.video" ng-show="showUploadVideo[$index] === true" required>
-          <br>
-          <div class="new-challenge-video">
-            <iframe width="100%" height="100%" src="{{video}}"  >
+        <div class="post-tab" ng-click="showUrlVideo[$index] = !showUrlVideo[$index]">
+          <span>Youtube Video</span>
+        </div>
 
-            </iframe>
-          </div>
-
-
-          <div class="buton-route" ng-click="newChallenge.save()">
-            <div class="save-new-route">Save New Route</div>
-          </div>
-        </form>
-
-
+        <div class="post-tab" ng-click="showUploadVideo[$index] = !showUploadVideo[$index]">
+          <span>Upload Video</span>
+        </div>
+      </div>
+      <input type="text" id="video" placeholder="Youtube URL" class="cuadro-texto" ng-model="editChallenge.video" ng-show="showUrlVideo[$index] === true" required>
+      <input type="text" id="video" placeholder="Upload Video" class="cuadro-texto" ng-model="editChallenge.video" ng-show="showUploadVideo[$index] === true" required>
+      <br>
+      <div class="new-challenge-video">
+        <iframe width="100%" height="100%" src="https://www.youtube.com/embed/tgbNymZ7vqY">
+        </iframe>
 
       </div>
 
-      <!--Edit challenge-->
-      <div class="new-route-form" ng-show="('challenges.edit_challenge.challenge_id' | routeSegmentEqualsTo)">
-        <form class="formulario">
-          <input type="text" id="name" placeholder="Name" class="cuadro-texto" ng-model="editChallenge.name" required>
-          <input type="text" id="bonus" placeholder="Bonus" class="cuadro-texto" ng-model="editChallenge.bonus" required>
-          <input type="text" id="minMax" placeholder="Min. Time" class="cuadro-texto" ng-model="editChallenge.minMax" required>
-          <input type="text" id="maxMin" placeholder="Max. Time" class="cuadro-texto" ng-model="editChallenge.maxMin" required>
 
-          <hr class="space-new-route">
-
-          <div class="post-tabs-container">
-
-            <div class="post-tab" ng-click="showUrlVideo[$index] = !showUrlVideo[$index]">
-              <span>Youtube Video</span>
-            </div>
-
-            <div class="post-tab" ng-click="showUploadVideo[$index] = !showUploadVideo[$index]">
-              <span>Upload Video</span>
-            </div>
-          </div>
-          <input type="text" id="video" placeholder="Youtube URL" class="cuadro-texto" ng-model="editChallenge.video" ng-show="showUrlVideo[$index] === true" required>
-          <input type="text" id="video" placeholder="Upload Video" class="cuadro-texto" ng-model="editChallenge.video" ng-show="showUploadVideo[$index] === true" required>
-          <br>
-          <div class="new-challenge-video">
-            <iframe width="100%" height="100%" src="https://www.youtube.com/embed/tgbNymZ7vqY">
-            </iframe>
-
-          </div>
-
-
-          <div class="buton-route" ng-click="editChallenge.editChallenge($index)">
-            <div class="save-new-route">Save New Route</div>
-          </div>
-        </form>
-
+      <div class="buton-route" ng-click="editChallenge.editChallenge($index)">
+        <div class="save-new-route">Save New Route</div>
       </div>
+    </form>
 
-    </div>
+  </div>
 
 </div>
-</div>
-

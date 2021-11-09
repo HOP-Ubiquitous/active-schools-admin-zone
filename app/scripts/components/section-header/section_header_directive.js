@@ -7,6 +7,7 @@ app.directive('sectionHeader', function () {
       icon: '@',
       showClose: '@',
       closeFunction: '&',
+      showSearchInput: '='
     },
     controller: 'sectionHeaderCtrl',
     controllerAs: 'sectionHeader',

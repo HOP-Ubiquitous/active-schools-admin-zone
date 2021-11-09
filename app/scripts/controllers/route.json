@@ -1,0 +1,1149 @@
+{
+  type: "FeatureCollection",
+  features: [
+    {
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -9.23042,
+          38.74357
+        ]
+      },
+      "type": "Feature",
+      "properties": {
+        "instruction": "Head east"
+      }
+    },
+    {
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -9.22985,
+          38.74344
+        ]
+      },
+      "type": "Feature",
+      "properties": {
+        "instruction": "Merge left onto IC 19"
+      }
+    },
+    {
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -9.20108,
+          38.74064
+        ]
+      },
+      "type": "Feature",
+      "properties": {
+        "instruction": "Continue onto Avenida Eusébio da Silva Ferreira/2ª Circular"
+      }
+    },
+    {
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -9.19829,
+          38.74238
+        ]
+      },
+      "type": "Feature",
+      "properties": {
+        "instruction": "Keep right onto Avenida General Correia Barreto/Radial de Benfica"
+      }
+    },
+    {
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -9.17345,
+          38.73857
+        ]
+      },
+      "type": "Feature",
+      "properties": {
+        "instruction": "Continue onto Radial de Benfica"
+      }
+    },
+    {
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -9.17103,
+          38.73668
+        ]
+      },
+      "type": "Feature",
+      "properties": {
+        "instruction": "Merge left onto Eixo Norte-Sul (IP 7)"
+      }
+    },
+    {
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -9.17353,
+          38.72525
+        ]
+      },
+      "type": "Feature",
+      "properties": {
+        "instruction": "Continue onto Autoestrada do Sul (A 2)"
+      }
+    },
+    {
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -9.01527,
+          38.57883
+        ]
+      },
+      "type": "Feature",
+      "properties": {
+        "instruction": "Merge right"
+      }
+    },
+    {
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -9.01148,
+          38.57931
+        ]
+      },
+      "type": "Feature",
+      "properties": {
+        "instruction": "Continue onto Autoestrada do Sul (A 2)"
+      }
+    },
+    {
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -8.65309,
+          38.60247
+        ]
+      },
+      "type": "Feature",
+      "properties": {
+        "instruction": "Take the ramp towards A 6: Espanha"
+      }
+    },
+    {
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -8.64436,
+          38.60489
+        ]
+      },
+      "type": "Feature",
+      "properties": {
+        "instruction": "Continue towards Espanha"
+      }
+    },
+    {
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -7.03573,
+          38.88289
+        ]
+      },
+      "type": "Feature",
+      "properties": {
+        "instruction": "Continue onto Autovía del Suroeste (A-5)"
+      }
+    },
+    {
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -6.06974,
+          39.03358
+        ]
+      },
+      "type": "Feature",
+      "properties": {
+        "instruction": "Take the ramp towards EX-206: Santa Amalia"
+      }
+    },
+    {
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -6.06642,
+          39.0351
+        ]
+      },
+      "type": "Feature",
+      "properties": {
+        "instruction": "Turn right onto Carretera de Cáceres a Villanueva de la Serena (EX-206)"
+      }
+    },
+    {
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -6.02671,
+          39.02213
+        ]
+      },
+      "type": "Feature",
+      "properties": {
+        "instruction": "Continue straight to stay on Carretera de Cáceres a Villanueva de la Serena (EX-206)"
+      }
+    },
+    {
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -6.01745,
+          39.01846
+        ]
+      },
+      "type": "Feature",
+      "properties": {
+        "instruction": "Continue onto Calle Guardia Civil (EX-206)"
+      }
+    },
+    {
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -6.01093,
+          39.01355
+        ]
+      },
+      "type": "Feature",
+      "properties": {
+        "instruction": "Continue onto Calle Constitución (EX-206)"
+      }
+    },
+    {
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -6.00935,
+          39.0104
+        ]
+      },
+      "type": "Feature",
+      "properties": {
+        "instruction": "Keep left onto Calle Hernán Cortés (EX-206)"
+      }
+    },
+    {
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -6.0072,
+          39.00863
+        ]
+      },
+      "type": "Feature",
+      "properties": {
+        "instruction": "Enter the traffic circle and take the 3rd exit onto Calle Hernán Cortés (EX-206)"
+      }
+    },
+    {
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -6.00699,
+          39.00848
+        ]
+      },
+      "type": "Feature",
+      "properties": {
+        "instruction": "Exit the traffic circle onto Calle Hernán Cortés (EX-206)"
+      }
+    },
+    {
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -6.00586,
+          39.00753
+        ]
+      },
+      "type": "Feature",
+      "properties": {
+        "instruction": "Take the ramp on the right onto Enlace N-430"
+      }
+    },
+    {
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -6.00576,
+          39.00705
+        ]
+      },
+      "type": "Feature",
+      "properties": {
+        "instruction": "Turn left onto Carretera Nacional de Badajoz a Valencia por Almansa (N-430)"
+      }
+    },
+    {
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -5.93482,
+          39.02416
+        ]
+      },
+      "type": "Feature",
+      "properties": {
+        "instruction": "Go straight onto Carretera de Santa Amalia a Ciudad Real (N-430)"
+      }
+    },
+    {
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -5.87196,
+          39.03068
+        ]
+      },
+      "type": "Feature",
+      "properties": {
+        "instruction": "Enter the traffic circle and take the 3rd exit onto Carretera de Santa Amalia a Ciudad Real (N-430)"
+      }
+    },
+    {
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -5.8702,
+          39.03072
+        ]
+      },
+      "type": "Feature",
+      "properties": {
+        "instruction": "Exit the traffic circle onto Carretera de Santa Amalia a Ciudad Real (N-430)"
+      }
+    },
+    {
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -4.62389,
+          39.08623
+        ]
+      },
+      "type": "Feature",
+      "properties": {
+        "instruction": "Continue onto Avenida Castilla la Mancha (N-430)"
+      }
+    },
+    {
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -4.61302,
+          39.08264
+        ]
+      },
+      "type": "Feature",
+      "properties": {
+        "instruction": "Continue onto Carretera de Santa Amalia a Ciudad Real (N-430)"
+      }
+    },
+    {
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -4.28724,
+          38.98636
+        ]
+      },
+      "type": "Feature",
+      "properties": {
+        "instruction": "Make a slight right to stay on Carretera de Santa Amalia a Ciudad Real (N-430)"
+      }
+    },
+    {
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -4.18775,
+          39.0285
+        ]
+      },
+      "type": "Feature",
+      "properties": {
+        "instruction": "Enter the traffic circle and take the 1st exit onto Carretera de Santa Amalia a Ciudad Real (N-430)"
+      }
+    },
+    {
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -4.18758,
+          39.02877
+        ]
+      },
+      "type": "Feature",
+      "properties": {
+        "instruction": "Exit the traffic circle onto Carretera de Santa Amalia a Ciudad Real (N-430)"
+      }
+    },
+    {
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -4.17065,
+          39.03384
+        ]
+      },
+      "type": "Feature",
+      "properties": {
+        "instruction": "Enter the traffic circle and take the 1st exit onto Carretera de Santa Amalia a Ciudad Real (N-430)"
+      }
+    },
+    {
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -4.17048,
+          39.03383
+        ]
+      },
+      "type": "Feature",
+      "properties": {
+        "instruction": "Exit the traffic circle onto Carretera de Santa Amalia a Ciudad Real (N-430)"
+      }
+    },
+    {
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -3.95963,
+          38.97421
+        ]
+      },
+      "type": "Feature",
+      "properties": {
+        "instruction": "Enter the traffic circle and take the 1st exit onto Carretera de Santa Amalia a Ciudad Real (N-430)"
+      }
+    },
+    {
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -3.9593,
+          38.97422
+        ]
+      },
+      "type": "Feature",
+      "properties": {
+        "instruction": "Exit the traffic circle onto Carretera de Santa Amalia a Ciudad Real (N-430)"
+      }
+    },
+    {
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -3.94896,
+          38.97595
+        ]
+      },
+      "type": "Feature",
+      "properties": {
+        "instruction": "Continue onto Carretera de Piedrabuena (N-430)"
+      }
+    },
+    {
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -3.94147,
+          38.9771
+        ]
+      },
+      "type": "Feature",
+      "properties": {
+        "instruction": "Make a slight right onto Carretera de Santa Amalia a Ciudad Real (N-430)"
+      }
+    },
+    {
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -3.94117,
+          38.97708
+        ]
+      },
+      "type": "Feature",
+      "properties": {
+        "instruction": "Enter the traffic circle and take the 2nd exit onto Calle de las Magnolias (N-430)"
+      }
+    },
+    {
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -3.941,
+          38.97698
+        ]
+      },
+      "type": "Feature",
+      "properties": {
+        "instruction": "Exit the traffic circle onto Calle de las Magnolias (N-430)"
+      }
+    },
+    {
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -3.93939,
+          38.97468
+        ]
+      },
+      "type": "Feature",
+      "properties": {
+        "instruction": "Enter the traffic circle and take the 2nd exit onto Avenida de los Reyes Católicos"
+      }
+    },
+    {
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -3.93899,
+          38.9744
+        ]
+      },
+      "type": "Feature",
+      "properties": {
+        "instruction": "Exit the traffic circle onto Avenida de los Reyes Católicos"
+      }
+    },
+    {
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -3.93611,
+          38.97286
+        ]
+      },
+      "type": "Feature",
+      "properties": {
+        "instruction": "Enter the traffic circle and take the 2nd exit onto Avenida de los Reyes Católicos"
+      }
+    },
+    {
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -3.93556,
+          38.97272
+        ]
+      },
+      "type": "Feature",
+      "properties": {
+        "instruction": "Exit the traffic circle onto Avenida de los Reyes Católicos"
+      }
+    },
+    {
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -3.93187,
+          38.97279
+        ]
+      },
+      "type": "Feature",
+      "properties": {
+        "instruction": "Enter the traffic circle and take the 1st exit onto Avenida de los Reyes Católicos"
+      }
+    },
+    {
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -3.93104,
+          38.97285
+        ]
+      },
+      "type": "Feature",
+      "properties": {
+        "instruction": "Exit the traffic circle onto Avenida de los Reyes Católicos"
+      }
+    },
+    {
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -3.92678,
+          38.97316
+        ]
+      },
+      "type": "Feature",
+      "properties": {
+        "instruction": "Enter the traffic circle and take the 1st exit onto Carretera de Fuensanta (CM-412)"
+      }
+    },
+    {
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -3.92639,
+          38.97307
+        ]
+      },
+      "type": "Feature",
+      "properties": {
+        "instruction": "Exit the traffic circle onto Carretera de Fuensanta (CM-412)"
+      }
+    },
+    {
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -3.92448,
+          38.96827
+        ]
+      },
+      "type": "Feature",
+      "properties": {
+        "instruction": "Enter the traffic circle and take the 2nd exit"
+      }
+    },
+    {
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -3.92428,
+          38.96768
+        ]
+      },
+      "type": "Feature",
+      "properties": {
+        "instruction": "Exit the traffic circle"
+      }
+    },
+    {
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -3.92409,
+          38.96741
+        ]
+      },
+      "type": "Feature",
+      "properties": {
+        "instruction": "Go straight onto Calle Obispo Rafael Torija"
+      }
+    },
+    {
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -3.92336,
+          38.96444
+        ]
+      },
+      "type": "Feature",
+      "properties": {
+        "instruction": "Enter the traffic circle and take the 2nd exit"
+      }
+    },
+    {
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -3.92324,
+          38.96405
+        ]
+      },
+      "type": "Feature",
+      "properties": {
+        "instruction": "Exit the traffic circle"
+      }
+    },
+    {
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -3.92274,
+          38.96317
+        ]
+      },
+      "type": "Feature",
+      "properties": {
+        "instruction": "Make a slight right"
+      }
+    },
+    {
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -3.9228,
+          38.9628
+        ]
+      },
+      "type": "Feature",
+      "properties": {
+        "instruction": "Enter the traffic circle and take the 2nd exit"
+      }
+    },
+    {
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -3.92218,
+          38.96271
+        ]
+      },
+      "type": "Feature",
+      "properties": {
+        "instruction": "Exit the traffic circle"
+      }
+    },
+    {
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -3.91781,
+          38.96406
+        ]
+      },
+      "type": "Feature",
+      "properties": {
+        "instruction": "Merge left onto Autovía Ciudad Real - Puertollano (A-41)"
+      }
+    },
+    {
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -3.91241,
+          38.96911
+        ]
+      },
+      "type": "Feature",
+      "properties": {
+        "instruction": "Continue onto Autovía Extremadura - Comunidad Valenciana (A-43)"
+      }
+    },
+    {
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -3.90986,
+          38.97699
+        ]
+      },
+      "type": "Feature",
+      "properties": {
+        "instruction": "Continue onto A-43"
+      }
+    },
+    {
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -3.90885,
+          38.9781
+        ]
+      },
+      "type": "Feature",
+      "properties": {
+        "instruction": "Keep left onto A-43"
+      }
+    },
+    {
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -2.74697,
+          39.18069
+        ]
+      },
+      "type": "Feature",
+      "properties": {
+        "instruction": "Continue onto Autovia Extremadura-Comunidad Valenciana (A-43)"
+      }
+    },
+    {
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -2.46277,
+          39.32373
+        ]
+      },
+      "type": "Feature",
+      "properties": {
+        "instruction": "Take the ramp towards N-301: Ocaña"
+      }
+    },
+    {
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -2.46007,
+          39.32672
+        ]
+      },
+      "type": "Feature",
+      "properties": {
+        "instruction": "Keep right onto A-43"
+      }
+    },
+    {
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -2.45588,
+          39.32812
+        ]
+      },
+      "type": "Feature",
+      "properties": {
+        "instruction": "Merge left onto N-301"
+      }
+    },
+    {
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -2.1756,
+          39.21401
+        ]
+      },
+      "type": "Feature",
+      "properties": {
+        "instruction": "Take the ramp onto N-301"
+      }
+    },
+    {
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -2.16883,
+          39.21354
+        ]
+      },
+      "type": "Feature",
+      "properties": {
+        "instruction": "Merge right onto A-31"
+      }
+    },
+    {
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -1.81831,
+          38.97456
+        ]
+      },
+      "type": "Feature",
+      "properties": {
+        "instruction": "Keep left onto Autovía de Alicante (A-31)"
+      }
+    },
+    {
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -0.82699,
+          38.5577
+        ]
+      },
+      "type": "Feature",
+      "properties": {
+        "instruction": "Keep right onto Autovía Sax-Castalla (CV-80)"
+      }
+    },
+    {
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -0.64066,
+          38.59591
+        ]
+      },
+      "type": "Feature",
+      "properties": {
+        "instruction": "Keep right at the fork"
+      }
+    },
+    {
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -0.64078,
+          38.59093
+        ]
+      },
+      "type": "Feature",
+      "properties": {
+        "instruction": "Merge left onto Autovía del Mediterráneo (A-7)"
+      }
+    },
+    {
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -0.54935,
+          38.42977
+        ]
+      },
+      "type": "Feature",
+      "properties": {
+        "instruction": "Take the ramp towards 491: Sant Vicent del Raspeig"
+      }
+    },
+    {
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -0.54824,
+          38.42789
+        ]
+      },
+      "type": "Feature",
+      "properties": {
+        "instruction": "Keep right at the fork"
+      }
+    },
+    {
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -0.55211,
+          38.42723
+        ]
+      },
+      "type": "Feature",
+      "properties": {
+        "instruction": "Keep right at the fork"
+      }
+    },
+    {
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -0.55011,
+          38.43134
+        ]
+      },
+      "type": "Feature",
+      "properties": {
+        "instruction": "Merge left onto Autopista del Mediterráneo (AP-7)"
+      }
+    },
+    {
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -0.4537,
+          38.4376
+        ]
+      },
+      "type": "Feature",
+      "properties": {
+        "instruction": "Keep left onto Autopista del Mediterráneo (AP-7)"
+      }
+    },
+    {
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -0.13351,
+          38.55638
+        ]
+      },
+      "type": "Feature",
+      "properties": {
+        "instruction": "Take the ramp towards N-332: Benidorm (levante)"
+      }
+    },
+    {
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -0.12717,
+          38.5554
+        ]
+      },
+      "type": "Feature",
+      "properties": {
+        "instruction": "Keep left at the fork"
+      }
+    },
+    {
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -0.12418,
+          38.55135
+        ]
+      },
+      "type": "Feature",
+      "properties": {
+        "instruction": "Enter the traffic circle and take the 2nd exit onto Avinguda de la Comunitat Europea"
+      }
+    },
+    {
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -0.12375,
+          38.5509
+        ]
+      },
+      "type": "Feature",
+      "properties": {
+        "instruction": "Exit the traffic circle onto Avinguda de la Comunitat Europea"
+      }
+    },
+    {
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -0.12046,
+          38.54412
+        ]
+      },
+      "type": "Feature",
+      "properties": {
+        "instruction": "Enter Glorieta de la Séquia Mare and take the 2nd exit onto Avinguda d'Europa"
+      }
+    },
+    {
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -0.12038,
+          38.5435
+        ]
+      },
+      "type": "Feature",
+      "properties": {
+        "instruction": "Exit the traffic circle onto Avinguda d'Europa"
+      }
+    },
+    {
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -0.12035,
+          38.53703
+        ]
+      },
+      "type": "Feature",
+      "properties": {
+        "instruction": "Enter the traffic circle and take the 1st exit"
+      }
+    },
+    {
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -0.12041,
+          38.53695
+        ]
+      },
+      "type": "Feature",
+      "properties": {
+        "instruction": "Exit the traffic circle"
+      }
+    },
+    {
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -0.12591,
+          38.53723
+        ]
+      },
+      "type": "Feature",
+      "properties": {
+        "instruction": "Enter the traffic circle and take the 3rd exit onto Carrer del Doctor Pérez Llorca"
+      }
+    },
+    {
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -0.1261,
+          38.53721
+        ]
+      },
+      "type": "Feature",
+      "properties": {
+        "instruction": "Exit the traffic circle onto Carrer del Doctor Pérez Llorca"
+      }
+    },
+    {
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -0.12683,
+          38.53682
+        ]
+      },
+      "type": "Feature",
+      "properties": {
+        "instruction": "Continue left onto Carrer de València"
+      }
+    },
+    {
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -0.12643,
+          38.53565
+        ]
+      },
+      "type": "Feature",
+      "properties": {
+        "instruction": "Turn right onto Avinguda d'Alcoi - Avenida de Alcoy"
+      }
+    },
+    {
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -0.12792,
+          38.53534
+        ]
+      },
+      "type": "Feature",
+      "properties": {
+        "instruction": "Continue onto Avinguda de la Mare de Déu del Sofratge"
+      }
+    },
+    {
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -0.12955,
+          38.53542
+        ]
+      },
+      "type": "Feature",
+      "properties": {
+        "instruction": "Turn left onto Carrer del metge Pérez Martorell"
+      }
+    },
+    {
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -0.13072,
+          38.53432
+        ]
+      },
+      "type": "Feature",
+      "properties": {
+        "instruction": "You have arrived at your destination, straight ahead"
+      }
+    }
+  ]
+}

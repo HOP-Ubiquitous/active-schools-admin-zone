@@ -4,9 +4,29 @@
 
   <div class="main-container">
 
-    <section-header title="Routes" icon="fas fa-route"></section-header>
+    <section-header ng-show="('routes' | routeSegmentEqualsTo)"
+                    title="Routes"
+                    icon="fas fa-route"
+                    show-search-input="true">
+    </section-header>
 
-    <div class="main-container-inner">
+    <section-header ng-show="('routes.new_route' | routeSegmentEqualsTo)"
+                    title="Routes - New Route"
+                    icon="fas fa-route"
+                    show-search-input="false"
+                    show-close="true"
+                    close-function="routes.goToRoutes()">
+    </section-header>
+
+    <section-header ng-show="('routes.edit_route.route_id' | routeSegmentEqualsTo)"
+                    title="Routes - Edit Route"
+                    icon="fas fa-route"
+                    show-search-input="false"
+                    show-close="true"
+                    close-function="routes.goToRoutes()">
+    </section-header>
+
+    <div class="main-container-inner" ng-show="('routes' | routeSegmentEqualsTo)">
 
       <table class="tabla">
         <thead>
@@ -39,7 +59,9 @@
               <i class="fas fa-trash-alt logo2"></i>
             </div>
             <!--ng-click="showOptions[$index] = !showOptions[$index]"-->
-            <div class="rombo-table-see" ng-click="showChallenges[$index] = !showChallenges[$index]">
+            <div class="rombo-table-see"
+                 ng-class="{ 'rombo-table-see-selected' : showChallenges[$index] === true }"
+                 ng-click="showChallenges[$index] = !showChallenges[$index]">
               <i class="fas fa-eye logo3"></i>
             </div>
 
@@ -84,9 +106,14 @@
 
     </div>
 
+    <div app-view-segment="1" ng-show="('routes.new_route' | routeSegmentEqualsTo)"></div>
+
+    <div app-view-segment="2" ng-show="('routes.edit_route.route_id' | routeSegmentEqualsTo)"></div>
+
     <new-button icon="fas fa-plus"
                 title="New Route"
-                button-function="routes.goToNewRoute()">
+                button-function="routes.goToNewRoute()"
+                ng-hide="('routes.new_route' | routeSegmentEqualsTo)">
     </new-button>
 
     <input id="deleteId" type="hidden" value="12"/>
