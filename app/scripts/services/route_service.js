@@ -7,10 +7,27 @@
  * # AboutCtrl
  * Controller of the activeSchoolsAdminZoneApp
  */
- app.service('routeService', ['routeServiceApi', 'routeServiceData', '$location', 'cookies', 'timeout', '$q', function(routeServiceApi, routeServiceData, $location, $cookies, $timeout, $q){
+ app.service('routeService', ['routeServiceApi', 'routeServiceData', '$location', '$q',
+   function(routeServiceApi, routeServiceData, $location, $q){
 
   var service = this;
-  service.routeLoaded = false;
+  service.routesLoaded = false;
+
+  service.getRoutes = function () {
+
+    var deferred = $q.defer();
+    var promise = deferred.promise;
+
+    routeServiceApi.get_routes().then(function (response) {
+      service.routesLoaded = true;
+      routeServiceData.routeList = response.data;
+      console.log('\x1b[32m%s\x1b[0m', 'Rutas cargadas con éxtito! :)');
+    }).catch(function (error) {
+      console.log('\x1b[31m%s\x1b[0m', 'Error al cargar las rutas! :_(');
+    });
+
+    return promise;
+  };
 
   service.addroute = function (coment){
     var deferred = $q.defer();
@@ -52,11 +69,6 @@
 
     return promise;
   }
-
-
-            vm.routeServiceData = routeServiceData;
-             vm.routes = vm.routeServiceData;
-             console.log(vm.routes);
 
 
 }]);

@@ -40,15 +40,15 @@
           <th>Options</th>
         </tr>
         </thead>
-        <tbody ng-repeat="route in routes.routes">
+        <tbody ng-repeat="route in routes.routes track by $index">
         <tr>
 
           <td>{{route.date | date : 'dd/MM/yyyy'}}</td>
-          <td>{{route.name}}</td>
+          <td class="bold">{{route.name}}</td>
           <td>{{route.city}}</td>
           <td>{{route.province}}</td>
           <td>{{route.country}}</td>
-          <td>{{route.challenges}}</td>
+          <td>{{route.challenges.length}}</td>
           <td class="option">
 
             <div class="rombo-table-write" ng-click="routes.editRoute(route.id)">

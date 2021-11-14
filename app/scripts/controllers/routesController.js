@@ -8,8 +8,18 @@
  * Controller of the activeSchoolsAdminZoneApp
  */
 angular.module('activeSchoolsAdminZoneApp')
-  .controller('routesCtrl', ['$location', 'routeServiceData', '$routeParams', 'challengeServiceData',  function ($location, routeServiceData, $routeParams, challengeServiceData) {
+  .controller('routesCtrl', ['$scope', '$location', 'routeService', 'routeServiceData', '$routeParams', 'challengeServiceData',
+    function ($scope, $location, routeService, routeServiceData, $routeParams, challengeServiceData) {
+
     var vm = this;
+
+    vm.routes = [];
+
+    routeService.getRoutes();
+
+    function getRoutes () {
+      vm.routes = routeServiceData.routeList;
+    }
 
     vm.goToNewRoute = function() {
       $location.path('routes/new_route');
@@ -68,24 +78,33 @@ angular.module('activeSchoolsAdminZoneApp')
       vm.delete = ! vm.delete;
       vm.deleteIndex = status;
 
+    };
+
+    function initWatchers() {
+
+      vm.routeWatcher = $scope.$watch(
+        function () {
+          return routeService.routesLoaded;
+        }, function (newValue) {
+          if (newValue === true) {
+            getRoutes();
+            routeService.routesLoaded = false;
+          }
+        }
+      );
+
     }
 
-    /*vm.borrar = function(id){
-      var pop = this.mostrarPopUp(undefined);
-      debugger;
-      if(pop != undefined && pop){
-        vm.routeServiceData.deleteRow(i);
-      }
-    }*/
+    initWatchers();
 
 
 
 
 
 
-    vm.routeServiceData = routeServiceData;
-    vm.routes = vm.routeServiceData;
-    console.log(vm.routes);
+    // vm.routeServiceData = routeServiceData;
+    // vm.routes = vm.routeServiceData;
+    // console.log(vm.routes);
 
     vm.challengeServiceData = challengeServiceData;
     vm.challenges = vm.challengeServiceData;

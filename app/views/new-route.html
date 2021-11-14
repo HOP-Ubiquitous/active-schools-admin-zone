@@ -6,125 +6,131 @@
   </div>
 
   <!--Formulario new-route-->
-  <div class="new-route-form" ng-show="('routes.new_route' | routeSegmentEqualsTo)">
-    <form method="POST" class="formulario" name="user">
-      <input type="text" id="name" placeholder="Name" class="cuadro-texto" ng-model="newRoute.name" required>
-      <input type="text" id="city" placeholder="City" class="cuadro-texto" ng-model="newRoute.city" required>
-      <input type="text" id="province" placeholder="Province" class="cuadro-texto" ng-model="newRoute.province" required>
-      <input type="text" id="country" placeholder="Country" class="cuadro-texto" ng-model="newRoute.country" required>
+
+  <div class="new-route-form" ng-show="('routes.new_route' | routeSegmentEqualsTo) || ('routes.edit_route.route_id' | routeSegmentEqualsTo)">
+
+    <form>
+
+      <input type="text" placeholder="Name"
+             class="input-text"
+             ng-model="newRoute.name"
+             ng-show="('routes.new_route' | routeSegmentEqualsTo)"
+             required>
+      <input type="text"
+             placeholder="Name"
+             class="input-text"
+             ng-model="editRoute.name"
+             ng-show="('routes.edit_route.route_id' | routeSegmentEqualsTo)"
+             required>
+
+      <input type="text"
+             placeholder="City"
+             class="input-text"
+             ng-model="newRoute.city"
+             ng-show="('routes.new_route' | routeSegmentEqualsTo)"
+             required>
+      <input type="text"
+             placeholder="City"
+             class="input-text"
+             ng-model="editRoute.name"
+             ng-show="('routes.edit_route.route_id' | routeSegmentEqualsTo)"
+             required>
+
+      <input type="text"
+             placeholder="Province"
+             class="input-text"
+             ng-model="newRoute.province"
+             ng-show="('routes.new_route' | routeSegmentEqualsTo)"
+             required>
+      <input type="text"
+             placeholder="Province"
+             class="input-text"
+             ng-model="editRoute.name"
+             ng-show="('routes.edit_route.route_id' | routeSegmentEqualsTo)"
+             required>
+
+      <input type="text"
+             placeholder="Country"
+             class="input-text"
+             ng-model="newRoute.country"
+             ng-show="('routes.new_route' | routeSegmentEqualsTo)"
+             required>
+      <input type="text"
+             placeholder="Country"
+             class="input-text"
+             ng-model="editRoute.name"
+             ng-show="('routes.edit_route.route_id' | routeSegmentEqualsTo)"
+             required>
+
       <hr class="space-new-route">
 
       <div class="dropdown-challenge" ng-click="(showOptions = !showOptions)">
         <span class="span-add-challenge">Add challenge</span>
-        <div class="rombo-select" >
+        <div class="rombo-select">
           <span class="fas fa-chevron-down"></span>
         </div>
       </div>
 
       <div class="dropdown-challenge-container" ng-show="showOptions">
-        <div class="dropdown-option" ng-repeat="challenge in newRoute.challenges">
 
-          <div class="dropdown-option-left">
+        <div class="dropdown-option"
+             ng-show="('routes.new_route' | routeSegmentEqualsTo)"
+             ng-repeat="challenge in newRoute.challenges">
+
+          <div class="dropdown-option-left" ng-click="newRoute.addChallenge(challenge.id)">
             <span>{{challenge.name}}</span>
           </div>
 
           <div class="drodown-option-right">
 
             <div class="rombo-table-write" ng-click="newRoute.editChallenge(challenge.id)">
-              <i class="fas fa-edit logo-write-newChallenge"></i>
+              <i class="fas fa-edit"></i>
             </div>
 
-            <div class="rombo-table-delete" ng-click="newRoute.deleteChallenge(challenge.id)">
-              <i class="fas fa-trash-alt logo-delete-newChallenge"></i>
+            <div class="rombo-table-see" ng-click="newRoute.addChallenge(challenge.id)">
+              <i class="fas fa-plus"></i>
             </div>
 
           </div>
 
         </div>
+
+        <div class="dropdown-option"
+             ng-show="('routes.edit_route.route_id' | routeSegmentEqualsTo)"
+             ng-repeat="challenge in editRoute.challenges">
+
+          <div class="dropdown-option-left" ng-click="editRoute.addChallenge(challenge.id)">
+            <span>{{challenge.name}}</span>
+          </div>
+
+          <div class="drodown-option-right">
+
+            <div class="rombo-table-write" ng-click="editRoute.editChallenge(challenge.id)">
+              <i class="fas fa-edit"></i>
+            </div>
+
+            <div class="rombo-table-see" ng-click="editRoute.addChallenge(challenge.id)">
+              <i class="fas fa-plus"></i>
+            </div>
+
+          </div>
+
+        </div>
+
       </div>
 
-      <!--<div class="select-options" ng-show="showOptions" id="challenges">-->
-
-        <!--<table class="table-options">-->
-          <!--<tbody ng-repeat="challenge in newRoute.challenges">-->
-          <!--&lt;!&ndash;&ndash;&gt;-->
-          <!--<tr >-->
-
-            <!--<td class="boton-color" ng-click="newRoute.saveChallenge(challenge.name)" >{{challenge.name}}</td>-->
-            <!---->
-            <!--<td class="option-newRoute">-->
-
-              <!--<div class="rombo-table-write" ng-click="newRoute.editRoute(challenge.id)">-->
-                <!--<i class="fas fa-edit logo-write-newChallenge"></i>-->
-              <!--</div>-->
-
-              <!--<div class="rombo-table-delete" ng-click="newRoute.mostrarPopUp($index)">-->
-                <!--<i class="fas fa-trash-alt logo-delete-newChallenge"></i>-->
-              <!--</div>-->
-
-
-            <!--</td>-->
-          <!--</tr>-->
-          <!--</tbody>-->
-        <!--</table>-->
-
-      <!--</div>-->
-
-      <div class="button-form" ng-click="newRoute.save()">
+      <div class="button-form"
+           ng-show="('routes.new_route' | routeSegmentEqualsTo)"
+           ng-click="newRoute.save()">
         <span>Save New Route</span>
       </div>
 
-    </form>
-
-  </div>
-
-  <!--Formulario edit-route-->
-  <div class="new-route-form" ng-show="('routes.edit_route.route_id' | routeSegmentEqualsTo)">
-    <form method="POST" class="formulario" name="user">
-      <input type="text" id="name" placeholder="Name" class="cuadro-texto" ng-model="editRoute.name" required>
-      <input type="text" id="city" placeholder="City" class="cuadro-texto" ng-model="editRoute.city" required>
-      <input type="text" id="province" placeholder="Province" class="cuadro-texto" ng-model="editRoute.province" required>
-      <input type="text" id="country" placeholder="Country" class="cuadro-texto" ng-model="editRoute.country" required>
-      <hr class="space-new-route">
-      <div class="layer-select">
-        <div class="select" ng-click="showOptions = !showOptions">
-          <span class="span-add-challenge">Add challenge</span>
-          <div class="rombo-select" >
-            <i class="fas fa-chevron-down image-rombo-select"></i>
-          </div>
-        </div>
+      <div class="button-form"
+           ng-show="('routes.edit_route.route_id' | routeSegmentEqualsTo)"
+           ng-click="editRoute.edit()">
+        <span>Edit Route</span>
       </div>
 
-      <div class="select-options" ng-show="showOptions" id="challenges">
-
-        <table class="table-options">
-          <tbody ng-repeat="editRoutes in editRoute.challenges">
-          <tr>
-
-            <td class="boton-color" ng-click="editRoute.saveChallenge(editRoutes.name)">{{editRoutes.name}}</td>
-            <td class="option-newRoute">
-
-              <div class="rombo-table-write" ng-click="editRoute.editRoute($index)">
-                <i class="fas fa-edit logo-write-newChallenge"></i>
-              </div>
-
-              <div class="rombo-table-delete" ng-click="editRoute.deleteRow($index)">
-                <i class="fas fa-trash-alt logo-delete-newChallenge"></i>
-              </div>
-
-
-
-
-            </td>
-          </tr>
-          </tbody>
-        </table>
-
-      </div>
-
-      <div class="buton-route" ng-click="editRoute.editRoute()">
-        <div class="save-new-route">Save New Route</div>
-      </div>
     </form>
 
   </div>

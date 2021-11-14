@@ -24,6 +24,10 @@ a, a:hover {
   text-decoration: none;
 }
 
+.bold {
+  font-weight: 700;
+}
+
 .login-container{
   width: 100vw;
   height: 100vh;
@@ -47,9 +51,9 @@ a, a:hover {
 
 .text-container{
   text-align: center;
-  width: 449px;
+  width: 450px;
   height: auto;
-  background-color: white;
+  background-color: #fff;
   margin: auto;
   padding-top: 20px;
   z-index: 1;
@@ -553,6 +557,7 @@ table tbody:nth-child(odd) tr{
   background: var(--blue);
   clip-path: polygon(50% 0%, 100% 50%, 50% 100%, 0% 50%);
   margin: 0 5px;
+  text-align: center;
   transition: 0.3s ease all;
 }
 
@@ -566,6 +571,7 @@ table tbody:nth-child(odd) tr{
   background: var(--red);
   clip-path: polygon(50% 0%, 100% 50%, 50% 100%, 0% 50%);
   margin: 0 5px;
+  text-align: center;
   transition: 0.3s ease all;
 }
 
@@ -579,6 +585,7 @@ table tbody:nth-child(odd) tr{
   background: var(--green);
   clip-path: polygon(50% 0%, 100% 50%, 50% 100%, 0% 50%);
   margin: 0 5px;
+  text-align: center;
   transition: 0.3s ease all;
 }
 
@@ -587,7 +594,7 @@ table tbody:nth-child(odd) tr{
 }
 
 .rombo-table-write i, .rombo-table-delete i, .rombo-table-see i {
-  line-height: 30px;
+  line-height: 30px !important;
   font-size: 12px;
   color: #fff;
 }
@@ -730,20 +737,11 @@ div.content {
   transition: 0.3s ease all;
 }
 
-.formulario{
+.input-text {
+  margin: 10px 0;
   width: 100%;
-  max-width: 600px;
-  margin: 0 auto;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
 }
 
-.cuadro-texto{
-  margin: 10px;
-  width: 100%;
-}
 .space-new-route{
   border-color: #FF6F00;
   margin-top: 10px;
@@ -762,6 +760,7 @@ div.content {
   display: block;
   position:relative;
   margin-bottom: 20px;
+  z-index: 1;
 }
 
 .span-add-challenge{
@@ -808,23 +807,44 @@ div.content {
   padding-top: 20px;
   top: -40px;
   position: relative;
-  z-index: -1;
+  z-index: 0;
   overflow: auto;
-  background: red;
+  background: #f5f5f5;
 }
 
 .dropdown-option {
+  height: 40px;
+  width: 100%;
+  padding: 0 10px;
+}
 
+.dropdown-option:nth-child(odd) {
+  background: #fff;
+}
+
+.dropdown-option:nth-child(even) {
+  background: #f5f5f5;
 }
 
 .dropdown-option-left {
-
+  height: 100%;
+  width: calc(100% - 100px);
+  float: left;
 }
 
 .dropdown-option-left span {
-
+  color: var(--green);
+  line-height: 40px;
 }
 
+.drodown-option-right {
+  height: 100%;
+  width: 100px;
+  float: right;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
 
 
 .button-form {
@@ -909,48 +929,19 @@ ul.tabs li {
 
   float: left;
 }
-/*
-.table-challenge{
-  margin: 0 auto;
-  width: 100%;
-}*/
-/*NEW POST*/
+
+/*---- NEW POST ----*/
+
 .new-post-textArea{
   border: 1px solid #00A195;
   width: 100%;
   height: 250px;
 }
-.post-tab {
-  height: 50px;
-  width: 100%;
-  border: 1px solid #249191;
-  text-align: center;
-  cursor: pointer;
-  opacity: 0.3;
-  transition: 0.3s ease all;
-}
 
-.post-tab:hover {
-  opacity: 1;
-  border-bottom: transparent;
-}
-.post-tab:active{
-  opacity: 1;
-}
+/*---- Video Tabs ----*/
 
-.post-tab span {
-  line-height: 50px;
-  color: #249191;
-}
-
-.post-tab-selected {
-  border-width: 1px;
-  border-style: solid;
-  border-color: #249191 #249191 transparent #249191;
-  opacity: 1;
-}
 .post-tabs-container {
-  height: 50px;
+  height: 40px;
   width: 100%;
   position:relative;
   top: 0;
@@ -960,40 +951,105 @@ ul.tabs li {
   align-items: center;
 }
 
-.popUp {
-  position: absolute; /*position: fixed;*/
-   top: 0;
-   left: 0;
-   width: 100%;
-   height: 100%;
-   background-color: rgba(0,0,0,0.8);
-
-}
-
-.divPopUp{
-  width: 370px;
-  height: 110px;
-  background-color: white;
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  border-radius: 5px;
-
-
-}
-
-.botones{
+.post-tab {
+  height: 40px;
+  width: 100%;
   text-align: center;
+  cursor: pointer;
+  transition: 0.3s ease all;
 }
-.btn{
-  width: 100px;
+
+.post-tab:nth-child(1) {
+  border-width: 1px;
+  border-style: solid;
+  border-color: rgba(0, 161, 149, 0.3) transparent var(--green) rgba(0, 161, 149, 0.3);
 }
 
+.post-tab:nth-child(2) {
+  border-width: 1px;
+  border-style: solid;
+  border-color: rgba(0, 161, 149, 0.3) rgba(0, 161, 149, 0.3) var(--green) transparent;
+}
 
+.post-tab span {
+  line-height: 40px;
+  color: rgba(0, 161, 149, 0.5);
+  transition: 0.3s ease all;
+}
 
-.botones-2{
-  background-color: chartreuse;
-  width: 100px;
-  height: 20px;
+.post-tab:hover span {
+  color: var(--green);
+}
+
+.post-tab-selected {
+  border-width: 1px;
+  border-style: solid;
+  border-color: var(--green) var(--green) transparent var(--green) !important;
+}
+
+.post-tab-selected span {
+  color: var(--green)
+}
+
+/*--- Delete Popup ---*/
+
+.bg-popup {
+  position: absolute; /*position: fixed;*/
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background-color: rgba(12,81,92,0.8);
+  backdrop-filter: blur(4px);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+}
+
+.popup-container {
+  text-align: center;
+  width: 450px;
+  height: auto;
+  background-color: #fff;
+  margin: auto;
+  padding: 20px 0;
+}
+
+.popup-buttons-container {
+  width: 100%;
+  height: 40px;
+  margin-top: 20px;
+  padding: 0 20px;
+  text-align: center;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.delete-button {
+  background: var(--red);
+  width: calc(50% - 10px);
+  height: 40px;
+  border: none;
+  color: #fff;
+  transition: 0.3s ease all;
+}
+
+.delete-button:hover {
+  background: var(--red-selected);
+}
+
+.cancel-button {
+  background: #ccc;
+  width: calc(50% - 10px);
+  height: 40px;
+  border: none;
+  color: var(--red);
+  transition: 0.3s ease all;
+}
+
+.cancel-button:hover {
+  background: #aaa;
+  color: var(--red-selected);
 }

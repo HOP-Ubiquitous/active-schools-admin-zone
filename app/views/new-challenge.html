@@ -1,26 +1,41 @@
 <div class="main-container-inner-right">
 
+  <!-- TODO Mejorar o incluso separar New Challenge y Edit Challenge -->
+
   <div class="new-route-form" ng-show="('challenges.new_challenge' | routeSegmentEqualsTo)">
-    <form class="formulario">
-      <input type="text" id="name" placeholder="Name" class="cuadro-texto" ng-model="newChallenge.name" required>
-      <input type="text" id="bonus" placeholder="Bonus" class="cuadro-texto" ng-model="newChallenge.bonus" required>
-      <input type="text" id="minMax" placeholder="Min. Time" class="cuadro-texto" ng-model="newChallenge.minMax" required>
-      <input type="text" id="maxMin" placeholder="Max. Time" class="cuadro-texto" ng-model="newChallenge.maxMin" required>
+
+    <form>
+
+      <input type="text" placeholder="Name" class="input-text" ng-model="newChallenge.challenge.name" required>
+
+      <input type="number" placeholder="Period" class="input-text" ng-model="newChallenge.challenge.period" required>
+
+      <select ng-model="newChallenge.challenge.unit">
+        <option value="Minutes">Minutes</option>
+        <option value="Reps">Reps</option>
+      </select>
+
+      <input type="number" placeholder="Bonus" class="input-text" ng-model="newChallenge.challenge.bonus" required>
 
       <hr class="space-new-route">
 
       <div class="post-tabs-container">
 
-        <div class="post-tab" ng-click="showUrlVideo[$index] = !showUrlVideo[$index]">
+        <div class="post-tab"
+             ng-class="{ 'post-tab-selected' : showUrlVideo }"
+             ng-init="showUrlVideo = true"
+             ng-click="showUrlVideo = true; showUploadVideo = false">
           <span>Youtube Video</span>
         </div>
 
-        <div class="post-tab" ng-click="showUploadVideo[$index] = !showUploadVideo[$index]">
+        <div class="post-tab"
+             ng-class="{ 'post-tab-selected' : showUploadVideo }"
+             ng-click="showUploadVideo = true; showUrlVideo = false">
           <span>Upload Video</span>
         </div>
       </div>
-      <input type="url" id="url" placeholder="Youtube URL" class="cuadro-texto" ng-model="newChallenge.video" ng-show="showUrlVideo[$index] === true" required>
-      <input type="url" id="ruta" placeholder="Upload Video" class="cuadro-texto" ng-model="newChallenge.video" ng-show="showUploadVideo[$index] === true" required>
+      <input type="url" id="url" placeholder="Youtube URL" class="input-text" ng-model="newChallenge.challenge.video" ng-show="showUrlVideo === true" required>
+      <input type="url" id="ruta" placeholder="Upload Video" class="input-text" ng-model="newChallenge.challenge.video" ng-show="showUploadVideo === true" required>
       <br>
       <div class="new-challenge-video">
         <iframe width="100%" height="100%" src="{{video}}"  >
@@ -41,10 +56,10 @@
   <!--Edit challenge-->
   <div class="new-route-form" ng-show="('challenges.edit_challenge.challenge_id' | routeSegmentEqualsTo)">
     <form class="formulario">
-      <input type="text" id="name" placeholder="Name" class="cuadro-texto" ng-model="editChallenge.name" required>
-      <input type="text" id="bonus" placeholder="Bonus" class="cuadro-texto" ng-model="editChallenge.bonus" required>
-      <input type="text" id="minMax" placeholder="Min. Time" class="cuadro-texto" ng-model="editChallenge.minMax" required>
-      <input type="text" id="maxMin" placeholder="Max. Time" class="cuadro-texto" ng-model="editChallenge.maxMin" required>
+      <input type="text" id="name" placeholder="Name" class="input-text" ng-model="editChallenge.name" required>
+      <input type="text" id="bonus" placeholder="Bonus" class="input-text" ng-model="editChallenge.bonus" required>
+      <input type="text" id="minMax" placeholder="Min. Time" class="input-text" ng-model="editChallenge.minMax" required>
+      <input type="text" id="maxMin" placeholder="Max. Time" class="input-text" ng-model="editChallenge.maxMin" required>
 
       <hr class="space-new-route">
 
@@ -58,8 +73,8 @@
           <span>Upload Video</span>
         </div>
       </div>
-      <input type="text" id="video" placeholder="Youtube URL" class="cuadro-texto" ng-model="editChallenge.video" ng-show="showUrlVideo[$index] === true" required>
-      <input type="text" id="video" placeholder="Upload Video" class="cuadro-texto" ng-model="editChallenge.video" ng-show="showUploadVideo[$index] === true" required>
+      <input type="text" id="video" placeholder="Youtube URL" class="input-text" ng-model="editChallenge.video" ng-show="showUrlVideo[$index] === true" required>
+      <input type="text" id="video" placeholder="Upload Video" class="input-text" ng-model="editChallenge.video" ng-show="showUploadVideo[$index] === true" required>
       <br>
       <div class="new-challenge-video">
         <iframe width="100%" height="100%" src="https://www.youtube.com/embed/tgbNymZ7vqY">

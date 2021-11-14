@@ -8,8 +8,18 @@
  * Controller of the activeSchoolsAdminZoneApp
  */
 angular.module('activeSchoolsAdminZoneApp')
-  .controller('challengesCtrl', ['$location', 'challengeServiceData', '$routeParams', function ($location, challengeServiceData, $routeParams) {
+  .controller('challengesCtrl', ['$scope', '$location', 'challengeService', 'challengeServiceData', '$routeParams',
+    function ($scope, $location, challengeService, challengeServiceData, $routeParams) {
+
     var vm = this;
+
+    vm.challenges = [];
+
+    challengeService.getChallenges();
+
+    function getChallenges () {
+      vm.challenges = challengeServiceData.challengeList;
+    }
 
     vm.goToNewChallenge = function(){
       $location.path('challenges/new_challenge');
@@ -19,9 +29,17 @@ angular.module('activeSchoolsAdminZoneApp')
       $location.path('challenges');
     };
 
-    vm.deleteRow = function(){
-      console.log();
-      vm.challengeServiceData.splice(vm.deleteIndex, 1);
+    vm.deleteChallenge = function(id){
+      //Con backend
+      challengeService.deleteChallenge(id);
+
+      //Sin backend
+      // vm.challenges.forEach(function (challenge, index) {
+      //   if (id === challenge.id) {
+      //     vm.challenges.splice(index, 1);
+      //   }
+      // });
+
     };
 
     vm.editChallenge = function(challenge_id){
@@ -29,18 +47,21 @@ angular.module('activeSchoolsAdminZoneApp')
       $location.path('challenges/edit_challenge/' + $routeParams.challenge_id);
     };
 
-    //mostrar popup
+    function initWatchers() {
 
-    vm.mostrarPopUp = function(status){
-      vm.deletePopUp = ! vm.deletePopUp;
-      vm.deleteIndex = status;
+      vm.challengeWatcher = $scope.$watch(
+        function () {
+          return challengeService.challengesLoaded;
+        }, function (newValue) {
+          if (newValue === true) {
+            getChallenges();
+            challengeService.challengesLoaded = false;
+          }
+        }
+      );
 
     }
 
-
-
-    vm.challengeServiceData = challengeServiceData;
-    vm.challenges = vm.challengeServiceData;
-    console.log(vm.challenges);
+    initWatchers();
 
   }]);

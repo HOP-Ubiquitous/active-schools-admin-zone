@@ -128,7 +128,9 @@ var app = angular.module('activeSchoolsAdminZoneApp', [
 
     .segment('edit_challenge', {
     })
+
     .within()
+
     .segment('challenge_id', {
       templateUrl: 'views/new-challenge.html',
       controller: 'editChallengeCtrl',
@@ -166,7 +168,7 @@ var app = angular.module('activeSchoolsAdminZoneApp', [
       controller: 'editPostCtrl',
       controllerAs:'editPost',
       dependencies: ['post_id']
-    })
+    });
 
       $routeProvider.otherwise({
         redirectTo: 'login'
