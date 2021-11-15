@@ -7,10 +7,17 @@
  * # AboutCtrl
  * Controller of the activeSchoolsAdminZoneApp
  */
-angular.module('activeSchoolsAdminZoneApp')
-  .controller('postsCtrl', ['$location', 'postServiceData', '$routeParams', function ($location, postServiceData, $routeParams) {
+
+app.controller('postsCtrl', ['$scope', '$location', 'postService', 'postServiceData', '$routeParams',
+    function ($scope, $location, postService, postServiceData, $routeParams) {
+
     var vm = this;
-    vm.postServiceData = postServiceData;
+
+    postService.getPosts();
+
+    function getPosts () {
+      vm.posts = postServiceData.postsList;
+    }
 
     vm.goToPosts = function() {
       $location.path('posts');
@@ -36,9 +43,21 @@ angular.module('activeSchoolsAdminZoneApp')
 
     }
 
+      function initWatchers() {
 
-    vm.postServiceData = postServiceData;
-    vm.posts = vm.postServiceData;
+        vm.postWatcher = $scope.$watch(
+          function () {
+            return postService.postsLoaded;
+          }, function (newValue) {
+            if (newValue === true) {
+              getPosts();
+              postService.postsLoaded = false;
+            }
+          }
+        );
 
+      }
+
+      initWatchers();
 
   }]);

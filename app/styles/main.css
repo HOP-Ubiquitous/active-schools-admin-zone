@@ -749,6 +749,12 @@ div.content {
 }
 /*---- Select new routes ----*/
 
+.selected-challenges-container h5 {
+  color: var(--green);
+  text-align: center;
+  font-weight: 700;
+}
+
 .dropdown-challenge {
   -webkit-clip-path: polygon(20px 0%, calc(100% - 20px) 0, 100% 20px, calc(100% - 20px) 40px, 20px 40px, 0 20px);
   clip-path: polygon(20px 0%, calc(100% - 20px) 0, 100% 20px, calc(100% - 20px) 40px, 20px 40px, 0 20px);
@@ -837,7 +843,7 @@ div.content {
   line-height: 40px;
 }
 
-.drodown-option-right {
+.dropdown-option-right {
   height: 100%;
   width: 100px;
   float: right;

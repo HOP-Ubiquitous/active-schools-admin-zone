@@ -12,6 +12,8 @@
    var serviceRoute = {};
 
    serviceRoute.routeList = [];
+   serviceRoute.routeById = {};
+   serviceRoute.challengesByRoute = [];
 
   // serviceRoute.routeList = [
   //   { 'id': '01', 'date': '05/06/2021', 'name': 'Ruta 1', 'city': 'Archena', 'province': 'Murcia', 'country': 'España', 'challenges': "challenge 1" },

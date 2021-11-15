@@ -7,19 +7,32 @@
  * # AboutCtrl
  * Controller of the activeSchoolsAdminZoneApp
  */
-angular.module('activeSchoolsAdminZoneApp')
-  .controller('routesCtrl', ['$scope', '$location', 'routeService', 'routeServiceData', '$routeParams', 'challengeServiceData',
-    function ($scope, $location, routeService, routeServiceData, $routeParams, challengeServiceData) {
+
+app.controller('routesCtrl', ['$scope', '$location', 'routeService', 'routeServiceData', '$routeParams',
+  function ($scope, $location, routeService, routeServiceData, $routeParams) {
 
     var vm = this;
 
     vm.routes = [];
+    vm.challengesLoaded = [];
 
     routeService.getRoutes();
 
     function getRoutes () {
       vm.routes = routeServiceData.routeList;
     }
+
+    vm.getChallengesByRouteId = function (id) {
+      routeService.getChallengesByRouteId(id);
+    };
+
+    function getChallengesLoaded () {
+      vm.challengesLoaded = routeServiceData.challengesByRoute;
+    }
+
+    vm.deleteRoute = function (id) {
+      routeService.deleteRoute(id);
+    };
 
     vm.goToNewRoute = function() {
       $location.path('routes/new_route');
@@ -34,50 +47,9 @@ angular.module('activeSchoolsAdminZoneApp')
       $location.path('challenges/edit_challenge/' + $routeParams.challenge_id);
     };
 
-    vm.deleteRow = function(){
-      vm.routeServiceData.splice(vm.deleteIndex, 1);
-    };
-
-    vm.deleteRow_2 = function(){
-      vm.challengeServiceData.splice(vm.deleteIndex, 1);
-    };
-
     vm.editRoute = function(route_id){
       $routeParams.route_id = route_id;
       $location.path('routes/edit_route/' + $routeParams.route_id);
-    };
-
-    //Mostrar tabla al pulsar el boton ver
-
-    var show = false;
-    var div = document.getElementById("table-2");
-    vm.show = function(){
-
-      if(show ^= true){
-        div.style.display = "block";
-      }else {
-        div.style.display = "none";
-      }
-
-    }
-
-//mostrar div popup
-    var show_popup = false;
-    var popUp = document.getElementById("main");
-    vm.deletePopUp = false;
-
-
-    vm.mostrarPopUp = function(status){
-      vm.deletePopUp = ! vm.deletePopUp;
-      vm.deleteIndex = status;
-
-    }
-
-
-    vm.mostrarPopUp_2 = function(status){
-      vm.delete = ! vm.delete;
-      vm.deleteIndex = status;
-
     };
 
     function initWatchers() {
@@ -93,20 +65,19 @@ angular.module('activeSchoolsAdminZoneApp')
         }
       );
 
+      vm.challengesWatcher = $scope.$watch(
+        function () {
+          return routeService.routeChallengesLoaded;
+        }, function (newValue) {
+          if (newValue === true) {
+            getChallengesLoaded();
+            routeService.routeChallengesLoaded = false;
+          }
+        }
+      );
+
     }
 
     initWatchers();
 
-
-
-
-
-
-    // vm.routeServiceData = routeServiceData;
-    // vm.routes = vm.routeServiceData;
-    // console.log(vm.routes);
-
-    vm.challengeServiceData = challengeServiceData;
-    vm.challenges = vm.challengeServiceData;
-    console.log(vm.challenges);
   }]);

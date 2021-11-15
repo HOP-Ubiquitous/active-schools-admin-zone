@@ -7,8 +7,8 @@
  * # AboutCtrl
  * Controller of the activeSchoolsAdminZoneApp
  */
-angular.module('activeSchoolsAdminZoneApp')
-  .controller('challengesCtrl', ['$scope', '$location', 'challengeService', 'challengeServiceData', '$routeParams',
+
+app.controller('challengesCtrl', ['$scope', '$location', 'challengeService', 'challengeServiceData', '$routeParams',
     function ($scope, $location, challengeService, challengeServiceData, $routeParams) {
 
     var vm = this;

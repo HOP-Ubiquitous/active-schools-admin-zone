@@ -1,0 +1,200 @@
+{
+  "type": "FeatureCollection",
+  "features": [
+    {
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          2.14944,
+          41.37539
+        ]
+      },
+      "type": "Feature",
+      "properties": {
+        "instruction": "Head northwest on Plaça d'Espanya"
+      }
+    },
+    {
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          2.14876,
+          41.37536
+        ]
+      },
+      "type": "Feature",
+      "properties": {
+        "instruction": "Turn left to stay on Plaça d'Espanya"
+      }
+    },
+    {
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          2.14864,
+          41.3748
+        ]
+      },
+      "type": "Feature",
+      "properties": {
+        "instruction": "Make a slight left to stay on Plaça d'Espanya"
+      }
+    },
+    {
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          2.14975,
+          41.37483
+        ]
+      },
+      "type": "Feature",
+      "properties": {
+        "instruction": "Make a slight left onto Gran Via de les Corts Catalanes (lateral mar)"
+      }
+    },
+    {
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          2.15038,
+          41.37578
+        ]
+      },
+      "type": "Feature",
+      "properties": {
+        "instruction": "Keep left onto Gran Via de les Corts Catalanes (lateral mar)"
+      }
+    },
+    {
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          2.15292,
+          41.37787
+        ]
+      },
+      "type": "Feature",
+      "properties": {
+        "instruction": "Turn left onto Carrer d'Entença"
+      }
+    },
+    {
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          2.14827,
+          41.38137
+        ]
+      },
+      "type": "Feature",
+      "properties": {
+        "instruction": "Turn right onto Carrer de València"
+      }
+    },
+    {
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          2.17205,
+          41.39925
+        ]
+      },
+      "type": "Feature",
+      "properties": {
+        "instruction": "Turn left onto Carrer de Roger de Flor"
+      }
+    },
+    {
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          2.1641,
+          41.40528
+        ]
+      },
+      "type": "Feature",
+      "properties": {
+        "instruction": "Turn right onto Travessera de Gràcia"
+      }
+    },
+    {
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          2.16439,
+          41.40546
+        ]
+      },
+      "type": "Feature",
+      "properties": {
+        "instruction": "Turn left onto Carrer de Joaquim Ruyra"
+      }
+    },
+    {
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          2.16319,
+          41.40622
+        ]
+      },
+      "type": "Feature",
+      "properties": {
+        "instruction": "Turn left onto Carrer de Pi i Margall"
+      }
+    },
+    {
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          2.16269,
+          41.40583
+        ]
+      },
+      "type": "Feature",
+      "properties": {
+        "instruction": "Turn right onto Carrer de l'Escorial"
+      }
+    },
+    {
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          2.15686,
+          41.41204
+        ]
+      },
+      "type": "Feature",
+      "properties": {
+        "instruction": "Turn left onto Carrer del Pare Jacint Alegre"
+      }
+    },
+    {
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          2.1548,
+          41.41255
+        ]
+      },
+      "type": "Feature",
+      "properties": {
+        "instruction": "Continue onto Carrer de Marianao"
+      }
+    },
+    {
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          2.15345,
+          41.41363
+        ]
+      },
+      "type": "Feature",
+      "properties": {
+        "instruction": "You have arrived at your destination"
+      }
+    }
+  ]
+}

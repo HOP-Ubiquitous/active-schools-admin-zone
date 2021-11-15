@@ -7,8 +7,8 @@
  * # AboutCtrl
  * Controller of the activeSchoolsAdminZoneApp
  */
-angular.module('activeSchoolsAdminZoneApp')
-  .controller('recoverCtrl', ['$location', function ($location) {
+
+app.controller('recoverCtrl', ['$location', function ($location) {
 
 
   var vm = this;

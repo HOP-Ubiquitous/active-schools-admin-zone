@@ -13,56 +13,79 @@
 
       <input type="text" placeholder="Name"
              class="input-text"
-             ng-model="newRoute.name"
+             ng-model="newRoute.route.name"
              ng-show="('routes.new_route' | routeSegmentEqualsTo)"
              required>
       <input type="text"
              placeholder="Name"
              class="input-text"
-             ng-model="editRoute.name"
+             ng-model="editRoute.route.name"
              ng-show="('routes.edit_route.route_id' | routeSegmentEqualsTo)"
              required>
 
       <input type="text"
              placeholder="City"
              class="input-text"
-             ng-model="newRoute.city"
+             ng-model="newRoute.route.city"
              ng-show="('routes.new_route' | routeSegmentEqualsTo)"
              required>
       <input type="text"
              placeholder="City"
              class="input-text"
-             ng-model="editRoute.name"
+             ng-model="editRoute.route.city"
              ng-show="('routes.edit_route.route_id' | routeSegmentEqualsTo)"
              required>
 
       <input type="text"
              placeholder="Province"
              class="input-text"
-             ng-model="newRoute.province"
+             ng-model="newRoute.route.province"
              ng-show="('routes.new_route' | routeSegmentEqualsTo)"
              required>
       <input type="text"
              placeholder="Province"
              class="input-text"
-             ng-model="editRoute.name"
+             ng-model="editRoute.route.province"
              ng-show="('routes.edit_route.route_id' | routeSegmentEqualsTo)"
              required>
 
       <input type="text"
              placeholder="Country"
              class="input-text"
-             ng-model="newRoute.country"
+             ng-model="newRoute.route.country"
              ng-show="('routes.new_route' | routeSegmentEqualsTo)"
              required>
       <input type="text"
              placeholder="Country"
              class="input-text"
-             ng-model="editRoute.name"
+             ng-model="editRoute.route.country"
              ng-show="('routes.edit_route.route_id' | routeSegmentEqualsTo)"
              required>
 
       <hr class="space-new-route">
+
+      <div class="selected-challenges-container">
+
+        <h5 ng-show="newRoute.selectedChallenges.length > 0">Selected Challenges</h5>
+
+        <div class="selected-challenge-option dropdown-option" ng-repeat="challenge in newRoute.selectedChallenges">
+
+          <div class="dropdown-option-left">
+            <span>{{challenge.name}}</span>
+          </div>
+
+          <div class="dropdown-option-right">
+
+            <div class="rombo-table-delete" ng-click="newRoute.deleteChallenge(challenge.id)">
+              <i class="fas fa-times"></i>
+            </div>
+
+          </div>
+
+        </div>
+      </div>
+
+      <hr ng-show="newRoute.selectedChallenges.length > 0" class="space-new-route">
 
       <div class="dropdown-challenge" ng-click="(showOptions = !showOptions)">
         <span class="span-add-challenge">Add challenge</span>
@@ -74,14 +97,14 @@
       <div class="dropdown-challenge-container" ng-show="showOptions">
 
         <div class="dropdown-option"
-             ng-show="('routes.new_route' | routeSegmentEqualsTo)"
+             ng-show="('routes.new_route' | routeSegmentEqualsTo) && challenge.show === true"
              ng-repeat="challenge in newRoute.challenges">
 
           <div class="dropdown-option-left" ng-click="newRoute.addChallenge(challenge.id)">
             <span>{{challenge.name}}</span>
           </div>
 
-          <div class="drodown-option-right">
+          <div class="dropdown-option-right">
 
             <div class="rombo-table-write" ng-click="newRoute.editChallenge(challenge.id)">
               <i class="fas fa-edit"></i>
@@ -122,7 +145,7 @@
       <div class="button-form"
            ng-show="('routes.new_route' | routeSegmentEqualsTo)"
            ng-click="newRoute.save()">
-        <span>Save New Route</span>
+        <span>Add Route</span>
       </div>
 
       <div class="button-form"

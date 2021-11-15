@@ -7,8 +7,8 @@
  * # AboutCtrl
  * Controller of the activeSchoolsAdminZoneApp
  */
-angular.module('activeSchoolsAdminZoneApp')
-  .controller('loginCtrl', ['$location', 'loginServiceData', function ($location, loginServiceData) {
+
+app.controller('loginCtrl', ['$location', 'loginServiceData', function ($location, loginServiceData) {
 
     var vm = this;
     vm.user = {};

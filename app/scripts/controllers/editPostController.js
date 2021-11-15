@@ -7,8 +7,9 @@
  * # AboutCtrl
  * Controller of the activeSchoolsAdminZoneApp
  */
-angular.module('activeSchoolsAdminZoneApp')
-  .controller('editPostCtrl', ['$location', 'postServiceData', function ($location, postServiceData) {
+
+app.controller('editPostCtrl', ['$location', 'postServiceData',
+  function ($location, postServiceData) {
 
     var vm = this;
     vm.goToPost = function(){

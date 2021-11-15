@@ -7,8 +7,8 @@
  * # AboutCtrl
  * Controller of the activeSchoolsAdminZoneApp
  */
-angular.module('activeSchoolsAdminZoneApp')
-  .controller('newPostCtrl', ['$location', 'postServiceData', function ($location, postServiceData) {
+
+app.controller('newPostCtrl', ['$location', 'postServiceData', function ($location, postServiceData) {
 
     var vm = this;
     let postName = [];
