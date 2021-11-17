@@ -17,20 +17,15 @@ app.controller('editChallengeCtrl', ['$location', 'challengeServiceData', '$rout
     }
 
     vm.mostrarPopUp = function(status){
-      debugger;
       vm.deletePopUp = ! vm.deletePopUp;
       vm.deleteIndex = status;
-
     }
 
     vm.deleteRow = function(){
-
-      debugger;
       vm.challengeServiceData.splice(vm.deleteIndex, 1);
     }
 
     vm.save = function(){
-      debugger;
       challengeServiceData.push({
              date: new Date(),
              name:vm.name,
@@ -42,7 +37,6 @@ app.controller('editChallengeCtrl', ['$location', 'challengeServiceData', '$rout
          }
 
     vm.editChallenge = function() {
-      debugger;
 
     challengeServiceData.forEach(function(row) {
       if(row.id === $routeParams.challenge_id) {

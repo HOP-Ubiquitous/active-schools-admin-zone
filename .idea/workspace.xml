@@ -2,36 +2,10 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="7e18ae2d-97d7-4311-bd7d-700e9004f59c" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/app/scripts/controllers/lebadea.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/scripts/filters/matcher_filter.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/app/index.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/scripts/constants/api_constants.js" beforeDir="false" afterPath="$PROJECT_DIR$/app/scripts/constants/api_constants.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/scripts/controllers/about.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/scripts/controllers/challengesController.js" beforeDir="false" afterPath="$PROJECT_DIR$/app/scripts/controllers/challengesController.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/scripts/controllers/editChallengeController.js" beforeDir="false" afterPath="$PROJECT_DIR$/app/scripts/controllers/editChallengeController.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/scripts/controllers/editPostController.js" beforeDir="false" afterPath="$PROJECT_DIR$/app/scripts/controllers/editPostController.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/scripts/controllers/editRouteController.js" beforeDir="false" afterPath="$PROJECT_DIR$/app/scripts/controllers/editRouteController.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/scripts/controllers/loginController.js" beforeDir="false" afterPath="$PROJECT_DIR$/app/scripts/controllers/loginController.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/scripts/controllers/main.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/scripts/controllers/newChallengeController.js" beforeDir="false" afterPath="$PROJECT_DIR$/app/scripts/controllers/newChallengeController.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/scripts/controllers/newPostController.js" beforeDir="false" afterPath="$PROJECT_DIR$/app/scripts/controllers/newPostController.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/scripts/controllers/newRouteController.js" beforeDir="false" afterPath="$PROJECT_DIR$/app/scripts/controllers/newRouteController.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/scripts/controllers/postsController.js" beforeDir="false" afterPath="$PROJECT_DIR$/app/scripts/controllers/postsController.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/scripts/controllers/recoverController.js" beforeDir="false" afterPath="$PROJECT_DIR$/app/scripts/controllers/recoverController.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/scripts/controllers/routesController.js" beforeDir="false" afterPath="$PROJECT_DIR$/app/scripts/controllers/routesController.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/scripts/services/post_service.js" beforeDir="false" afterPath="$PROJECT_DIR$/app/scripts/services/post_service.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/scripts/services/post_service_api.js" beforeDir="false" afterPath="$PROJECT_DIR$/app/scripts/services/post_service_api.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/scripts/services/post_service_data.js" beforeDir="false" afterPath="$PROJECT_DIR$/app/scripts/services/post_service_data.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/scripts/services/route_service.js" beforeDir="false" afterPath="$PROJECT_DIR$/app/scripts/services/route_service.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/scripts/services/route_service_api.js" beforeDir="false" afterPath="$PROJECT_DIR$/app/scripts/services/route_service_api.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/scripts/services/route_service_data.js" beforeDir="false" afterPath="$PROJECT_DIR$/app/scripts/services/route_service_data.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/styles/main.css" beforeDir="false" afterPath="$PROJECT_DIR$/app/styles/main.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/views/challenges.html" beforeDir="false" afterPath="$PROJECT_DIR$/app/views/challenges.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/views/new-challenge.html" beforeDir="false" afterPath="$PROJECT_DIR$/app/views/new-challenge.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/views/new-post.html" beforeDir="false" afterPath="$PROJECT_DIR$/app/views/new-post.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/views/new-route.html" beforeDir="false" afterPath="$PROJECT_DIR$/app/views/new-route.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/views/posts.html" beforeDir="false" afterPath="$PROJECT_DIR$/app/views/posts.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/views/routes.html" beforeDir="false" afterPath="$PROJECT_DIR$/app/views/routes.html" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/.tmp/" />
     <ignored path="$PROJECT_DIR$/temp/" />
@@ -45,19 +19,28 @@
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/views/routes.html">
+        <entry file="file://$PROJECT_DIR$/app/scripts/controllers/routesController.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="169">
-              <caret line="73" column="70" lean-forward="true" selection-start-line="73" selection-start-column="70" selection-end-line="73" selection-end-column="70" />
+            <state relative-caret-position="230">
+              <caret line="10" column="104" selection-start-line="10" selection-start-column="104" selection-end-line="10" selection-end-column="104" />
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/scripts/controllers/routesController.js">
+        <entry file="file://$PROJECT_DIR$/app/views/new-route.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-1012">
-              <caret line="10" column="104" lean-forward="true" selection-start-line="10" selection-start-column="104" selection-end-line="10" selection-end-column="104" />
+            <state relative-caret-position="606">
+              <caret line="89" column="134" selection-start-line="89" selection-start-column="134" selection-end-line="89" selection-end-column="134" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/scripts/controllers/editRouteController.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="583">
+              <caret line="201" column="5" selection-start-line="201" selection-start-column="5" selection-end-line="201" selection-end-column="5" />
             </state>
           </provider>
         </entry>
@@ -65,71 +48,35 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app/views/challenges.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="184">
-              <caret line="33" column="8" lean-forward="true" selection-start-line="33" selection-start-column="8" selection-end-line="40" selection-end-column="36" />
+            <state relative-caret-position="46">
+              <caret line="2" column="25" lean-forward="true" selection-start-line="2" selection-start-column="25" selection-end-line="2" selection-end-column="25" />
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/scripts/services/route_service.js">
+        <entry file="file://$PROJECT_DIR$/app/views/new-challenge.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="188">
-              <caret line="40" column="31" selection-start-line="40" selection-start-column="16" selection-end-line="40" selection-end-column="31" />
+            <state relative-caret-position="362">
+              <caret line="120" lean-forward="true" selection-start-line="120" selection-end-line="120" />
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/scripts/controllers/newRouteController.js">
+        <entry file="file://$PROJECT_DIR$/app/views/posts.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="142">
-              <caret line="10" column="31" selection-start-line="10" selection-start-column="31" selection-end-line="11" selection-end-column="107" />
+            <state relative-caret-position="353">
+              <caret line="89" column="17" selection-start-line="89" selection-start-column="17" selection-end-line="89" selection-end-column="17" />
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/app/scripts/controllers/editRouteController.js">
+        <entry file="file://$PROJECT_DIR$/app/views/new-post.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="322">
-              <caret line="143" column="58" lean-forward="true" selection-start-line="143" selection-start-column="58" selection-end-line="143" selection-end-column="58" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/scripts/controllers/newPostController.js">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="230">
-              <caret line="10" column="102" lean-forward="true" selection-start-line="10" selection-start-column="102" selection-end-line="10" selection-end-column="102" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/scripts/controllers/postsController.js">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="230">
-              <caret line="10" selection-start-line="10" selection-end-line="10" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/scripts/controllers/recoverController.js">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="230">
-              <caret line="10" column="66" lean-forward="true" selection-start-line="10" selection-start-column="66" selection-end-line="10" selection-end-column="66" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/scripts/services/route_service_data.js">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="322">
-              <caret line="14" column="25" selection-start-line="14" selection-start-column="16" selection-end-line="14" selection-end-column="25" />
+            <state relative-caret-position="353">
+              <caret line="64" column="165" lean-forward="true" selection-start-line="64" selection-start-column="165" selection-end-line="64" selection-end-column="165" />
             </state>
           </provider>
         </entry>
@@ -189,7 +136,6 @@
         <option value="$PROJECT_DIR$/app/scripts/components/new-button/new_button_directive.js" />
         <option value="$PROJECT_DIR$/app/views/new-button.html" />
         <option value="$PROJECT_DIR$/.gitignore" />
-        <option value="$PROJECT_DIR$/app/views/new-post.html" />
         <option value="$PROJECT_DIR$/app/views/main-menu.html" />
         <option value="$PROJECT_DIR$/app/views/section-header.html" />
         <option value="$PROJECT_DIR$/app/scripts/components/section-header/section_header_directive.js" />
@@ -201,11 +147,9 @@
         <option value="$PROJECT_DIR$/app/scripts/constants/api_constants.js" />
         <option value="$PROJECT_DIR$/app/scripts/controllers/tsconfig.json" />
         <option value="$PROJECT_DIR$/app/scripts/controllers/lebadea.json" />
-        <option value="$PROJECT_DIR$/app/views/new-challenge.html" />
         <option value="$PROJECT_DIR$/app/styles/main.css" />
         <option value="$PROJECT_DIR$/app/scripts/filters/matcher.js" />
         <option value="$PROJECT_DIR$/app/scripts/filters/matcher_filter.js" />
-        <option value="$PROJECT_DIR$/app/views/new-route.html" />
         <option value="$PROJECT_DIR$/app/scripts/services/route_service_data.js" />
         <option value="$PROJECT_DIR$/app/scripts/services/route_service_api.js" />
         <option value="$PROJECT_DIR$/app/scripts/services/route_service.js" />
@@ -227,11 +171,14 @@
         <option value="$PROJECT_DIR$/app/scripts/controllers/routesController.js" />
         <option value="$PROJECT_DIR$/app/scripts/controllers/newRouteController.js" />
         <option value="$PROJECT_DIR$/app/scripts/controllers/editRouteController.js" />
+        <option value="$PROJECT_DIR$/app/views/new-route.html" />
+        <option value="$PROJECT_DIR$/app/views/new-challenge.html" />
+        <option value="$PROJECT_DIR$/app/views/new-post.html" />
       </list>
     </option>
   </component>
   <component name="ProjectFrameBounds" extendedState="6">
-    <option name="x" value="-8" />
+    <option name="x" value="-1928" />
     <option name="y" value="-8" />
     <option name="width" value="1936" />
     <option name="height" value="1056" />
@@ -241,6 +188,7 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
+      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -311,7 +259,6 @@
           <select />
         </subPane>
       </pane>
-      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -365,14 +312,16 @@
       <workItem from="1636618496108" duration="26000" />
       <workItem from="1636704875672" duration="17839000" />
       <workItem from="1636961624269" duration="23379000" />
+      <workItem from="1637048273531" duration="1520000" />
+      <workItem from="1637149892465" duration="2051000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="83985000" />
+    <option name="totallyTimeSpent" value="87556000" />
   </component>
   <component name="ToolWindowManager">
-    <frame x="-8" y="-8" width="1936" height="1056" extended-state="6" />
+    <frame x="-1928" y="-8" width="1936" height="1056" extended-state="6" />
     <editor active="true" />
     <layout>
       <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.16385669" />
@@ -473,13 +422,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/views/new-post.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="207">
-          <caret line="9" column="34" lean-forward="true" selection-start-line="9" selection-start-column="34" selection-end-line="9" selection-end-column="34" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/app/views/section-header.html">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="230">
@@ -546,13 +488,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/views/new-challenge.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-397">
-          <caret line="80" column="12" lean-forward="true" selection-start-line="80" selection-start-column="12" selection-end-line="80" selection-end-column="12" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/app/styles/main.css">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="324">
@@ -571,13 +506,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="276">
           <caret line="12" column="3" lean-forward="true" selection-start-line="12" selection-start-column="3" selection-end-line="12" selection-end-column="3" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/views/new-route.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="2001">
-          <caret line="99" column="76" lean-forward="true" selection-start-line="99" selection-start-column="76" selection-end-line="99" selection-end-column="76" />
         </state>
       </provider>
     </entry>
@@ -616,13 +544,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/views/posts.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="353">
-          <caret line="89" column="17" selection-start-line="89" selection-start-column="17" selection-end-line="89" selection-end-column="17" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/app/scripts/controllers/editPostController.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="253">
@@ -644,9 +565,7 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/scripts/controllers/main.js">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
+    <entry file="file://$PROJECT_DIR$/app/scripts/controllers/main.js" />
     <entry file="file://$PROJECT_DIR$/app/scripts/controllers/loginController.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="207">
@@ -661,10 +580,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/scripts/controllers/newPostController.js">
+    <entry file="file://$PROJECT_DIR$/app/views/routes.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="230">
-          <caret line="10" column="102" lean-forward="true" selection-start-line="10" selection-start-column="102" selection-end-line="10" selection-end-column="102" />
+        <state relative-caret-position="1978">
+          <caret line="86" column="41" selection-start-line="86" selection-start-column="41" selection-end-line="86" selection-end-column="41" />
         </state>
       </provider>
     </entry>
@@ -678,56 +597,84 @@
     <entry file="file://$PROJECT_DIR$/app/scripts/controllers/recoverController.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="230">
-          <caret line="10" column="66" lean-forward="true" selection-start-line="10" selection-start-column="66" selection-end-line="10" selection-end-column="66" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/views/routes.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="169">
-          <caret line="73" column="70" lean-forward="true" selection-start-line="73" selection-start-column="70" selection-end-line="73" selection-end-column="70" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/scripts/controllers/newRouteController.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="142">
-          <caret line="10" column="31" selection-start-line="10" selection-start-column="31" selection-end-line="11" selection-end-column="107" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/views/challenges.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="184">
-          <caret line="33" column="8" lean-forward="true" selection-start-line="33" selection-start-column="8" selection-end-line="40" selection-end-column="36" />
+          <caret line="10" column="66" selection-start-line="10" selection-start-column="66" selection-end-line="10" selection-end-column="66" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/app/scripts/services/route_service_data.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="322">
-          <caret line="14" column="25" selection-start-line="14" selection-start-column="16" selection-end-line="14" selection-end-column="25" />
+          <caret line="14" selection-start-line="14" selection-end-line="14" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/app/scripts/services/route_service.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="188">
-          <caret line="40" column="31" selection-start-line="40" selection-start-column="16" selection-end-line="40" selection-end-column="31" />
+          <caret line="80" selection-start-line="80" selection-end-line="80" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/scripts/controllers/routesController.js">
+    <entry file="file://$PROJECT_DIR$/app/scripts/controllers/newRouteController.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-1012">
-          <caret line="10" column="104" lean-forward="true" selection-start-line="10" selection-start-column="104" selection-end-line="10" selection-end-column="104" />
+        <state relative-caret-position="142">
+          <caret line="10" column="31" selection-start-line="10" selection-start-column="31" selection-end-line="10" selection-end-column="31" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/scripts/controllers/newPostController.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="230">
+          <caret line="10" column="102" selection-start-line="10" selection-start-column="102" selection-end-line="10" selection-end-column="102" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/views/posts.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="353">
+          <caret line="89" column="17" selection-start-line="89" selection-start-column="17" selection-end-line="89" selection-end-column="17" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/app/scripts/controllers/editRouteController.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="322">
-          <caret line="143" column="58" lean-forward="true" selection-start-line="143" selection-start-column="58" selection-end-line="143" selection-end-column="58" />
+        <state relative-caret-position="583">
+          <caret line="201" column="5" selection-start-line="201" selection-start-column="5" selection-end-line="201" selection-end-column="5" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/scripts/controllers/routesController.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="230">
+          <caret line="10" column="104" selection-start-line="10" selection-start-column="104" selection-end-line="10" selection-end-column="104" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/views/new-route.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="606">
+          <caret line="89" column="134" selection-start-line="89" selection-start-column="134" selection-end-line="89" selection-end-column="134" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/views/challenges.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="46">
+          <caret line="2" column="25" lean-forward="true" selection-start-line="2" selection-start-column="25" selection-end-line="2" selection-end-column="25" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/views/new-challenge.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="362">
+          <caret line="120" lean-forward="true" selection-start-line="120" selection-end-line="120" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/views/new-post.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="353">
+          <caret line="64" column="165" lean-forward="true" selection-start-line="64" selection-start-column="165" selection-end-line="64" selection-end-column="165" />
         </state>
       </provider>
     </entry>
