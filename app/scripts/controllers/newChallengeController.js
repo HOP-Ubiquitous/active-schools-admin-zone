@@ -8,42 +8,29 @@
  * Controller of the activeSchoolsAdminZoneApp
  */
 
-app.controller('newChallengeCtrl', ['$location', "challengeServiceData",
-  function ($location, challengeServiceData) {
+app.controller('newChallengeCtrl', ['$location', 'challengeService',
+  function ($location, challengeService) {
 
     var vm = this;
-    vm.goToChallenge = function(){
-      $location.path('/challenges');
-    }
-    vm.mostrarPopUp = function(status){
-      vm.deletePopUp = ! vm.deletePopUp;
-      vm.deleteIndex = status;
 
-    }
+    vm.challenge = {};
 
-    vm.deleteRow = function(){
-      vm.challengeServiceData.splice(vm.deleteIndex, 1);
-    }
+    vm.getUnit = function (unit) {
+      vm.challenge.unit = unit;
+    };
 
     vm.save = function(){
-      challengeServiceData.push({
-             date: new Date(),
-             name:vm.name,
-             bonus:vm.bonus,
-             minMax:vm.minMax,
-             maxMin:vm.maxMin,
 
-             video:vm.video
-           });
-         }
+      let challenge =  {
+        name: vm.challenge.name,
+        period: vm.challenge.period,
+        unit: vm.challenge.unit,
+        bonus: vm.challenge.bonus,
+        video: vm.challenge.video,
+        images: ['image1', 'image2']
+      };
 
-        /* vm.count = 0;
-         vm.uploadVideo = function() {
-           vm.count++;
-         }*/
-
-
-    vm.challengeServiceData = challengeServiceData;
-    vm.challenges = vm.challengeServiceData;
+      challengeService.addChallenge(challenge);
+    };
 
   }]);

@@ -12,6 +12,7 @@ app.service('challengeServiceData', ['$cookies', function($cookies){
   var serviceChallenge = {};
 
   serviceChallenge.challengeList = [];
+  serviceChallenge.challengeById = {};
 
   // serviceChallenge.challengeList = [
   //   { 'id': '01', 'date': '05/06/2021', 'name': 'Challenge 1', 'video': 'https://youtube.com/video1', 'bonus': 50, 'minMax': '50/100', 'images': 'imagen1'},

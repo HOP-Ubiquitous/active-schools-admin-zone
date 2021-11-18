@@ -12,6 +12,7 @@ app.service('challengeService', ['challengeServiceApi', 'challengeServiceData', 
 
   var service = this;
   service.challengesLoaded = false;
+  service.challengeByIdLoaded = false;
 
   service.getChallenges = function () {
 
@@ -34,9 +35,9 @@ app.service('challengeService', ['challengeServiceApi', 'challengeServiceData', 
     var deferred = $q.defer();
     var promise = deferred.promise;
 
-    challengeServiceApi.get_challenge_by_id(id).then(function succes(response) {
-      challengeServiceData.ChallengeList = response.data;
-      service.challengeLoaded = true;
+    challengeServiceApi.get_challenge_by_id(id).then(function success (response) {
+      challengeServiceData.challengeById = response.data;
+      service.challengeByIdLoaded = true;
       console.log('\x1b[32m%s\x1b[0m', 'El reto ' + id + ' cargado con éxito! :)');
     }).catch(function () {
       console.log('\x1b[31m%s\x1b[0m', 'Error al cargar el reto ' + id + '! :_(');

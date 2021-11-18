@@ -8,49 +8,41 @@
  * Controller of the activeSchoolsAdminZoneApp
  */
 
-app.controller('newPostCtrl', ['$location', 'postServiceData', function ($location, postServiceData) {
+app.controller('newPostCtrl', ['$location', 'postService', 'postServiceData',
+  function ($location, postService, postServiceData) {
 
     var vm = this;
-    let postName = [];
-    vm.goToPost = function(){
-      $location.path('/posts');
-    }
 
-    vm.mostrarPopUp = function(status){
-       vm.deletePopUp = ! vm.deletePopUp;
-       vm.deleteIndex = status;
-     }
-     vm.deleteRow = function(){
-      vm.postServiceData.splice(vm.deleteIndex, 1);
-    }
+    vm.post = {};
 
-    vm.save = function(){
-      postServiceData.push({
-             date: new Date(),
-             title:vm.title,
-             post:vm.post,
-             image:vm.image,
-             postPublished: postName.toString()
+    vm.getCountry = function (country) {
+      vm.post.country = country;
+      vm.showOptions = false;
+    };
 
-           });
-         }
+    vm.save = function() {
 
-         vm.savePost = function(id){
-          debugger;
-          /*
-          postName.push({
-           posts:vm.posts[id].postPublished
-         });
-         */
-         postName.push(id);
-         console.log(postName);
+       let language;
 
+       if (vm.post.country === 'All' || vm.post.country === 'England') {
+         language = 0;
+       } else if (vm.post.country === 'Greece') {
+         language = 1;
+       } else if (vm.post.country === 'Spain') {
+         language = 2;
        }
 
+       let post = {
+         date: new Date().toISOString(),
+         title: vm.post.title,
+         description: vm.post.description,
+         image: vm.post.image,
+         country: vm.post.country,
+         language: language
+       };
 
+       postService.addPost(post);
 
-
-    vm.postServiceData = postServiceData;
-    vm.posts = vm.postServiceData;
+    };
 
   }]);

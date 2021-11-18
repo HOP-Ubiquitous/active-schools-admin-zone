@@ -8,42 +8,63 @@
  * Controller of the activeSchoolsAdminZoneApp
  */
 
-app.controller('editPostCtrl', ['$location', 'postServiceData',
-  function ($location, postServiceData) {
+app.controller('editPostCtrl', ['$scope', '$location', '$routeParams', 'postService', 'postServiceData',
+  function ($scope, $location, $routeParams, postService, postServiceData) {
 
     var vm = this;
-    vm.goToPost = function(){
-      $location.path('/posts');
+
+    vm.id = $routeParams.post_id
+
+    postService.getPostById(vm.id);
+
+    function getPost () {
+      vm.post = postServiceData.postById;
     }
 
-    vm.mostrarPopUp = function(status){
-      debugger;
-      vm.deletePopUp = ! vm.deletePopUp;
-      vm.deleteIndex = status;
+    vm.getCountry = function (country) {
+      vm.post.country = country;
+    };
+
+    vm.edit = function(){
+
+      let language;
+
+      if (vm.post.country === 'All' || vm.post.country === 'England') {
+        language = 0;
+      } else if (vm.post.country === 'Greece') {
+        language = 1;
+      } else if (vm.post.country === 'Spain') {
+        language = 2;
+      }
+
+      let post = {
+        date: new Date().toISOString(),
+        title: vm.post.title,
+        description: vm.post.description,
+        image: vm.post.image,
+        country: vm.post.country,
+        language: language
+      };
+
+      postService.editPost(vm.id, post);
+
+    };
+
+    function initWatchers() {
+
+      vm.postWatcher = $scope.$watch(
+        function () {
+          return postService.postByIdLoaded;
+        }, function (newValue) {
+          if (newValue === true) {
+            getPost();
+            postService.postByIdLoaded = false;
+          }
+        }
+      );
 
     }
 
-    vm.deleteRow = function(){
-
-      debugger;
-      vm.postServiceData.splice(vm.deleteIndex, 1);
-    }
-
-    vm.save = function(){
-      debugger;
-      postServiceData.push({
-             date: new Date(),
-             name:vm.name,
-             bonus:vm.bonus,
-             minTime:vm.minTime,
-
-             video:vm.video
-           });
-         }
-
-    vm.postServiceData = postServiceData;
-    vm.posts = vm.postServiceData;
-    console.log(vm.posts);
-
+    initWatchers();
 
   }]);

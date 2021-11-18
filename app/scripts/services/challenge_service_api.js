@@ -27,7 +27,7 @@ app.service('challengeServiceApi', ['$http', 'API_URL', function($http, API_URL)
   apiService.get_challenge_by_id = function (id) {
     return $http({
       method: 'GET',
-      url: apiURL + 'challenge/' + id,
+      url: apiURL + 'challenges/' + id,
       headers: {
         'Content-Type': 'application/json',
         'Access-Control-Allow-Origin': '*'
@@ -39,7 +39,7 @@ app.service('challengeServiceApi', ['$http', 'API_URL', function($http, API_URL)
     return $http({
       method: 'POST',
       data: data,
-      url: apiURL + 'challenge',
+      url: apiURL + 'challenges',
       headers: {
         'Content-Type': 'application/json',
         'Access-Control-Allow-Origin': '*'
@@ -51,7 +51,7 @@ app.service('challengeServiceApi', ['$http', 'API_URL', function($http, API_URL)
     return $http({
       method: 'PUT',
       data: data,
-      url: apiURL + 'challenge/' + id,
+      url: apiURL + 'challenges/' + id,
       headers: {
         'Content-Type': 'application/json',
         'Access-Control-Allow-Origin': '*'
@@ -62,7 +62,7 @@ app.service('challengeServiceApi', ['$http', 'API_URL', function($http, API_URL)
   apiService.delete_challenge = function (id) {
     return $http({
       method: 'DELETE',
-      url: apiURL + 'challenge/' + id,
+      url: apiURL + 'challenges/' + id,
       headers: {
         'Content-Type': 'application/json',
         'Access-Control-Allow-Origin': '*'

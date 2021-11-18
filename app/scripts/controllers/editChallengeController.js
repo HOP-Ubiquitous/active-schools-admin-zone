@@ -8,53 +8,53 @@
  * Controller of the activeSchoolsAdminZoneApp
  */
 
-app.controller('editChallengeCtrl', ['$location', 'challengeServiceData', '$routeParams',
-  function ($location, challengeServiceData, $routeParams) {
+app.controller('editChallengeCtrl', ['$scope', '$location', 'challengeService', 'challengeServiceData', '$routeParams',
+  function ($scope, $location, challengeService, challengeServiceData, $routeParams) {
 
     var vm = this;
-    vm.goToChallenge = function(){
-      $location.path('/challenges');
+
+    vm.id = $routeParams.challenge_id;
+
+    challengeService.getChallengeById(vm.id);
+
+    function getChallenge () {
+      vm.challenge = challengeServiceData.challengeById;
     }
 
-    vm.mostrarPopUp = function(status){
-      vm.deletePopUp = ! vm.deletePopUp;
-      vm.deleteIndex = status;
+    vm.getUnit = function (unit) {
+      vm.challenge.unit = unit;
+    };
+
+    vm.edit = function () {
+
+      let challenge =  {
+        name: vm.challenge.name,
+        period: vm.challenge.period,
+        unit: vm.challenge.unit,
+        bonus: vm.challenge.bonus,
+        video: vm.challenge.video,
+        images: ['image1', 'image2']
+      };
+
+      challengeService.editChallenge(vm.id, challenge);
+
+  };
+
+    function initWatchers() {
+
+      vm.postWatcher = $scope.$watch(
+        function () {
+          return challengeService.challengeByIdLoaded;
+        }, function (newValue) {
+          if (newValue === true) {
+            getChallenge();
+            challengeService.challengeByIdLoaded = false;
+          }
+        }
+      );
+
     }
 
-    vm.deleteRow = function(){
-      vm.challengeServiceData.splice(vm.deleteIndex, 1);
-    }
-
-    vm.save = function(){
-      challengeServiceData.push({
-             date: new Date(),
-             name:vm.name,
-             bonus:vm.bonus,
-             minTime:vm.minTime,
-
-             video:vm.video
-           });
-         }
-
-    vm.editChallenge = function() {
-
-    challengeServiceData.forEach(function(row) {
-      if(row.id === $routeParams.challenge_id) {
-
-      row.date = new Date();
-      row.name = vm.name;
-      row.video = vm.video;
-      row.bonus = vm.bonus;
-      row.minMax = vm.minMax;
-      row.maxMin = vm.maxMin;
-
-      }
-
-    })
-
-  }
-
-    vm.challengeServiceData = challengeServiceData;
-    vm.challenges = vm.challengeServiceData;
+    initWatchers();
 
   }]);

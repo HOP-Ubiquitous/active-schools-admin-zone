@@ -22,14 +22,14 @@
                 ng-show="('posts.new_post' | routeSegmentEqualsTo)"
                 placeholder="Post Text"
                 class="new-post-textArea"
-                ng-model="newPost.post.text"
+                ng-model="newPost.post.description"
                 required>
       </textarea>
       <textarea name="post"
                 ng-show="('posts.edit_post.post_id' | routeSegmentEqualsTo)"
                 placeholder="Post Text"
                 class="new-post-textArea"
-                ng-model="editPost.post.text"
+                ng-model="editPost.post.description"
                 required>
       </textarea>
 
@@ -60,7 +60,7 @@
       <hr class="space-new-route">
 
       <div class="dropdown-challenge"
-           ng-click="(showOptions = !showOptions)">
+           ng-click="showOptions = !showOptions">
         <span class="span-add-challenge" ng-show="('posts.new_post' | routeSegmentEqualsTo)">{{newPost.post.country || 'Select Country to Publish'}}</span>
         <span class="span-add-challenge" ng-show="('posts.edit_post.post_id' | routeSegmentEqualsTo)">{{editPost.post.country || 'Select Country to Publish'}}</span>
         <div class="rombo-select">
