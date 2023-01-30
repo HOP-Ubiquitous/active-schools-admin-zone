@@ -1,0 +1,77 @@
+.diamond-new-route-container {
+  width: 30px;
+  height: 30px;
+  position: fixed;
+  bottom: 10px;
+  right: 10px;
+  transform-origin: center right;
+  transition: 0.3s ease all;
+}
+
+.diamond-new-route-container:hover {
+  width: 180px;
+}
+
+.rombo-new-route{
+  width: 100%;
+  height: 100%;
+  background: var(--green);
+  overflow: hidden;
+  transition: 0.3s ease all;
+  clip-path: polygon(50% 0, 50% 0, 100% 50%, 50% 100%, 50% 100%, 0 50%);
+}
+
+.diamond-new-route-container:hover .rombo-new-route {
+  -webkit-clip-path: polygon(15px 0%, calc(100% - 15px) 0%, 100% 15px, calc(100% - 15px) 100%, 15px 100%, 0% 15px);
+  clip-path: polygon(15px 0%, calc(100% - 15px) 0%, 100% 15px, calc(100% - 15px) 100%, 15px 100%, 0% 15px);
+  background: var(--green-selected);
+}
+
+.rombo-new-route span {
+  font-size: 12px;
+  line-height: 30px;
+  color: #fff;
+}
+
+.rombo-new-route span:first-child {
+  display: block;
+  width: 30px;
+  text-align: center;
+  line-height: 30px;
+  color: #fff;
+  transition: 0.3s ease all;
+}
+
+.rombo-new-route span:nth-child(2) {
+  opacity: 0;
+  color: #fff;
+  line-height: 30px;
+  transition: 0.3s ease all;
+}
+
+/* .rombo-new-route:hover{
+  width: 180px;
+  height: 30px;
+  -webkit-clip-path: polygon(20px 0%, calc(100% - 20px) 0%, 100% 20px, calc(100% - 20px) 100%, 20px 100%, 0% 20px);
+  clip-path: polygon(20px 0%, calc(100% - 20px) 0%, 100% 20px, calc(100% - 20px) 100%, 20px 100%, 0% 20px);
+  background: var(--green-selected);
+  color: #fff;
+  transition: 0.3s ease all;
+} */
+
+.diamond-new-route-container:hover span:first-child {
+  float: left;
+  display: block;
+  width: 60px;
+  text-align: center;
+}
+
+.diamond-new-route-container:hover span:nth-child(2) {
+  float: right;
+  display: block;
+  width: calc(100% - 60px);
+  text-align: left;
+  opacity: 1;
+  left: -10px;
+  position: relative;
+}

@@ -8,10 +8,25 @@
  * Controller of the activeSchoolsAdminZoneApp
  */
 
-app.controller('newRouteCtrl', ['$scope', '$location', '$window', '$routeParams', 'routeService', 'challengeService', 'challengeServiceData',
-  function ($scope, $location, $window, $routeParams, routeService, challengeService, challengeServiceData) {
+app.controller('newRouteCtrl', ['$scope', '$location', '$window', '$routeParams', 'routeService', 'challengeService', 'challengeServiceData', 'ROUTE', 'ICONS', 'COUNTRIES',
+  function ($scope, $location, $window, $routeParams, routeService, challengeService, challengeServiceData, ROUTE, ICONS, COUNTRIES) {
 
     var vm = this;
+    vm.icons = ICONS;
+    vm.countries = COUNTRIES.countries;
+
+    vm.selectedMode = '';
+    vm.selectedModeTitle = 'Route Edit Mode';
+
+    vm.route = {};
+    vm.geoJSON = '';
+    vm.selectedChallenges = [];
+    vm.polyLinePoints = ROUTE.waypoints; // Cargando ruta de test
+    vm.challengePoints =  ROUTE.challenges.position;
+    vm.defaultLine = {};
+    vm.line = {};
+
+    vm.markers;
 
     challengeService.getChallenges();
 
@@ -24,87 +39,156 @@ app.controller('newRouteCtrl', ['$scope', '$location', '$window', '$routeParams'
 
     }
 
-    vm.route = {};
-    vm.geoJSON = '';
-    vm.selectedChallenges = [];
-
-    var routeMap = $window.L.map('routeMap').setView([50.27264, 7.26469], 13);
+    var routeMap = $window.L.map('routeMap').setView([38.08179, -1.275], 16);
     console.log(routeMap);
 
     $window.L.tileLayer('https://cartodb-basemaps-{s}.global.ssl.fastly.net/light_all/{z}/{x}/{y}.png').addTo(routeMap);
 
-    $window.L.Icon.extend({
-      options: {
-        shadowUrl: 'leaf-shadow.png'
-      }
+    createLegend();
+
+    var routePoint = L.divIcon({
+      className: "route-point",
+      iconAnchor: [5, 5],
+      html: '<span></span>'
     });
 
-    var control = $window.L.Routing.control({
-      waypoints: [
+    var challengePoint = L.divIcon({
+      className: "challenge-point",
+      iconAnchor: [5, 5],
+      html: '<span></span>'
+    });
 
-        //Barcelona
-        $window.L.latLng(41.37539, 2.14944),
-        $window.L.latLng(41.41363, 2.15345)
+    vm.markersGroup = L.featureGroup();
+    vm.polyLineGroup = L.featureGroup();
+    vm.challengeGroup = L.featureGroup();
 
-        //Livadeia
-        // $window.L.latLng(38.44219, 22.86522),
-        // $window.L.latLng(38.4379, 22.89162)
+    vm.markersGroup.addTo(routeMap);
+    vm.polyLineGroup.addTo(routeMap);
+    vm.challengeGroup.addTo(routeMap);
 
-        //Madrid
-        // $window.L.latLng(40.41402, -3.72096),
-        // $window.L.latLng(40.41524, -3.68885)
+    vm.line = new L.Polyline(vm.polyLinePoints, {color: '#00a195', draggable: true}).addTo(vm.polyLineGroup);
 
-        //Ceutí
-        // $window.L.latLng(38.08179, -1.28304),
-        // $window.L.latLng(38.08107, -1.26396)
+    vm.polyLinePoints.forEach(function(point, index) {
+      vm.markers = L.marker(point, {icon: routePoint, draggable: true, index: index}).addTo(vm.markersGroup);
+      vm.markers.on('click', removePointRoute);
+      vm.markers.on('drag', updatePointWithDrag);
+    });
 
-      ]
-    }).addTo(routeMap);
-
-    function getInstruction (i) {
-      if (i === 0) {
-        return 'Start';
-      } else if (i === vm.waypoints.length - 1) {
-        return 'End';
-      } else {
-        return 'Challenge';
-      }
+    if (vm.challengePoints.length > 0 && vm.challengePoints !== undefined) {
+      vm.challengePoints.forEach(function(point) {
+        vm.challengeMarkers = L.marker(point, {icon: challengePoint, draggable: true}).addTo(vm.challengeGroup).on('click', removeChallengePoint);
+      });
+      updateLegend();
     }
 
-    function getRouteDetails(waypoints) {
+    vm.changeMapMode = function(mode) {
+      vm.selectedMode = mode;
 
-      var instrPts = {
-        type: "FeatureCollection",
-        features: []
-      };
+      if (mode === 'route') {
+        
+        vm.selectedModeTitle = 'Route Edit Mode';
 
-      for (var i = 0; i < waypoints.length; ++i) {
-        var g = {
-          "type": "Point",
-          "coordinates": [waypoints[i].latLng.lat, waypoints[i].latLng.lng]
-        };
-
-        var p = {
-          "instruction": getInstruction(i)
-        };
-
-        instrPts.features.push({
-          "geometry": g,
-          "type": "Feature",
-          "properties": p
+        routeMap.on('click', createPointWithClick);
+        
+        vm.markersGroup.eachLayer(function(marker) {
+          marker.dragging.enable();
+          marker._icon.style.display = 'block';
+          marker.on('drag', updatePointWithDrag);
         });
+
+        vm.line.off('click', createChallengePoint);
+
+      } else {
+
+        vm.selectedModeTitle = 'Challenge Positioning Mode';
+        
+        routeMap.off('click', createPointWithClick);
+
+        vm.markersGroup.eachLayer(function(marker) {
+          marker.dragging.disable();
+          marker._icon.style.display = 'none';
+          marker.off('drag', updatePointWithDrag);
+        });
+
+        vm.line.on('click', createChallengePoint);
+        
       }
 
-      vm.geoJSON = instrPts;
-
-      return instrPts;
     }
 
-    control.on('routeselected', function (e) {
-      vm.waypoints = e.route.waypoints;
-      console.log(vm.waypoints);
-      $window.L.geoJson(getRouteDetails(vm.waypoints)).addTo(routeMap);
-    });
+    vm.changeMapMode('route');
+
+    function createPointWithClick(e) {
+      console.log('Latitud: ' + e.latlng.lat + ' - Longitud: ' + e.latlng.lng);
+      var latLng = [e.latlng.lat, e.latlng.lng]
+      createPoint(latLng);
+      updatePolyline();
+    }
+
+    function updatePointWithDrag(e) {
+      var latLng = [e.latlng.lat, e.latlng.lng]
+      updatePoint(e.target.options.index, latLng);
+    }
+
+    function createPoint(newPosition) {
+      vm.polyLinePoints.push(newPosition);
+      vm.markers = L.marker(newPosition, {icon: routePoint, draggable: true, index: vm.polyLinePoints.length - 1}).addTo(vm.markersGroup);
+      vm.markers.on('click', removePointRoute);
+      vm.markers.on('drag', updatePointWithDrag);
+      console.log(vm.polyLinePoints);
+    }
+
+    function updatePoint(index, newPosition) {
+      vm.polyLinePoints[index] = newPosition;
+      updatePolyline();
+    }
+
+    function removePointRoute(e) {
+      vm.polyLinePoints.splice(e.target.options.index, 1)
+      vm.markersGroup.eachLayer(function(marker) {
+        if(marker.options.index > e.target.options.index) {
+          marker.options.index = marker.options.index - 1;
+        }
+      });
+      vm.markersGroup.removeLayer(e.target._leaflet_id);
+      updatePolyline();
+    }
+
+    function updatePolyline() {
+      vm.line.setLatLngs(vm.polyLinePoints);
+    }
+
+    function createChallengePoint(e) {
+      var latLng = [e.latlng.lat, e.latlng.lng]
+      vm.challengeMarkers = L.marker(latLng, {icon: challengePoint, draggable: true}).addTo(vm.challengeGroup).on('click', removeChallengePoint);
+      updateLegend();
+      console.log(vm.challengeGroup._layers);
+    }
+
+    function removeChallengePoint(e) {
+      vm.challengeGroup.removeLayer(e.target._leaflet_id);
+      updateLegend();
+    }
+
+    function createLegend() {
+      var legend = L.control({position: 'bottomleft'});
+      legend.onAdd = function(map) {
+        var div = L.DomUtil.create('div', 'challenge-legend');
+
+        div.innerHTML = '<i class="legend-diamond" style="background: #00a195"></i> <span>Challenges: <span id="challenge-number" style="font-weight: 700">0</span></span>'
+
+        return div;
+      }
+
+      legend.addTo(routeMap);
+    }
+
+    function updateLegend() {
+      var challengeNumber = document.getElementById('challenge-number');
+      challengeNumber.innerHTML = Object.keys(vm.challengeGroup._layers).length;
+    }
+
+    // --  -- //
 
     vm.addChallenge = function (id) {
       vm.challenges.forEach(function (challenge) {

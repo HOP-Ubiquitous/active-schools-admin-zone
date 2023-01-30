@@ -1,0 +1,33 @@
+{
+  "name": "leaflet-draggable-polyline",
+  "main": "leaflet-draggable-polyline.js",
+  "homepage": "https://github.com/RevH/leaflet-draggable-polyline",
+  "authors": [
+    "Lorenzo Greco <lorenzo.rev@gmail.com>"
+  ],
+  "keywords": [
+    "leaflet"
+  ],
+  "license": "MIT",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "app/bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "leaflet.geometryutil": "git://github.com/makinacorpus/Leaflet.GeometryUtil.git"
+  },
+  "_release": "59ba3c04c3",
+  "_resolution": {
+    "type": "branch",
+    "branch": "master",
+    "commit": "59ba3c04c3669072ccf4959c923dc6f9b733c725"
+  },
+  "_source": "https://github.com/RevH/leaflet-draggable-polyline.git",
+  "_target": "*",
+  "_originalSource": "leaflet-draggable-polyline",
+  "_direct": true
+}

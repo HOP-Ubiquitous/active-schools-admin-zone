@@ -1,0 +1,136 @@
+<div class="main-container-inner-right">
+
+  <!-- TODO Mejorar o incluso separar New Challenge y Edit Challenge -->
+
+  <div class="new-route-form" ng-show="('teams.new_team' | routeSegmentEqualsTo) || ('teams.edit_team.team_id' | routeSegmentEqualsTo)">
+
+    <form>
+
+      <input type="text"
+             ng-show="('teams.new_team' | routeSegmentEqualsTo)"
+             placeholder="Name"
+             class="input-text"
+             ng-model="newTeam.team.name"
+             required>
+      <input type="text"
+             ng-show="('teams.edit_team.team_id' | routeSegmentEqualsTo)"
+             placeholder="Name"
+             class="input-text"
+             ng-model="editTeam.team.name"
+             required>
+
+      <input type="number"
+             ng-show="('teams.new_team' | routeSegmentEqualsTo)"
+             placeholder="Period"
+             class="input-text"
+             ng-model="newTeam.team.period"
+             required>
+      <input type="number"
+             ng-show="('teams.edit_team.team_id' | routeSegmentEqualsTo)"
+             placeholder="Period"
+             class="input-text"
+             ng-model="editTeam.team.period"
+             required>
+
+      <!--<select-->
+        <!--ng-show="('teams.new_team' | routeSegmentEqualsTo)"-->
+        <!--ng-model="newTeam.team.unit">-->
+        <!--<option value="Minutes">Minutes</option>-->
+        <!--<option value="Reps">Reps</option>-->
+      <!--</select>-->
+      <!--<select-->
+        <!--ng-show="('teams.edit_team.team_id' | routeSegmentEqualsTo)"-->
+        <!--ng-model="editTeam.team.unit">-->
+        <!--<option value="Minutes">Minutes</option>-->
+        <!--<option value="Reps">Reps</option>-->
+      <!--</select>-->
+
+      <div class="dropdown-challenge"
+           ng-click="(showOptions = !showOptions)">
+        <span class="span-add-challenge" ng-show="('teams.new_team' | routeSegmentEqualsTo)">{{newTeam.team.unit || 'Select Unit'}}</span>
+        <span class="span-add-challenge" ng-show="('teams.edit_team.team_id' | routeSegmentEqualsTo)">{{editTeam.team.unit || 'Select Unit'}}</span>
+        <div class="rombo-select">
+          <span class="{{newTeam.icons.arrowDown || editTeam.icons.arrowDown}}"></span>
+        </div>
+      </div>
+
+      <div class="dropdown-challenge-container" ng-show="showOptions">
+
+        <div class="dropdown-option"
+             ng-show="('teams.new_team' | routeSegmentEqualsTo) || ('teams.edit_team.team_id' | routeSegmentEqualsTo)"
+             ng-repeat="unit in ['Minutes', 'Reps']">
+
+          <div class="dropdown-option-left"
+               ng-show="('teams.new_team' | routeSegmentEqualsTo)"
+               ng-click="newTeam.getUnit(unit)">
+            <span>{{unit}}</span>
+          </div>
+
+          <div class="dropdown-option-left"
+               ng-show="('teams.edit_team.team_id' | routeSegmentEqualsTo)"
+               ng-click="editTeam.getUnit(unit)">
+            <span>{{unit}}</span>
+          </div>
+
+        </div>
+
+      </div>
+
+      <input type="number"
+             ng-show="('teams.new_team' | routeSegmentEqualsTo)"
+             placeholder="Bonus"
+             class="input-text"
+             ng-model="newTeam.team.bonus"
+             required>
+      <input type="number"
+             ng-show="('teams.edit_team.team_id' | routeSegmentEqualsTo)"
+             placeholder="Bonus"
+             class="input-text"
+             ng-model="editTeam.team.bonus"
+             required>
+
+      <hr class="space-new-route">
+
+      <div class="post-tabs-container">
+
+        <div class="post-tab"
+             ng-class="{ 'post-tab-selected' : showUrlVideo }"
+             ng-init="showUrlVideo = true"
+             ng-click="showUrlVideo = true; showUploadVideo = false">
+          <span>Youtube Video</span>
+        </div>
+
+        <div class="post-tab"
+             ng-class="{ 'post-tab-selected' : showUploadVideo }"
+             ng-click="showUploadVideo = true; showUrlVideo = false">
+          <span>Upload Video</span>
+        </div>
+      </div>
+
+      <input type="url" placeholder="Youtube URL" class="input-text" ng-model="newTeam.team.video" ng-show="showUrlVideo === true && ('teams.new_team' | routeSegmentEqualsTo)" required>
+      <input type="url" placeholder="Youtube URL" class="input-text" ng-model="editTeam.team.video" ng-show="showUrlVideo === true && ('teams.edit_team.team_id' | routeSegmentEqualsTo)" required>
+
+      <input type="url" placeholder="Upload Video" class="input-text" ng-model="newTeam.team.video" ng-show="showUploadVideo === true && ('teams.new_team' | routeSegmentEqualsTo)" required>
+      <input type="url" placeholder="Upload Video" class="input-text" ng-model="editTeam.team.video" ng-show="showUploadVideo === true && ('teams.edit_team.team_id' | routeSegmentEqualsTo)" required>
+
+      <br>
+      <div class="new-challenge-video">
+        <iframe width="100%" height="100%" src="{{video}}"  >
+        </iframe>
+      </div>
+
+      <button-form show-button="('teams.new_team' | routeSegmentEqualsTo)"
+                   click-button="newTeam.save()"
+                   text-button="Add Team">
+      </button-form>
+
+      <button-form show-button="('teams.edit_team.team_id' | routeSegmentEqualsTo)"
+                   click-button="editTeam.edit()"
+                   text-button="Edit Team">
+      </button-form>
+
+    </form>
+
+  </div>
+
+</div>

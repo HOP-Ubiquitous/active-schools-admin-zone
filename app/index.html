@@ -13,7 +13,16 @@
   <!-- endbower -->
   <!-- endbuild -->
   <!-- build:css(.tmp) styles/main.css -->
+  <link rel="stylesheet" href="styles/common.css">
+  <link rel="stylesheet" href="styles/login.css">
+  <link rel="stylesheet" href="styles/sidemenu.css">
+  <link rel="stylesheet" href="styles/header.css">
   <link rel="stylesheet" href="styles/main.css">
+  <link rel="stylesheet" href="styles/new-button.css">
+  <link rel="stylesheet" href="styles/map.css">
+  <link rel="stylesheet" href="styles/dropdown.css">
+  <link rel="stylesheet" href="styles/button-form.css">
+  
   <link rel="stylesheet" href="scripts/vendor/leaflet/dist/leaflet.css">
   <link rel="stylesheet" href="scripts/vendor/leaflet-routing-machine/dist/leaflet-routing-machine.css">
   <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -57,10 +66,11 @@
 <!-- build:js({.tmp,app}) scripts/scripts.js -->
 <script src="scripts/vendor/leaflet/dist/leaflet.js"></script>
 <script src="scripts/vendor/leaflet-routing-machine/dist/leaflet-routing-machine.js"></script>
+<script src="scripts/vendor/leaflet-draggable-polyline/leaflet-draggable-polyline.js"></script>
+<!-- <script src="scripts/vendor/leaflet-draggable-lines/src/index.ts"></script> -->
+<script src="scripts/vendor/leaflet-geometry-util/src/leaflet.geometryutil.js"></script>
 
 <script src="scripts/app.js"></script>
-<script src="scripts/controllers/main.js"></script>
-<script src="scripts/controllers/about.js"></script>
 <script src="scripts/controllers/loginController.js"></script>
 <script src="scripts/controllers/challengesController.js"></script>
 <script src="scripts/controllers/editChallengeController.js"></script>
@@ -73,6 +83,14 @@
 <script src="scripts/controllers/recoverController.js"></script>
 <script src="scripts/controllers/routesController.js"></script>
 <script src="scripts/controllers/editRouteController.js"></script>
+<script src="scripts/controllers/usersController.js"></script>
+<script src="scripts/controllers/newUserController.js"></script>
+<script src="scripts/controllers/editUserController.js"></script>
+<script src="scripts/controllers/newCourseController.js"></script>
+<script src="scripts/controllers/editCourseController.js"></script>
+<script src="scripts/controllers/teamsController.js"></script>
+<script src="scripts/controllers/newTeamController.js"></script>
+<script src="scripts/controllers/editTeamController.js"></script>
 
 <!--filters-->
 <script src="scripts/filters/matcher_filter.js"></script>
@@ -87,28 +105,65 @@
 <script src="scripts/components/new-button/new_button_directive.js"></script>
 <script src="scripts/components/new-button/new_button_controller.js"></script>
 
+<script src="scripts/components/dropdown/dropdown_directive.js"></script>
+<script src="scripts/components/dropdown/dropdown_controller.js"></script>
+
+<script src="scripts/components/button-form/button_form_directive.js"></script>
+<script src="scripts/components/button-form/button_form_controller.js"></script>
+
 <!--services-->
-<script src="scripts/services/login_service_api.js"></script>
+<script src="scripts/services/achievements/achievements_service_api.js"></script>
+<script src="scripts/services/achievements/achievements_service_data.js"></script>
+<script src="scripts/services/achievements/achievements_service.js"></script>
+
+<script src="scripts/services/avatar/avatar_service_api.js"></script>
+<script src="scripts/services/avatar/avatar_service_data.js"></script>
+<script src="scripts/services/avatar/avatar_service.js"></script>
+
+<script src="scripts/services/daily-challenges/daily-challenge_service_api.js"></script>
+<script src="scripts/services/daily-challenges/daily-challenge_service_data.js"></script>
+<script src="scripts/services/daily-challenges/daily-challenge_service.js"></script>
+
+<script src="scripts/services/medical-centers/medical-center_service_api.js"></script>
+<script src="scripts/services/medical-centers/medical-center_service_data.js"></script>
+<script src="scripts/services/medical-centers/medical-center_service.js"></script>
+
+<!-- <script src="scripts/services/login_service_api.js"></script>
 <script src="scripts/services/login_service.js"></script>
-<script src="scripts/services/login_service_data.js"></script>
+<script src="scripts/services/login_service_data.js"></script> -->
 
-<script src="scripts/services/route_service_api.js"></script>
-<script src="scripts/services/route_service.js"></script>
-<script src="scripts/services/route_service_data.js"></script>
+<script src="scripts/services/routes/route_service_api.js"></script>
+<script src="scripts/services/routes/route_service_data.js"></script>
+<script src="scripts/services/routes/route_service.js"></script>
 
-<script src="scripts/services/recover_service_api.js"></script>
+<!-- <script src="scripts/services/recover_service_api.js"></script>
 <script src="scripts/services/recover_service_data.js"></script>
-<script src="scripts/services/recover_service.js"></script>
+<script src="scripts/services/recover_service.js"></script> -->
 
-<script src="scripts/services/challenge_service_api.js"></script>
-<script src="scripts/services/challenge_service_data.js"></script>
-<script src="scripts/services/challenge_service.js"></script>
+<script src="scripts/services/challenges/challenge_service_api.js"></script>
+<script src="scripts/services/challenges/challenge_service_data.js"></script>
+<script src="scripts/services/challenges/challenge_service.js"></script>
 
-<script src="scripts/services/post_service_api.js"></script>
-<script src="scripts/services/post_service_data.js"></script>
-<script src="scripts/services/post_service.js"></script>
+<script src="scripts/services/posts/post_service_api.js"></script>
+<script src="scripts/services/posts/post_service_data.js"></script>
+<script src="scripts/services/posts/post_service.js"></script>
+
+<script src="scripts/services/users/user_service_api.js"></script>
+<script src="scripts/services/users/user_service_data.js"></script>
+<script src="scripts/services/users/user_service.js"></script>
+
+<script src="scripts/services/teams/team_service_api.js"></script>
+<script src="scripts/services/teams/team_service_data.js"></script>
+<script src="scripts/services/teams/team_service.js"></script>
+
+<script src="scripts/services/schools/school_service_api.js"></script>
+<script src="scripts/services/schools/school_service_data.js"></script>
+<script src="scripts/services/schools/school_service.js"></script>
 
 <script src="scripts/constants/api_constants.js"></script>
+<script src="scripts/constants/icon_constants.js"></script>
+<script src="scripts/constants/countries_constants.js"></script>
+<script src="scripts/constants/route_constants.js"></script>
 
 <!-- endbuild -->
 

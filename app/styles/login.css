@@ -1,0 +1,283 @@
+.login-container{
+  width: 100vw;
+  height: 100vh;
+  background: url(../images/Admin_Zone_bg.svg) no-repeat center top;
+  background-size: cover;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.login-overlay{
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  top: 0;
+  left: 0;
+  mix-blend-mode: multiply;
+  /* background: var(--light-orange);
+  background: linear-gradient(180deg, var(--light-orange) 0%, var(--orange) 100%); */
+  background: rgb(237,103,29);
+  background: linear-gradient(90deg, rgba(237,103,29,1) 0%, rgba(111,75,154,1) 50%, rgba(201,5,103,1) 100%);
+}
+
+.text-container{
+  text-align: center;
+  width: 350px;
+  height: auto;
+  background-color: rgba(255, 255, 255, 0.75);
+  margin: auto;
+  padding: 40px 0;
+  backdrop-filter: blur(3px);
+  z-index: 1;
+}
+
+.text-container-recover{
+  text-align: center;
+  border: 1px solid var(--orange);
+  width: 449px;
+  height: 449px;
+  background-color: white;
+  margin: auto;
+  margin-top: 10%;
+  padding-top: 20px;
+  box-shadow: 1px 1px 1px;
+  z-index: 4;
+}
+
+.text-container img {
+  width: 40%;
+  height: auto;
+}
+
+.text-container h5:nth-child(2) {
+  /* color: var(--dark-orange); */
+  color: #fff;
+  font-weight: 700;
+  font-size: 14px;
+  margin-top: 20px;
+}
+
+.text-container h5:nth-child(3) {
+  color: #999;
+  font-weight: 700;
+  font-size: 18px;
+  margin-top: 40px;
+}
+
+.form-container {
+  width: 100%;
+  height: auto;
+  position: relative; 
+}
+
+.button {
+  width: calc(100% - 80px);
+  height: 40px;
+  border: 1px solid var(--orange);
+  background: var(--orange);
+  color: #fff;
+  font-weight: 400;
+  font-size: 14px;
+ -webkit-clip-path: polygon(20px 0%, calc(100% - 20px) 0%, 100% 20px, calc(100% - 20px) 100%, 20px 100%, 0% 20px);
+  clip-path: polygon(20px 0%, calc(100% - 20px) 0%, 100% 20px, calc(100% - 20px) 100%, 20px 100%, 0% 20px);
+  margin-bottom: 10px;
+}
+
+::-webkit-input-placeholder {
+  text-align: center;
+}
+
+.place::-webkit-input-placeholder {
+  text-align: left;
+}
+
+.login-error {
+  color:#dc3545;
+  font-size: 10px;
+  position: absolute;
+  transform-origin: center center;
+  transform: translateX(-50%) translateY(-12px);
+}
+
+.term-container {
+  width: calc(100% - 40px);
+  height: 20px;
+  margin: 0 auto 10px auto;
+}
+
+.term-container a {
+  color: #fff;
+  line-height: 20px;
+  transition: 0.3s ease all;
+  font-size: 10px;
+}
+
+.term-container a:hover {
+  color: var(--orange);
+}
+
+.login-separator {
+  width: calc(100% - 80px);
+  height: 20px;
+  margin: 0 auto;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.login-separator hr {
+  width: 100%;
+  border-top: 1px solid #fff;
+}
+
+.login-separator span {
+  width: 100px;
+  font-size: 12px;
+  color: #fff;
+}
+
+.google-button {
+  width: calc(100% - 80px);
+  height: 40px;
+  display: flex;
+  justify-content: left;
+  align-items: center;
+  margin: 10px auto;
+  border-radius: 2px;
+
+  background: #4285F4 !important;
+  font-family: 'Roboto', sans-serif !important;
+
+  font-size: 14px;
+  font-weight: 500;
+  text-transform: none !important;
+  color: #fff;
+}
+
+.google-button div {
+  height: calc(100% - 2px);
+  aspect-ratio: 1;
+  margin: 1px 8px 1px 1px;
+  background: #fff;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.google-button div img {
+  width: 18px;
+  height: 18px;
+}
+
+.login-no-padding {
+  padding: 20px 0 10px 0;
+}
+
+.new-user-container {
+  width: calc(100% - 40px);
+  height: 20px;
+  margin: 0 auto;
+  cursor: pointer;
+}
+
+.new-user-container a {
+  color: #fff;
+  transition: 0.3s ease all;
+  font-weight: 600;
+  font-size: 10px;
+}
+
+.new-user-container a:hover {
+  color: var(--orange);
+}
+
+.login-register-title-container {
+  width: calc(100% - 40px);
+  height: 20px;
+  margin: auto;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.login-register-title-container h5 {
+  font-size: 14px;
+  color: #fff;
+  font-weight: 600;
+}
+
+.login-register-title-container span {
+  width: 20px;
+  height: 20px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: #fff;
+  color: var(--orange);
+  transition: 0.3s ease all;
+}
+
+.login-register-title-container span:hover {
+  background: var(--light-orange);
+}
+
+.login-register-progress-container {
+  width: calc(100% - 40px);
+  height: 10px;
+  margin: 20px auto 0 auto;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  position: relative;
+}
+
+.login-register-progress-bar {
+  width: 100%;
+  height: 1px;
+  background: #fff;
+  position: absolute;
+  display: flex;
+  justify-content: left;
+  align-items: center;
+}
+
+.login-register-progress-inner {
+  width: 0;
+  height: 1px;
+  background: var(--orange);
+  transition: 0.3s ease all;
+}
+
+.login-register-progress-inner-0 {
+  width: 0;
+}
+
+.login-register-progress-inner-25 {
+  width: 33.33%;
+}
+
+.login-register-progress-inner-75 {
+  width: 66.66%;
+}
+
+.login-register-progress-inner-100 {
+  width: 100%;
+}
+
+.login-register-progress-diamond {
+  width: 10px;
+  height: 10px;
+}
+
+.login-register-progress-diamond div {
+  width: 100%;
+  height: 100%;
+  clip-path: polygon(50% 0, 100% 50%, 50% 100%, 0 50%);
+  background: #fff;
+  transition: 0.3s ease all;
+}
+
+.login-register-progress-diamond-active div {
+  background: var(--orange); 
+}

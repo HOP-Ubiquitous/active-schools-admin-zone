@@ -1,0 +1,63 @@
+<div class="dropdown-challenge"
+     ng-show="showDropdown"
+     ng-class="{ 'dropdown-challenge-active' : activeDropdown }"
+     ng-click="activeDropdown = !activeDropdown">
+        
+  <span class="span-add-challenge">
+        {{model || placeholder}}
+  </span>
+        
+  <div class="rombo-select"
+       ng-class="{ 'rombo-select-active' : activeDropdown }">
+    <span class="fas fa-chevron-down icon-size"></span>
+  </div>
+
+</div>
+
+<div class="dropdown-challenge-container"
+     ng-style="dropdownStyle"
+     ng-show="showDropdown && activeDropdown">
+
+  <div class="dropdown-option"
+       ng-show="showDefaultOption">
+
+    <div class="dropdown-option-left"
+         ng-click="getOptionFunction(defaultOptionValue)">
+      <span>{{defaultOptionName}}</span>
+    </div>
+
+  </div> 
+
+  <div class="dropdown-option"
+       ng-repeat="repeat in repeater">
+
+    <div class="dropdown-option-left"
+         ng-click="getOptionFunction($index)">
+      <span>{{repeater[$index].name}}</span>
+    </div>
+
+    <div class="dropdown-option-right"
+         ng-show="show-right-column">
+
+      <div class="rombo-table small-square edit-bg"
+           ng-click="newRoute.editChallenge(challenge.id)">
+        <i class="{{newRoute.icons.edit}} icon-size"></i>
+      </div>
+
+      <!-- TODO Si el challenge NO ESTÁ añadido muestra este div -->
+      <div class="rombo-table small-square see-bg"
+           ng-click="getOptionFunction(challenge.id)">
+        <i class="fas fa-plus icon-size"></i>
+      </div>
+
+      <!-- TODO Si el challenge ESTÁ añadido muestra este div -->
+      <div class="rombo-table small-square delete-bg"
+           ng-click="deleteOptionFunction(challenge.id)">
+        <i class="fas fa-eraser icon-size"></i>
+      </div>
+
+    </div>
+
+  </div>
+
+</div>

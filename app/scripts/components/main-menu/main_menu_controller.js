@@ -1,8 +1,8 @@
-app.controller('mainMenuCtrl',
-  ['$location', '$routeParams',
-    function ($location, $routeParams) {
+  app.controller('mainMenuCtrl', ['$location', 'userServiceData', '$routeParams', 'ICONS',
+    function ($location, userServiceData, $routeParams, ICONS) {
 
       var vm = this;
+      vm.icons = ICONS;
 
       vm.goToRoutes = function () {
         $location.path('/routes');
@@ -13,16 +13,26 @@ app.controller('mainMenuCtrl',
       };
 
       vm.goToPosts = function () {
-        $location.path('posts');
+        $location.path('/posts');
       };
 
       vm.goToProfile = function () {
         $location.path('/profile');
       };
 
+      vm.goToUsers = function () {
+        $location.path('/users');
+      };
+
+      vm.goToTeams = function () {
+        $location.path('/teams');
+      };
+
       vm.goToLogin = function () {
-        //TODO Añadir función del logout cuando esté disponible
+        
+        userServiceData.loggedUser = {};
         $location.path('/login');
+        
       };
 
     }

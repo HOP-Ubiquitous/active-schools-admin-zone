@@ -1,0 +1,63 @@
+.route-point span {
+  background-color: #ff6f00;
+  width: 10px;
+  height: 10px;
+  display: block;
+  left: 0px;
+  top: 0px;
+  border: 1px solid #00a195;
+  position: relative;
+  transform: rotate(45deg);
+}
+
+.route-point:first-child span, .route-point:last-child span {
+  background: #803800;
+}
+
+.route-point:first-child span:after, .route-point:last-child span:after {
+  content: '\f43c';
+  font-family: 'Font Awesome 5 Free';
+  font-weight: 900;
+  color: #fff;
+  font-size: 40px;
+  width: 20px;
+  height: 20px;
+  background: #ff6f00;
+  position: absolute;
+  overflow: hidden;
+  top: -23px;
+  left: -23px;
+  border: 1px solid #00a195;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.challenge-point span {
+  background-color: #00a195;
+  width: 10px;
+  height: 10px;
+  display: block;
+  left: 0px;
+  top: 0px;
+  border: 1px solid #00a195;
+  position: relative;
+  transform: rotate(45deg);
+}
+
+.challenge-point span::after {
+  content: '\f1e3';
+  font-family: 'Font Awesome 5 Free';
+  font-weight: 900;
+  color: #fff;
+  font-size: 12px;
+  width: 20px;
+  height: 20px;
+  background: #00a195;
+  position: absolute;
+  top: -23px;
+  left: -23px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}

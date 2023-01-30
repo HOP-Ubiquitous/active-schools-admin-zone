@@ -8,11 +8,48 @@
  * Controller of the activeSchoolsAdminZoneApp
  */
 
-app.controller('editChallengeCtrl', ['$scope', '$location', 'challengeService', 'challengeServiceData', '$routeParams',
-  function ($scope, $location, challengeService, challengeServiceData, $routeParams) {
+app.controller('editChallengeCtrl', ['$scope', '$location', 'challengeService', 'challengeServiceData', '$routeParams', 'ICONS', 'COUNTRIES',
+  function ($scope, $location, challengeService, challengeServiceData, $routeParams, ICONS, COUNTRIES) {
 
     var vm = this;
-
+    vm.icons = ICONS;
+    vm.countries = COUNTRIES.countries;
+    vm.categories = [
+      {
+        name: 'Aerobics',
+        value: 'aerobics'
+      },
+      {
+        name: 'Balance',
+        value: 'balance'
+      },
+      {
+        name: 'Mental',
+        value: 'mental'
+      },
+      {
+        name: 'Strength',
+        value: 'strength'
+      },
+      {
+        name: 'Stretch',
+        value: 'stretch'
+      }
+    ];
+    vm.units = [
+      {
+        name: 'Minutes',
+        value: 'minutes'
+      },
+      {
+        name: 'Seconds',
+        value: 'seconds'
+      },
+      {
+        name: 'Repeats',
+        value: 'reps'
+      }
+    ];
     vm.id = $routeParams.challenge_id;
 
     challengeService.getChallengeById(vm.id);

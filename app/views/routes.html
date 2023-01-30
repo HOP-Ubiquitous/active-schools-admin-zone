@@ -6,13 +6,13 @@
 
     <section-header ng-show="('routes' | routeSegmentEqualsTo)"
                     title="Routes"
-                    icon="fas fa-route"
+                    icon="{{routes.icons.routes}}"
                     show-search-input="true">
     </section-header>
 
     <section-header ng-show="('routes.new_route' | routeSegmentEqualsTo)"
                     title="Routes - New Route"
-                    icon="fas fa-route"
+                    icon="{{routes.icons.routes}}"
                     show-search-input="false"
                     show-close="true"
                     close-function="routes.goToRoutes()">
@@ -20,7 +20,7 @@
 
     <section-header ng-show="('routes.edit_route.route_id' | routeSegmentEqualsTo)"
                     title="Routes - Edit Route"
-                    icon="fas fa-route"
+                    icon="{{routes.icons.routes}}"
                     show-search-input="false"
                     show-close="true"
                     close-function="routes.goToRoutes()">
@@ -37,7 +37,7 @@
           <th>Province</th>
           <th>Country</th>
           <th>Challenges</th>
-          <th>Options</th>
+          <th class="option-header">Options</th>
         </tr>
         </thead>
         <tbody ng-repeat="route in routes.routes track by $index">
@@ -51,18 +51,18 @@
           <td>{{route.challenges.length}}</td>
           <td class="option">
 
-            <div class="rombo-table-write" ng-click="routes.editRoute(route.id)">
-              <i class="fas fa-edit logo1"></i>
+            <div class="rombo-table small-square edit-bg" ng-click="routes.editRoute(route.id)">
+              <i class="{{routes.icons.edit}} icon-size"></i>
             </div>
             <!--ng-click="routes.deleteRow($index)"-->
-            <div class="rombo-table-delete" ng-click="showDeletePopup[$index] = !showDeletePopup[$index]">
-              <i class="fas fa-trash-alt logo2"></i>
+            <div class="rombo-table small-square delete-bg" ng-click="showDeletePopup[$index] = !showDeletePopup[$index]">
+              <i class="{{routes.icons.deleteDocument}} icon-size"></i>
             </div>
             <!--ng-click="showOptions[$index] = !showOptions[$index]"-->
-            <div class="rombo-table-see"
+            <div class="rombo-table small-square see-bg"
                  ng-class="{ 'rombo-table-see-selected' : showChallenges[$index] === true }"
                  ng-click="showChallenges[$index] = !showChallenges[$index]; routes.getChallengesByRouteId(route.id)">
-              <i class="fas fa-eye logo3"></i>
+              <i class="{{routes.icons.details}} icon-size"></i>
             </div>
 
             <div class="bg-popup" ng-show="showDeletePopup[$index]">
@@ -91,7 +91,7 @@
                 <th scope="col">Bonus</th>
                 <th scope="col">Video</th>
                 <th scope="col">Images</th>
-                <th scope="col">Options</th>
+                <th scope="col" class="option-header">Options</th>
               </tr>
               <tr ng-repeat="challenge in routes.challengesLoaded">
                 <td>{{challenge.date | date : 'dd/MM/yyyy'}}</td>
@@ -103,8 +103,8 @@
                 <td>{{challenge.images.length}}</td>
                 <td class="option">
 
-                  <div class="rombo-table-write" ng-click="routes.editChallenge(challenge.id)">
-                    <i class="fas fa-edit logo1"></i>
+                  <div class="rombo-table small-square edit-bg" ng-click="routes.editChallenge(challenge.id)">
+                    <i class="{{routes.icons.edit}} icon-size"></i>
                   </div>
 
               </tr>
@@ -123,7 +123,7 @@
 
     <div app-view-segment="2" ng-show="('routes.edit_route.route_id' | routeSegmentEqualsTo)"></div>
 
-    <new-button icon="fas fa-plus"
+    <new-button icon="{{routes.icons.add}}"
                 title="New Route"
                 button-function="routes.goToNewRoute()"
                 ng-hide="('routes.new_route' | routeSegmentEqualsTo)">

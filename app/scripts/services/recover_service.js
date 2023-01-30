@@ -16,41 +16,39 @@ app.service('recoverService', ['recoverServiceApi', 'recoverServiceData', '$loca
     var deferred = $q.defer();
     var promise = deferred.promise;
 
-    recoverServiceApi.addRecover(recover)
-      .then(
-        function success(response){
-          service.getRecover()
-          console.log('\x1b[32m%s\x1b[0m', 'Recover añadido con éxito! :)');
-        }
-      )
+    recoverServiceApi.addRecover(recover).then(
+      function success(response){
+        service.getRecover()
+        console.log('\x1b[32m%s\x1b[0m', 'Recover añadido con éxito! :)');
+      }
+    ).catch(
+      function () {
+        console.log('\x1b[31m%s\x1b[0m', 'Error al crear el recover! :_(');
+      }
+    );
 
-      .catch(
-        function () {
-          console.log('\x1b[31m%s\x1b[0m', 'Error al crear el recover! :_(');
-        }
-      );
+  return promise;
+
   }
 
   service.getRecover = function(){
     var deferred = $q.defer();
     var promise = deferred.promise;
 
-    recoverServiceApi.getRecover()
-      .then(
-        function succes(response){
-          recoverServiceData.recoverList = response.data;
-          service.recoverLoaded = true;
-          console.log('\x1b[32m%s\x1b[0m', 'Cargados todos los datos del recover! :)');
+    recoverServiceApi.getRecover().then(
+      function succes(response){
+        recoverServiceData.recoverList = response.data;
+        service.recoverLoaded = true;
+        console.log('\x1b[32m%s\x1b[0m', 'Cargados todos los datos del recover! :)');
+      }
+    ).catch(
+      function (){
+        console.log('\x1b[31m%s\x1b[0m', 'Error al cargar todos los recover! :_(')
+      }
+    );
 
-        }
-      )
-      .catch(
-        function (){
-          console.log('\x1b[31m%s\x1b[0m', 'Error al cargar todos los recover! :_(')
-        }
-      );
-
-    return promise;
+  return promise;
+  
   }
 
 }]);

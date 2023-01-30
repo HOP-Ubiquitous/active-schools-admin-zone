@@ -1,0 +1,96 @@
+<div class="root">
+
+  <main-menu></main-menu>
+
+<div class="main-container">
+
+  <section-header ng-show="('users' | routeSegmentEqualsTo)"
+                  title="Users"
+                  icon="{{users.icons.users}}"
+                  show-search-input="true">
+  </section-header>
+
+  <section-header ng-show="('users.new_user' | routeSegmentEqualsTo)"
+                  title="Users - New User"
+                  icon="{{users.icons.users}}"
+                  show-search-input="true"
+                  show-close="true"
+                  close-function="users.goToUsers()">
+  </section-header>
+
+  <section-header ng-show="('users.edit_user.user_id' | routeSegmentEqualsTo)"
+                  title="Users - Edit User"
+                  icon="{{users.icons.users}}"
+                  show-search-input="true"
+                  show-close="true"
+                  close-function="users.goToUsers()">
+  </section-header>
+
+  <div class="main-container-inner" ng-class="{ 'main-container-inner-left' : ('users.new_user' | routeSegmentEqualsTo) || ('users.edit_user.user_id' | routeSegmentEqualsTo) }">
+
+    <table class="tabla">
+      <thead>
+      <tr>
+        <th scope="col">Name</th>
+        <th scope="col">Surname</th>
+        <th scope="col">Role</th>
+        <th scope="col">Usename</th>
+        <th scope="col">City</th>
+        <th scope="col">Province</th>
+        <th scope="col" class="option-header">Options</th>
+      </tr>
+      </thead>
+      <tbody ng-repeat="user in users.users | orderBy: '-date'">
+
+      <tr>
+        <td class="bold">{{user.personal_data.name}} {{users.checkIfOwnUser(user.id)}}</td>
+        <td class="bold">{{user.personal_data.surname}}</td>
+        <td>{{user.rol}}</td>
+        <td>{{user.username}}</td>
+        <td>{{user.personal_data.city}}</td>
+        <td>{{user.personal_data.province}}</td>
+        <td class="option">
+
+          <div class="rombo-table small-square edit-bg" ng-click="users.editUser(user.id)">
+            <i class="{{users.icons.edit}} icon-size"></i>
+          </div>
+
+          <div class="rombo-table small-square delete-bg" ng-click="showDeletePopup[$index] = !showDeletePopup[$index]">
+            <i class="{{users.icons.deleteDocument}} icon-size"></i>
+          </div>
+
+          <div class="bg-popup" ng-show="showDeletePopup[$index]">
+
+            <div class="popup-container">
+              <span>are you sure you want to delete this user?</span>
+              <h5 class="bold">{{user.personal_data.name}} {{user.personal_data.surname}}</h5>
+              <div class="popup-buttons-container">
+                <button class="delete-button" ng-click="users.deleteUser(user.id); showDeletePopup[$index] = false">Delete</button>
+                <button class="cancel-button"  ng-click="showDeletePopup[$index] = false">Cancel</button>
+              </div>
+            </div>
+
+          </div>
+
+        </td>
+
+      </tr>
+
+      </tbody>
+    </table>
+
+  </div>
+
+  <div app-view-segment="1" ng-show="('users.new_user' | routeSegmentEqualsTo)"></div>
+
+  <div app-view-segment="2" ng-show="('users.edit_user.user_id' | routeSegmentEqualsTo)"></div>
+
+  <new-button icon="{{users.icons.add}}"
+              title="New User"
+              button-function="users.goToNewUser()"
+              ng-hide="('users.new_user' | routeSegmentEqualsTo)">
+  </new-button>
+
+  </div>
+
+</div>

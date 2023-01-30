@@ -8,10 +8,12 @@
  * Controller of the activeSchoolsAdminZoneApp
  */
 
-app.controller('routesCtrl', ['$scope', '$location', 'routeService', 'routeServiceData', '$routeParams',
-  function ($scope, $location, routeService, routeServiceData, $routeParams) {
+app.controller('routesCtrl', ['$scope', '$location', 'routeService', 'routeServiceData', '$routeParams', 'ICONS', 'COUNTRIES',
+  function ($scope, $location, routeService, routeServiceData, $routeParams, ICONS, COUNTRIES) {
 
     var vm = this;
+    vm.icons = ICONS;
+    vm.countries = COUNTRIES.countries;
 
     vm.routes = [];
     vm.challengesLoaded = [];

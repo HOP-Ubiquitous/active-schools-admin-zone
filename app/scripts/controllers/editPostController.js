@@ -8,11 +8,12 @@
  * Controller of the activeSchoolsAdminZoneApp
  */
 
-app.controller('editPostCtrl', ['$scope', '$location', '$routeParams', 'postService', 'postServiceData',
-  function ($scope, $location, $routeParams, postService, postServiceData) {
+app.controller('editPostCtrl', ['$scope', '$location', '$routeParams', 'postService', 'postServiceData', 'ICONS', 'COUNTRIES',
+  function ($scope, $location, $routeParams, postService, postServiceData, ICONS, COUNTRIES) {
 
     var vm = this;
-
+    vm.icons = ICONS;
+    vm.countries = COUNTRIES.countries;
     vm.id = $routeParams.post_id
 
     postService.getPostById(vm.id);

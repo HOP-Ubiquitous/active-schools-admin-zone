@@ -8,106 +8,194 @@
  * Controller of the activeSchoolsAdminZoneApp
  */
 
-app.controller('editRouteCtrl', ['$scope', '$location', '$window', '$routeParams', 'routeService', 'routeServiceData', 'challengeService', 'challengeServiceData',
-  function ($scope, $location, $window, $routeParams, routeService, routeServiceData, challengeService, challengeServiceData) {
+app.controller('editRouteCtrl', ['$scope', '$location', '$window', '$routeParams', 'routeService', 'challengeService', 'challengeServiceData', 'ROUTE', 'ICONS', 'COUNTRIES',
+function ($scope, $location, $window, $routeParams, routeService, challengeService, challengeServiceData, ROUTE, ICONS, COUNTRIES) {
 
-    var vm = this;
+  var vm = this;
+  vm.icons = ICONS;
+  vm.countries = COUNTRIES.countries;
+  vm.selectedMode = '';
+  vm.selectedModeTitle = 'Route Edit Mode';
 
-    routeService.getRouteById($routeParams.route_id);
-    challengeService.getChallenges();
+  vm.route = ROUTE;
+  vm.geoJSON = '';
+  vm.selectedChallenges = [];
+  vm.polyLinePoints = ROUTE.waypoints; // Cargando ruta de test
+  vm.challengePoints =  ROUTE.challenges.position;
+  vm.selectedChallenges =  ROUTE.challenges.selectedChallenges;
+  vm.defaultLine = {};
+  vm.line = {};
 
-    vm.route = {};
-    vm.geoJSON = '';
-    vm.selectedChallenges = [];
+  var challengeList;
+  vm.challenges = [];
+  vm.markers;
 
-    function getRoute() {
-      vm.route = routeServiceData.routeById;
-      console.log(vm.route);
+  challengeService.getChallenges();
 
-      showMap();
-    }
+  function getChallenges () {
 
-    function getChallenges () {
-      vm.challenges = challengeServiceData.challengeList;
+    challengeList = challengeServiceData.challengeList;
 
-      vm.challenges.forEach(function (challenge) {
-        challenge.show = true;
-      });
-
-    }
-
-    function showMap() {
-      function getWaypoints(points) {
-
-        let waypoints = [];
-
-        points.forEach(function (point) {
-          waypoints.push($window.L.latLng(point.geometry.coordinates[0], point.geometry.coordinates[1]));
-        });
-
-        return waypoints;
-      }
-
-      var routeMap = $window.L.map('routeMap').setView([50.27264, 7.26469], 13);
-      console.log(routeMap);
-
-      $window.L.tileLayer('https://cartodb-basemaps-{s}.global.ssl.fastly.net/light_all/{z}/{x}/{y}.png').addTo(routeMap);
-
-      $window.L.Icon.extend({
-        options: {
-          shadowUrl: 'leaf-shadow.png'
+    challengeList.forEach(function(challenge) {
+      vm.selectedChallenges.forEach(function(singleChallenge) {
+        if (challenge.id === singleChallenge) {
+          vm.challenges.push(challenge);
         }
       });
+    });
 
-      var control = $window.L.Routing.control({
-        waypoints: getWaypoints(vm.route.geojson.features)
-      }).addTo(routeMap);
+    console.log(vm.challenges);
 
-      function getInstruction (i) {
-        if (i === 0) {
-          return 'Start';
-        } else if (i === vm.waypoints.length - 1) {
-          return 'End';
-        } else {
-          return 'Challenge';
-        }
-      }
+  }
 
-      function getRouteDetails(waypoints) {
+  var routeMap = $window.L.map('routeMap').setView([38.08179, -1.275], 16);
+  console.log(routeMap);
 
-        var instrPts = {
-          type: "FeatureCollection",
-          features: []
-        };
+  $window.L.tileLayer('https://cartodb-basemaps-{s}.global.ssl.fastly.net/light_all/{z}/{x}/{y}.png').addTo(routeMap);
 
-        for (var i = 0; i < waypoints.length; ++i) {
-          var g = {
-            "type": "Point",
-            "coordinates": [waypoints[i].latLng.lat, waypoints[i].latLng.lng]
-          };
+  createLegend();
 
-          var p = {
-            "instruction": getInstruction(i)
-          };
+  var routePoint = L.divIcon({
+    className: "route-point",
+    iconAnchor: [5, 5],
+    html: '<span></span>'
+  });
 
-          instrPts.features.push({
-            "geometry": g,
-            "type": "Feature",
-            "properties": p
-          });
-        }
+  var challengePoint = L.divIcon({
+    className: "challenge-point",
+    iconAnchor: [5, 5],
+    html: '<span></span>'
+  });
 
-        vm.geoJSON = instrPts;
+  vm.markersGroup = L.featureGroup();
+  vm.polyLineGroup = L.featureGroup();
+  vm.challengeGroup = L.featureGroup();
 
-        return instrPts;
-      }
+  vm.markersGroup.addTo(routeMap);
+  vm.polyLineGroup.addTo(routeMap);
+  vm.challengeGroup.addTo(routeMap);
 
-      control.on('routeselected', function (e) {
-        vm.waypoints = e.route.waypoints;
-        console.log(vm.waypoints);
-        $window.L.geoJson(getRouteDetails(vm.waypoints)).addTo(routeMap);
+  vm.line = new L.Polyline(vm.polyLinePoints, {color: '#00a195', draggable: true}).addTo(vm.polyLineGroup);
+
+  vm.polyLinePoints.forEach(function(point, index) {
+    vm.markers = L.marker(point, {icon: routePoint, draggable: true, index: index}).addTo(vm.markersGroup);
+    vm.markers.on('click', removePointRoute);
+    vm.markers.on('drag', updatePointWithDrag);
+  });
+
+  if (vm.challengePoints.length > 0 && vm.challengePoints !== undefined) {
+    vm.challengePoints.forEach(function(point) {
+      vm.challengeMarkers = L.marker(point, {icon: challengePoint, draggable: true}).addTo(vm.challengeGroup).on('click', removeChallengePoint);
+    });
+    updateLegend();
+  }
+
+  vm.changeMapMode = function(mode) {
+    vm.selectedMode = mode;
+
+    if (mode === 'route') {
+      
+      vm.selectedModeTitle = 'Route Edit Mode';
+
+      routeMap.on('click', createPointWithClick);
+      
+      vm.markersGroup.eachLayer(function(marker) {
+        marker.dragging.enable();
+        marker._icon.style.display = 'block';
+        marker.on('drag', updatePointWithDrag);
       });
+
+      vm.line.off('click', createChallengePoint);
+
+    } else {
+
+      vm.selectedModeTitle = 'Challenge Positioning Mode';
+      
+      routeMap.off('click', createPointWithClick);
+
+      vm.markersGroup.eachLayer(function(marker) {
+        marker.dragging.disable();
+        marker._icon.style.display = 'none';
+        marker.off('drag', updatePointWithDrag);
+      });
+
+      vm.line.on('click', createChallengePoint);
+      
     }
+
+  }
+
+  vm.changeMapMode('route');
+
+  function createPointWithClick(e) {
+    console.log('Latitud: ' + e.latlng.lat + ' - Longitud: ' + e.latlng.lng);
+    var latLng = [e.latlng.lat, e.latlng.lng]
+    createPoint(latLng);
+    updatePolyline();
+  }
+
+  function updatePointWithDrag(e) {
+    var latLng = [e.latlng.lat, e.latlng.lng]
+    updatePoint(e.target.options.index, latLng);
+  }
+
+  function createPoint(newPosition) {
+    vm.polyLinePoints.push(newPosition);
+    vm.markers = L.marker(newPosition, {icon: routePoint, draggable: true, index: vm.polyLinePoints.length - 1}).addTo(vm.markersGroup);
+    vm.markers.on('click', removePointRoute);
+    vm.markers.on('drag', updatePointWithDrag);
+  }
+
+  function updatePoint(index, newPosition) {
+    vm.polyLinePoints[index] = newPosition;
+    updatePolyline();
+  }
+
+  function removePointRoute(e) {
+    vm.polyLinePoints.splice(e.target.options.index, 1)
+    vm.markersGroup.eachLayer(function(marker) {
+      if(marker.options.index > e.target.options.index) {
+        marker.options.index = marker.options.index - 1;
+      }
+    });
+    vm.markersGroup.removeLayer(e.target._leaflet_id);
+    updatePolyline();
+  }
+
+  function updatePolyline() {
+    vm.line.setLatLngs(vm.polyLinePoints);
+  }
+
+  function createChallengePoint(e) {
+    var latLng = [e.latlng.lat, e.latlng.lng]
+    vm.challengeMarkers = L.marker(latLng, {icon: challengePoint, draggable: true}).addTo(vm.challengeGroup).on('click', removeChallengePoint);
+    updateLegend();
+  }
+
+  function removeChallengePoint(e) {
+    vm.challengeGroup.removeLayer(e.target._leaflet_id);
+    updateLegend();
+  }
+
+  function createLegend() {
+    var legend = L.control({position: 'bottomleft'});
+    legend.onAdd = function(map) {
+      var div = L.DomUtil.create('div', 'challenge-legend');
+
+      div.innerHTML = '<i class="legend-diamond" style="background: #00a195"></i> <span>Challenges: <span id="challenge-number" style="font-weight: 700">0</span></span>'
+
+      return div;
+    }
+
+    legend.addTo(routeMap);
+  }
+
+  function updateLegend() {
+    var challengeNumber = document.getElementById('challenge-number');
+    challengeNumber.innerHTML = Object.keys(vm.challengeGroup._layers).length;
+  }
+
+  // -- -- //
 
     vm.addChallenge = function (id) {
       vm.challenges.forEach(function (challenge) {

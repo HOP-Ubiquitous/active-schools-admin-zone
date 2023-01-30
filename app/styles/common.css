@@ -1,0 +1,81 @@
+:root {
+  --orange: #ff6f00;
+  --dark-orange: #803800;
+  --light-orange: #ffae70;
+
+  --dark-orange-table: #ffc599;
+  --light-orange-table: #ffe2cc;
+
+  --green: #00a195;
+  --green-selected: #0c515c;
+  --blue: #007bff;
+  --blue-selected: #003e80;
+  --red: #dc3545;
+  --red-selected: #872732;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  font-family: 'Montserrat', sans-serif;
+}
+
+a, a:hover {
+  text-decoration: none;
+}
+
+.bold {
+  font-weight: 700;
+}
+
+input{
+  width: calc(100% - 80px);
+  height: 40px;
+  margin-top: 20px;
+  border-bottom: 1px solid var(--green);
+  border-top: 0;
+  border-left: 0;
+  border-right: 0;
+  font-size: 12px;
+  font-weight: 300;
+  text-align: center;
+  outline: none;
+  background: transparent;
+}
+
+::placeholder {
+  color: var(--green);
+  font-weight: 300;
+  font-size: 12px;
+}
+
+.see-bg {
+  background: var(--green);
+  transition: 0.3s ease all;
+}
+
+.see-bg:hover {
+  background: var(--green-selected);
+}
+
+.edit-bg {
+  background: var(--blue);
+  transition: 0.3s ease all;
+}
+
+.edit-bg:hover {
+  background: var(--blue-selected);
+}
+
+.delete-bg {
+  background: var(--red);
+  transition: 0.3s ease all;
+}
+
+.delete-bg:hover {
+  background: var(--red-selected);
+}
+
+.icon-size {
+  font-size: 12px;
+}

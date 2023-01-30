@@ -12,6 +12,7 @@
              class="input-text"
              ng-model="newChallenge.challenge.name"
              required>
+
       <input type="text"
              ng-show="('challenges.edit_challenge.challenge_id' | routeSegmentEqualsTo)"
              placeholder="Name"
@@ -19,119 +20,113 @@
              ng-model="editChallenge.challenge.name"
              required>
 
-      <input type="number"
-             ng-show="('challenges.new_challenge' | routeSegmentEqualsTo)"
-             placeholder="Period"
-             class="input-text"
-             ng-model="newChallenge.challenge.period"
-             required>
-      <input type="number"
-             ng-show="('challenges.edit_challenge.challenge_id' | routeSegmentEqualsTo)"
-             placeholder="Period"
-             class="input-text"
-             ng-model="editChallenge.challenge.period"
-             required>
+      <!-- TODO Revisar como introducir el parámetro en las fuciones de la directiva -->
 
-      <!--<select-->
-        <!--ng-show="('challenges.new_challenge' | routeSegmentEqualsTo)"-->
-        <!--ng-model="newChallenge.challenge.unit">-->
-        <!--<option value="Minutes">Minutes</option>-->
-        <!--<option value="Reps">Reps</option>-->
-      <!--</select>-->
-      <!--<select-->
-        <!--ng-show="('challenges.edit_challenge.challenge_id' | routeSegmentEqualsTo)"-->
-        <!--ng-model="editChallenge.challenge.unit">-->
-        <!--<option value="Minutes">Minutes</option>-->
-        <!--<option value="Reps">Reps</option>-->
-      <!--</select>-->
+      <dropdown show-dropdown="('challenges.new_challenge' | routeSegmentEqualsTo)"
+                active-dropdown="showCategory"
+                model="newChallenge.challenge.category"
+                placeholder="Select Category"
+                dropdown-style="{ 'max-height': 60 + (5 * 30) + 'px',
+                                  'height': 'auto' }"
+                show-default-option="false"
+                repeater="newChallenge.categories"
+                get-option-function="newChallenge.getCategory()">
+      </dropdown>
 
-      <div class="dropdown-challenge"
-           ng-click="(showOptions = !showOptions)">
-        <span class="span-add-challenge" ng-show="('challenges.new_challenge' | routeSegmentEqualsTo)">{{newChallenge.challenge.unit || 'Select Unit'}}</span>
-        <span class="span-add-challenge" ng-show="('challenges.edit_challenge.challenge_id' | routeSegmentEqualsTo)">{{editChallenge.challenge.unit || 'Select Unit'}}</span>
-        <div class="rombo-select">
-          <span class="fas fa-chevron-down"></span>
-        </div>
-      </div>
+      <dropdown show-dropdown="('challenges.edit_challenge.challenge_id' | routeSegmentEqualsTo)"
+                active-dropdown="showCategory"
+                model="editChallenge.challenge.category"
+                placeholder="Select Category"
+                dropdown-style="{ 'max-height': 60 + (5 * 30) + 'px',
+                                  'height': 'auto' }"
+                show-default-option="false"
+                repeater="editChallenge.categories"
+                get-option-function="editChallenge.getCategory()">
+      </dropdown>
 
-      <div class="dropdown-challenge-container" ng-show="showOptions">
+      <textarea ng-show="('challenges.new_challenge' | routeSegmentEqualsTo)"
+                placeholder="Challenge Description"
+                class="new-post-textArea"
+                ng-model="newChallenge.challenge.description"
+                required>
+      </textarea>
 
-        <div class="dropdown-option"
-             ng-show="('challenges.new_challenge' | routeSegmentEqualsTo) || ('challenges.edit_challenge.challenge_id' | routeSegmentEqualsTo)"
-             ng-repeat="unit in ['Minutes', 'Reps']">
-
-          <div class="dropdown-option-left"
-               ng-show="('challenges.new_challenge' | routeSegmentEqualsTo)"
-               ng-click="newChallenge.getUnit(unit)">
-            <span>{{unit}}</span>
-          </div>
-
-          <div class="dropdown-option-left"
-               ng-show="('challenges.edit_challenge.challenge_id' | routeSegmentEqualsTo)"
-               ng-click="editChallenge.getUnit(unit)">
-            <span>{{unit}}</span>
-          </div>
-
-        </div>
-
-      </div>
+      <textarea ng-show="('challenges.edit_challenge.challenge_id' | routeSegmentEqualsTo)"
+                placeholder="Challenge Description"
+                class="new-post-textArea"
+                ng-model="editChallenge.challenge.description"
+                required>
+      </textarea>
 
       <input type="number"
              ng-show="('challenges.new_challenge' | routeSegmentEqualsTo)"
-             placeholder="Bonus"
+             placeholder="Target"
              class="input-text"
-             ng-model="newChallenge.challenge.bonus"
+             ng-model="newChallenge.challenge.target"
              required>
       <input type="number"
              ng-show="('challenges.edit_challenge.challenge_id' | routeSegmentEqualsTo)"
-             placeholder="Bonus"
+             placeholder="Target"
              class="input-text"
-             ng-model="editChallenge.challenge.bonus"
+             ng-model="editChallenge.challenge.target"
              required>
 
-      <hr class="space-new-route">
+      <!-- TODO Revisar como introducir el parámetro en las fuciones de la directiva -->
 
-      <div class="post-tabs-container">
+      <dropdown show-dropdown="('challenges.new_challenge' | routeSegmentEqualsTo)"
+                active-dropdown="showOptions"
+                model="newChallenge.challenge.unit"
+                placeholder="Select Unit"
+                dropdown-style="{ 'max-height': 60 + (3 * 30) + 'px',
+                                  'height': 'auto' }"
+                show-default-option="false"
+                repeater="newChallenge.units"
+                get-option-function="newChallenge.getUnit()">
+      </dropdown>
 
-        <div class="post-tab"
-             ng-class="{ 'post-tab-selected' : showUrlVideo }"
-             ng-init="showUrlVideo = true"
-             ng-click="showUrlVideo = true; showUploadVideo = false">
-          <span>Youtube Video</span>
-        </div>
+      <dropdown show-dropdown="('challenges.edit_challenge.challenge_id' | routeSegmentEqualsTo)"
+                active-dropdown="showOptions"
+                model="editChallenge.challenge.unit"
+                placeholder="Select Unit"
+                dropdown-style="{ 'max-height': 60 + (3 * 30) + 'px',
+                                  'height': 'auto' }"
+                show-default-option="false"
+                repeater="editChallenge.units"
+                get-option-function="editChallenge.getUnit()">
+      </dropdown>
 
-        <div class="post-tab"
-             ng-class="{ 'post-tab-selected' : showUploadVideo }"
-             ng-click="showUploadVideo = true; showUrlVideo = false">
-          <span>Upload Video</span>
-        </div>
-      </div>
+      <input type="number"
+             ng-show="('challenges.new_challenge' | routeSegmentEqualsTo)"
+             placeholder="Experience"
+             class="input-text"
+             ng-model="newChallenge.challenge.exp"
+             required>
+      <input type="number"
+             ng-show="('challenges.edit_challenge.challenge_id' | routeSegmentEqualsTo)"
+             placeholder="Experience"
+             class="input-text"
+             ng-model="editChallenge.challenge.exp"
+             required>
 
-      <input type="url" placeholder="Youtube URL" class="input-text" ng-model="newChallenge.challenge.video" ng-show="showUrlVideo === true && ('challenges.new_challenge' | routeSegmentEqualsTo)" required>
-      <input type="url" placeholder="Youtube URL" class="input-text" ng-model="editChallenge.challenge.video" ng-show="showUrlVideo === true && ('challenges.edit_challenge.challenge_id' | routeSegmentEqualsTo)" required>
-
-      <input type="url" placeholder="Upload Video" class="input-text" ng-model="newChallenge.challenge.video" ng-show="showUploadVideo === true && ('challenges.new_challenge' | routeSegmentEqualsTo)" required>
-      <input type="url" placeholder="Upload Video" class="input-text" ng-model="editChallenge.challenge.video" ng-show="showUploadVideo === true && ('challenges.edit_challenge.challenge_id' | routeSegmentEqualsTo)" required>
+      <input type="url" placeholder="Youtube URL" class="input-text" ng-model="newChallenge.challenge.video" ng-show="('challenges.new_challenge' | routeSegmentEqualsTo)" required>
+      <input type="url" placeholder="Youtube URL" class="input-text" ng-model="editChallenge.challenge.video" ng-show="('challenges.edit_challenge.challenge_id' | routeSegmentEqualsTo)" required>
 
       <br>
+
       <div class="new-challenge-video">
         <iframe width="100%" height="100%" src="{{video}}"  >
         </iframe>
       </div>
 
+      <button-form show-button="('challenges.new_challenge' | routeSegmentEqualsTo)"
+                   click-button="newChallenge.save()"
+                   text-button="Add Route">
+      </button-form>
 
-      <div class="button-form"
-           ng-show="('challenges.new_challenge' | routeSegmentEqualsTo)"
-           ng-click="newChallenge.save()">
-        <div class="save-new-route">Add Route</div>
-      </div>
-
-      <div class="button-form"
-           ng-show="('challenges.edit_challenge.challenge_id' | routeSegmentEqualsTo)"
-           ng-click="editChallenge.edit()">
-        <div class="save-new-route">Edit Route</div>
-      </div>
-
+      <button-form show-button="('challenges.edit_challenge.challenge_id' | routeSegmentEqualsTo)"
+                   click-button="editChallenge.edit()"
+                   text-button="Edit Route">
+      </button-form>
 
     </form>
 

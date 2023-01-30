@@ -3,30 +3,49 @@
   <div id="menu-items">
 
     <div class="logo">
-      <img src="../images/active-schools-logo-bl.svg" alt="">
+      <img src="../images/active-schools-icon.svg" alt="">
     </div>
 
     <div class="rombo-top">
 
-      <div class="rombo"
-           ng-class="{ 'rombo-selected': ('routes' | routeSegmentStartsWith) }"
-           ng-click="mainMenu.goToRoutes()">
-        <span class="fas fa-route"></span>
-        <span>Routes</span>
+      <div class="diamond-container">
+        <div class="diamond"
+             ng-class="{ 'diamond-selected': ('routes' | routeSegmentStartsWith) }"
+             ng-click="mainMenu.goToRoutes()">
+          <span class="{{mainMenu.icons.routes}}"></span>
+        </div>
       </div>
 
-      <div class="rombo"
-           ng-class="{ 'rombo-selected': ('challenges' | routeSegmentStartsWith) }"
-           ng-click="mainMenu.goToChallenges()">
-        <span class="fas fa-walking"></span>
-        <span>Challenges</span>
+      <div class="diamond-container">
+        <div class="diamond"
+            ng-class="{ 'diamond-selected': ('challenges' | routeSegmentStartsWith) }"
+            ng-click="mainMenu.goToChallenges()">
+          <span class="{{mainMenu.icons.challenges}}"></span>
+        </div>
       </div>
 
-      <div class="rombo"
-           ng-class="{ 'rombo-selected': ('posts' | routeSegmentStartsWith) }"
-           ng-click="mainMenu.goToPosts()">
-        <span class="fas fa-file-alt"></span>
-        <span>Posts</span>
+      <div class="diamond-container">
+        <div class="diamond"
+            ng-class="{ 'diamond-selected': ('posts' | routeSegmentStartsWith) }"
+            ng-click="mainMenu.goToPosts()">
+          <span class="{{mainMenu.icons.posts}}"></span>
+        </div>
+      </div>
+
+      <div class="diamond-container">
+        <div class="diamond"
+            ng-class="{ 'diamond-selected': ('users' | routeSegmentStartsWith) }"
+            ng-click="mainMenu.goToUsers()">
+          <span class="{{mainMenu.icons.users}}"></span>
+        </div>
+      </div>
+
+      <div class="diamond-container">
+        <div class="diamond"
+            ng-class="{ 'diamond-selected': ('teams' | routeSegmentStartsWith) }"
+            ng-click="mainMenu.goToTeams()">
+          <span class="{{mainMenu.icons.teams}}"></span>
+        </div>
       </div>
 
     </div>
@@ -34,16 +53,18 @@
 
     <div class="rombo-bottom">
 
-      <div class="rombo"
-           ng-class="{ 'rombo-selected': ('profile' | routeSegmentStartsWith) }"
-           ng-click="mainMenu.goToProfile()">
-        <span class="fas fa-user"></span>
-        <span>Username</span>
+      <div class="diamond-container">
+        <div class="diamond"
+            ng-class="{ 'diamond-selected': ('profile' | routeSegmentStartsWith) }"
+            ng-click="mainMenu.goToProfile()">
+          <span class="{{mainMenu.icons.profile}}"></span>
+        </div>
       </div>
 
-      <div class="rombo" ng-click="mainMenu.goToLogin()">
-        <span class="fas fa-sign-out-alt"></span>
-        <span>Exit</span>
+      <div class="diamond-container">
+        <div class="diamond" ng-click="mainMenu.goToLogin()">
+          <span class="{{mainMenu.icons.exit}}"></span>
+        </div>
       </div>
 
     </div>

@@ -8,14 +8,16 @@
  * Controller of the activeSchoolsAdminZoneApp
  */
 
-app.controller('newPostCtrl', ['$location', 'postService', 'postServiceData',
-  function ($location, postService, postServiceData) {
+app.controller('newPostCtrl', ['$location', 'postService', 'postServiceData', 'ICONS', 'COUNTRIES',
+  function ($location, postService, postServiceData, ICONS, COUNTRIES) {
 
     var vm = this;
-
+    vm.icons = ICONS;
+    vm.countries = COUNTRIES.countries;
     vm.post = {};
 
     vm.getCountry = function (country) {
+      debugger;
       vm.post.country = country;
       vm.showOptions = false;
     };

@@ -1,20 +1,29 @@
 <div class="section-header">
 
   <div class="section-header-left" ng-class="{ 'section-header-left-50' : showClose }">
-    <div class="rombo-header">
-      <span class="{{icon}}"></span>
+    
+    <div class="diamond-container diamond-header">
+      <div class="diamond">
+        <span class="{{icon}}"></span>
+      </div>
     </div>
+    
     <h1>{{title}}</h1>
   </div>
 
   <div class="section-header-right" ng-class="{ 'section-header-right-50' : showClose }">
+    
     <div class="section-header-right-left" ng-show="showSearchInput">
       <span class="search-icon"><i class="fa fa-search search" ng-click="handleAction()"></i></span>
       <input type="search" id="search" placeholder="Search" class="search-input">
     </div>
-    <div class="close-rombo" ng-click="closeFunction()" ng-show="showClose">
-      <i class="fas fa-times close-rombo-newroute"></i>
+
+    <div class="diamond-container diamond-close" ng-show="showClose">
+      <div class="diamond" ng-click="closeFunction()">
+        <i class="{{sectionHeader.icons.close}}"></i>
+      </div>
     </div>
+
   </div>
 
 </div>

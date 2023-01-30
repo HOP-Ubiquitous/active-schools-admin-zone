@@ -6,13 +6,13 @@
 
   <section-header ng-show="('challenges' | routeSegmentEqualsTo)"
                   title="Challenges"
-                  icon="fas fa-walking"
+                  icon="{{challenges.icons.challenges}}"
                   show-search-input="true">
   </section-header>
 
   <section-header ng-show="('challenges.new_challenge' | routeSegmentEqualsTo)"
                   title="Challenges - New Challenge"
-                  icon="fas fa-walking"
+                  icon="{{challenges.icons.challenges}}"
                   show-search-input="true"
                   show-close="true"
                   close-function="challenges.goToChallenges()">
@@ -20,7 +20,7 @@
 
   <section-header ng-show="('challenges.edit_challenge.challenge_id' | routeSegmentEqualsTo)"
                   title="Challenges - Edit Challenge"
-                  icon="fas fa-walking"
+                  icon="{{challenges.icons.challenges}}"
                   show-search-input="true"
                   show-close="true"
                   close-function="challenges.goToChallenges()">
@@ -38,7 +38,7 @@
         <th scope="col">Bonus</th>
         <th scope="col">Video</th>
         <th scope="col">Images</th>
-        <th scope="col">Options</th>
+        <th scope="col" class="option-header">Options</th>
       </tr>
       </thead>
       <tbody ng-repeat="challenge in challenges.challenges | orderBy: '-date'">
@@ -53,13 +53,15 @@
         <td>{{challenge.images.length}}</td>
         <td class="option">
 
-          <div class="rombo-table-write" ng-click="challenges.editChallenge(challenge.id)">
-            <i class="fas fa-edit logo1"></i>
+          <div class="rombo-table small-square edit-bg" ng-click="challenges.editChallenge(challenge.id)">
+            <i class="{{challenges.icons.edit}} icon-size"></i>
           </div>
 
-          <div class="rombo-table-delete" ng-click="showDeletePopup[$index] = !showDeletePopup[$index]">
-            <i class="fas fa-trash-alt logo2"></i>
+          <div class="rombo-table small-square delete-bg" ng-click="showDeletePopup[$index] = !showDeletePopup[$index]">
+            <i class="{{challenges.icons.deleteDocument}} icon-size"></i>
           </div>
+
+          <!-- TODO Hacer Directiva -->
 
           <div class="bg-popup" ng-show="showDeletePopup[$index]">
 
@@ -74,6 +76,8 @@
 
           </div>
 
+          <!-- -->
+
         </td>
 
       </tr>
@@ -87,7 +91,7 @@
 
   <div app-view-segment="2" ng-show="('challenges.edit_challenge.challenge_id' | routeSegmentEqualsTo)"></div>
 
-  <new-button icon="fas fa-plus"
+  <new-button icon="{{challenges.icons.add}}"
               title="New Challenge"
               button-function="challenges.goToNewChallenge()"
               ng-hide="('challenges.new_challenge' | routeSegmentEqualsTo)">

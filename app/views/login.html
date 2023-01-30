@@ -1,24 +1,143 @@
 <div class="login-container">
 <div class="login-overlay"></div>
-  <div class="text-container">
+  
+  <div class="text-container" ng-init="showRegister = false" ng-show="showRegister === false">
 
-    <img src="../images/active-schools-logo-color.svg" class="size">
+    <img src="../images/active-schools.svg" class="size">
     <h5 class="admin-zone">Admin zone</h5>
 
     <div class="form-container">
+      
       <form class="login-form">
         <input id="username" type="text" placeholder="User" ng-model="login.user.username" required>
         <input id="password" type="password" placeholder="Password" ng-model="login.user.password"  required>
         <input class="button" type="submit" value="Enter" ng-click="login.login()">
       </form>
-      <span ng-show="login.errorMessage !== ''">{{ login.errorMessage }}</span>
+
+      <span class="login-error" ng-show="login.errorMessage !== '' && login.openMessageWindow">{{ login.errorMessage }}</span>
 
       <div class="term-container">
         <a href="#recover" class="color-font">
           Have you forgotten the password?
         </a>
       </div>
+
+      <div class="login-separator">
+        <hr>
+        <span>or</span>
+        <hr>
+      </div>
+
+      <div class="google-button">
+        <div>
+          <img src="../images/google-icon.png">
+        </div>
+        <span>
+          Sign in with Google
+        </span>
+      </div>
+
+      <div class="login-separator">
+        <hr>
+      </div>
+
+      <div ng-click="showRegister = true; login.registerStep1 = true" class="new-user-container">
+        <a class="color-font">
+          Are you the principal of a school?
+          <br>
+          Please register it.
+        </a>
+      </div>
+
     </div>
 
   </div>
+
+  <div class="text-container login-no-padding" ng-show="showRegister === true">
+
+    <div class="form-container">
+
+      <div class="login-register-title-container">
+        <h5>Register Principal User</h5>
+        <span ng-click="showRegister = false" class="fa fa-remove"></span>
+      </div>
+
+      <div class="login-register-progress-container">
+        <div class="login-register-progress-bar">
+          <div class="login-register-progress-inner"
+               ng-class="{'login-register-progress-inner-0': login.registerStep1,
+                          'login-register-progress-inner-25': login.registerStep2,
+                          'login-register-progress-inner-75': login.registerStep3,
+                          'login-register-progress-inner-100': login.registerStep4}">
+          </div>
+        </div>
+        <div class="login-register-progress-diamond" ng-class="{'login-register-progress-diamond-active': login.registerStep1 || login.registerStep2 || login.registerStep3 || login.registerStep4}">
+          <div></div>
+        </div>
+        
+        <div class="login-register-progress-diamond" ng-class="{'login-register-progress-diamond-active': login.registerStep2 || login.registerStep3 || login.registerStep4}">
+          <div></div>
+        </div>
+
+        <div class="login-register-progress-diamond" ng-class="{'login-register-progress-diamond-active': login.registerStep3 || login.registerStep4}">
+          <div></div>
+        </div>
+        
+        <div class="login-register-progress-diamond" ng-class="{'login-register-progress-diamond-active': login.registerStep4}">
+          <div></div>
+        </div>
+
+      </div>
+      
+      <form class="login-form" ng-show="login.registerStep1">
+        <input id="email" type="email" placeholder="E-mail" ng-model="login.newUser.email" required>
+        <input id="password" type="password" placeholder="Password" ng-model="login.newUser.password"  required>
+        <input id="checkPassword" type="password" placeholder="Repeat Password" ng-model="login.newUser.checkPassword"  required>
+        <input class="button" type="submit" value="Next" ng-click="login.checkRegister()">
+      </form>
+
+      <form class="login-form" ng-show="login.registerStep2">
+        <input id="username" type="text" placeholder="Name" ng-model="login.newUser.username" required>
+        <input id="surname" type="text" placeholder="Surname" ng-model="login.newUser.surname" required>
+        <input id="sex" type="text" placeholder="Sex" ng-model="login.newUser.sex" required>
+        <input id="weight" type="number" placeholder="Weight" ng-model="login.newUser.weight" required>
+        <input id="height" type="number" placeholder="Height" ng-model="login.newUser.height" required>
+        <input id="address" type="text" placeholder="Address" ng-model="login.newUser.address" required>
+        <input id="city" type="text" placeholder="City" ng-model="login.newUser.city" required>
+        <input id="province" type="text" placeholder="Province" ng-model="login.newUser.province" required>
+        <input id="country" type="text" placeholder="Country" ng-model="login.newUser.country" required>
+        <input class="button" type="submit" value="Next" ng-click="login.checkUserInfo()">
+        <input class="button" type="submit" value="Back" ng-click="login.registerStep1 = true; login.registerStep2 = false">
+      </form>
+
+      <form class="login-form" ng-show="login.registerStep3"> <!-- School Info -->
+        <input id="schoolName" type="text" placeholder="Name" ng-model="login.school.name" required>
+        <input id="schoolAddress" type="text" placeholder="Address" ng-model="login.school.address" required>
+        <input id="schoolPostalCode" type="text" placeholder="Postal Code" ng-model="login.school.postalCode" required>
+        <input id="city" type="text" placeholder="City" ng-model="login.newUser.city" required>
+        <input id="province" type="text" placeholder="Province" ng-model="login.newUser.province" required>
+        <input id="country" type="text" placeholder="Country" ng-model="login.newUser.country" required>
+        <input class="button" type="submit" value="Next" ng-click="login.checkSchoolInfo()">
+        <input class="button" type="submit" value="Back" ng-click="login.registerStep2 = true; login.registerStep3 = false">
+      </form>
+
+      <form class="login-form" ng-show="login.registerStep4"> <!-- Health Info -->
+        <input id="medicalCenterName" type="text" placeholder="Name" ng-model="login.medicalCenter.name" required>
+        <input id="medicalCenterAddress" type="text" placeholder="Address" ng-model="login.medicalCenter.address" required>
+        <input id="medicalCenterPostalCode" type="text" placeholder="Postal Code" ng-model="login.medicalCenter.postalCode" required>
+        <input id="medicalCenterCity" type="text" placeholder="City" ng-model="login.medicalCenter.city" required>
+        <input id="medicalCenterProvince" type="text" placeholder="Province" ng-model="login.medicalCenter.province" required>
+        <input id="medicalCenterCountry" type="text" placeholder="Country" ng-model="login.medicalCenter.country" required>
+        <!-- <input id="doctorName" type="text" placeholder="Name" ng-model="login.doctor.name" required>
+        <input id="doctorLicense" type="text" placeholder="License" ng-model="login.doctor.license"> -->
+        <input class="button" type="submit" value="Finish" ng-click="login.checkMedicalCenter()">
+        <input class="button" type="submit" value="Back" ng-click="login.registerStep3 = true; login.registerStep4 = false">
+      </form>
+
+      <span class="login-error" ng-show="login.errorMessage !== '' && login.openMessageWindow">{{ login.errorMessage }}</span>
+
+    </div>
+
+  </div>
+
 </div>

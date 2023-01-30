@@ -6,13 +6,13 @@
 
     <section-header ng-show="('posts' | routeSegmentEqualsTo)"
                     title="Posts"
-                    icon="fas fa-file-alt"
+                    icon="{{posts.icons.posts}}"
                     show-search-input="true">
     </section-header>
 
     <section-header ng-show="('posts.new_post' | routeSegmentEqualsTo)"
                     title="Posts - New Post"
-                    icon="fas fa-file-alt"
+                    icon="{{posts.icons.posts}}"
                     show-search-input="true"
                     show-close="true"
                     close-function="posts.goToPosts()">
@@ -20,7 +20,7 @@
 
     <section-header ng-show="('posts.edit_post.post_id' | routeSegmentEqualsTo)"
                     title="Posts - Edit Post"
-                    icon="fas fa-file-alt"
+                    icon="{{posts.icons.posts}}"
                     show-search-input="true"
                     show-close="true"
                     close-function="posts.goToPosts()">
@@ -36,7 +36,7 @@
           <th scope="col">Title</th>
           <th scope="col">Image</th>
           <th scope="col">Post Published (Countries)</th>
-          <th scope="col">Options</th>
+          <th scope="col" class="option-header">Options</th>
         </tr>
         </thead>
 
@@ -50,12 +50,12 @@
           <td class="option">
 
 
-            <div class="rombo-table-write" ng-click="posts.editPost(post.id)">
-              <i class="fas fa-edit logo1"></i>
+            <div class="rombo-table small-square edit-bg" ng-click="posts.editPost(post.id)">
+              <i class="{{posts.icons.edit}} icon-size"></i>
             </div>
 
-            <div class="rombo-table-delete" ng-click="showDeletePopup[$index] = !showDeletePopup[$index]">
-              <i class="fas fa-trash-alt logo2"></i>
+            <div class="rombo-table small-square delete-bg" ng-click="showDeletePopup[$index] = !showDeletePopup[$index]">
+              <i class="{{posts.icons.deleteDocument}} icon-size"></i>
             </div>
 
             <div class="bg-popup" ng-show="showDeletePopup[$index]">
@@ -83,7 +83,7 @@
 
     <div app-view-segment="2" ng-show="('posts.edit_post.post_id' | routeSegmentEqualsTo)"></div>
 
-    <new-button icon="fas fa-plus"
+    <new-button icon="{{posts.icons.add}}"
                 title="New Post"
                 button-function="posts.goToNewPost()"
                 ng-hide="('posts.new_post' | routeSegmentEqualsTo)">

@@ -35,72 +35,46 @@
 
       <hr class="space-new-route">
 
-      <div class="post-tabs-container">
+      <input type="url" placeholder="File Image" class="input-text" ng-model="newPost.post.image" ng-show="('posts.new_post' | routeSegmentEqualsTo)" required>
+      <input type="url" placeholder="File Image" class="input-text" ng-model="editPost.post.image" ng-show="('posts.edit_post.post_id' | routeSegmentEqualsTo)" required>
 
-        <div class="post-tab"
-             ng-class="{ 'post-tab-selected' : showUrlImage }"
-             ng-init="showUrlImage = true"
-             ng-click="showUrlImage = true; showUploadImage = false">
-          <span>External Image</span>
-        </div>
+      <!-- TODO Revisar como introducir el parámetro en las fuciones de la directiva -->
 
-        <div class="post-tab"
-             ng-class="{ 'post-tab-selected' : showUploadImage }"
-             ng-click="showUploadImage = true; showUrlImage = false">
-          <span>Upload Image</span>
-        </div>
-      </div>
+      <dropdown show-dropdown="('posts.new_post' | routeSegmentEqualsTo)"
+                active-dropdown="showOptions"
+                model="newPost.post.country"
+                placeholder="Select Country to Publish"
+                dropdown-style="{ 'height': 60 + (newPost.countries.length * 30) + 'px',
+                                  'max-height': 'calc(100vh - 481px)' }"
+                show-default-option="true"
+                defalt-option-value="all"
+                default-option-name="ALL COUNTRIES"
+                repeater="newPost.countries"
+                get-option-function="newPost.getCountry()">
+      </dropdown>
 
-      <input type="url" placeholder="Image URL" class="input-text" ng-model="newPost.post.image" ng-show="showUrlImage === true && ('posts.new_post' | routeSegmentEqualsTo)" required>
-      <input type="url" placeholder="Image URL" class="input-text" ng-model="editPost.post.image" ng-show="showUrlImage === true && ('posts.edit_post.post_id' | routeSegmentEqualsTo)" required>
+      <dropdown show-dropdown="('posts.edit_post.post_id' | routeSegmentEqualsTo)"
+                active-dropdown="showOptions"
+                model="editPost.post.country"
+                placeholder="Select Country to Publish"
+                dropdown-style="{ 'height': 60 + (editPost.countries.length * 30) + 'px',
+                                  'max-height': 'calc(100vh - 481px)' }"
+                show-default-option="true"
+                defalt-option-value="all"
+                default-option-name="ALL COUNTRIES"
+                repeater="editPost.countries"
+                get-option-function="editPost.getCountry()">
+      </dropdown>
 
-      <input type="url" placeholder="File Image" class="input-text" ng-model="newPost.post.image" ng-show="showUploadImage === true && ('posts.new_post' | routeSegmentEqualsTo)" required>
-      <input type="url" placeholder="File Image" class="input-text" ng-model="editPost.post.image" ng-show="showUploadImage === true && ('posts.edit_post.post_id' | routeSegmentEqualsTo)" required>
+      <button-form show-button="('posts.new_post' | routeSegmentEqualsTo)"
+                   click-button="newPost.save()"
+                   text-button="Add Post">
+      </button-form>
 
-      <hr class="space-new-route">
-
-      <div class="dropdown-challenge"
-           ng-click="showOptions = !showOptions">
-        <span class="span-add-challenge" ng-show="('posts.new_post' | routeSegmentEqualsTo)">{{newPost.post.country || 'Select Country to Publish'}}</span>
-        <span class="span-add-challenge" ng-show="('posts.edit_post.post_id' | routeSegmentEqualsTo)">{{editPost.post.country || 'Select Country to Publish'}}</span>
-        <div class="rombo-select">
-          <span class="fas fa-chevron-down"></span>
-        </div>
-      </div>
-
-      <div class="dropdown-challenge-container" ng-show="showOptions">
-
-        <div class="dropdown-option"
-             ng-show="('posts.new_post' | routeSegmentEqualsTo) || ('posts.edit_post.post_id' | routeSegmentEqualsTo)"
-             ng-repeat="country in ['All', 'England', 'Greece', 'Spain']">
-
-          <div class="dropdown-option-left"
-               ng-show="('posts.new_post' | routeSegmentEqualsTo)"
-               ng-click="newPost.getCountry(country)">
-            <span>{{country}}</span>
-          </div>
-
-          <div class="dropdown-option-left"
-               ng-show="('posts.edit_post.post_id' | routeSegmentEqualsTo)"
-               ng-click="editPost.getCountry(country)">
-            <span>{{country}}</span>
-          </div>
-
-        </div>
-
-      </div>
-
-      <div class="button-form"
-           ng-show="('posts.new_post' | routeSegmentEqualsTo)"
-           ng-click="newPost.save()">
-        <div class="save-new-route">Add Post</div>
-      </div>
-
-      <div class="button-form"
-           ng-show="('posts.edit_post.post_id' | routeSegmentEqualsTo)"
-           ng-click="editPost.edit()">
-        <div class="save-new-route">Edit Post</div>
-      </div>
+      <button-form show-button="('posts.edit_post.post_id' | routeSegmentEqualsTo)"
+                   click-button="editPost.edit()"
+                   text-button="Edit Post">
+      </button-form>
 
     </form>
 

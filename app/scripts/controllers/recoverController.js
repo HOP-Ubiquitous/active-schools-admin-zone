@@ -8,10 +8,13 @@
  * Controller of the activeSchoolsAdminZoneApp
  */
 
-app.controller('recoverCtrl', ['$location', function ($location) {
+app.controller('recoverCtrl', ['$location', 'ICONS', 'COUNTRIES',
+  function ($location, ICONS, COUNTRIES) {
 
 
   var vm = this;
+  vm.icons = ICONS;
+  vm.countries = COUNTRIES.countries;
 //vm.userService = userService;
 //vm.rootService = rootService;
 
