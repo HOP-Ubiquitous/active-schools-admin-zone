@@ -8,7 +8,7 @@
  * Controller of the activeSchoolsAdminZoneApp
  */
 
-app.controller('medicalCenterCtrl', ['$scope', '$location', 'medicalCenterService', 'medicalCenterServiceData', '$routeParams', 'ICONS', 'COUNTRIES',
+app.controller('medicalCtrl', ['$scope', '$location', 'medicalCenterService', 'medicalCenterServiceData', '$routeParams', 'ICONS', 'COUNTRIES',
     function ($scope, $location, medicalCenterService, medicalCenterServiceData, $routeParams, ICONS, COUNTRIES) {
 
     var vm = this;
@@ -31,16 +31,7 @@ app.controller('medicalCenterCtrl', ['$scope', '$location', 'medicalCenterServic
     };
 
     vm.deleteMedicalCenter = function(id){
-      //Con backend
       medicalCenterService.deleteMedicalCenter(id);
-
-      //Sin backend
-      // vm.challenges.forEach(function (challenge, index) {
-      //   if (id === challenge.id) {
-      //     vm.challenges.splice(index, 1);
-      //   }
-      // });
-
     };
 
     vm.editMedicalCenter = function(medical_id){

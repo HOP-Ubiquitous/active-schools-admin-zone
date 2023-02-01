@@ -28,11 +28,16 @@
         $location.path('/teams');
       };
 
+      vm.goToMedicalCenters = function () {
+        $location.path('/medical_centers');
+      };
+
+
       vm.goToLogin = function () {
-        
+
         userServiceData.loggedUser = {};
         $location.path('/login');
-        
+
       };
 
     }
