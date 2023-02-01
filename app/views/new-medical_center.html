@@ -10,16 +10,85 @@
              ng-show="('medical_centers.new_medical_center' | routeSegmentEqualsTo)"
              placeholder="Name"
              class="input-text"
-             ng-model="newMedical.medical_center.medical_center_name"
+             ng-model="newMedicalCenter.medical_center.medical_center_name"
              required>
 
       <input type="text"
              ng-show="('medical_centers.edit_medical_center.medical_center_id' | routeSegmentEqualsTo)"
              placeholder="Name"
              class="input-text"
-             ng-model="editMedical.medical_center.medical_center_name"
+             ng-model="editMedicalCenter.medical_center.medical_center_name"
              required>
 
+      <input type="text"
+             ng-show="('medical_centers.new_medical_center' | routeSegmentEqualsTo)"
+             placeholder="Address"
+             class="input-text"
+             ng-model="newMedicalCenter.medical_center.medical_center_address"
+             required>
+
+      <input type="text"
+             ng-show="('medical_centers.edit_medical_center.medical_center_id' | routeSegmentEqualsTo)"
+             placeholder="Address"
+             class="input-text"
+             ng-model="editMedicalCenter.medical_center.medical_center_address"
+             required>
+
+      <input type="text"
+             ng-show="('medical_centers.new_medical_center' | routeSegmentEqualsTo)"
+             placeholder="Postal Code"
+             class="input-text"
+             ng-model="newMedicalCenter.medical_center.medical_center_postal_code"
+             required>
+
+      <input type="text"
+             ng-show="('medical_centers.edit_medical_center.medical_center_id' | routeSegmentEqualsTo)"
+             placeholder="Postal Code"
+             class="input-text"
+             ng-model="editMedicalCenter.medical_center.medical_center_postal_code"
+             required>
+
+      <input type="text"
+             ng-show="('medical_centers.new_medical_center' | routeSegmentEqualsTo)"
+             placeholder="City"
+             class="input-text"
+             ng-model="newMedicalCenter.medical_center.medical_center_city"
+             required>
+
+      <input type="text"
+             ng-show="('medical_centers.edit_medical_center.medical_center_id' | routeSegmentEqualsTo)"
+             placeholder="City"
+             class="input-text"
+             ng-model="editMedicalCenter.medical_center.medical_center_city"
+             required>
+
+      <input type="text"
+             ng-show="('medical_centers.new_medical_center' | routeSegmentEqualsTo)"
+             placeholder="Province"
+             class="input-text"
+             ng-model="newMedicalCenter.medical_center.medical_center_province"
+             required>
+
+      <input type="text"
+             ng-show="('medical_centers.edit_medical_center.medical_center_id' | routeSegmentEqualsTo)"
+             placeholder="Province"
+             class="input-text"
+             ng-model="editMedicalCenter.medical_center.medical_center_province"
+             required>
+
+      <input type="text"
+             ng-show="('medical_centers.new_medical_center' | routeSegmentEqualsTo)"
+             placeholder="Country"
+             class="input-text"
+             ng-model="newMedicalCenter.medical_center.medical_center_country"
+             required>
+
+      <input type="text"
+             ng-show="('medical_centers.edit_medical_center.medical_center_id' | routeSegmentEqualsTo)"
+             placeholder="Country"
+             class="input-text"
+             ng-model="editMedicalCenter.medical_center.medical_center_country"
+             required>
 
     </form>
 
