@@ -8,7 +8,7 @@
  * Controller of the activeSchoolsAdminZoneApp
  */
 
-app.controller('medicalCtrl', ['$scope', '$location', 'medicalCenterService', 'medicalCenterServiceData', '$routeParams', 'ICONS', 'COUNTRIES',
+app.controller('medicalCentersCtrl', ['$scope', '$location', 'medicalCenterService', 'medicalCenterServiceData', '$routeParams', 'ICONS', 'COUNTRIES',
     function ($scope, $location, medicalCenterService, medicalCenterServiceData, $routeParams, ICONS, COUNTRIES) {
 
     var vm = this;
