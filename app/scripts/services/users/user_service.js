@@ -13,6 +13,7 @@ app.service('userService', ['userServiceApi', 'userServiceData', '$location', '$
   var service = this;
   service.usersLoaded = false;
   service.userByIdLoaded = false;
+  service.userLoadedAfterLogin = false;
 
   service.getUsers = function () {
 
@@ -69,14 +70,12 @@ app.service('userService', ['userServiceApi', 'userServiceData', '$location', '$
 
     userServiceApi.add_user(data).then(
       function success(response){
-        userServiceData.loggedUser = response.data;
         service.getUsers();
         
-        // if (type === 'newUser') {
-        //   $location.path('/users');
-        // } else {
-        //   $location.path('/routes');
-        // }
+        if (type === 'login') {
+          userServiceData.loggedUser = response.data;
+          service.userLoadedAfterLogin = true;
+        }
 
         console.log('\x1b[32m%s\x1b[0m', 'Usuario añadido con éxito! :)');
       }

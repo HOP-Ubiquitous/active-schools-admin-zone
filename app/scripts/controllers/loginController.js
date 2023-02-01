@@ -50,6 +50,10 @@ app.controller('loginCtrl',
       vm.users = userServiceData.userList;
     }
 
+    function getLoggedUser () {
+      vm.loggedUser = userServiceData.loggedUser;
+    }
+
     vm.login = function(){
 
       let i = 0;
@@ -132,7 +136,7 @@ app.controller('loginCtrl',
           }
         }
 
-        userService.addUser(director);
+        userService.addUser(director, 'login');
 
         vm.registerStep1 = false;
         vm.registerStep2 = false;
@@ -246,6 +250,17 @@ app.controller('loginCtrl',
           if (newValue === true) {
             getUsers();
             userService.usersLoaded = false;
+          }
+        }
+      );
+
+      vm.loggedUserWatcher = $scope.$watch(
+        function () {
+          return userService.userLoadedAfterLogin;
+        }, function (newValue) {
+          if (newValue === true) {
+            getLoggedUser();
+            userService.userLoadedAfterLogin = false;
           }
         }
       );
