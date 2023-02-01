@@ -7,6 +7,7 @@ app.constant('ICONS',{
   teams: 'fas fa-users',
   profile: 'fas fa-user-shield',
   exit: 'fas fa-arrow-left',
+  medical_centers: 'fa fa-hospital-o',
 
   search: 'fas fa-search',
 

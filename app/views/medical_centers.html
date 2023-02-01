@@ -1,0 +1,100 @@
+<div class="root">
+
+  <main-menu></main-menu>
+
+<div class="main-container">
+
+  <section-header ng-show="('medical_centers' | routeSegmentEqualsTo)"
+                  title="MedicalCenters"
+                  icon="{{medical_centers.icons.medical_centers}}"
+                  show-search-input="true">
+  </section-header>
+
+  <section-header ng-show="('medical_centers.new_medical_center' | routeSegmentEqualsTo)"
+                  title="MedicalCenters - New Medical Center"
+                  icon="{{medical_centers.icons.medical_centers}}"
+                  show-search-input="true"
+                  show-close="true"
+                  close-function="medical_centers.goToMedical()">
+  </section-header>
+
+  <section-header ng-show="('medical_centers.edit_medical_center.medical_center_id' | routeSegmentEqualsTo)"
+                  title="MedicalCenters - Edit Medical Center"
+                  icon="{{medical_centers.icons.medical_centers}}"
+                  show-search-input="true"
+                  show-close="true"
+                  close-function="medical_centers.goToMedical()">
+  </section-header>
+
+  <div class="main-container-inner" ng-class="{ 'main-container-inner-left' : ('medical_centers.new_medical_center' | routeSegmentEqualsTo) || ('medical_centers.edit_medical_center.medical_center_id' | routeSegmentEqualsTo) }">
+
+    <table class="tabla">
+      <thead>
+      <tr>
+        <th scope="col">medical_center_name</th>
+        <th scope="col">medical_center_address</th>
+        <th scope="col">medical_center_postal_code</th>
+        <th scope="col">medical_center_city</th>
+        <th scope="col">medical_center_province</th>
+        <th scope="col">medical_center_country</th>
+        <th scope="col" class="option-header">Options</th>
+      </tr>
+      </thead>
+      <tbody ng-repeat="medical_center in medical_centers.medical_centers">
+
+      <tr>
+        <td class="bold">{{medical_center.medical_center_name}}</td>
+        <td>{{medical_center.medical_center_address}}</td>
+        <td>{{medical_center.medical_center_postal_code}}</td>
+        <td>{{medical_center.medical_center_city}}</td>
+        <td>{{medical_center.medical_center_province}}</td>
+        <td>{{medical_center.medical_center_country}}</td>
+        <td class="option">
+
+          <div class="rombo-table small-square edit-bg" ng-click="medical_centers.editMedical(medical_center.medical_center_id)">
+            <i class="{{medical_centers.icons.edit}} icon-size"></i>
+          </div>
+
+          <div class="rombo-table small-square delete-bg" ng-click="showDeletePopup[$index] = !showDeletePopup[$index]">
+            <i class="{{medical_centers.icons.deleteDocument}} icon-size"></i>
+          </div>
+
+          <!-- TODO Hacer Directiva -->
+
+          <div class="bg-popup" ng-show="showDeletePopup[$index]">
+
+            <div class="popup-container">
+              <span>are you sure you want to delete this medical center?</span>
+              <h5 class="bold">{{medical_center.medical_center_name}}</h5>
+              <div class="popup-buttons-container">
+                <button class="delete-button" ng-click="medical_centers.deleteMedical(medical_center.id); showDeletePopup[$index] = false">Delete</button>
+                <button class="cancel-button"  ng-click="showDeletePopup[$index] = false">Cancel</button>
+              </div>
+            </div>
+
+          </div>
+
+          <!-- -->
+
+        </td>
+
+      </tr>
+
+      </tbody>
+    </table>
+
+  </div>
+
+  <div app-view-segment="1" ng-show="('medical_centers.new_medical_center' | routeSegmentEqualsTo)"></div>
+
+  <div app-view-segment="2" ng-show="('medical_centers.edit_medical_center.medical_center_id' | routeSegmentEqualsTo)"></div>
+
+  <new-button icon="{{medical_centers.icons.add}}"
+              title="New MedicalCenter"
+              button-function="medical_centers.goToNewMedicalCenter()"
+              ng-hide="('medical_centers.new_medical_center' | routeSegmentEqualsTo)">
+  </new-button>
+
+  </div>
+
+</div>

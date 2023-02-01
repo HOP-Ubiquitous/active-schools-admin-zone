@@ -1,0 +1,28 @@
+<div class="main-container-inner-right">
+
+  <!-- TODO Mejorar o incluso separar New Challenge y Edit Challenge -->
+
+  <div class="new-route-form" ng-show="('medical_centers.new_medical_center' | routeSegmentEqualsTo) || ('medical_centers.edit_medical_center.medical_center_id' | routeSegmentEqualsTo)">
+
+    <form>
+
+      <input type="text"
+             ng-show="('medical_centers.new_medical_center' | routeSegmentEqualsTo)"
+             placeholder="Name"
+             class="input-text"
+             ng-model="newMedical.medical_center.medical_center_name"
+             required>
+
+      <input type="text"
+             ng-show="('medical_centers.edit_medical_center.medical_center_id' | routeSegmentEqualsTo)"
+             placeholder="Name"
+             class="input-text"
+             ng-model="editMedical.medical_center.medical_center_name"
+             required>
+
+
+    </form>
+
+  </div>
+
+</div>

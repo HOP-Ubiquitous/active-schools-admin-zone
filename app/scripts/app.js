@@ -61,6 +61,10 @@ app.config([
       .when("/teams/new_team", "teams.new_team")
       .when("/teams/edit_team", "teams.edit_team")
       .when("/teams/edit_team/:team_id", "teams.edit_team.team_id")
+      .when("/medical_centers", "medical_centers")
+      .when("/medical_centers/new_medical_center", "medical_centers.new_medical_center")
+      .when("/medical_centers/edit_medical_center", "medical_centers.edit_medical_center")
+      .when("/medical_centers/edit_medical_center/:medical_center_id", "medical_centers.edit_medical_center.medical_center_id")
 
       .segment("login", {
         templateUrl: "views/login.html",
@@ -205,6 +209,34 @@ app.config([
       .up()
       .up()
 
+      .segment("medical_centers", {
+        templateUrl: "views/medical_centers.html",
+        controller: "medicalCtrl",
+        controllerAs: "medical",
+      })
+
+      .within()
+
+      .segment("new_medical_center", {
+        templateUrl: "views/new-medical_center.html",
+        controller: "newMedicalCtrl",
+        controllerAs: "newMedical",
+      })
+
+      .segment("edit_medical_center", {})
+
+      .within()
+
+      .segment("medical_center_id", {
+        templateUrl: "views/new-medical_center.html",
+        controller: "editMedicalCtrl",
+        controllerAs: "editMedical",
+        dependencies: ["medical_center_id"],
+      })
+
+      .up()
+      .up()
+
       .segment("teams", {
         templateUrl: "views/teams.html",
         controller: "teamsCtrl",
@@ -233,6 +265,6 @@ app.config([
     $routeProvider.otherwise({
       redirectTo: "login",
     });
-    
+
   }
 ]);

@@ -26,6 +26,14 @@
 
       <div class="diamond-container">
         <div class="diamond"
+            ng-class="{ 'diamond-selected': ('medical_centers' | routeSegmentStartsWith) }"
+            ng-click="mainMenu.goToMedical()">
+          <span class="{{mainMenu.icons.medical_centers}}"></span>
+        </div>
+      </div>
+
+      <div class="diamond-container">
+        <div class="diamond"
             ng-class="{ 'diamond-selected': ('posts' | routeSegmentStartsWith) }"
             ng-click="mainMenu.goToPosts()">
           <span class="{{mainMenu.icons.posts}}"></span>
