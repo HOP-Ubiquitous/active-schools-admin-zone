@@ -211,16 +211,16 @@ app.config([
 
       .segment("medical_centers", {
         templateUrl: "views/medical_centers.html",
-        controller: "medicalCtrl",
-        controllerAs: "medical",
+        controller: "medicalCentersCtrl",
+        controllerAs: "medicalCenter",
       })
 
       .within()
 
       .segment("new_medical_center", {
         templateUrl: "views/new-medical_center.html",
-        controller: "newMedicalCtrl",
-        controllerAs: "newMedical",
+        controller: "newMedicalCenterCtrl",
+        controllerAs: "newMedicalCenter",
       })
 
       .segment("edit_medical_center", {})
@@ -229,8 +229,8 @@ app.config([
 
       .segment("medical_center_id", {
         templateUrl: "views/new-medical_center.html",
-        controller: "editMedicalCtrl",
-        controllerAs: "editMedical",
+        controller: "editMedicalCenterCtrl",
+        controllerAs: "editMedicalCenter",
         dependencies: ["medical_center_id"],
       })
 
