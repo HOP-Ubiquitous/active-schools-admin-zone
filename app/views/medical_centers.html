@@ -6,27 +6,27 @@
 
   <section-header ng-show="('medical_centers' | routeSegmentEqualsTo)"
                   title="Medical Centers"
-                  icon="{{medicalCentersCtrl.icons.medical_centers}}"
+                  icon="{{medicalCenters.icons.medical_centers}}"
                   show-search-input="true">
   </section-header>
 
   <section-header ng-show="('medical_centers.new_medical_center' | routeSegmentEqualsTo)"
                   title="Medical Centers - New Medical Center"
-                  icon="{{medicalCentersCtrl.icons.medical_centers}}"
+                  icon="{{medicalCenters.icons.medical_centers}}"
                   show-search-input="true"
                   show-close="true"
-                  close-function="medicalCentersCtrl.goToMedicalCenters()">
+                  close-function="medicalCenters.goToMedicalCenters()">
   </section-header>
 
   <section-header ng-show="('medical_centers.edit_medical_center.medical_center_id' | routeSegmentEqualsTo)"
                   title="MedicalCenters - Edit Medical Center"
-                  icon="{{medicalCentersCtrl.icons.medical_centers}}"
+                  icon="{{medicalCenters.icons.medical_centers}}"
                   show-search-input="true"
                   show-close="true"
-                  close-function="medicalCentersCtrl.goToMedicalCenters()">
+                  close-function="medicalCenters.goToMedicalCenters()">
   </section-header>
 
-  <div class="main-container-inner" ng-class="{ 'main-container-inner-left' : ('medicalCentersCtrl.newMedicalCenter' | routeSegmentEqualsTo) || ('medicalCentersCtrl.edit_medical_center.medical_center_id' | routeSegmentEqualsTo) }">
+  <div class="main-container-inner" ng-class="{ 'main-container-inner-left' : ('medical_centers.new_medical_center' | routeSegmentEqualsTo) || ('medical_centers.edit_medical_center.medical_center_id' | routeSegmentEqualsTo) }">
 
     <table class="tabla">
       <thead>
@@ -51,12 +51,12 @@
         <td>{{medical_center.medical_center_country}}</td>
         <td class="option">
 
-          <div class="rombo-table small-square edit-bg" ng-click="medicalCenterCtrl.editMedicalCenter(medical_center.medical_center_id)">
-            <i class="{{medicalCentersCtrl.icons.edit}} icon-size"></i>
+          <div class="rombo-table small-square edit-bg" ng-click="medicalCenter.editMedicalCenter(medical_center.medical_center_id)">
+            <i class="{{medicalCenters.icons.edit}} icon-size"></i>
           </div>
 
           <div class="rombo-table small-square delete-bg" ng-click="showDeletePopup[$index] = !showDeletePopup[$index]">
-            <i class="{{medicalCentersCtrl.icons.deleteDocument}} icon-size"></i>
+            <i class="{{medicalCenters.icons.deleteDocument}} icon-size"></i>
           </div>
 
           <!-- TODO Hacer Directiva -->
@@ -67,7 +67,7 @@
               <span>are you sure you want to delete this medical center?</span>
               <h5 class="bold">{{medical_center.medical_center_name}}</h5>
               <div class="popup-buttons-container">
-                <button class="delete-button" ng-click="medicalCenterCtrl.deleteMedicalCenter(medical_center.id); showDeletePopup[$index] = false">Delete</button>
+                <button class="delete-button" ng-click="medicalCenter.deleteMedicalCenter(medical_center.id); showDeletePopup[$index] = false">Delete</button>
                 <button class="cancel-button"  ng-click="showDeletePopup[$index] = false">Cancel</button>
               </div>
             </div>
@@ -85,14 +85,15 @@
 
   </div>
 
-  <div app-view-segment="1" ng-show="('medical_centers.new_medical_center.medical_center_id' | routeSegmentEqualsTo)"></div>
+  <div app-view-segment="1" ng-show="('medical_centers.new_medical_center' | routeSegmentEqualsTo)"></div>
 
   <div app-view-segment="2" ng-show="('medical_centers.edit_medical_center.medical_center_id' | routeSegmentEqualsTo)"></div>
 
-  <new-button icon="{{medicalCentersCtrl.icons.add}}"
+  <!--Código del botón New MedicalCenter -->
+  <new-button icon="{{medicalCenters.icons.add}}"
               title="New MedicalCenter"
-              button-function="medicalCentersCtrl.goToNewMedicalCenter()"
-              ng-hide="('medicalCenterCtrl.new_medical_center' | routeSegmentEqualsTo)">
+              button-function="medicalCenters.goToNewMedicalCenter()"
+              ng-hide="('medical_centers.new_medical_center' | routeSegmentEqualsTo)">
   </new-button>
 
   </div>
