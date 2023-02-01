@@ -21,7 +21,7 @@ app.service('medicalCenterService', ['medicalCenterServiceApi', 'medicalCenterSe
     var deferred = $q.defer();
     var promise = deferred.promise;
 
-    medicalCenterServiceApi.get_medical_center().then(
+    medicalCenterServiceApi.get_medical_centers().then(
       function (response) {
         service.medicalCentersLoaded = true;
         medicalCenterServiceData.medicalCenterList = response.data;
