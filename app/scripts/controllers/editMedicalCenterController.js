@@ -59,7 +59,7 @@ app.controller('editMedicalCtrl', ['$scope', '$location', 'medicalCenterService'
     }
 
     vm.getUnit = function (unit) {
-      vm.challenge.unit = unit;
+      vm.medical_center.unit = unit;
     };
 
     vm.edit = function () {
