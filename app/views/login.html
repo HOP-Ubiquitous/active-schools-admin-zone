@@ -114,9 +114,9 @@
         <input id="schoolName" type="text" placeholder="Name" ng-model="login.school.name" required>
         <input id="schoolAddress" type="text" placeholder="Address" ng-model="login.school.address" required>
         <input id="schoolPostalCode" type="text" placeholder="Postal Code" ng-model="login.school.postalCode" required>
-        <input id="city" type="text" placeholder="City" ng-model="login.newUser.city" required>
-        <input id="province" type="text" placeholder="Province" ng-model="login.newUser.province" required>
-        <input id="country" type="text" placeholder="Country" ng-model="login.newUser.country" required>
+        <input id="city" type="text" placeholder="City" ng-model="login.school.city" required>
+        <input id="province" type="text" placeholder="Province" ng-model="login.school.province" required>
+        <input id="country" type="text" placeholder="Country" ng-model="login.school.country" required>
         <input class="button" type="submit" value="Next" ng-click="login.checkSchoolInfo()">
         <input class="button" type="submit" value="Back" ng-click="login.registerStep2 = true; login.registerStep3 = false">
       </form>
