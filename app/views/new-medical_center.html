@@ -90,6 +90,19 @@
              ng-model="editMedicalCenter.medical_center.medical_center_country"
              required>
 
+      <br>
+
+      <button-form show-button="('medical_centers.new_medical_center' | routeSegmentEqualsTo)"
+                   click-button="newMedicalCenter.addMedicalCenter()"
+                   text-button="Add MedicalCenter">
+      </button-form>
+
+
+      <button-form show-button="('medical_centers.edit_medical_center.medical_center_id' | routeSegmentEqualsTo)"
+                   click-button="editMedicalCenter.editMedicalCenter()"
+                   text-button="Edit MedicalCenter">
+      </button-form>
+
     </form>
 
   </div>
