@@ -8,12 +8,13 @@
  * Controller of the activeSchoolsAdminZoneApp
  */
 
-app.controller('medicalCentersCtrl', ['$scope', '$location', 'medicalCenterService', 'medicalCenterServiceData', '$routeParams', 'ICONS', 'COUNTRIES',
-    function ($scope, $location, medicalCenterService, medicalCenterServiceData, $routeParams, ICONS, COUNTRIES) {
+app.controller('medicalCentersCtrl', ['$scope', '$location', 'medicalCenterService', 'medicalCenterServiceData', '$routeParams', 'ICONS', 'COUNTRIES', 'userServiceData',
+    function ($scope, $location, medicalCenterService, medicalCenterServiceData, $routeParams, ICONS, COUNTRIES, userServiceData) {
 
     var vm = this;
     vm.icons = ICONS;
     vm.countries = COUNTRIES.countries;
+    vm.user = userServiceData.loggedUser;
     vm.medical_centers = [];
 
     medicalCenterService.getMedicalCenters();
@@ -21,6 +22,7 @@ app.controller('medicalCentersCtrl', ['$scope', '$location', 'medicalCenterServi
     function getMedicalCenters () {
       vm.medical_centers = medicalCenterServiceData.medicalCenterList;
     }
+
 
     vm.goToNewMedicalCenter = function(){
       $location.path('medical_centers/new_medical_center');

@@ -47,6 +47,7 @@ app.service('userService', ['userServiceApi', 'userServiceData', '$location', '$
 
         if (type === 'login') {
           userServiceData.loggedUser = response.data;
+          $location.path('/routes');
         }
 
 
