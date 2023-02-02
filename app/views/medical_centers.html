@@ -40,7 +40,7 @@
         <th scope="col" class="option-header">Options</th>
       </tr>
       </thead>
-      <tbody ng-repeat="medical_center in medical_centers.medical_centers">
+      <tbody ng-repeat="medical_center in medicalCenters.medical_centers">
 
       <tr>
         <td class="bold">{{medical_center.medical_center_name}}</td>
@@ -51,7 +51,7 @@
         <td>{{medical_center.medical_center_country}}</td>
         <td class="option">
 
-          <div class="rombo-table small-square edit-bg" ng-click="medicalCenter.editMedicalCenter(medical_center.medical_center_id)">
+          <div class="rombo-table small-square edit-bg" ng-click="medicalCenters.editMedicalCenter(medical_center.medical_center_id)">
             <i class="{{medicalCenters.icons.edit}} icon-size"></i>
           </div>
 
@@ -67,7 +67,7 @@
               <span>are you sure you want to delete this medical center?</span>
               <h5 class="bold">{{medical_center.medical_center_name}}</h5>
               <div class="popup-buttons-container">
-                <button class="delete-button" ng-click="medicalCenter.deleteMedicalCenter(medical_center.id); showDeletePopup[$index] = false">Delete</button>
+                <button class="delete-button" ng-click="medicalCenters.deleteMedicalCenter(medical_center.medical_center_id); showDeletePopup[$index] = false">Delete</button>
                 <button class="cancel-button"  ng-click="showDeletePopup[$index] = false">Cancel</button>
               </div>
             </div>

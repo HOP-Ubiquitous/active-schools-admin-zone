@@ -212,7 +212,7 @@ app.config([
       .segment("medical_centers", {
         templateUrl: "views/medical_centers.html",
         controller: "medicalCentersCtrl",
-        controllerAs: "medicalCenter",
+        controllerAs: "medicalCenters",
       })
 
       .within()

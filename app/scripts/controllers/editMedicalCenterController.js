@@ -62,19 +62,29 @@ app.controller('editMedicalCenterCtrl', ['$scope', '$location', 'medicalCenterSe
       vm.medical_center.unit = unit;
     };
 
-    vm.edit = function () {
+    vm.editMedicalCenter = function () {
 
-      let medical_center =  {
-        medical_center_name: vm.medical_center.medical_center_name,
-        medical_center_address: vm.medical_center.medical_center_address,
-        medical_center_postal_code: vm.medical_center.medical_center_postal_code,
-        medical_center_city: vm.medical_center.medical_center_city,
-        medical_center_province: vm.medical_center.medical_center_province,
-        medical_center_country: vm.medical_center.medical_center_country
-      };
+      if ((vm.medical_center.medical_center_name !== undefined && vm.medical_center.medical_center_name !== '') &&
+          (vm.medical_center.medical_center_address !== undefined && vm.medical_center.medical_center_address !== '') &&
+          (vm.medical_center.medical_center_postal_code !== undefined && vm.medical_center.medical_center_postal_code!== '') &&
+          (vm.medical_center.medical_center_city !== undefined && vm.medical_center.medical_center_city !== '') &&
+          (vm.medical_center.medical_center_province === vm.medical_center.medical_center_province) &&
+          (vm.medical_center.medical_center_country !== undefined && vm.medical_center.medical_center_country !== '')) {
 
-      medicalCenterService.editMedicalCenter(vm.id, medical_center);
+            let medical_center =  {
+              medical_center_name: vm.medical_center.medical_center_name,
+              medical_center_address: vm.medical_center.medical_center_address,
+              medical_center_postal_code: vm.medical_center.medical_center_postal_code,
+              medical_center_city: vm.medical_center.medical_center_city,
+              medical_center_province: vm.medical_center.medical_center_province,
+              medical_center_country: vm.medical_center.medical_center_country
+            }
 
+            medicalCenterService.editMedicalCenter(vm.id, medical_center);
+
+          }else{
+
+          }
   };
 
     function initWatchers() {

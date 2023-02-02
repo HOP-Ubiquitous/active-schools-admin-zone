@@ -56,20 +56,30 @@ app.controller('newMedicalCenterCtrl', ['$location', 'medicalCenterService', 'IC
       vm.medical_center.unit = unit;
     };
 
-    vm.save = function(){
+    vm.addMedicalCenter = function(){
 
-      debugger;
+      if ((vm.medical_center.medical_center_name !== undefined && vm.medical_center.medical_center_name !== '') &&
+          (vm.medical_center.medical_center_address !== undefined && vm.medical_center.medical_center_address !== '') &&
+          (vm.medical_center.medical_center_postal_code !== undefined && vm.medical_center.medical_center_postal_code!== '') &&
+          (vm.medical_center.medical_center_city !== undefined && vm.medical_center.medical_center_city !== '') &&
+          (vm.medical_center.medical_center_province === vm.medical_center.medical_center_province) &&
+          (vm.medical_center.medical_center_country !== undefined && vm.medical_center.medical_center_country !== '')) {
 
-      let medical_center =  {
-        medical_center_name: vm.medical_center.medical_center_name,
-        medical_center_address: vm.medical_center.medical_center_address,
-        medical_center_postal_code: vm.medical_center.medical_center_postal_code,
-        medical_center_city: vm.medical_center.medical_center_city,
-        medical_center_province: vm.medical_center.medical_center_province,
-        medical_center_country: vm.medical_center.medical_center_country
-      };
+            let medical_center =  {
+              medical_center_name: vm.medical_center.medical_center_name,
+              medical_center_address: vm.medical_center.medical_center_address,
+              medical_center_postal_code: vm.medical_center.medical_center_postal_code,
+              medical_center_city: vm.medical_center.medical_center_city,
+              medical_center_province: vm.medical_center.medical_center_province,
+              medical_center_country: vm.medical_center.medical_center_country
+            }
 
-      medicalCenterService.addMedicalCenter(medical_center);
+            medicalCenterService.addMedicalCenter(medical_center, 'new_medical_center');
+
+          }else{
+
+          }
+
     };
 
   }]);
