@@ -67,6 +67,7 @@
               <span>are you sure you want to delete this medical center?</span>
               <h5 class="bold">{{medical_center.medical_center_name}}</h5>
               <div class="popup-buttons-container">
+                <button class="delete-button" ng-show="medicalCenter.user.health_data.med_center_id === medical_center.medical_center_id" ng-click="medicalCenters.deleteMedicalCenter(medical_center.medical_center_id); showDeletePopup[$index] = false">Delete</button>
                 <button class="delete-button" ng-click="medicalCenters.deleteMedicalCenter(medical_center.medical_center_id); showDeletePopup[$index] = false">Delete</button>
                 <button class="cancel-button"  ng-click="showDeletePopup[$index] = false">Cancel</button>
               </div>

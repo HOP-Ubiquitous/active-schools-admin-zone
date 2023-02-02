@@ -122,16 +122,25 @@
       </form>
 
       <form class="login-form" ng-show="login.registerStep4"> <!-- Health Info -->
-        <input id="medicalCenterName" type="text" placeholder="Name" ng-model="login.medicalCenter.name" required>
-        <input id="medicalCenterAddress" type="text" placeholder="Address" ng-model="login.medicalCenter.address" required>
-        <input id="medicalCenterPostalCode" type="text" placeholder="Postal Code" ng-model="login.medicalCenter.postalCode" required>
-        <input id="medicalCenterCity" type="text" placeholder="City" ng-model="login.medicalCenter.city" required>
-        <input id="medicalCenterProvince" type="text" placeholder="Province" ng-model="login.medicalCenter.province" required>
-        <input id="medicalCenterCountry" type="text" placeholder="Country" ng-model="login.medicalCenter.country" required>
-        <!-- <input id="doctorName" type="text" placeholder="Name" ng-model="login.doctor.name" required>
-        <input id="doctorLicense" type="text" placeholder="License" ng-model="login.doctor.license"> -->
+        
+        <input select ng-show="showNewMedicalCenterList === true">
+        
+        <input class="button" type="submit" value="Add new Medical Center" ng-click="showNewMedicalCenterList != showNewMedicalCenterList">
+
+        <div ng-show="showNewMedicalCenterList === false">
+          <input id="medicalCenterName" type="text" placeholder="Name" ng-model="login.medicalCenter.name" required>
+          <input id="medicalCenterAddress" type="text" placeholder="Address" ng-model="login.medicalCenter.address" required>
+          <input id="medicalCenterPostalCode" type="text" placeholder="Postal Code" ng-model="login.medicalCenter.postalCode" required>
+          <input id="medicalCenterCity" type="text" placeholder="City" ng-model="login.medicalCenter.city" required>
+          <input id="medicalCenterProvince" type="text" placeholder="Province" ng-model="login.medicalCenter.province" required>
+          <input id="medicalCenterCountry" type="text" placeholder="Country" ng-model="login.medicalCenter.country" required>
+          <!-- <input id="doctorName" type="text" placeholder="Name" ng-model="login.doctor.name" required>
+          <input id="doctorLicense" type="text" placeholder="License" ng-model="login.doctor.license"> -->
+        </div>
+
         <input class="button" type="submit" value="Finish" ng-click="login.checkMedicalCenter()">
-        <input class="button" type="submit" value="Back" ng-click="login.registerStep3 = true; login.registerStep4 = false">
+          <input class="button" type="submit" value="Back" ng-click="login.registerStep3 = true; login.registerStep4 = false">
+        
       </form>
 
       <span class="login-error" ng-show="login.errorMessage !== '' && login.openMessageWindow">{{ login.errorMessage }}</span>

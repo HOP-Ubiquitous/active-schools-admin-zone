@@ -50,7 +50,7 @@ app.controller('editMedicalCenterCtrl', ['$scope', '$location', 'medicalCenterSe
         value: 'reps'
       }
     ];
-    vm.id = $routeParams.medical_id;
+    vm.id = $routeParams.medical_center_id;
 
     medicalCenterService.getMedicalCenterById(vm.id);
 
