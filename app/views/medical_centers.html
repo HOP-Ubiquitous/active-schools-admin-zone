@@ -60,14 +60,16 @@
           </div>
 
           <!--Botón de selección de centro que cuando se acciona asigna la id del centro médico seleccionado al usuario actual -->
-          <div class="rombo-table small-square see-bg" ng-show="medicalCenters.user.health_data.med_center_id !== medical_center.medical_center_id"
-            ng-click="medicalCenters.user.health_data.med_center_id=medical_center.medical_center_id">
+          <div class="rombo-table small-square delete-bg"
+               ng-show="medicalCenters.user.health_data.med_center_id !== medical_center.medical_center_id"
+               ng-click="medicalCenters.asignMedicalCenterToUser(medical_center.medical_center_id)">
             <i class="{{medicalCenters.icons.pointer}} icon-size"></i>
-            <!--Icono de check que sustituye al botón de seleccionar centro cuando el usuario ha seleccionado dicho centro médico -->
-            <div class="rombo-table small-square see-bg" ng-show="medicalCenters.user.health_data.med_center_id===medical_center.medical_center_id">
-              <i class="{{medicalCenters.icons.check}} icon-size"></i>
-            </div>
+          </div>
 
+          <!--Icono de check que sustituye al botón de seleccionar centro cuando el usuario ha seleccionado dicho centro médico -->
+          <div class="rombo-table small-square see-bg"
+               ng-show="medicalCenters.user.health_data.med_center_id === medical_center.medical_center_id">
+            <i class="{{medicalCenters.icons.check}} icon-size"></i>
           </div>
 
 

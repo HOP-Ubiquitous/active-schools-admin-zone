@@ -48,6 +48,8 @@ app.service('userService', ['userServiceApi', 'userServiceData', '$location', '$
         if (type === 'login') {
           userServiceData.loggedUser = response.data;
           $location.path('/routes');
+        } else if (type === 'loggedUser') {
+          userServiceData.loggedUser = response.data;
         }
 
 
@@ -90,13 +92,18 @@ app.service('userService', ['userServiceApi', 'userServiceData', '$location', '$
 
   };
 
-  service.editUser = function (user_id, data) {
+  service.editUser = function (user_id, data, type) {
 
     var deferred = $q.defer();
     var promise = deferred.promise;
 
     userServiceApi.edit_user(user_id, data).then(
       function success(response){
+        
+        if (type === 'loggedUser') {
+          service.getUserById(response.data);
+        }
+
         service.getUsers();
         console.log('\x1b[32m%s\x1b[0m', 'El usuario ' + user_id + ' ha sido editado con éxito! :)');
       }

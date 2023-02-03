@@ -8,8 +8,8 @@
  * Controller of the activeSchoolsAdminZoneApp
  */
 
-app.controller('medicalCentersCtrl', ['$scope', '$location', 'medicalCenterService', 'medicalCenterServiceData', '$routeParams', 'ICONS', 'COUNTRIES', 'userServiceData',
-    function ($scope, $location, medicalCenterService, medicalCenterServiceData, $routeParams, ICONS, COUNTRIES, userServiceData) {
+app.controller('medicalCentersCtrl', ['$scope', '$location', 'medicalCenterService', 'medicalCenterServiceData', '$routeParams', 'ICONS', 'COUNTRIES', 'userService', 'userServiceData',
+    function ($scope, $location, medicalCenterService, medicalCenterServiceData, $routeParams, ICONS, COUNTRIES, userService, userServiceData) {
 
     var vm = this;
     vm.icons = ICONS;
@@ -40,6 +40,19 @@ app.controller('medicalCentersCtrl', ['$scope', '$location', 'medicalCenterServi
       $routeParams.medical_id = medical_id;
       $location.path('medical_centers/edit_medical_center/' + $routeParams.medical_id);
     };
+
+    vm.asignMedicalCenterToUser = function(medical_id) {
+      let userData = {
+        rol: 'director',
+        username: vm.user.username,
+        password: vm.user.password,
+        health_data: {
+          med_center_id: medical_id
+        }
+      }
+
+      userService.editUser(vm.user.id, userData, 'loggedUser');
+    }
 
     function initWatchers() {
 
