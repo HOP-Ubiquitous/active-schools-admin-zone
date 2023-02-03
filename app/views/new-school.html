@@ -1,0 +1,110 @@
+<div class="main-container-inner-right">
+
+  <!-- TODO Mejorar o incluso separar New Challenge y Edit Challenge -->
+
+  <div class="new-route-form" ng-show="('schools.new_school' | routeSegmentEqualsTo) || ('schools.edit_school.school_id' | routeSegmentEqualsTo)">
+
+    <form>
+
+      <input type="text"
+             ng-show="('schools.new_school' | routeSegmentEqualsTo)"
+             placeholder="Name"
+             class="input-text"
+             ng-model="newSchool.school.school_name"
+             required>
+
+      <input type="text"
+             ng-show="('schools.edit_school.school_id' | routeSegmentEqualsTo)"
+             placeholder="Name"
+             class="input-text"
+             ng-model="editSchool.school.school_name"
+             required>
+
+      <input type="text"
+             ng-show="('schools.new_school' | routeSegmentEqualsTo)"
+             placeholder="Address"
+             class="input-text"
+             ng-model="newSchool.school.school_address"
+             required>
+
+      <input type="text"
+             ng-show="('schools.edit_school.school_id' | routeSegmentEqualsTo)"
+             placeholder="Address"
+             class="input-text"
+             ng-model="editSchool.school.school_address"
+             required>
+
+      <input type="text"
+             ng-show="('schools.new_school' | routeSegmentEqualsTo)"
+             placeholder="Postal Code"
+             class="input-text"
+             ng-model="newSchool.school.school_postal_code"
+             required>
+
+      <input type="text"
+             ng-show="('schools.edit_school.school_id' | routeSegmentEqualsTo)"
+             placeholder="Postal Code"
+             class="input-text"
+             ng-model="editSchool.school.school_postal_code"
+             required>
+
+      <input type="text"
+             ng-show="('schools.new_school' | routeSegmentEqualsTo)"
+             placeholder="City"
+             class="input-text"
+             ng-model="newSchool.school.school_city"
+             required>
+
+      <input type="text"
+             ng-show="('schools.edit_school.school_id' | routeSegmentEqualsTo)"
+             placeholder="City"
+             class="input-text"
+             ng-model="editSchool.school.school_city"
+             required>
+
+      <input type="text"
+             ng-show="('schools.new_school' | routeSegmentEqualsTo)"
+             placeholder="Province"
+             class="input-text"
+             ng-model="newSchool.school.school_province"
+             required>
+
+      <input type="text"
+             ng-show="('schools.edit_school.school_id' | routeSegmentEqualsTo)"
+             placeholder="Province"
+             class="input-text"
+             ng-model="editSchool.school.school_province"
+             required>
+
+      <input type="text"
+             ng-show="('schools.new_school' | routeSegmentEqualsTo)"
+             placeholder="Country"
+             class="input-text"
+             ng-model="newSchool.school.school_country"
+             required>
+
+      <input type="text"
+             ng-show="('schools.edit_school.school_id' | routeSegmentEqualsTo)"
+             placeholder="Country"
+             class="input-text"
+             ng-model="editSchool.school.school_country"
+             required>
+
+      <br>
+
+      <button-form show-button="('schools.new_school' | routeSegmentEqualsTo)"
+                   click-button="newSchool.addSchool()"
+                   text-button="Add School">
+      </button-form>
+
+
+      <button-form show-button="('schools.edit_school.school_id' | routeSegmentEqualsTo)"
+                   click-button="editSchool.editSchool()"
+                   text-button="Edit School">
+      </button-form>
+
+    </form>
+
+  </div>
+
+</div>

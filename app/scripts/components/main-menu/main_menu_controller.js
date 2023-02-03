@@ -32,6 +32,10 @@
         $location.path('/medical_centers');
       };
 
+      vm.goToMedicalCenters = function () {
+        $location.path('/schools');
+      };
+
 
       vm.goToLogin = function () {
 

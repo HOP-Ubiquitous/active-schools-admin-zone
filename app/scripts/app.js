@@ -65,6 +65,10 @@ app.config([
       .when("/medical_centers/new_medical_center", "medical_centers.new_medical_center")
       .when("/medical_centers/edit_medical_center", "medical_centers.edit_medical_center")
       .when("/medical_centers/edit_medical_center/:medical_center_id", "medical_centers.edit_medical_center.medical_center_id")
+      .when("/schools", "schools")
+      .when("/schools/new_school", "schools.new_schools")
+      .when("/schools/edit_school", "schools.edit_school")
+      .when("/schools/edit_school/:school_id", "schools.edit_school.school_id")
 
       .segment("login", {
         templateUrl: "views/login.html",
@@ -232,6 +236,34 @@ app.config([
         controller: "editMedicalCenterCtrl",
         controllerAs: "editMedicalCenter",
         dependencies: ["medical_center_id"],
+      })
+
+      .up()
+      .up()
+
+      .segment("schools", {
+        templateUrl: "views/schools.html",
+        controller: "schoolsCtrl",
+        controllerAs: "schools",
+      })
+
+      .within()
+
+      .segment("new_school", {
+        templateUrl: "views/new-school.html",
+        controller: "newSchoolCtrl",
+        controllerAs: "newSchool",
+      })
+
+      .segment("edit_school", {})
+
+      .within()
+
+      .segment("school_id", {
+        templateUrl: "views/new-school.html",
+        controller: "editSchoolCtrl",
+        controllerAs: "editSchool",
+        dependencies: ["school_id"],
       })
 
       .up()

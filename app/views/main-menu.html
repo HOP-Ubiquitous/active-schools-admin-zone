@@ -26,6 +26,14 @@
 
       <div class="diamond-container">
         <div class="diamond"
+            ng-class="{ 'diamond-selected': ('schools' | routeSegmentStartsWith) }"
+            ng-click="mainMenu.goToSchools()">
+          <span class="{{mainMenu.icons.school}}"></span>
+        </div>
+      </div>
+
+      <div class="diamond-container">
+        <div class="diamond"
             ng-class="{ 'diamond-selected': ('medical_centers' | routeSegmentStartsWith) }"
             ng-click="mainMenu.goToMedicalCenters()">
           <span class="{{mainMenu.icons.medical_centers}}"></span>
@@ -40,7 +48,7 @@
         </div>
       </div>
 
-      <div class="diamond-container">
+      <div class="diamond-container" ng-show="userServiceData.loggedUser.rol ==='admin'">
         <div class="diamond"
             ng-class="{ 'diamond-selected': ('users' | routeSegmentStartsWith) }"
             ng-click="mainMenu.goToUsers()">

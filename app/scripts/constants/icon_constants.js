@@ -8,6 +8,7 @@ app.constant('ICONS',{
   profile: 'fas fa-user-shield',
   exit: 'fas fa-arrow-left',
   medical_centers: 'fa fa-hospital-o',
+  school: 'fa fa-graduation-cap',
 
   search: 'fas fa-search',
 

@@ -1,8 +1,8 @@
-<div class="root">
+<div class="root" ng-show="userServiceData.loggedUser.rol ==='admin'">
 
   <main-menu></main-menu>
 
-<div class="main-container">
+<div class="main-container" >
 
   <section-header ng-show="('users' | routeSegmentEqualsTo)"
                   title="Users"
