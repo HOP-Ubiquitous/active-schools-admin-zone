@@ -16,6 +16,8 @@ app.constant('ICONS',{
   deleteDocument: 'fas fa-eraser',
   details: 'fas fa-info-circle',
   add: 'fas fa-plus',
+  check: 'fa-solid fa-check',
+  pointer: 'fa-solid fa-hand-pointer',
 
   arrowDown: 'fas fa-chevron-down',
 
