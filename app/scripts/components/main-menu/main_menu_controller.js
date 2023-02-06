@@ -32,7 +32,7 @@
         $location.path('/medical_centers');
       };
 
-      vm.goToMedicalCenters = function () {
+      vm.goToSchools = function () {
         $location.path('/schools');
       };
 

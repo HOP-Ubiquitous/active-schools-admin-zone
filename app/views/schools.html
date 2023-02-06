@@ -40,7 +40,7 @@
         <th scope="col" class="option-header">Options</th>
       </tr>
       </thead>
-      <tbody ng-repeat="medical_center in medicalCenters.medical_centers">
+      <tbody ng-repeat="school in schools.schools">
 
       <tr>
         <td class="bold">{{school.school_name}}</td>
@@ -64,7 +64,7 @@
           <div class="bg-popup" ng-show="showDeletePopup[$index]">
 
             <div class="popup-container">
-              <span>are you sure you want to delete this medical center?</span>
+              <span>are you sure you want to delete this school?</span>
               <h5 class="bold">{{school.school_name}}</h5>
               <div class="popup-buttons-container">
                 <button class="delete-button" ng-click="schools.deleteSchool(school.school_id); showDeletePopup[$index] = false">Delete</button>
@@ -89,7 +89,7 @@
 
   <div app-view-segment="2" ng-show="('schools.edit_school.school_id' | routeSegmentEqualsTo)"></div>
 
-  <!--Código del botón New MedicalCenter -->
+  <!--Código del botón New School -->
   <new-button icon="{{schools.icons.add}}"
               title="New School"
               button-function="schools.goToNewSchool()"

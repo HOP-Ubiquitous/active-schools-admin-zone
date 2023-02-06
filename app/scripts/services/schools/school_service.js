@@ -96,7 +96,7 @@ app.service('schoolService', ['schoolServiceApi', 'schoolServiceData', '$locatio
     return promise;
   };
 
-  service.deletSchool = function (school_id) {
+  service.deleteSchool = function (school_id) {
 
     var deferred = $q.defer();
     var promise = deferred.promise;
