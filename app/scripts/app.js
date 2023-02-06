@@ -66,7 +66,7 @@ app.config([
       .when("/medical_centers/edit_medical_center", "medical_centers.edit_medical_center")
       .when("/medical_centers/edit_medical_center/:medical_center_id", "medical_centers.edit_medical_center.medical_center_id")
       .when("/schools", "schools")
-      .when("/schools/new_school", "schools.new_schools")
+      .when("/schools/new_school", "schools.new_school")
       .when("/schools/edit_school", "schools.edit_school")
       .when("/schools/edit_school/:school_id", "schools.edit_school.school_id")
 
