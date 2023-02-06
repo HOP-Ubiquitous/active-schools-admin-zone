@@ -17,7 +17,7 @@ app.controller('schoolsCtrl', ['$scope', '$location', 'schoolService', 'schoolSe
     vm.user = userServiceData.loggedUser;
     vm.schools = [];
 
-    schoolService.get_schools();
+    schoolService.getSchools();
 
     function getSchools() {
       vm.schools = schoolServiceData.schoolList;

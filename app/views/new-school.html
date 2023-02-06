@@ -5,6 +5,19 @@
   <div class="new-route-form" ng-show="('schools.new_school' | routeSegmentEqualsTo) || ('schools.edit_school.school_id' | routeSegmentEqualsTo)">
 
     <form>
+      <input type="text"
+             ng-show="('schools.new_school' | routeSegmentEqualsTo)"
+             placeholder="Director_id"
+             class="input-text"
+             ng-model="newSchool.school.director_id"
+             required>
+
+      <input type="text"
+             ng-show="('schools.edit_school.school_id' | routeSegmentEqualsTo)"
+             placeholder="Director_id"
+             class="input-text"
+             ng-model="editSchool.school.director_id"
+             required>
 
       <input type="text"
              ng-show="('schools.new_school' | routeSegmentEqualsTo)"

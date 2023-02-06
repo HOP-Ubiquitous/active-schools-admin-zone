@@ -51,11 +51,11 @@
         <td>{{school.school_country}}</td>
         <td class="option">
 
-          <div class="rombo-table small-square edit-bg" ng-click="schools.editSchool(school.school_id)">
+          <div class="rombo-table small-square edit-bg" ng-show="userServiceData.loggedUser.rol ==='admin'" ng-click="schools.editSchool(school.school_id)">
             <i class="{{schools.icons.edit}} icon-size"></i>
           </div>
 
-          <div class="rombo-table small-square delete-bg" ng-click="showDeletePopup[$index] = !showDeletePopup[$index]">
+          <div class="rombo-table small-square delete-bg" ng-show="userServiceData.loggedUser.rol ==='admin'" ng-click="showDeletePopup[$index] = !showDeletePopup[$index]">
             <i class="{{schools.icons.deleteDocument}} icon-size"></i>
           </div>
 
@@ -90,11 +90,13 @@
   <div app-view-segment="2" ng-show="('schools.edit_school.school_id' | routeSegmentEqualsTo)"></div>
 
   <!--Código del botón New School -->
-  <new-button icon="{{schools.icons.add}}"
+  <div ng-show="userServiceData.loggedUser.rol ==='admin'">
+    <new-button icon="{{schools.icons.add}}"
               title="New School"
               button-function="schools.goToNewSchool()"
               ng-hide="('schools.new_school' | routeSegmentEqualsTo)">
-  </new-button>
+    </new-button>
+  </div>
 
   </div>
 

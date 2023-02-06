@@ -59,7 +59,8 @@ app.controller('newSchoolCtrl', ['$location', 'schoolService', 'ICONS', 'COUNTRI
     //Habrá que implementar el que guarde el id del director que lo cree como una variable
     vm.addSchool = function(){
 
-      if ((vm.school.school_name !== undefined && vm.school.school_name !== '') &&
+      if ((vm.school.director_id !== undefined && vm.school.director_id !== '') &&
+          (vm.school.school_name !== undefined && vm.school.school_name !== '') &&
           (vm.school.school_address !== undefined && vm.school.school_address !== '') &&
           (vm.school.school_postal_code !== undefined && vm.school.school_postal_code!== '') &&
           (vm.school.school_city !== undefined && vm.school.school_city !== '') &&
@@ -67,6 +68,7 @@ app.controller('newSchoolCtrl', ['$location', 'schoolService', 'ICONS', 'COUNTRI
           (vm.school.school_country !== undefined && vm.school.school_country !== '')) {
 
             let school =  {
+              director_id: vm.school.director_id,
               school_name: vm.school.school_name,
               school_address: vm.school.school_address,
               school_postal_code: vm.school.school_postal_code,
