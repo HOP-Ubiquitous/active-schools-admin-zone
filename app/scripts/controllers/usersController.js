@@ -16,6 +16,7 @@ app.controller('usersCtrl', ['$scope', '$location', 'userService', 'userServiceD
     vm.countries = COUNTRIES.countries;
     vm.loggedUser = userServiceData.loggedUser;
     vm.users = [];
+    vm.userServiceData = userServiceData;
 
     userService.getUsers();
 

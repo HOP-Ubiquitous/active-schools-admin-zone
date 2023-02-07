@@ -15,6 +15,7 @@ app.controller('schoolsCtrl', ['$scope', '$location', 'schoolService', 'schoolSe
     vm.icons = ICONS;
     vm.countries = COUNTRIES.countries;
     vm.user = userServiceData.loggedUser;
+    vm.userServiceData = userServiceData;
     vm.schools = [];
 
     schoolService.getSchools();

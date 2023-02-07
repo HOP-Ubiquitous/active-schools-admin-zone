@@ -3,6 +3,7 @@
 
       var vm = this;
       vm.icons = ICONS;
+      vm.userServiceData = userServiceData;
 
       vm.goToRoutes = function () {
         $location.path('/routes');
