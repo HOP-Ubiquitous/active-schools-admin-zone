@@ -9,7 +9,7 @@ app.constant('ICONS',{
   exit: 'fas fa-arrow-left',
   medical_centers: 'fa fa-hospital-o',
   school: 'fa fa-graduation-cap',
-  challenge: 'fa fa-exclamation',
+  home: 'fa fa-home',
 
   search: 'fas fa-search',
 

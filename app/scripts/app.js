@@ -38,6 +38,7 @@ app.config([
 
       .when("/login", "login")
       .when("/recover", "recover")
+      .when("/home", "home")
       .when("/routes", "routes")
       .when("/routes/new_route", "routes.new_route")
       .when("/routes/edit_route", "routes.edit_route")
@@ -80,6 +81,12 @@ app.config([
         templateUrl: "views/recover.html",
         controller: "recoverCtrl",
         controllerAs: "recover",
+      })
+
+      .segment("home", {
+        templateUrl: "views/home.html",
+        controller: "homeCtrl",
+        controllerAs: "home",
       })
 
       .segment("routes", {

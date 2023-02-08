@@ -5,6 +5,10 @@
       vm.icons = ICONS;
       vm.userServiceData = userServiceData;
 
+      vm.goToHome = function () {
+        $location.path('/home');
+      };
+
       vm.goToRoutes = function () {
         $location.path('/routes');
       };

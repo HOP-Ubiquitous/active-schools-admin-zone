@@ -1,0 +1,56 @@
+<div class="root">
+
+  <main-menu></main-menu>
+
+<div class="main-container">
+
+  <section-header ng-show="('home' | routeSegmentEqualsTo)"
+                  title="Home"
+                  icon="{{home.icons.home}}"
+                  show-search-input="true">
+  </section-header>
+
+
+  <!--Código del botón New MedicalCenter -->
+  <button icon="{{home.icons.routes}}"
+              title="Go to Routes"
+              button-function="home.goToRoutes()">
+  </button>
+
+  <button icon="{{home.icons.challenges}}"
+              title="Go to Challenges"
+              button-function="home.goToChallenges()">
+  </button>
+
+  <button icon="{{home.icons.school}}"
+              title="Go to MedicalCenter"
+              button-function="home.goToSchools()">
+  </button>
+
+  <button icon="{{home.icons.medical_centers}}"
+              title="Go to MedicalCenters"
+              button-function="home.goToMedicalCenters()">
+  </button>
+
+  <button icon="{{home.icons.posts}}"
+              title="Go to Posts"
+              button-function="home.goToPosts()">
+  </button>
+
+  <button icon="{{home.icons.teams}}"
+              title="Go to Teams"
+              button-function="home.goToTeams()">
+  </button>
+
+  <button icon="{{home.icons.users}}"
+              title="Go to Users"
+              button-function="home.goToUsers()"
+              ng-show="users.userServiceData.loggedUser.rol ==='admin'">
+  </button>
+
+  <!-- Completar lo de abajo-->
+  <div> Usuarios activos en la última semana: </div>
+
+  </div>
+
+</div>
