@@ -20,36 +20,42 @@
       <button class="home-button"
               title="Go to Routes"
               ng-click="home.goToRoutes()">
+        <span class="{{home.icons.routes}}"></span>
         <t>Routes</t>
       </button>
 
       <button class="home-button"
                   title="Go to Challenges"
                   ng-click="home.goToChallenges()">
+        <span class="{{home.icons.challenges}}"></span>
         <t>Challenges</t>
       </button>
 
       <button class="home-button"
                   title="Go to MedicalCenter"
                   ng-click="home.goToSchools()">
+        <span class="{{home.icons.school}}"></span>
         <t>Schools</t>
       </button>
 
       <button class="home-button"
                   title="Go to Medical Centers"
                   ng-click="home.goToMedicalCenters()">
+        <span class="{{home.icons.medical_centers}}"></span>
         <t>Medical Centers</t>
       </button>
 
       <button class="home-button"
                   title="Go to Posts"
                   ng-click="home.goToPosts()">
+        <span class="{{home.icons.posts}}"></span>
         <t>Posts</t>
       </button>
 
       <button class="home-button"
                   title="Go to Teams"
                   ng-click="home.goToTeams()">
+        <span class="{{home.icons.teams}}"></span>
         <t>Teams</t>
       </button>
 
@@ -57,6 +63,7 @@
                   title="Go to Users"
                   ng-click="home.goToUsers()"
                   ng-show="users.userServiceData.loggedUser.rol ==='admin'">
+        <span class="{{home.icons.users}}"></span>
         <t>Users</t>
       </button>
 

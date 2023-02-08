@@ -622,4 +622,5 @@ ul.tabs li {
   font-weight: bold;
   height: 75px;
   color: #ffff;
+  border: none;
 }
