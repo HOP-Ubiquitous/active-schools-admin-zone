@@ -602,8 +602,14 @@ ul.tabs li {
 }
 
 .home-content {
-  margin-top: 250px;
+  margin-top: 230px;
   display: grid;
   grid-template-columns: repeat(4,1fr);
   font-size: 20px;
+}
+
+.home-msg {
+  margin-top: 50px;
+  text-align: center;
+  font-size: 30px;
 }

@@ -38,14 +38,6 @@
         $location.path('/schools');
       };
 
-
-      vm.goToLogin = function () {
-
-        userServiceData.loggedUser = {};
-        $location.path('/login');
-
-      };
-
     }
   ]
 );

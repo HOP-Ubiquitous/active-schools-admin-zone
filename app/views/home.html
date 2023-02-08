@@ -6,54 +6,54 @@
 
   <section-header ng-show="('home' | routeSegmentEqualsTo)"
                   title="Home"
-                  icon="{{home.icons.home}}"
-                  show-search-input="true">
+                  icon="{{home.icons.home}}">
   </section-header>
 
-  <div class="home-main-container">
+  <div class="home-msg">Welcome to Active Schools!</div>
 
+  <div class="home-main-container">
     <div class="home-content">
 
-      <button icon="{{home.icons.routes}}"
-              title="Go to Routes"
-              button-function="home.goToRoutes()">
+      <button title="Go to Routes"
+              onclick="home.goToRoutes()"
+              style="background-color: var(--orange)">
         <t>Go to Routes</t>
       </button>
 
-      <button icon="{{home.icons.challenges}}"
-                  title="Go to Challenges"
-                  button-function="home.goToChallenges()">
+      <button title="Go to Challenges"
+                  button-function="home.goToChallenges()"
+                  style="background-color: var(--orange)">
         <t>Go to Challenges</t>
       </button>
 
-      <button icon="{{home.icons.school}}"
-                  title="Go to MedicalCenter"
-                  button-function="home.goToSchools()">
+      <button title="Go to MedicalCenter"
+                  button-function="home.goToSchools()"
+                  style="background-color: var(--orange)">
         <t>Go to Schools</t>
       </button>
 
-      <button icon="{{home.icons.medical_centers}}"
-                  title="Go to Medical Centers"
-                  button-function="home.goToMedicalCenters()">
+      <button title="Go to Medical Centers"
+                  button-function="home.goToMedicalCenters()"
+                  style="background-color: var(--orange)">
         <t>Go to Medical Centers</t>
       </button>
 
-      <button icon="{{home.icons.posts}}"
-                  title="Go to Posts"
-                  button-function="home.goToPosts()">
+      <button title="Go to Posts"
+                  button-function="home.goToPosts()"
+                  style="background-color: var(--orange)">
         <t>Go to Posts</t>
       </button>
 
-      <button icon="{{home.icons.teams}}"
-                  title="Go to Teams"
-                  button-function="home.goToTeams()">
+      <button title="Go to Teams"
+                  button-function="home.goToTeams()"
+                  style="background-color: var(--orange)">
         <t>Go to Teams</t>
       </button>
 
-      <button icon="{{home.icons.users}}"
-                  title="Go to Users"
+      <button title="Go to Users"
                   button-function="home.goToUsers()"
-                  ng-show="users.userServiceData.loggedUser.rol ==='admin'">
+                  ng-show="users.userServiceData.loggedUser.rol ==='admin'"
+                  style="background-color: var(--orange)">
         <t>Go to Users</t>
       </button>
 
