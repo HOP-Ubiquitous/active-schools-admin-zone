@@ -10,47 +10,60 @@
                   show-search-input="true">
   </section-header>
 
+  <div class="home-main-container">
 
-  <!--Código del botón New MedicalCenter -->
-  <button icon="{{home.icons.routes}}"
+    <div class="home-content">
+
+      <button icon="{{home.icons.routes}}"
               title="Go to Routes"
               button-function="home.goToRoutes()">
-  </button>
+        <t>Go to Routes</t>
+      </button>
 
-  <button icon="{{home.icons.challenges}}"
-              title="Go to Challenges"
-              button-function="home.goToChallenges()">
-  </button>
+      <button icon="{{home.icons.challenges}}"
+                  title="Go to Challenges"
+                  button-function="home.goToChallenges()">
+        <t>Go to Challenges</t>
+      </button>
 
-  <button icon="{{home.icons.school}}"
-              title="Go to MedicalCenter"
-              button-function="home.goToSchools()">
-  </button>
+      <button icon="{{home.icons.school}}"
+                  title="Go to MedicalCenter"
+                  button-function="home.goToSchools()">
+        <t>Go to Schools</t>
+      </button>
 
-  <button icon="{{home.icons.medical_centers}}"
-              title="Go to MedicalCenters"
-              button-function="home.goToMedicalCenters()">
-  </button>
+      <button icon="{{home.icons.medical_centers}}"
+                  title="Go to Medical Centers"
+                  button-function="home.goToMedicalCenters()">
+        <t>Go to Medical Centers</t>
+      </button>
 
-  <button icon="{{home.icons.posts}}"
-              title="Go to Posts"
-              button-function="home.goToPosts()">
-  </button>
+      <button icon="{{home.icons.posts}}"
+                  title="Go to Posts"
+                  button-function="home.goToPosts()">
+        <t>Go to Posts</t>
+      </button>
 
-  <button icon="{{home.icons.teams}}"
-              title="Go to Teams"
-              button-function="home.goToTeams()">
-  </button>
+      <button icon="{{home.icons.teams}}"
+                  title="Go to Teams"
+                  button-function="home.goToTeams()">
+        <t>Go to Teams</t>
+      </button>
 
-  <button icon="{{home.icons.users}}"
-              title="Go to Users"
-              button-function="home.goToUsers()"
-              ng-show="users.userServiceData.loggedUser.rol ==='admin'">
-  </button>
+      <button icon="{{home.icons.users}}"
+                  title="Go to Users"
+                  button-function="home.goToUsers()"
+                  ng-show="users.userServiceData.loggedUser.rol ==='admin'">
+        <t>Go to Users</t>
+      </button>
 
-  <!-- Completar lo de abajo-->
-  <div> Usuarios activos en la última semana: </div>
+      <!-- Completar lo de abajo-->
+      <div> Usuarios activos en la última semana: </div>
+
+    </div>
 
   </div>
+
+</div>
 
 </div>

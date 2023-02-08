@@ -1,48 +1,52 @@
-'use strict';
+  app.controller('homeCtrl', ['$location', 'userServiceData', '$routeParams', 'ICONS',
+    function ($location, userServiceData, $routeParams, ICONS) {
 
-/**
- * @ngdoc function
- * @name activeSchoolsAdminZoneApp.controller:AboutCtrl
- * @description
- * # AboutCtrl
- * Controller of the activeSchoolsAdminZoneApp
- */
+      var vm = this;
+      vm.icons = ICONS;
+      vm.userServiceData = userServiceData;
+      vm.user = userServiceData.loggedUser;
 
-app.controller('homeCtrl', ['$scope', '$location', 'medicalCenterService', '$routeParams', 'ICONS', 'COUNTRIES', 'userService', 'userServiceData',
-    function ($scope, $location, $routeParams, ICONS, COUNTRIES, userService, userServiceData) {
+      vm.goToRoutes = function () {
+        $location.path('/routes');
+      };
 
-    var vm = this;
-    vm.icons = ICONS;
-    vm.countries = COUNTRIES.countries;
-    vm.user = userServiceData.loggedUser;
-    vm.home = [];
+      vm.goToChallenges = function () {
+        $location.path('/challenges');
+      };
 
-    vm.goToRoutes = function(){
-      $location.path('routes');
-    };
+      vm.goToPosts = function () {
+        $location.path('/posts');
+      };
 
-    vm.goToChallenges = function(){
-      $location.path('challenges');
-    };
+      vm.goToProfile = function () {
+        $location.path('/profile');
+      };
 
-    vm.goToSchools = function(){
-      $location.path('schools');
-    };
+      vm.goToUsers = function () {
+        $location.path('/users');
+      };
 
-    vm.goToMedicalCenters = function(){
-      $location.path('medical_centers');
-    };
+      vm.goToTeams = function () {
+        $location.path('/teams');
+      };
 
-    vm.goToPosts = function(){
-      $location.path('posts');
-    };
+      vm.goToMedicalCenters = function () {
+        $location.path('/medical_centers');
+      };
 
-    vm.goToUsers = function(){
-      $location.path('users');
-    };
+      vm.goToSchools = function () {
+        $location.path('/schools');
+      };
 
-    vm.goToTeams = function(){
-      $location.path('teams');
-    };
 
-  }]);
+      vm.goToLogin = function () {
+
+        userServiceData.loggedUser = {};
+        $location.path('/login');
+
+      };
+
+    }
+  ]
+);
+

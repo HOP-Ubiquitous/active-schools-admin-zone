@@ -590,3 +590,20 @@ ul.tabs li {
   margin-right: 5px;
   display: block;
 }
+
+/* Clases de home */
+
+.home-main-container {
+  width:100%;
+  length: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.home-content {
+  margin-top: 250px;
+  display: grid;
+  grid-template-columns: repeat(4,1fr);
+  font-size: 20px;
+}
