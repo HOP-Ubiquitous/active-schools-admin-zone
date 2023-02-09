@@ -595,34 +595,109 @@ ul.tabs li {
 
 .home-main-container {
   width:100%;
-  length: 100%;
+  height: calc(100vh - 210px);
   display: flex;
   justify-content: center;
   align-items: center;
 }
 
+.home-title-container {
+  height: 150px;
+  text-align: center;
+  font-size: 40px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.home-title-inner-container {
+  height: 100%;
+  width: calc(100% - 720px);
+  border-bottom: 1px solid #ccc;
+}
+
+.home-title-inner-container img {
+  height: 50px;
+  width: auto;
+  display: block;
+  margin: 30px auto 20px auto;
+}
+
+.home-title-inner-container p {
+  height: 50px;
+  width: 100%;
+  display: block;
+  margin: 0 auto;
+  flex-wrap: wrap;
+  flex-basis: 100%;
+  font-size: 18px;
+  font-weight: 800;
+  color: #999;
+}
+
 .home-content {
-  margin-top: 190px;
-  margin-left: 20%;
-  margin-right: 20%;
+  height: 70%;
+  width: calc(100% - 720px);
   display: grid;
   grid-template-columns: repeat(4,1fr);
   font-size: 20px;
   gap: 30px;
 }
 
-.home-msg {
-  margin-top: 50px;
-  text-align: center;
-  font-size: 40px;
-}
-
 .home-button {
   background-color: var(--orange);
-  font-weight: bold;
-  font-size: 27px;
-  height: 150px;
-  width: 320px;
-  color: #ffff;
+  min-height: 150px;
+  aspect-ratio: 1;
   border: none;
+  transition: 0.15s ease all;
+}
+
+.home-button:hover {
+  background-color: var(--dark-orange);
+}
+
+.home-button-span {
+  background-color: var(--green);
+  grid-column: 3 / span 2;
+  aspect-ratio: unset;
+  pointer-events: none;
+  display: grid;
+  grid-template-columns: repeat(2,1fr);
+  padding: 20px 0;
+}
+
+.home-button span {
+  display: block;
+  flex-wrap: wrap;
+  flex-basis: 100%;
+  width: 50%;
+  height: 50px;
+  line-height: 50px;
+  font-size: 24px;
+  color: rgba(255, 255, 255, 0.8);
+  margin: auto;
+  transition: 0.15s ease all;
+}
+
+.home-button p {
+  font-weight: 600;
+  font-size: 16px;
+  color: rgba(255, 255, 255, 0.8);
+  transition: 0.15s ease all;
+}
+
+.home-button:hover span, .home-button:hover p {
+  color: #fff;
+}
+
+.home-stat {
+  display: flex;
+  flex-wrap: wrap;
+  flex-basis: 100%;
+  justify-content: center;
+  text-align: center;
+}
+
+.home-stat span {
+  font-size: 42px;
 }
