@@ -202,9 +202,10 @@
 }
 
 .login-register-title-container h5 {
-  font-size: 14px;
-  color: #fff;
-  font-weight: 600;
+  font-size: 14px !important;
+  color: #fff !important;
+  font-weight: 600 !important;
+  margin: 0 !important;
 }
 
 .login-register-title-container span {
@@ -280,4 +281,11 @@
 
 .login-register-progress-diamond-active div {
   background: var(--orange); 
+}
+
+.div-button {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 20px auto 0 auto;
 }

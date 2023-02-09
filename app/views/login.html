@@ -28,7 +28,7 @@
         <hr>
       </div>
 
-      <div class="google-button">
+      <div class="google-button" ng-click="login.signInWithGoogle()">
         <div>
           <img src="../images/google-icon.png">
         </div>
@@ -58,7 +58,10 @@
     <div class="form-container">
 
       <div class="login-register-title-container">
-        <h5>Register Principal User</h5>
+        <h5 ng-show="login.registerStep1">Register Credentials</h5>
+        <h5 ng-show="login.registerStep2">Register Personal Data</h5>
+        <h5 ng-show="login.registerStep3">Register School Data</h5>
+        <h5 ng-show="login.registerStep4">Register Medical Center</h5>
         <span ng-click="showRegister = false" class="fa fa-remove"></span>
       </div>
 
@@ -91,21 +94,29 @@
       
       <form class="login-form" ng-show="login.registerStep1">
         <input id="email" type="email" placeholder="E-mail" ng-model="login.newUser.email" required>
-        <input id="password" type="password" placeholder="Password" ng-model="login.newUser.password"  required>
+        <input id="registerPassword" type="password" placeholder="Password" ng-model="login.newUser.password"  required>
         <input id="checkPassword" type="password" placeholder="Repeat Password" ng-model="login.newUser.checkPassword"  required>
         <input class="button" type="submit" value="Next" ng-click="login.checkRegister()">
       </form>
 
       <form class="login-form" ng-show="login.registerStep2">
-        <input id="username" type="text" placeholder="Name" ng-model="login.newUser.username" required>
-        <input id="surname" type="text" placeholder="Surname" ng-model="login.newUser.surname" required>
-        <input id="sex" type="text" placeholder="Sex" ng-model="login.newUser.sex" required>
-        <input id="weight" type="number" placeholder="Weight" ng-model="login.newUser.weight" required>
-        <input id="height" type="number" placeholder="Height" ng-model="login.newUser.height" required>
-        <input id="address" type="text" placeholder="Address" ng-model="login.newUser.address" required>
-        <input id="city" type="text" placeholder="City" ng-model="login.newUser.city" required>
-        <input id="province" type="text" placeholder="Province" ng-model="login.newUser.province" required>
-        <input id="country" type="text" placeholder="Country" ng-model="login.newUser.country" required>
+        <input id="personalDataUsername" type="text" placeholder="Name" ng-model="login.newUser.username" required>
+        <input id="personalDataSurname" type="text" placeholder="Surname" ng-model="login.newUser.surname" required>
+
+        <select ng-model="login.newUser.sex" ng-options="sex.value as sex.text for sex in login.sexArray" required>
+          <option value="">Sex</option>
+        </select>
+        
+        <input id="personalDataHeight" type="number" placeholder="Height" ng-model="login.newUser.height" required>
+        <input id="personalDataWeight" type="number" placeholder="Weight" ng-model="login.newUser.weight" required>
+        <input id="personalDataAddress" type="text" placeholder="Address" ng-model="login.newUser.address" required>
+        <input id="personalDataCity" type="text" placeholder="City" ng-model="login.newUser.city" required>
+        <input id="personalDataProvince" type="text" placeholder="Province" ng-model="login.newUser.province" required>
+
+        <select ng-model="login.newUser.country" ng-options="country.code as country.name for country in login.countries" required>
+          <option value="">Country</option>
+        </select>
+
         <input class="button" type="submit" value="Next" ng-click="login.checkUserInfo()">
         <input class="button" type="submit" value="Back" ng-click="login.registerStep1 = true; login.registerStep2 = false">
       </form>
@@ -114,26 +125,50 @@
         <input id="schoolName" type="text" placeholder="Name" ng-model="login.school.name" required>
         <input id="schoolAddress" type="text" placeholder="Address" ng-model="login.school.address" required>
         <input id="schoolPostalCode" type="text" placeholder="Postal Code" ng-model="login.school.postalCode" required>
-        <input id="city" type="text" placeholder="City" ng-model="login.school.city" required>
-        <input id="province" type="text" placeholder="Province" ng-model="login.school.province" required>
-        <input id="country" type="text" placeholder="Country" ng-model="login.school.country" required>
+        <input id="schoolCity" type="text" placeholder="City" ng-model="login.school.city" required>
+        <input id="schoolProvince" type="text" placeholder="Province" ng-model="login.school.province" required>
+
+        <select ng-model="login.school.country" ng-options="country.code as country.name for country in login.countries" required>
+          <option value="">Country</option>
+        </select>
+
         <input class="button" type="submit" value="Next" ng-click="login.checkSchoolInfo()">
         <input class="button" type="submit" value="Back" ng-click="login.registerStep2 = true; login.registerStep3 = false">
       </form>
 
       <form class="login-form" ng-show="login.registerStep4"> <!-- Health Info -->
         
-        <input select ng-show="showNewMedicalCenterList === true">
-        
-        <input class="button" type="submit" value="Add new Medical Center" ng-click="showNewMedicalCenterList != showNewMedicalCenterList">
+        <div class="button div-button"
+             ng-click="login.toggleDropdownMedicalCenter()">
+          <span ng-show="login.showNewMedicalCenterList === true">Add new Medical Center</span>
+          <span ng-show="login.showNewMedicalCenterList === false">Add Medical Center from List</span>
+        </div>
 
-        <div ng-show="showNewMedicalCenterList === false">
+        <!--
+        <div class="button div-button"
+             ng-show="login.showNewMedicalCenterList = true"
+             ng-click="login.showNewMedicalCenterList = false">
+          Add Medical Center from List
+        </div>
+        -->
+
+        <select ng-model="login.medicalCenterSelected"
+                ng-show="login.showNewMedicalCenterList === true"
+                ng-options="medical.medical_center_id as medical.medical_center_name for medical in login.medicalCenters" required>
+          <option value="">Medical Center</option>
+        </select>
+
+        <div ng-show="login.showNewMedicalCenterList === false">
           <input id="medicalCenterName" type="text" placeholder="Name" ng-model="login.medicalCenter.name" required>
           <input id="medicalCenterAddress" type="text" placeholder="Address" ng-model="login.medicalCenter.address" required>
           <input id="medicalCenterPostalCode" type="text" placeholder="Postal Code" ng-model="login.medicalCenter.postalCode" required>
           <input id="medicalCenterCity" type="text" placeholder="City" ng-model="login.medicalCenter.city" required>
           <input id="medicalCenterProvince" type="text" placeholder="Province" ng-model="login.medicalCenter.province" required>
-          <input id="medicalCenterCountry" type="text" placeholder="Country" ng-model="login.medicalCenter.country" required>
+
+          <select ng-model="login.medicalCenter.country" ng-options="country.code as country.name for country in login.countries" required>
+            <option value="">Country</option>
+          </select>
+          
           <!-- <input id="doctorName" type="text" placeholder="Name" ng-model="login.doctor.name" required>
           <input id="doctorLicense" type="text" placeholder="License" ng-model="login.doctor.license"> -->
         </div>

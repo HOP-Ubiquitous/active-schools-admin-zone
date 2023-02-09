@@ -28,7 +28,7 @@ a, a:hover {
   font-weight: 700;
 }
 
-input{
+input, select{
   width: calc(100% - 80px);
   height: 40px;
   margin-top: 20px;
@@ -41,6 +41,7 @@ input{
   text-align: center;
   outline: none;
   background: transparent;
+  color: var(--green);
 }
 
 ::placeholder {

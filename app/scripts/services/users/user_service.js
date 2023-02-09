@@ -45,11 +45,11 @@ app.service('userService', ['userServiceApi', 'userServiceData', '$location', '$
       function success (response) {
         userServiceData.userById = response.data;
 
-        if (type === 'login') {
+        if (type === 'addUser' || type === 'loggedUser') {
           userServiceData.loggedUser = response.data;
-          $location.path('/routes');
-        } else if (type === 'loggedUser') {
+        } else if (type === 'redirect') {
           userServiceData.loggedUser = response.data;
+          $location.path('/home');
         }
 
 
@@ -75,8 +75,8 @@ app.service('userService', ['userServiceApi', 'userServiceData', '$location', '$
       function success(response){
         service.getUsers();
         
-        if (type === 'login') {
-          userServiceData.loggedUser = response.data;
+        if (type === 'addUser') {
+          service.getUserById(response.data.id, type);
           service.userLoadedAfterLogin = true;
         }
 
@@ -100,8 +100,8 @@ app.service('userService', ['userServiceApi', 'userServiceData', '$location', '$
     userServiceApi.edit_user(user_id, data).then(
       function success(response){
         
-        if (type === 'loggedUser') {
-          service.getUserById(response.data);
+        if (type !== undefined) {
+          service.getUserById(response.data, type);
         }
 
         service.getUsers();
