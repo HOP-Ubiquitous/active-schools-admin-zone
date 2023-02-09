@@ -6,51 +6,78 @@
 
   <section-header ng-show="('home' | routeSegmentEqualsTo)"
                   title="Home"
-                  icon="{{home.icons.home}}"
-                  show-search-input="true">
+                  icon="{{home.icons.home}}">
   </section-header>
 
+  <div class="home-msg">
+    <img src="../images/active-schools-icon.svg" alt="" width="3%" height="3%">
+    Welcome to the Active Schools Admin Zone!
+  </div>
 
-  <!--Código del botón New MedicalCenter -->
-  <button icon="{{home.icons.routes}}"
+  <div class="home-main-container">
+    <div class="home-content">
+
+      <button class="home-button"
               title="Go to Routes"
-              button-function="home.goToRoutes()">
-  </button>
+              ng-click="home.goToRoutes()">
+        <span class="{{home.icons.routes}}"></span>
+        <t>Routes</t>
+      </button>
 
-  <button icon="{{home.icons.challenges}}"
-              title="Go to Challenges"
-              button-function="home.goToChallenges()">
-  </button>
+      <button class="home-button"
+                  title="Go to Challenges"
+                  ng-click="home.goToChallenges()">
+        <span class="{{home.icons.challenges}}"></span>
+        <t>Challenges</t>
+      </button>
 
-  <button icon="{{home.icons.school}}"
-              title="Go to MedicalCenter"
-              button-function="home.goToSchools()">
-  </button>
+      <button class="home-button"
+                  title="Go to MedicalCenter"
+                  ng-click="home.goToSchools()">
+        <span class="{{home.icons.school}}"></span>
+        <t>Schools</t>
+      </button>
 
-  <button icon="{{home.icons.medical_centers}}"
-              title="Go to MedicalCenters"
-              button-function="home.goToMedicalCenters()">
-  </button>
+      <button class="home-button"
+                  title="Go to Medical Centers"
+                  ng-click="home.goToMedicalCenters()">
+        <span class="{{home.icons.medical_centers}}"></span>
+        <t>Medical Centers</t>
+      </button>
 
-  <button icon="{{home.icons.posts}}"
-              title="Go to Posts"
-              button-function="home.goToPosts()">
-  </button>
+      <button class="home-button"
+                  title="Go to Posts"
+                  ng-click="home.goToPosts()">
+        <span class="{{home.icons.posts}}"></span>
+        <t>Posts</t>
+      </button>
 
-  <button icon="{{home.icons.teams}}"
-              title="Go to Teams"
-              button-function="home.goToTeams()">
-  </button>
+      <button class="home-button"
+                  title="Go to Teams"
+                  ng-click="home.goToTeams()">
+        <span class="{{home.icons.teams}}"></span>
+        <t>Teams</t>
+      </button>
 
-  <button icon="{{home.icons.users}}"
-              title="Go to Users"
-              button-function="home.goToUsers()"
-              ng-show="users.userServiceData.loggedUser.rol ==='admin'">
-  </button>
+      <button class="home-button"
+                  title="Go to Users"
+                  ng-click="home.goToUsers()"
+                  ng-show="users.userServiceData.loggedUser.rol ==='admin'">
+        <span class="{{home.icons.users}}"></span>
+        <t>Users</t>
+      </button>
 
-  <!-- Completar lo de abajo-->
-  <div> Usuarios activos en la última semana: </div>
+      <!-- Completar lo de abajo-->
+      <div>
+        Users logged last week: 1000
+        <br>
+        Online users: 1000
+      </div>
+
+    </div>
 
   </div>
+
+</div>
 
 </div>

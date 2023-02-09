@@ -65,8 +65,7 @@ app.controller('newChallengeCtrl', ['$location', 'challengeService', 'ICONS', 'C
         period: vm.challenge.period,
         unit: vm.challenge.unit,
         bonus: vm.challenge.bonus,
-        video: vm.challenge.video,
-        images: ['image1', 'image2']
+        video: vm.challenge.video
       };
 
       challengeService.addChallenge(challenge);

@@ -31,7 +31,6 @@
     <table class="tabla">
       <thead>
       <tr>
-        <th scope="col">Date</th>
         <th scope="col">Name</th>
         <th scope="col">Period</th>
         <th scope="col">Unit</th>
@@ -44,7 +43,6 @@
       <tbody ng-repeat="challenge in challenges.challenges | orderBy: '-date'">
 
       <tr>
-        <td>{{challenge.date | date : 'dd/MM/yyyy'}}</td>
         <td class="bold">{{challenge.name}}</td>
         <td>{{challenge.period}}</td>
         <td>{{challenge.unit}}</td>

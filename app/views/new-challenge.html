@@ -22,16 +22,12 @@
 
       <!-- TODO Revisar como introducir el parámetro en las fuciones de la directiva -->
 
-      <dropdown show-dropdown="('challenges.new_challenge' | routeSegmentEqualsTo)"
-                active-dropdown="showCategory"
-                model="newChallenge.challenge.category"
+      <select ng-model="newChallenge.challenge.category"
                 placeholder="Select Category"
-                dropdown-style="{ 'max-height': 60 + (5 * 30) + 'px',
-                                  'height': 'auto' }"
-                show-default-option="false"
-                repeater="newChallenge.categories"
-                get-option-function="newChallenge.getCategory()">
-      </dropdown>
+                ng-show="('challenges.new_challenge' | routeSegmentEqualsTo)"
+                ng-options="category.value as category.name for category in newChallenge.categories" required>
+        <option value="">Select Category</option>
+      </select>
 
       <dropdown show-dropdown="('challenges.edit_challenge.challenge_id' | routeSegmentEqualsTo)"
                 active-dropdown="showCategory"
@@ -73,16 +69,12 @@
 
       <!-- TODO Revisar como introducir el parámetro en las fuciones de la directiva -->
 
-      <dropdown show-dropdown="('challenges.new_challenge' | routeSegmentEqualsTo)"
-                active-dropdown="showOptions"
-                model="newChallenge.challenge.unit"
+      <select ng-model="newChallenge.challenge.unit"
                 placeholder="Select Unit"
-                dropdown-style="{ 'max-height': 60 + (3 * 30) + 'px',
-                                  'height': 'auto' }"
-                show-default-option="false"
-                repeater="newChallenge.units"
-                get-option-function="newChallenge.getUnit()">
-      </dropdown>
+                ng-show="('challenges.new_challenge' | routeSegmentEqualsTo)"
+                ng-options="unit.value as unit.name for unit in newChallenge.units" required>
+        <option value="">Select Unit</option>
+      </select>
 
       <dropdown show-dropdown="('challenges.edit_challenge.challenge_id' | routeSegmentEqualsTo)"
                 active-dropdown="showOptions"
