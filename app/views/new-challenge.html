@@ -8,16 +8,16 @@
 
       <input type="text"
              ng-show="('challenges.new_challenge' | routeSegmentEqualsTo)"
-             placeholder="Name"
+             placeholder="Title"
              class="input-text"
-             ng-model="newChallenge.challenge.name"
+             ng-model="newChallenge.challenge.title"
              required>
 
       <input type="text"
              ng-show="('challenges.edit_challenge.challenge_id' | routeSegmentEqualsTo)"
-             placeholder="Name"
+             placeholder="Title"
              class="input-text"
-             ng-model="editChallenge.challenge.name"
+             ng-model="editChallenge.challenge.title"
              required>
 
       <!-- TODO Revisar como introducir el parámetro en las fuciones de la directiva -->
@@ -57,7 +57,7 @@
       <input type="number"
              ng-show="('challenges.new_challenge' | routeSegmentEqualsTo)"
              placeholder="Target"
-             class="input-text"
+             class="input-number"
              ng-model="newChallenge.challenge.target"
              required>
       <input type="number"
@@ -87,17 +87,31 @@
                 get-option-function="editChallenge.getUnit()">
       </dropdown>
 
+       <textarea ng-show="('challenges.new_challenge' | routeSegmentEqualsTo)"
+                placeholder="Challenge Instructions"
+                class="new-post-textArea"
+                ng-model="newChallenge.challenge.instructions"
+                required>
+      </textarea>
+
+      <textarea ng-show="('challenges.edit_challenge.challenge_id' | routeSegmentEqualsTo)"
+                placeholder="Challenge Description"
+                class="new-post-textArea"
+                ng-model="editChallenge.challenge.description"
+                required>
+      </textarea>
+
       <input type="number"
              ng-show="('challenges.new_challenge' | routeSegmentEqualsTo)"
-             placeholder="Experience"
-             class="input-text"
-             ng-model="newChallenge.challenge.exp"
+             placeholder="Experience reward"
+             class="input-number"
+             ng-model="newChallenge.challenge.reward"
              required>
       <input type="number"
              ng-show="('challenges.edit_challenge.challenge_id' | routeSegmentEqualsTo)"
-             placeholder="Experience"
+             placeholder="Experience reward"
              class="input-text"
-             ng-model="editChallenge.challenge.exp"
+             ng-model="editChallenge.challenge.reward"
              required>
 
       <input type="url" placeholder="Youtube URL" class="input-text" ng-model="newChallenge.challenge.video" ng-show="('challenges.new_challenge' | routeSegmentEqualsTo)" required>
