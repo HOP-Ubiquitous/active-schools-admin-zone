@@ -25,6 +25,7 @@ app.controller('newRouteCtrl', ['$scope', '$location', '$window', '$routeParams'
     vm.challengePoints =  ROUTE.challenges.position;
     vm.defaultLine = {};
     vm.line = {};
+    vm.challengesFormArray = [];
 
     vm.markers;
 
@@ -32,11 +33,6 @@ app.controller('newRouteCtrl', ['$scope', '$location', '$window', '$routeParams'
 
     function getChallenges () {
       vm.challenges = challengeServiceData.challengeList;
-
-      vm.challenges.forEach(function (challenge) {
-        challenge.show = true;
-      });
-
     }
 
     var routeMap = $window.L.map('routeMap').setView([38.08179, -1.275], 16);
@@ -79,6 +75,7 @@ app.controller('newRouteCtrl', ['$scope', '$location', '$window', '$routeParams'
         vm.challengeMarkers = L.marker(point, {icon: challengePoint, draggable: true}).addTo(vm.challengeGroup).on('click', removeChallengePoint);
       });
       updateLegend();
+      createChallengesForm();
     }
 
     vm.changeMapMode = function(mode) {
@@ -162,6 +159,7 @@ app.controller('newRouteCtrl', ['$scope', '$location', '$window', '$routeParams'
       var latLng = [e.latlng.lat, e.latlng.lng]
       vm.challengeMarkers = L.marker(latLng, {icon: challengePoint, draggable: true}).addTo(vm.challengeGroup).on('click', removeChallengePoint);
       updateLegend();
+      createChallengesForm();
       console.log(vm.challengeGroup._layers);
     }
 
@@ -186,6 +184,26 @@ app.controller('newRouteCtrl', ['$scope', '$location', '$window', '$routeParams'
     function updateLegend() {
       var challengeNumber = document.getElementById('challenge-number');
       challengeNumber.innerHTML = Object.keys(vm.challengeGroup._layers).length;
+    }
+
+    function createChallengesForm() { //Crear objectos y array para el select
+      
+      vm.challengeGroup.eachLayer(function(layer) {
+
+        let object = {
+          challenge_id: '',
+          location: [layer._latlng.lat, layer._latlng.lng]
+        }
+
+        vm.challengesFormArray.push(object);
+      });
+
+    }
+
+    vm.updateChallengeForm = function(index, value) { //Función update, se modifica cada vez que cada vez que cambia el valor de un select
+
+      vm.challengesFormArray[index].challenge_id = value;
+
     }
 
     // --  -- //
@@ -217,14 +235,49 @@ app.controller('newRouteCtrl', ['$scope', '$location', '$window', '$routeParams'
       });
     };
 
+    function checkChallenges () { //Comprobar formato de challenges
+      
+      let result = [];
+      let challenges = [];
+
+      vm.challengesFormArray.forEach(function(challenge) {
+        if (challenge.challenge_id !== '') {
+          challenges.push(challenge.challenge_id); //Se crea un array con solo los challenges que están configurados
+        }
+      });
+
+      vm.challengesFormArray.forEach(function(challenge) {
+
+        let selectedChallenge = '';
+
+        if (challenge.challenge_id === '') {
+          selectedChallenge = challenges[Math.floor(Math.random() * challenges.length)] //Si no hay challenge configurado, se elige uno al azar entre los configurados
+        } else {
+          selectedChallenge = challenge.challenge_id; //Si hay un challenge configurado se elige el configurado
+        }
+
+        challenge.location.forEach(function(coord) {
+          coord.toFixed(15); //A las coordenadas se le ajusta un máximo de 15 decimales
+        });
+
+        let object = {
+          [selectedChallenge]: challenge.location //Se monta el formato requerido por el backend
+        }
+
+        result.push(object);
+        
+      });
+      return result; //Se devuelve el resultado
+    }
+
     vm.save = function () {
 
       let instructions = vm.geoJSON;
       let selectedChallengesIds = [];
 
-      vm.selectedChallenges.forEach(function (challenge) {
-        selectedChallengesIds.push(challenge.id);
-      });
+      // vm.selectedChallenges.forEach(function (challenge) {
+      //   selectedChallengesIds.push(challenge.id);
+      // });
 
       let route = {
         date : new Date().toISOString(),
@@ -232,7 +285,7 @@ app.controller('newRouteCtrl', ['$scope', '$location', '$window', '$routeParams'
         city: vm.route.city,
         province: vm.route.province,
         country: vm.route.country,
-        challenges: selectedChallengesIds,
+        challenges: checkChallenges(),
         geojson: instructions
       };
 

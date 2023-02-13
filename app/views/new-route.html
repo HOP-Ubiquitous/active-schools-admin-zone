@@ -124,7 +124,7 @@
 
       <hr class="space-new-route">
 
-      <div class="selected-challenges-container">
+      <!-- <div class="selected-challenges-container">
 
         <h5 ng-show="newRoute.selectedChallenges.length > 0">Selected Challenges</h5>
 
@@ -143,13 +143,26 @@
           </div>
 
         </div>
-      </div>
+      </div> -->
 
-      <hr ng-show="newRoute.selectedChallenges.length > 0" class="space-new-route">
+      <h5 ng-show="newRoute.challengesFormArray.length > 0">Selected Challenges</h5>
+
+      <select class="width-100"
+              ng-model="newRotue.challengesFormArray[$index].challenge_id"
+              ng-repeat="challenge in newRoute.challengesFormArray"
+              placeholder="Select Challenge"
+              ng-show="('routes.new_route' | routeSegmentEqualsTo)"
+              ng-options="challenge.challenge_id as challenge.title for challenge in newRoute.challenges"
+              ng-change="newRoute.updateChallengeForm($index, newRotue.challengesFormArray[$index].challenge_id)"
+              required>
+        <option value="">Select Challenge {{$index + 1}}</option>
+      </select>
+
+      <hr ng-show="newRoute.challengesFormArray.length > 0" class="space-new-route">
 
       <!-- TODO Revisar como introducir el parámetro en las fuciones de la directiva -->
 
-      <dropdown show-dropdown="('routes.new_route' | routeSegmentEqualsTo)"
+      <!-- <dropdown show-dropdown="('routes.new_route' | routeSegmentEqualsTo)"
                 active-dropdown="showOptions"
                 model="newRoute.route.challenge"
                 placeholder="Select Challenges"
@@ -160,9 +173,9 @@
                 get-option-function="newRoute.addChallenge()"
                 show-right-column="true"
                 delete-option-function="newRoute.deleteChallenge()">
-      </dropdown>
+      </dropdown> -->
 
-      <dropdown show-dropdown="('routes.edit_route.route_id' | routeSegmentEqualsTo)"
+      <!-- <dropdown show-dropdown="('routes.edit_route.route_id' | routeSegmentEqualsTo)"
                 active-dropdown="showOptions"
                 model="editRoute.route.challenge"
                 placeholder="Select Challenges"
@@ -173,7 +186,7 @@
                 get-option-function="editRoute.addChallenge()"
                 show-right-column="true"
                 delete-option-function="editRoute.deleteChallenge()">
-      </dropdown>
+      </dropdown> -->
 
       <button-form show-button="('routes.new_route' | routeSegmentEqualsTo)"
                    click-button="newRoute.save()"
