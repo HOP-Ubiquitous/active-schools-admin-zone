@@ -35,6 +35,17 @@ app.service('routeServiceApi', ['$http', 'API_URL', function($http, API_URL) {
     });
   };
 
+  apiService.get_challenges_by_route_id = function (route_id) {
+    return $http({
+      method: 'GET',
+      url: apiURL + 'routes/' + route_id + '/challenges',
+      headers: {
+        'Content-Type': 'application/json',
+        'Access-Control-Allow-Origin': '*'
+      }
+    });
+  };
+
   apiService.add_route = function (data) {
     return $http({
       method: 'POST',

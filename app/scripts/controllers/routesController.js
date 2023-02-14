@@ -24,16 +24,16 @@ app.controller('routesCtrl', ['$scope', '$location', 'routeService', 'routeServi
       vm.routes = routeServiceData.routeList;
     }
 
-    vm.getChallengesByRouteId = function (id) {
-      routeService.getChallengesByRouteId(id);
+    vm.getChallengesByRouteId = function (route_id) {
+      routeService.getChallengesByRouteId(route_id);
     };
 
     function getChallengesLoaded () {
       vm.challengesLoaded = routeServiceData.challengesByRoute;
     }
 
-    vm.deleteRoute = function (id) {
-      routeService.deleteRoute(id);
+    vm.deleteRoute = function (route_id) {
+      routeService.deleteRoute(route_id);
     };
 
     vm.goToNewRoute = function() {

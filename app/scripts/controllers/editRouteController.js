@@ -94,11 +94,11 @@ function ($scope, $location, $window, $routeParams, routeService, challengeServi
     vm.selectedMode = mode;
 
     if (mode === 'route') {
-      
+
       vm.selectedModeTitle = 'Route Edit Mode';
 
       routeMap.on('click', createPointWithClick);
-      
+
       vm.markersGroup.eachLayer(function(marker) {
         marker.dragging.enable();
         marker._icon.style.display = 'block';
@@ -110,7 +110,7 @@ function ($scope, $location, $window, $routeParams, routeService, challengeServi
     } else {
 
       vm.selectedModeTitle = 'Challenge Positioning Mode';
-      
+
       routeMap.off('click', createPointWithClick);
 
       vm.markersGroup.eachLayer(function(marker) {
@@ -120,7 +120,7 @@ function ($scope, $location, $window, $routeParams, routeService, challengeServi
       });
 
       vm.line.on('click', createChallengePoint);
-      
+
     }
 
   }
@@ -234,23 +234,24 @@ function ($scope, $location, $window, $routeParams, routeService, challengeServi
       });
 
       let route = {
-        date : new Date().toISOString(),
-        name: vm.route.name,
-        city: vm.route.city,
-        province: vm.route.province,
-        country: vm.route.country,
+        route_name: vm.route.route_name,
+        route_city: vm.route.route_city,
+        route_province: vm.route.route_province,
+        route_country: vm.route.route_country,
+        waypoints: vm.polyLinePoints,
         challenges: selectedChallengesIds,
-        geojson: instructions
+        //geojson: instructions
       };
 
       console.log(route);
 
-      if (route.name !== '' && route.name !== undefined &&
-        route.city !== '' && route.city !== undefined &&
-        route.province !== '' && route.province !== undefined &&
-        route.country !== '' && route.country !== undefined &&
-        route.challenges !== undefined &&
-        route.geojson !== undefined) {
+      if (route.route_name !== '' && route.route_name !== undefined &&
+        route.route_city !== '' && route.route_city !== undefined &&
+        route.route_province !== '' && route.route_province !== undefined &&
+        route.route_country !== '' && route.route_country !== undefined &&
+        route.waypoints !== '' && route.route_country !== undefined &&
+        route.challenges !== undefined) {
+        //route.geojson !== undefined) {
         routeService.editRoute($routeParams.route_id, route);
       } else {
         console.log('\x1b[31m%s\x1b[0m', 'Error al rellenar el formulario, revise los campos e inténtelo de nuevo');

@@ -36,7 +36,7 @@ app.service('recoverService', ['recoverServiceApi', 'recoverServiceData', '$loca
     var promise = deferred.promise;
 
     recoverServiceApi.getRecover().then(
-      function succes(response){
+      function success(response){
         recoverServiceData.recoverList = response.data;
         service.recoverLoaded = true;
         console.log('\x1b[32m%s\x1b[0m', 'Cargados todos los datos del recover! :)');
@@ -48,7 +48,7 @@ app.service('recoverService', ['recoverServiceApi', 'recoverServiceData', '$loca
     );
 
   return promise;
-  
+
   }
 
 }]);

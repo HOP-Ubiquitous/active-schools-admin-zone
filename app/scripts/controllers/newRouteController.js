@@ -273,7 +273,7 @@ app.controller('newRouteCtrl', ['$scope', '$location', '$window', '$routeParams'
 
     vm.save = function () {
 
-      let instructions = vm.geoJSON;
+      //  let instructions = vm.geoJSON;
       let selectedChallengesIds = [];
 
       // vm.selectedChallenges.forEach(function (challenge) {
@@ -282,11 +282,12 @@ app.controller('newRouteCtrl', ['$scope', '$location', '$window', '$routeParams'
 
       let route = {
         route_name: vm.route.route_name,
-        route_city: vm.route.route_city,
+        route_city: vm. route.route_city,
         route_province: vm.route.route_province,
         route_country: vm.route.route_country,
+        waypoints: vm.polyLinePoints,
         challenges: checkChallenges(),
-        geojson: instructions
+        //geojson: instructions
       };
 
       console.log(route);
@@ -295,8 +296,9 @@ app.controller('newRouteCtrl', ['$scope', '$location', '$window', '$routeParams'
         route.route_city !== '' && route.route_city !== undefined &&
         route.route_province !== '' && route.route_province !== undefined &&
         route.route_country !== '' && route.route_country !== undefined &&
-        route.challenges !== undefined &&
-        route.geojson !== undefined) {
+        route.waypoints !== '' && route.waypoints !== undefined &&
+        route.challenges !== undefined) {
+        //route.geojson !== undefined) {
         routeService.addRoute(route);
       } else {
         console.log('\x1b[31m%s\x1b[0m', 'Error al rellenar el formulario, revise los campos e inténtelo de nuevo');
