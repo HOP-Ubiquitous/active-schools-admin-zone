@@ -29,16 +29,12 @@
         <option value="">Select Category</option>
       </select>
 
-      <dropdown show-dropdown="('challenges.edit_challenge.challenge_id' | routeSegmentEqualsTo)"
-                active-dropdown="showCategory"
-                model="editChallenge.challenge.category"
+      <select ng-model="editChallenge.challenge.category"
                 placeholder="Select Category"
-                dropdown-style="{ 'max-height': 60 + (5 * 30) + 'px',
-                                  'height': 'auto' }"
-                show-default-option="false"
-                repeater="editChallenge.categories"
-                get-option-function="editChallenge.getCategory()">
-      </dropdown>
+                ng-show="('challenges.edit_challenge.challenge_id' | routeSegmentEqualsTo)"
+                ng-options="category.value as category.name for category in editChallenge.categories" required>
+        <option value="">Select Category</option>
+      </select>
 
       <textarea ng-show="('challenges.new_challenge' | routeSegmentEqualsTo)"
                 placeholder="Challenge Description"
@@ -76,16 +72,12 @@
         <option value="">Select Unit</option>
       </select>
 
-      <dropdown show-dropdown="('challenges.edit_challenge.challenge_id' | routeSegmentEqualsTo)"
-                active-dropdown="showOptions"
-                model="editChallenge.challenge.unit"
+       <select ng-model="editChallenge.challenge.unit"
                 placeholder="Select Unit"
-                dropdown-style="{ 'max-height': 60 + (3 * 30) + 'px',
-                                  'height': 'auto' }"
-                show-default-option="false"
-                repeater="editChallenge.units"
-                get-option-function="editChallenge.getUnit()">
-      </dropdown>
+                ng-show="('challenges.edit_challenge' | routeSegmentEqualsTo)"
+                ng-options="unit.value as unit.name for unit in editChallenge.units" required>
+        <option value="">Select Unit</option>
+      </select>
 
        <textarea ng-show="('challenges.new_challenge' | routeSegmentEqualsTo)"
                 placeholder="Challenge Instructions"
@@ -97,7 +89,7 @@
       <textarea ng-show="('challenges.edit_challenge.challenge_id' | routeSegmentEqualsTo)"
                 placeholder="Challenge Description"
                 class="new-post-textArea"
-                ng-model="editChallenge.challenge.description"
+                ng-model="editChallenge.challenge.instructions"
                 required>
       </textarea>
 

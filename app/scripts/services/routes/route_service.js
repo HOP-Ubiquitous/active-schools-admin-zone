@@ -55,10 +55,10 @@ app.service('routeService', ['routeServiceApi', 'routeServiceData', '$location',
       );
 
       return promise;
-      
+
     };
 
-    service.addroute = function (data){
+    service.addRoute = function (data){
 
       var deferred = $q.defer();
       var promise = deferred.promise;
@@ -136,7 +136,7 @@ app.service('routeService', ['routeServiceApi', 'routeServiceData', '$location',
       );
 
       return promise;
-      
+
     };
 
 

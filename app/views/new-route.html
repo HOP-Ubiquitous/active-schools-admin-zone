@@ -3,7 +3,7 @@
   <!-- TODO Mejorar o incluso separar New Route y Edit Route -->
 
   <div class="map-container">
-    
+
     <div class="map-mode-title-container">
 
       <div class="map-mode-title-container-inner">
@@ -26,7 +26,7 @@
             <span class="{{newRoute.icons.routes}}"></span>
           </div>
         </div>
-    
+
         <div class="diamond-container map-button map-button-challenges"
              ng-show="('routes.new_route' | routeSegmentEqualsTo)"
              ng-click="newRoute.changeMapMode('challenge')">
@@ -46,7 +46,7 @@
             <span class="{{editRoute.icons.routes}}"></span>
           </div>
         </div>
-    
+
         <div class="diamond-container map-button map-button-challenges"
              ng-show="('routes.edit_route.route_id' | routeSegmentEqualsTo)"
              ng-click="editRoute.changeMapMode('challenge')">
@@ -55,13 +55,13 @@
             <span class="{{editRoute.icons.challenges}}"></span>
           </div>
         </div>
-        
+
       </div>
 
     </div>
-  
+
     <div class="new-route-map" id="routeMap">
-  
+
     </div>
   </div>
 
@@ -73,52 +73,52 @@
 
       <input type="text" placeholder="Name"
              class="input-text"
-             ng-model="newRoute.route.name"
+             ng-model="newRoute.route.route_name"
              ng-show="('routes.new_route' | routeSegmentEqualsTo)"
              required>
       <input type="text"
              placeholder="Name"
              class="input-text"
-             ng-model="editRoute.route.name"
+             ng-model="editRoute.route.route_name"
              ng-show="('routes.edit_route.route_id' | routeSegmentEqualsTo)"
              required>
 
       <input type="text"
              placeholder="City"
              class="input-text"
-             ng-model="newRoute.route.city"
+             ng-model="newRoute.route.route_city"
              ng-show="('routes.new_route' | routeSegmentEqualsTo)"
              required>
       <input type="text"
              placeholder="City"
              class="input-text"
-             ng-model="editRoute.route.city"
+             ng-model="editRoute.route.route_city"
              ng-show="('routes.edit_route.route_id' | routeSegmentEqualsTo)"
              required>
 
       <input type="text"
              placeholder="Province"
              class="input-text"
-             ng-model="newRoute.route.province"
+             ng-model="newRoute.route.route_province"
              ng-show="('routes.new_route' | routeSegmentEqualsTo)"
              required>
       <input type="text"
              placeholder="Province"
              class="input-text"
-             ng-model="editRoute.route.province"
+             ng-model="editRoute.route.route_province"
              ng-show="('routes.edit_route.route_id' | routeSegmentEqualsTo)"
              required>
 
       <input type="text"
              placeholder="Country"
              class="input-text"
-             ng-model="newRoute.route.country"
+             ng-model="newRoute.route.route_country"
              ng-show="('routes.new_route' | routeSegmentEqualsTo)"
              required>
       <input type="text"
              placeholder="Country"
              class="input-text"
-             ng-model="editRoute.route.country"
+             ng-model="editRoute.route.route_country"
              ng-show="('routes.edit_route.route_id' | routeSegmentEqualsTo)"
              required>
 
@@ -131,7 +131,7 @@
         <div class="selected-challenge-option dropdown-option" ng-repeat="challenge in newRoute.selectedChallenges">
 
           <div class="dropdown-option-left">
-            <span>{{challenge.name}}</span>
+            <span>{{challenge.title}}</span>
           </div>
 
           <div class="dropdown-option-right">
@@ -148,12 +148,28 @@
       <h5 ng-show="newRoute.challengesFormArray.length > 0">Selected Challenges</h5>
 
       <select class="width-100"
-              ng-model="newRotue.challengesFormArray[$index].challenge_id"
+              ng-model="newRoute.challengesFormArray[$index].challenge_id"
               ng-repeat="challenge in newRoute.challengesFormArray"
               placeholder="Select Challenge"
               ng-show="('routes.new_route' | routeSegmentEqualsTo)"
               ng-options="challenge.challenge_id as challenge.title for challenge in newRoute.challenges"
-              ng-change="newRoute.updateChallengeForm($index, newRotue.challengesFormArray[$index].challenge_id)"
+              ng-change="newRoute.updateChallengeForm($index, newRoute.challengesFormArray[$index].challenge_id)"
+              required>
+        <option value="">Select Challenge {{$index + 1}}</option>
+      </select>
+
+      <hr ng-show="editRoute.challengesFormArray.length > 0" class="space-edit-route">
+
+      <h5 ng-show="editRoute.challengesFormArray.length > 0">Selected Challenges</h5>
+
+      <select class="width-100"
+              ng-model="editRoute.challengesFormArray[$index].challenge_id"
+              ng-repeat="challenge in editRoute.challengesFormArray"
+              ng-repeat="challenge in editRoute.challengeUpdated()"
+              placeholder="Select Challenge"
+              ng-show="('routes.edit_route' | routeSegmentEqualsTo)"
+              ng-options="challenge.challenge_id as challenge.title for challenge in editRoute.challenges"
+              ng-change="editRoute.updateChallengeForm($index, editRoute.challengesFormArray[$index].challenge_id)"
               required>
         <option value="">Select Challenge {{$index + 1}}</option>
       </select>

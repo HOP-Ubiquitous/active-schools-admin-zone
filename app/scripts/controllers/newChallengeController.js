@@ -62,11 +62,11 @@ app.controller('newChallengeCtrl', ['$location', 'challengeService', 'ICONS', 'C
 
       let challenge =  {
         title: vm.challenge.title,
-        category: vm.challenge.category,
+        //category: vm.challenge.category,
         description: vm.challenge.description,
         target: vm.challenge.target,
         unit: vm.challenge.unit,
-        instructions: vm.instructions,
+        instructions: vm.challenge.instructions,
         reward: vm.challenge.reward,
         video: vm.challenge.video
       };

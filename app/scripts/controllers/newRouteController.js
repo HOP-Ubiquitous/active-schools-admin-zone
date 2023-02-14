@@ -82,11 +82,11 @@ app.controller('newRouteCtrl', ['$scope', '$location', '$window', '$routeParams'
       vm.selectedMode = mode;
 
       if (mode === 'route') {
-        
+
         vm.selectedModeTitle = 'Route Edit Mode';
 
         routeMap.on('click', createPointWithClick);
-        
+
         vm.markersGroup.eachLayer(function(marker) {
           marker.dragging.enable();
           marker._icon.style.display = 'block';
@@ -98,7 +98,7 @@ app.controller('newRouteCtrl', ['$scope', '$location', '$window', '$routeParams'
       } else {
 
         vm.selectedModeTitle = 'Challenge Positioning Mode';
-        
+
         routeMap.off('click', createPointWithClick);
 
         vm.markersGroup.eachLayer(function(marker) {
@@ -108,7 +108,7 @@ app.controller('newRouteCtrl', ['$scope', '$location', '$window', '$routeParams'
         });
 
         vm.line.on('click', createChallengePoint);
-        
+
       }
 
     }
@@ -155,6 +155,7 @@ app.controller('newRouteCtrl', ['$scope', '$location', '$window', '$routeParams'
       vm.line.setLatLngs(vm.polyLinePoints);
     }
 
+    //Habría que modificar esta función para que llame a otra que actualice los números de selects de challenges (un select por challenge)
     function createChallengePoint(e) {
       var latLng = [e.latlng.lat, e.latlng.lng]
       vm.challengeMarkers = L.marker(latLng, {icon: challengePoint, draggable: true}).addTo(vm.challengeGroup).on('click', removeChallengePoint);
@@ -186,12 +187,12 @@ app.controller('newRouteCtrl', ['$scope', '$location', '$window', '$routeParams'
       challengeNumber.innerHTML = Object.keys(vm.challengeGroup._layers).length;
     }
 
-    function createChallengesForm() { //Crear objectos y array para el select
-      
+    function createChallengesForm() { //Crear objetos y array para el select
+
       vm.challengeGroup.eachLayer(function(layer) {
 
         let object = {
-          challenge_id: '',
+          challenge_id: undefined,
           location: [layer._latlng.lat, layer._latlng.lng]
         }
 
@@ -236,12 +237,12 @@ app.controller('newRouteCtrl', ['$scope', '$location', '$window', '$routeParams'
     };
 
     function checkChallenges () { //Comprobar formato de challenges
-      
+
       let result = [];
       let challenges = [];
 
       vm.challengesFormArray.forEach(function(challenge) {
-        if (challenge.challenge_id !== '') {
+        if (challenge.challenge_id !== undefined) {
           challenges.push(challenge.challenge_id); //Se crea un array con solo los challenges que están configurados
         }
       });
@@ -250,7 +251,7 @@ app.controller('newRouteCtrl', ['$scope', '$location', '$window', '$routeParams'
 
         let selectedChallenge = '';
 
-        if (challenge.challenge_id === '') {
+        if (challenge.challenge_id === undefined) {
           selectedChallenge = challenges[Math.floor(Math.random() * challenges.length)] //Si no hay challenge configurado, se elige uno al azar entre los configurados
         } else {
           selectedChallenge = challenge.challenge_id; //Si hay un challenge configurado se elige el configurado
@@ -265,7 +266,7 @@ app.controller('newRouteCtrl', ['$scope', '$location', '$window', '$routeParams'
         }
 
         result.push(object);
-        
+
       });
       return result; //Se devuelve el resultado
     }
@@ -280,21 +281,20 @@ app.controller('newRouteCtrl', ['$scope', '$location', '$window', '$routeParams'
       // });
 
       let route = {
-        date : new Date().toISOString(),
-        name: vm.route.name,
-        city: vm.route.city,
-        province: vm.route.province,
-        country: vm.route.country,
+        route_name: vm.route.route_name,
+        route_city: vm.route.route_city,
+        route_province: vm.route.route_province,
+        route_country: vm.route.route_country,
         challenges: checkChallenges(),
         geojson: instructions
       };
 
       console.log(route);
 
-      if (route.name !== '' && route.name !== undefined &&
-        route.city !== '' && route.city !== undefined &&
-        route.province !== '' && route.province !== undefined &&
-        route.country !== '' && route.country !== undefined &&
+      if (route.route_name !== '' && route.route_name !== undefined &&
+        route.route_city !== '' && route.route_city !== undefined &&
+        route.route_province !== '' && route.route_province !== undefined &&
+        route.route_country !== '' && route.route_country !== undefined &&
         route.challenges !== undefined &&
         route.geojson !== undefined) {
         routeService.addRoute(route);
