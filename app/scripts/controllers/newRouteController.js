@@ -21,8 +21,8 @@ app.controller('newRouteCtrl', ['$scope', '$location', '$window', '$routeParams'
     vm.route = {};
     vm.geoJSON = '';
     vm.selectedChallenges = [];
-    vm.polyLinePoints = ROUTE.waypoints; // Cargando ruta de test
-    vm.challengePoints =  ROUTE.challenges.position;
+    vm.polyLinePoints = []; // Cargando ruta de test
+    vm.challengePoints = [];
     vm.defaultLine = {};
     vm.line = {};
     vm.challengesFormArray = [];

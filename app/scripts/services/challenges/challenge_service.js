@@ -34,15 +34,17 @@ app.service('challengeService', ['challengeServiceApi', 'challengeServiceData', 
     return promise;
   };
 
-  service.getChallengeById = function(challenge_id) {
+  service.getChallengeById = function(challenge_id, type) {
 
     var deferred = $q.defer();
     var promise = deferred.promise;
 
     challengeServiceApi.get_challenge_by_id(challenge_id).then(
       function success (response) {
+
         challengeServiceData.challengeById = response.data;
         service.challengeByIdLoaded = true;
+        
         console.log('\x1b[32m%s\x1b[0m', 'El reto ' + challenge_id + ' cargado con éxito! :)');
       }
     ).catch(

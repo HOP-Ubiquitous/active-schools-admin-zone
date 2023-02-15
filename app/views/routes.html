@@ -59,7 +59,7 @@
             <!--ng-click="showOptions[$index] = !showOptions[$index]"-->
             <div class="rombo-table small-square see-bg"
                  ng-class="{ 'rombo-table-see-selected' : showChallenges[$index] === true }"
-                 ng-click="showChallenges[$index] = !showChallenges[$index]; routes.getChallengesByRouteId(route.route_id)">
+                 ng-click="showChallenges[$index] = !showChallenges[$index]; routes.getChallengesByRouteId($index)">
               <i class="{{routes.icons.details}} icon-size"></i>
             </div>
 
@@ -93,7 +93,7 @@
                 <th scope="col" class="option-header">Options</th>
               </tr>
               <tr ng-repeat="challenge in routes.challengesLoaded">
-                <<td class="bold">{{challenge.title}}</td>
+                <td class="bold">{{challenge.title}}</td>
                 <td>{{challenge.category}}</td>
                 <td>{{challenge.description}}</td>
                 <td>{{challenge.target}}</td>
