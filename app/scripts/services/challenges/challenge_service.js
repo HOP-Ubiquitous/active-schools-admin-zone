@@ -11,7 +11,7 @@ app.service('challengeService', ['challengeServiceApi', 'challengeServiceData', 
   function(challengeServiceApi, challengeServiceData, $location, $q){
 
   var service = this;
-  service.challengesLoaded = false;
+  service.allChallengesLoaded = false;
   service.challengeByIdLoaded = false;
 
   service.getChallenges = function () {
@@ -21,7 +21,7 @@ app.service('challengeService', ['challengeServiceApi', 'challengeServiceData', 
 
     challengeServiceApi.get_challenges().then(
       function (response) {
-        service.challengesLoaded = true;
+        service.allChallengesLoaded = true;
         challengeServiceData.challengeList = response.data;
         console.log('\x1b[32m%s\x1b[0m', 'Retos cargados con éxtito! :)');
       }
@@ -44,7 +44,7 @@ app.service('challengeService', ['challengeServiceApi', 'challengeServiceData', 
 
         challengeServiceData.challengeById = response.data;
         service.challengeByIdLoaded = true;
-        
+
         console.log('\x1b[32m%s\x1b[0m', 'El reto ' + challenge_id + ' cargado con éxito! :)');
       }
     ).catch(

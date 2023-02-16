@@ -52,11 +52,11 @@ app.controller('challengesCtrl', ['$scope', '$location', 'challengeService', 'ch
 
       vm.challengeWatcher = $scope.$watch(
         function () {
-          return challengeService.challengesLoaded;
+          return challengeService.allChallengesLoaded;
         }, function (newValue) {
           if (newValue === true) {
             getChallenges();
-            challengeService.challengesLoaded = false;
+            challengeService.allChallengesLoaded = false;
           }
         }
       );

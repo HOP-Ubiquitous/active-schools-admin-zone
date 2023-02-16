@@ -161,6 +161,7 @@ app.controller('newRouteCtrl', ['$scope', '$location', '$window', '$routeParams'
       vm.challengeMarkers = L.marker(latLng, {icon: challengePoint, draggable: true}).addTo(vm.challengeGroup).on('click', removeChallengePoint);
       updateLegend();
       createChallengesForm();
+      vm.loadData();
       console.log(vm.challengeGroup._layers);
     }
 
@@ -188,6 +189,8 @@ app.controller('newRouteCtrl', ['$scope', '$location', '$window', '$routeParams'
     }
 
     function createChallengesForm() { //Crear objetos y array para el select
+
+      vm.challengeFormArray = [];
 
       vm.challengeGroup.eachLayer(function(layer) {
 
@@ -311,15 +314,19 @@ app.controller('newRouteCtrl', ['$scope', '$location', '$window', '$routeParams'
       $location.path('challenges/edit_challenge/' + $routeParams.challenge_id);
     };
 
+    vm.loadData = function () {
+      return vm.challenges;
+    }
+
     function initWatchers() {
 
       vm.challengeWatcher = $scope.$watch(
         function () {
-          return challengeService.challengesLoaded;
+          return challengeService.allChallengesLoaded;
         }, function (newValue) {
           if (newValue === true) {
             getChallenges();
-            challengeService.challengesLoaded = false;
+            challengeService.allChallengesLoaded = false;
           }
         }
       );

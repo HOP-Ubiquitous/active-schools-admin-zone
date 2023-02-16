@@ -58,8 +58,6 @@ app.controller('newChallengeCtrl', ['$location', 'challengeService', 'ICONS', 'C
 
     vm.save = function(){
 
-      debugger;
-
       let challenge =  {
         title: vm.challenge.title,
         //category: vm.challenge.category,

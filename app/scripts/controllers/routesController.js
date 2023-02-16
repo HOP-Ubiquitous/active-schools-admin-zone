@@ -88,11 +88,11 @@ app.controller('routesCtrl', ['$scope', '$location', 'routeService', 'routeServi
 
       vm.challengesWatcher = $scope.$watch(
         function () {
-          return challengeService.challengesLoaded;
+          return challengeService.allChallengesLoaded;
         }, function (newValue) {
           if (newValue === true) {
             getChallengesLoaded();
-            challengeService.challengesLoaded = false;
+            challengeService.allChallengesLoaded = false;
           }
         }
       );
