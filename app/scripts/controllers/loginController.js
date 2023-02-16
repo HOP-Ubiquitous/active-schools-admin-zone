@@ -105,7 +105,7 @@ app.controller('loginCtrl',
     vm.login = function(){
 
       let i = 0;
-      
+
       while (i < vm.users.length) {
         if(vm.users[i].username === vm.user.username && vm.users[i].password === vm.user.password) {
           userService.getUserById(vm.users[i].id, 'redirect');
@@ -198,7 +198,7 @@ app.controller('loginCtrl',
           (vm.newUser.city !== undefined && vm.newUser.city !== '') &&
           (vm.newUser.province !== undefined && vm.newUser.province !== '') &&
           (vm.newUser.country !== undefined && vm.newUser.country !== '')) {
-            
+
         let director = {
           rol: 'director',
           username: vm.newUser.email,
@@ -339,7 +339,7 @@ app.controller('loginCtrl',
         }
 
       }
-      
+
     }
 
     function initWatchers() {

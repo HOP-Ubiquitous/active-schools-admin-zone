@@ -26,7 +26,7 @@ app.controller('routesCtrl', ['$scope', '$location', 'routeService', 'routeServi
     }
 
     vm.getChallengesByRouteId = function (index) {
-      
+
       challengeServiceData.challengeListByRoute = [];
       let selectedChallengesIds = [];
       let selectedChallenges = vm.routes[index].challenges; //Obtiene los retos de la ruta seleccionada
@@ -41,7 +41,7 @@ app.controller('routesCtrl', ['$scope', '$location', 'routeService', 'routeServi
 
       //Filtra los ids para que en el array solo haya elementos diferentes
       vm.uniqueChallengesIds = selectedChallengesIds.filter((value, index, array) => selectedChallengesIds.indexOf(value) === index);
-      
+
       challengeService.getChallenges();
 
     };

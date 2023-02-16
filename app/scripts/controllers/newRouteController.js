@@ -211,10 +211,10 @@ app.controller('newRouteCtrl', ['$scope', '$location', '$window', '$routeParams'
 
     vm.addChallenge = function (id) {
       vm.challenges.forEach(function (challenge) {
-        if (challenge.id === id) {
+        if (challenge.challenge_id === id) {
           let challengeObject = {
             id : id,
-            name: challenge.name
+            name: challenge.title
           };
           challenge.show = false;
           vm.selectedChallenges.push(challengeObject);
@@ -224,13 +224,13 @@ app.controller('newRouteCtrl', ['$scope', '$location', '$window', '$routeParams'
 
     vm.deleteChallenge = function (id) {
       vm.selectedChallenges.forEach(function (challenge, index) {
-        if (challenge.id === id) {
+        if (challenge.challenge_id === id) {
           vm.selectedChallenges.splice(index, 1);
         }
       });
 
       vm.challenges.forEach(function (challenge) {
-        if (challenge.id === id) {
+        if (challenge.challenge_id === id) {
           challenge.show = true;
         }
       });

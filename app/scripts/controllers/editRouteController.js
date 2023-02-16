@@ -32,6 +32,11 @@ function ($scope, $location, $window, $routeParams, routeService, challengeServi
 
   challengeService.getChallenges();
 
+  function getChallengesLoaded () {
+      //Se trae todos los retos pero los filtra con los ids del vm.uniqueChallengesIds y solo muestra los que coincidan
+      vm.challengesLoaded = challengeServiceData.challengeList.filter(challenge => vm.uniqueChallengesIds.includes(challenge.challenge_id));
+  }
+
   function getChallenges () {
 
     challengeList = challengeServiceData.challengeList;
@@ -226,7 +231,7 @@ function ($scope, $location, $window, $routeParams, routeService, challengeServi
 
     vm.edit = function () {
 
-      let instructions = vm.geoJSON;
+      //let instructions = vm.geoJSON;
       let selectedChallengesIds = [];
 
       vm.selectedChallenges.forEach(function (challenge) {

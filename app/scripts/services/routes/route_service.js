@@ -25,7 +25,7 @@ app.service('routeService', ['routeServiceApi', 'routeServiceData', '$location',
           service.routesLoaded = true;
           routeServiceData.routeList = [];
           routeServiceData.routeList = response.data;
-          console.log('\x1b[32m%s\x1b[0m', 'Rutas cargadas con éxtito! :)');
+          console.log('\x1b[32m%s\x1b[0m', 'Rutas cargadas con éxito! :)');
         }
       ).catch(
         function (error) {
@@ -127,7 +127,7 @@ app.service('routeService', ['routeServiceApi', 'routeServiceData', '$location',
         function (response) {
           service.routeChallengesLoaded = true;
           routeServiceData.challengesByRoute = response.data;
-          console.log('\x1b[32m%s\x1b[0m', 'Retos de la ruta con id ' + route_id + ' cargados con éxtito! :)');
+          console.log('\x1b[32m%s\x1b[0m', 'Retos de la ruta con id ' + route_id + ' cargados con éxito! :)');
         }
       ).catch(
         function (error) {
