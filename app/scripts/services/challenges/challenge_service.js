@@ -12,6 +12,8 @@ app.service('challengeService', ['challengeServiceApi', 'challengeServiceData', 
 
   var service = this;
   service.allChallengesLoaded = false;
+  service.newRouteChallengesLoaded = false;
+  service.editRouteChallengesLoaded = false;
   service.challengeByIdLoaded = false;
 
   service.getChallenges = function () {
@@ -22,6 +24,8 @@ app.service('challengeService', ['challengeServiceApi', 'challengeServiceData', 
     challengeServiceApi.get_challenges().then(
       function (response) {
         service.allChallengesLoaded = true;
+        service.newRouteChallengesLoaded = true;
+        service.editRouteChallengesLoaded = true;
         challengeServiceData.challengeList = response.data;
         console.log('\x1b[32m%s\x1b[0m', 'Retos cargados con éxtito! :)');
       }

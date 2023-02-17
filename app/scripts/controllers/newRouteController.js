@@ -161,7 +161,6 @@ app.controller('newRouteCtrl', ['$scope', '$location', '$window', '$routeParams'
       vm.challengeMarkers = L.marker(latLng, {icon: challengePoint, draggable: true}).addTo(vm.challengeGroup).on('click', removeChallengePoint);
       updateLegend();
       createChallengesForm();
-      vm.loadData();
       console.log(vm.challengeGroup._layers);
     }
 
@@ -190,6 +189,8 @@ app.controller('newRouteCtrl', ['$scope', '$location', '$window', '$routeParams'
 
     function createChallengesForm() { //Crear objetos y array para el select
 
+      let challengesArray = []
+      
       vm.challengeFormArray = [];
 
       vm.challengeGroup.eachLayer(function(layer) {
@@ -199,8 +200,12 @@ app.controller('newRouteCtrl', ['$scope', '$location', '$window', '$routeParams'
           location: [layer._latlng.lat, layer._latlng.lng]
         }
 
-        vm.challengesFormArray.push(object);
+        challengesArray.push(object);
       });
+
+      vm.challengesFormArray = challengesArray;
+
+      $scope.$apply(vm.challenges);
 
     }
 
@@ -314,19 +319,15 @@ app.controller('newRouteCtrl', ['$scope', '$location', '$window', '$routeParams'
       $location.path('challenges/edit_challenge/' + $routeParams.challenge_id);
     };
 
-    vm.loadData = function () {
-      return vm.challenges;
-    }
-
     function initWatchers() {
 
-      vm.challengeWatcher = $scope.$watch(
+      vm.newRouteChallengeWatcher = $scope.$watch(
         function () {
-          return challengeService.allChallengesLoaded;
+          return challengeService.newRouteChallengesLoaded;
         }, function (newValue) {
           if (newValue === true) {
             getChallenges();
-            challengeService.allChallengesLoaded = false;
+            challengeService.newRouteChallengesLoaded = false;
           }
         }
       );

@@ -152,7 +152,7 @@
               ng-repeat="challenge in newRoute.challengesFormArray"
               placeholder="Select Challenge"
               ng-show="('routes.new_route' | routeSegmentEqualsTo)"
-              ng-options="challenge.challenge_id as challenge.title for challenge in newRoute.loadData()"
+              ng-options="challenge.challenge_id as challenge.title for challenge in newRoute.challenges"
               ng-change="newRoute.updateChallengeForm($index, newRoute.challengesFormArray[$index].challenge_id)"
               required>
         <option value="">Select Challenge {{$index + 1}}</option>
@@ -167,7 +167,7 @@
               ng-repeat="challenge in editRoute.challengesFormArray"
               ng-repeat="challenge in editRoute.challengeUpdated()"
               placeholder="Select Challenge"
-              ng-show="('routes.edit_route' | routeSegmentEqualsTo)"
+              ng-show="('routes.edit_route.route_id' | routeSegmentEqualsTo)"
               ng-options="challenge.challenge_id as challenge.title for challenge in editRoute.challenges"
               ng-change="editRoute.updateChallengeForm($index, editRoute.challengesFormArray[$index].challenge_id)"
               required>
