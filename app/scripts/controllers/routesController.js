@@ -65,7 +65,7 @@ app.controller('routesCtrl', ['$scope', '$location', 'routeService', 'routeServi
 
     vm.editChallenge = function(challenge_id) {
       $routeParams.challenge_id = challenge_id;
-      $location.path('challenges/edit_challenge/' + $routeParams.challenge_id);
+      $location.path('challenges/edit_challenge/' + $index);
     };
 
     vm.editRoute = function(route_id){

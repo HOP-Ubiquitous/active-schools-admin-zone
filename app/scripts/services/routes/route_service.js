@@ -103,7 +103,7 @@ app.service('routeService', ['routeServiceApi', 'routeServiceData', '$location',
       var deferred = $q.defer();
       var promise = deferred.promise;
 
-      routeServiceApi.delete_route(id).then(
+      routeServiceApi.delete_route(route_id).then(
         function success (response){
           service.getRoutes();
           console.log('\x1b[32m%s\x1b[0m', 'Ruta ' + route_id + ' borrada con éxito! :)');

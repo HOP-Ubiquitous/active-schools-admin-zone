@@ -8,8 +8,8 @@
  * Controller of the activeSchoolsAdminZoneApp
  */
 
-app.controller('editRouteCtrl', ['$scope', '$location', '$window', '$routeParams', 'routeService', 'challengeService', 'challengeServiceData', 'ROUTE', 'ICONS', 'COUNTRIES',
-function ($scope, $location, $window, $routeParams, routeService, challengeService, challengeServiceData, ROUTE, ICONS, COUNTRIES) {
+app.controller('editRouteCtrl', ['$scope', '$location', '$window', '$routeParams', 'routeService', 'challengeService', 'challengeServiceData', 'ICONS', 'COUNTRIES',
+function ($scope, $location, $window, $routeParams, routeService, challengeService, challengeServiceData, ICONS, COUNTRIES) {
 
   var vm = this;
   vm.icons = ICONS;
@@ -17,12 +17,13 @@ function ($scope, $location, $window, $routeParams, routeService, challengeServi
   vm.selectedMode = '';
   vm.selectedModeTitle = 'Route Edit Mode';
 
-  vm.route = ROUTE;
+
+  vm.routeData;
   vm.geoJSON = '';
   vm.selectedChallenges = [];
-  vm.polyLinePoints = ROUTE.waypoints; // Cargando ruta de test
-  vm.challengePoints =  ROUTE.challenges.position;
-  vm.selectedChallenges =  ROUTE.challenges.selectedChallenges;
+  vm.polyLinePoints = route.waypoints; // Cargando ruta de test
+  vm.challengePoints =  route.challenges.position;
+  vm.selectedChallenges =  route.challenges.selectedChallenges;
   vm.defaultLine = {};
   vm.line = {};
 
@@ -235,7 +236,7 @@ function ($scope, $location, $window, $routeParams, routeService, challengeServi
       let selectedChallengesIds = [];
 
       vm.selectedChallenges.forEach(function (challenge) {
-        selectedChallengesIds.push(challenge.id);
+        selectedChallengesIds.push(challenge.challenge_id);
       });
 
       let route = {
@@ -268,6 +269,10 @@ function ($scope, $location, $window, $routeParams, routeService, challengeServi
       $routeParams.challenge_id = id;
       $location.path('challenges/edit_challenge/' + $routeParams.challenge_id);
     };
+
+    function getRoute(){
+      vm.routeData = vm.allRoutes[route_id];
+    }
 
     function initWatchers() {
 

@@ -164,8 +164,7 @@
 
       <select class="width-100"
               ng-model="editRoute.challengesFormArray[$index].challenge_id"
-              ng-repeat="challenge in editRoute.challengesFormArray"
-              ng-repeat="challenge in editRoute.challengeUpdated()"
+              ng-repeat="challenge in newRoute.challengesFormArray"
               placeholder="Select Challenge"
               ng-show="('routes.edit_route.route_id' | routeSegmentEqualsTo)"
               ng-options="challenge.challenge_id as challenge.title for challenge in editRoute.challenges"
