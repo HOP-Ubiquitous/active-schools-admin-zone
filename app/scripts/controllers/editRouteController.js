@@ -8,21 +8,22 @@
  * Controller of the activeSchoolsAdminZoneApp
  */
 
-app.controller('editRouteCtrl', ['$scope', '$location', '$window', '$routeParams', 'routeService', 'challengeService', 'challengeServiceData', 'ICONS', 'COUNTRIES',
-function ($scope, $location, $window, $routeParams, routeService, challengeService, challengeServiceData, ICONS, COUNTRIES) {
+app.controller('editRouteCtrl', ['$scope', '$location', '$window', '$routeParams', 'routeService', 'routeServiceData', 'challengeService', 'challengeServiceData', 'ICONS', 'COUNTRIES',
+function ($scope, $location, $window, $routeParams, routeService, routeServiceData, challengeService, challengeServiceData, ICONS, COUNTRIES) {
 
   var vm = this;
   vm.icons = ICONS;
   vm.countries = COUNTRIES.countries;
   vm.selectedMode = '';
   vm.selectedModeTitle = 'Route Edit Mode';
+  let route = routeServiceData.routeList[$routeParams.route_id];
 
 
   vm.routeData;
   vm.geoJSON = '';
   vm.selectedChallenges = [];
   vm.polyLinePoints = route.waypoints; // Cargando ruta de test
-  vm.challengePoints =  route.challenges.position;
+  vm.challengePoints =  route.challenges;
   vm.selectedChallenges =  route.challenges.selectedChallenges;
   vm.defaultLine = {};
   vm.line = {};
@@ -90,10 +91,16 @@ function ($scope, $location, $window, $routeParams, routeService, challengeServi
   });
 
   if (vm.challengePoints.length > 0 && vm.challengePoints !== undefined) {
+    debugger;
     vm.challengePoints.forEach(function(point) {
-      vm.challengeMarkers = L.marker(point, {icon: challengePoint, draggable: true}).addTo(vm.challengeGroup).on('click', removeChallengePoint);
+      console.log(point);
+      Object.keys(point).forEach(function(key,value) {
+        vm.challengeMarkers = L.marker([point[key][0], point[key][1]], {icon: challengePoint, draggable: true}).addTo(vm.challengeGroup).on('click', removeChallengePoint);
+      })
+
     });
     updateLegend();
+
   }
 
   vm.changeMapMode = function(mode) {
@@ -173,6 +180,7 @@ function ($scope, $location, $window, $routeParams, routeService, challengeServi
   }
 
   function createChallengePoint(e) {
+  debugger;
     var latLng = [e.latlng.lat, e.latlng.lng]
     vm.challengeMarkers = L.marker(latLng, {icon: challengePoint, draggable: true}).addTo(vm.challengeGroup).on('click', removeChallengePoint);
     updateLegend();
