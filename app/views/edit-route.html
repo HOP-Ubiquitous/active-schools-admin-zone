@@ -1,0 +1,91 @@
+<notification text="Route Updated!"
+              show-condition="editRoute.routeUpdated">
+
+</notification>
+
+<div class="main-container-inner">
+
+  <div class="map-container">
+
+    <subsection-header title="Map Route"
+                       icon="{{editRoute.icons.routes}}"
+                       map-buttons="true"
+                       hide-button-condition="false"
+                       icon-route="{{editRoute.icons.routes}}"
+                       click-route="editRoute.changeMapMode('route')"
+                       route-status="editRoute.selectedMode === 'route'"
+                       icon-challenge="{{editRoute.icons.challenges}}"
+                       click-challenge="editRoute.changeMapMode('challenge')"
+                       challenge-status="editRoute.selectedMode === 'challenge'">
+    </subsection-header>
+
+    <div class="new-route-map" id="routeMap">
+
+    </div>
+  </div>
+
+  <div class="new-route-form" ng-show="('routes.edit_route.route_id' | routeSegmentEqualsTo)">
+
+    <form-section-header title="Edit Route"
+                         icon="{{editRoute.icons.edit}}"
+                         close-icon="{{editRoute.icons.close}}"
+                         close-function="editRoute.goToRoutes()">
+    </form-section-header>
+
+    <form>
+
+      <input type="text"
+             placeholder="Name"
+             class="input-text"
+             ng-model="editRoute.route.route_name"
+             required>
+
+      <input type="text"
+             placeholder="City"
+             class="input-text"
+             ng-model="editRoute.route.route_city"
+             required>
+
+      <input type="text"
+             placeholder="Province"
+             class="input-text"
+             ng-model="editRoute.route.route_province"
+             required>
+
+      <input type="text"
+             placeholder="Country"
+             class="input-text"
+             ng-model="editRoute.route.route_country"
+             required>
+
+      <hr ng-show="editRoute.challengesFormArray.length > 0" class="space-edit-route">
+
+      <form-section-header title="Selected Challenges"
+                           icon="{{editRoute.icons.challenges}}"
+                           hide-close-button="true"
+                           ng-show="editRoute.challengesFormArray.length > 0">
+      </form-section-header>
+
+      <select class="width-100"
+              ng-model="editRoute.challengesFormArray[$index].challenge_id"
+              ng-repeat="challenge in editRoute.challengesFormArray"
+              placeholder="Select Challenge"
+              ng-show="('routes.edit_route.route_id' | routeSegmentEqualsTo)"
+              ng-options="challenge.challenge_id as challenge.title for challenge in editRoute.challenges"
+              ng-change="editRoute.updateChallengeForm($index, editRoute.challengesFormArray[$index].challenge_id)"
+              required>
+        <option value="">Select Challenge {{$index + 1}}</option>
+      </select>
+
+      <hr ng-show="editRoute.challengesFormArray.length > 0" class="space-new-route">
+
+      <button-form show-button="('routes.edit_route.route_id' | routeSegmentEqualsTo)"
+                   click-button="editRoute.edit()"
+                   text-button="Edit Route">
+      </button-form>
+
+    </form>
+
+  </div>
+
+</div>

@@ -215,35 +215,6 @@ app.controller('newRouteCtrl', ['$scope', '$location', '$window', '$routeParams'
 
     }
 
-    // --  -- //
-
-    vm.addChallenge = function (id) {
-      vm.challenges.forEach(function (challenge) {
-        if (challenge.challenge_id === id) {
-          let challengeObject = {
-            id : id,
-            name: challenge.title
-          };
-          challenge.show = false;
-          vm.selectedChallenges.push(challengeObject);
-        }
-      });
-    };
-
-    vm.deleteChallenge = function (id) {
-      vm.selectedChallenges.forEach(function (challenge, index) {
-        if (challenge.challenge_id === id) {
-          vm.selectedChallenges.splice(index, 1);
-        }
-      });
-
-      vm.challenges.forEach(function (challenge) {
-        if (challenge.challenge_id === id) {
-          challenge.show = true;
-        }
-      });
-    };
-
     function checkChallenges () { //Comprobar formato de challenges
 
       let result = [];
@@ -281,13 +252,6 @@ app.controller('newRouteCtrl', ['$scope', '$location', '$window', '$routeParams'
 
     vm.save = function () {
 
-      //  let instructions = vm.geoJSON;
-      let selectedChallengesIds = [];
-
-      // vm.selectedChallenges.forEach(function (challenge) {
-      //   selectedChallengesIds.push(challenge.id);
-      // });
-
       let route = {
         route_name: vm.route.route_name,
         route_city: vm. route.route_city,
@@ -317,6 +281,10 @@ app.controller('newRouteCtrl', ['$scope', '$location', '$window', '$routeParams'
     vm.editChallenge = function (id) {
       $routeParams.challenge_id = id;
       $location.path('challenges/edit_challenge/' + $routeParams.challenge_id);
+    };
+
+    vm.goToRoutes = function() {
+      $location.path('routes');
     };
 
     function initWatchers() {

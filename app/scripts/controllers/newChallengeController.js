@@ -72,4 +72,8 @@ app.controller('newChallengeCtrl', ['$location', 'challengeService', 'ICONS', 'C
       challengeService.addChallenge(challenge);
     };
 
+    vm.goToChallenges = function(){
+      $location.path('challenges');
+    };
+
   }]);

@@ -76,6 +76,10 @@ app.controller('editChallengeCtrl', ['$scope', '$location', 'challengeService', 
 
   };
 
+  vm.goToChallenges = function(){
+    $location.path('challenges');
+  };
+
     function initWatchers() {
 
       vm.postWatcher = $scope.$watch(

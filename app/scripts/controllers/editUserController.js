@@ -61,6 +61,10 @@ app.controller('editUserCtrl', ['$scope', '$location', 'userService', 'userServi
 
   };
 
+  vm.goToUsers = function(){
+    $location.path('users');
+  };
+
     function initWatchers() {
 
       vm.editUserWatcher = $scope.$watch(

@@ -13,7 +13,12 @@ app.service('userServiceData', ['$cookies', function($cookies){
 
   serviceUser.userList = [];
   serviceUser.userById = {};
-  serviceUser.loggedUser = {};
+
+  if ($cookies.get('active_school_user') !== undefined) {
+    serviceUser.loggedUser = JSON.parse($cookies.get('active_school_user'));
+  } else {
+    serviceUser.loggedUser = {};
+  }
 
   // serviceChallenge.challengeList = [
   //   { 'id': '01', 'date': '05/06/2021', 'name': 'Challenge 1', 'video': 'https://youtube.com/video1', 'bonus': 50, 'minMax': '50/100', 'images': 'imagen1'},

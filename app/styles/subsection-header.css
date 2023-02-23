@@ -1,0 +1,107 @@
+.sub-section-title-container {
+  height: 30px;
+  width: 100%;
+}
+
+.sub-section-title-container-inner {
+  height: 30px;
+  width: calc(100% - 190px);
+  background: #f5f5f5;
+  color: var(--green);
+  display: flex;
+  justify-content: left;
+  align-items: center;
+  margin-bottom: 10px;
+  float: left;
+  clip-path: polygon(0 0, calc(100% - 15px) 0, 100% 50%, calc(100% - 15px) 100%, 0 100%);
+}
+
+.sub-section-title-container-inner-show-new-button {
+  width: calc(100% - 80px);
+}
+
+.sub-section-title-container-inner-show-100 {
+  width: 100%;
+}
+
+.sub-section-new-button-container {
+  width: 180px;
+  height: 30px;
+  background: var(--green);
+  display: flex;
+  justify-content: space-between;
+  overflow: hidden;
+  transition: 0.3s ease all;
+  -webkit-clip-path: polygon(15px 0%, calc(100% - 15px) 0%, 100% 15px, calc(100% - 15px) 100%, 15px 100%, 0% 15px);
+  clip-path: polygon(15px 0%, calc(100% - 15px) 0%, 100% 15px, calc(100% - 15px) 100%, 15px 100%, 0% 15px);
+  cursor: pointer;
+  transform-origin: center right;
+  transition: 0.3s ease all;
+}
+
+.sub-section-new-button-container:hover {
+  background: var(--green-selected);
+}
+
+.sub-section-new-button-icon {
+  width: 40px;
+  height: 30px;
+  margin-right: 5px;
+  padding-left: 10px;
+  color: #fff;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.sub-section-new-button-text {
+  width: calc(100% - 40px);
+  height: 100%;
+  color: #fff;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+  left: -20px;
+  font-size: 12px;
+}
+
+.sub-section-title-icon-container {
+  width: 40px;
+  height: 100%;
+  background: var(--green);
+  color: #fff;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  clip-path: polygon(0 0, calc(100% - 15px) 0, 100% 50%, calc(100% - 15px) 100%, 0 100%);
+  margin-right: 10px;
+}
+
+.sub-section-title-container-inner h1 {
+  font-size: 14px;
+  margin: 0;
+  line-height: 30px;
+  font-weight: 700;
+}
+
+.sub-section-title-container-inner span {
+  font-size: 12px;
+  margin-right: 10px;
+}
+
+.sub-section-button-container {
+  width: 80px;
+  float: right;
+  display: flex;
+  justify-content: right;
+  align-items: center;
+}
+
+.sub-section-new-button-parent-container {
+  width: 180px;
+}
+
+.sub-section-button {
+  margin: 0 0 0 10px;
+}

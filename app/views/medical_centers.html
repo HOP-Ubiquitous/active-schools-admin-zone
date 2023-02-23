@@ -4,29 +4,22 @@
 
 <div class="main-container">
 
-  <section-header ng-show="('medical_centers' | routeSegmentEqualsTo)"
+  <section-header ng-show="('medical_centers' | routeSegmentStartsWith)"
                   title="Medical Centers"
                   icon="{{medicalCenters.icons.medical_centers}}"
                   show-search-input="true">
   </section-header>
 
-  <section-header ng-show="('medical_centers.new_medical_center' | routeSegmentEqualsTo)"
-                  title="Medical Centers - New Medical Center"
-                  icon="{{medicalCenters.icons.medical_centers}}"
-                  show-search-input="true"
-                  show-close="true"
-                  close-function="medicalCenters.goToMedicalCenters()">
-  </section-header>
-
-  <section-header ng-show="('medical_centers.edit_medical_center.medical_center_id' | routeSegmentEqualsTo)"
-                  title="MedicalCenters - Edit Medical Center"
-                  icon="{{medicalCenters.icons.medical_centers}}"
-                  show-search-input="true"
-                  show-close="true"
-                  close-function="medicalCenters.goToMedicalCenters()">
-  </section-header>
-
   <div class="main-container-inner" ng-class="{ 'main-container-inner-left' : ('medical_centers.new_medical_center' | routeSegmentEqualsTo) || ('medical_centers.edit_medical_center.medical_center_id' | routeSegmentEqualsTo) }">
+
+    <subsection-header title="Medical Center List"
+                       icon="{{medicalCenters.icons.medical_centers}}"
+                       map-buttons="false"
+                       new-button-icon="{{medicalCenters.icons.add}}"
+                       new-button-title="New Med. Center"
+                       new-button-function="medicalCenters.goToNewMedicalCenter()"
+                       hide-button-condition="('medical_centers.new_medical_center' | routeSegmentEqualsTo) || ('medical_centers.edit_medical_center.medical_center_id' | routeSegmentEqualsTo)">
+    </subsection-header>
 
     <table class="tabla">
       <thead>
@@ -102,13 +95,6 @@
   <div app-view-segment="1" ng-show="('medical_centers.new_medical_center' | routeSegmentEqualsTo)"></div>
 
   <div app-view-segment="2" ng-show="('medical_centers.edit_medical_center.medical_center_id' | routeSegmentEqualsTo)"></div>
-
-  <!--Código del botón New MedicalCenter -->
-  <new-button icon="{{medicalCenters.icons.add}}"
-              title="New MedicalCenter"
-              button-function="medicalCenters.goToNewMedicalCenter()"
-              ng-hide="('medical_centers.new_medical_center' | routeSegmentEqualsTo)">
-  </new-button>
 
   </div>
 

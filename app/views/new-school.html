@@ -1,22 +1,20 @@
 <div class="main-container-inner-right">
 
-  <!-- TODO Mejorar o incluso separar New Challenge y Edit Challenge -->
+  <div class="new-route-form" ng-show="('schools.new_school' | routeSegmentEqualsTo)">
 
-  <div class="new-route-form" ng-show="('schools.new_school' | routeSegmentEqualsTo) || ('schools.edit_school.school_id' | routeSegmentEqualsTo)">
+    <form-section-header title="New School"
+                         icon="{{newSchool.icons.add}}"
+                         close-icon="{{newSchool.icons.close}}"
+                         close-function="newSchool.goToSchools()">
+    </form-section-header>
 
     <form>
+
       <input type="text"
              ng-show="('schools.new_school' | routeSegmentEqualsTo)"
              placeholder="Director_id"
              class="input-text"
              ng-model="newSchool.school.director_id"
-             required>
-
-      <input type="text"
-             ng-show="('schools.edit_school.school_id' | routeSegmentEqualsTo)"
-             placeholder="Director_id"
-             class="input-text"
-             ng-model="editSchool.school.director_id"
              required>
 
       <input type="text"
@@ -27,24 +25,10 @@
              required>
 
       <input type="text"
-             ng-show="('schools.edit_school.school_id' | routeSegmentEqualsTo)"
-             placeholder="Name"
-             class="input-text"
-             ng-model="editSchool.school.school_name"
-             required>
-
-      <input type="text"
              ng-show="('schools.new_school' | routeSegmentEqualsTo)"
              placeholder="Address"
              class="input-text"
              ng-model="newSchool.school.school_address"
-             required>
-
-      <input type="text"
-             ng-show="('schools.edit_school.school_id' | routeSegmentEqualsTo)"
-             placeholder="Address"
-             class="input-text"
-             ng-model="editSchool.school.school_address"
              required>
 
       <input type="text"
@@ -55,24 +39,10 @@
              required>
 
       <input type="text"
-             ng-show="('schools.edit_school.school_id' | routeSegmentEqualsTo)"
-             placeholder="Postal Code"
-             class="input-text"
-             ng-model="editSchool.school.school_postal_code"
-             required>
-
-      <input type="text"
              ng-show="('schools.new_school' | routeSegmentEqualsTo)"
              placeholder="City"
              class="input-text"
              ng-model="newSchool.school.school_city"
-             required>
-
-      <input type="text"
-             ng-show="('schools.edit_school.school_id' | routeSegmentEqualsTo)"
-             placeholder="City"
-             class="input-text"
-             ng-model="editSchool.school.school_city"
              required>
 
       <input type="text"
@@ -83,24 +53,10 @@
              required>
 
       <input type="text"
-             ng-show="('schools.edit_school.school_id' | routeSegmentEqualsTo)"
-             placeholder="Province"
-             class="input-text"
-             ng-model="editSchool.school.school_province"
-             required>
-
-      <input type="text"
              ng-show="('schools.new_school' | routeSegmentEqualsTo)"
              placeholder="Country"
              class="input-text"
              ng-model="newSchool.school.school_country"
-             required>
-
-      <input type="text"
-             ng-show="('schools.edit_school.school_id' | routeSegmentEqualsTo)"
-             placeholder="Country"
-             class="input-text"
-             ng-model="editSchool.school.school_country"
              required>
 
       <br>
@@ -108,12 +64,6 @@
       <button-form show-button="('schools.new_school' | routeSegmentEqualsTo)"
                    click-button="newSchool.addSchool()"
                    text-button="Add School">
-      </button-form>
-
-
-      <button-form show-button="('schools.edit_school.school_id' | routeSegmentEqualsTo)"
-                   click-button="editSchool.editSchool()"
-                   text-button="Edit School">
       </button-form>
 
     </form>

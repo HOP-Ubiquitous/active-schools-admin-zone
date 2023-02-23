@@ -4,29 +4,22 @@
 
   <div class="main-container">
 
-    <section-header ng-show="('routes' | routeSegmentEqualsTo)"
+    <section-header ng-show="('routes' | routeSegmentStartsWith)"
                     title="Routes"
                     icon="{{routes.icons.routes}}"
                     show-search-input="true">
     </section-header>
 
-    <section-header ng-show="('routes.new_route' | routeSegmentEqualsTo)"
-                    title="Routes - New Route"
-                    icon="{{routes.icons.routes}}"
-                    show-search-input="false"
-                    show-close="true"
-                    close-function="routes.goToRoutes()">
-    </section-header>
-
-    <section-header ng-show="('routes.edit_route.route_id' | routeSegmentEqualsTo)"
-                    title="Routes - Edit Route"
-                    icon="{{routes.icons.routes}}"
-                    show-search-input="false"
-                    show-close="true"
-                    close-function="routes.goToRoutes()">
-    </section-header>
-
     <div class="main-container-inner" ng-show="('routes' | routeSegmentEqualsTo)">
+
+      <subsection-header title="Route List"
+                       icon="{{routes.icons.routes}}"
+                       map-buttons="false"
+                       new-button-icon="{{routes.icons.add}}"
+                       new-button-title="New Route"
+                       new-button-function="routes.goToNewRoute()"
+                       hide-button-condition="('routes.new_route' | routeSegmentEqualsTo) || ('routes.edit_route.route_id' | routeSegmentEqualsTo)">
+      </subsection-header>
 
       <table class="tabla">
         <thead>
@@ -58,8 +51,8 @@
             </div>
             <!--ng-click="showOptions[$index] = !showOptions[$index]"-->
             <div class="rombo-table small-square see-bg"
-                 ng-class="{ 'rombo-table-see-selected' : showChallenges[$index] === true }"
-                 ng-click="showChallenges[$index] = !showChallenges[$index]; routes.getChallengesByRouteId($index)">
+                 ng-class="{ 'rombo-table-see-selected' : route.showChallenges === true }"
+                 ng-click="routes.toggleChallenges($index); routes.getChallengesByRouteId($index)">
               <i class="{{routes.icons.details}} icon-size"></i>
             </div>
 
@@ -78,7 +71,7 @@
 
           </td>
         </tr>
-        <tr ng-show="showChallenges[$index] === true">
+        <tr ng-show="route.showChallenges === true">
           <td colspan="7">
             <table id="table-2" class="table-see">
               <tr>
@@ -142,11 +135,11 @@
 
     <div app-view-segment="2" ng-show="('routes.edit_route.route_id' | routeSegmentEqualsTo)"></div>
 
-    <new-button icon="{{routes.icons.add}}"
+    <!-- <new-button icon="{{routes.icons.add}}"
                 title="New Route"
                 button-function="routes.goToNewRoute()"
                 ng-hide="('routes.new_route' | routeSegmentEqualsTo)">
-    </new-button>
+    </new-button> -->
 
   </div>
 

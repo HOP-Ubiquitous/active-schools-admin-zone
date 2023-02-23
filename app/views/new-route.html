@@ -1,73 +1,31 @@
 <div class="main-container-inner">
 
-  <!-- TODO Mejorar o incluso separar New Route y Edit Route -->
-
   <div class="map-container">
 
-    <div class="map-mode-title-container">
-
-      <div class="map-mode-title-container-inner">
-        <h1>
-          <span class="{{newRoute.icons.routes}}" ng-show="newRoute.selectedMode === 'route' || editRoute.selectedMode === 'route'"></span>
-          <span class="{{newRoute.icons.challenges}}" ng-show="newRoute.selectedMode === 'challenge' || editRoute.selectedMode === 'challenge'"></span>
-          {{newRoute.selectedModeTitle || editRoute.selectedModeTitle}}
-        </h1>
-      </div>
-
-      <div class="map-mode-button-container">
-
-        <!-- New Route Buttons -->
-
-        <div class="diamond-container map-button"
-             ng-show="('routes.new_route' | routeSegmentEqualsTo)"
-             ng-click="newRoute.changeMapMode('route')">
-          <div class="diamond"
-               ng-class="{ 'diamond-selected': newRoute.selectedMode === 'route' }">
-            <span class="{{newRoute.icons.routes}}"></span>
-          </div>
-        </div>
-
-        <div class="diamond-container map-button map-button-challenges"
-             ng-show="('routes.new_route' | routeSegmentEqualsTo)"
-             ng-click="newRoute.changeMapMode('challenge')">
-          <div class="diamond"
-               ng-class="{ 'diamond-selected': newRoute.selectedMode === 'challenge' }">
-            <span class="{{newRoute.icons.challenges}}"></span>
-          </div>
-        </div>
-
-        <!-- Edit Route Buttons -->
-
-        <div class="diamond-container map-button"
-             ng-show="('routes.edit_route.route_id' | routeSegmentEqualsTo)"
-             ng-click="editRoute.changeMapMode('route')">
-          <div class="diamond"
-               ng-class="{ 'diamond-selected': editRoute.selectedMode === 'route' }">
-            <span class="{{editRoute.icons.routes}}"></span>
-          </div>
-        </div>
-
-        <div class="diamond-container map-button map-button-challenges"
-             ng-show="('routes.edit_route.route_id' | routeSegmentEqualsTo)"
-             ng-click="editRoute.changeMapMode('challenge')">
-          <div class="diamond"
-               ng-class="{ 'diamond-selected': editRoute.selectedMode === 'challenge' }">
-            <span class="{{editRoute.icons.challenges}}"></span>
-          </div>
-        </div>
-
-      </div>
-
-    </div>
+    <subsection-header title="Route Map"
+                       icon="{{newRoute.icons.routes}}"
+                       map-buttons="true"
+                       hide-button-condition="false"
+                       icon-route="{{newRoute.icons.routes}}"
+                       click-route="newRoute.changeMapMode('route')"
+                       route-status="newRoute.selectedMode === 'route'"
+                       icon-challenge="{{newRoute.icons.challenges}}"
+                       click-challenge="newRoute.changeMapMode('challenge')"
+                       challenge-status="newRoute.selectedMode === 'challenge'">
+    </subsection-header>
 
     <div class="new-route-map" id="routeMap">
 
     </div>
   </div>
 
-  <!--Formulario new-route-->
+  <div class="new-route-form" ng-show="('routes.new_route' | routeSegmentEqualsTo)">
 
-  <div class="new-route-form" ng-show="('routes.new_route' | routeSegmentEqualsTo) || ('routes.edit_route.route_id' | routeSegmentEqualsTo)">
+    <form-section-header title="New Route"
+                         icon="{{newRoute.icons.add}}"
+                         close-icon="{{newRoute.icons.close}}"
+                         close-function="newRoute.goToRoutes()">
+    </form-section-header>
 
     <form>
 
@@ -76,24 +34,12 @@
              ng-model="newRoute.route.route_name"
              ng-show="('routes.new_route' | routeSegmentEqualsTo)"
              required>
-      <input type="text"
-             placeholder="Name"
-             class="input-text"
-             ng-model="editRoute.route.route_name"
-             ng-show="('routes.edit_route.route_id' | routeSegmentEqualsTo)"
-             required>
 
       <input type="text"
              placeholder="City"
              class="input-text"
              ng-model="newRoute.route.route_city"
              ng-show="('routes.new_route' | routeSegmentEqualsTo)"
-             required>
-      <input type="text"
-             placeholder="City"
-             class="input-text"
-             ng-model="editRoute.route.route_city"
-             ng-show="('routes.edit_route.route_id' | routeSegmentEqualsTo)"
              required>
 
       <input type="text"
@@ -102,12 +48,6 @@
              ng-model="newRoute.route.route_province"
              ng-show="('routes.new_route' | routeSegmentEqualsTo)"
              required>
-      <input type="text"
-             placeholder="Province"
-             class="input-text"
-             ng-model="editRoute.route.route_province"
-             ng-show="('routes.edit_route.route_id' | routeSegmentEqualsTo)"
-             required>
 
       <input type="text"
              placeholder="Country"
@@ -115,37 +55,14 @@
              ng-model="newRoute.route.route_country"
              ng-show="('routes.new_route' | routeSegmentEqualsTo)"
              required>
-      <input type="text"
-             placeholder="Country"
-             class="input-text"
-             ng-model="editRoute.route.route_country"
-             ng-show="('routes.edit_route.route_id' | routeSegmentEqualsTo)"
-             required>
 
       <hr class="space-new-route">
 
-      <!-- <div class="selected-challenges-container">
-
-        <h5 ng-show="newRoute.selectedChallenges.length > 0">Selected Challenges</h5>
-
-        <div class="selected-challenge-option dropdown-option" ng-repeat="challenge in newRoute.selectedChallenges">
-
-          <div class="dropdown-option-left">
-            <span>{{challenge.title}}</span>
-          </div>
-
-          <div class="dropdown-option-right">
-
-            <div class="rombo-table-delete" ng-click="newRoute.deleteChallenge(challenge.id)">
-              <i class="{{newRoute.icons.close}} icon-size"></i>
-            </div>
-
-          </div>
-
-        </div>
-      </div> -->
-
-      <h5 ng-show="newRoute.challengesFormArray.length > 0">Selected Challenges</h5>
+      <form-section-header title="Selected Challenges"
+                           icon="{{newRoute.icons.challenges}}"
+                           hide-close-button="true"
+                           ng-show="newRoute.challengesFormArray.length > 0">
+      </form-section-header>
 
       <select class="width-100"
               ng-model="newRoute.challengesFormArray[$index].challenge_id"
@@ -158,59 +75,11 @@
         <option value="">Select Challenge {{$index + 1}}</option>
       </select>
 
-      <hr ng-show="editRoute.challengesFormArray.length > 0" class="space-edit-route">
-
-      <h5 ng-show="editRoute.challengesFormArray.length > 0">Selected Challenges</h5>
-
-      <select class="width-100"
-              ng-model="editRoute.challengesFormArray[$index].challenge_id"
-              ng-repeat="challenge in newRoute.challengesFormArray"
-              placeholder="Select Challenge"
-              ng-show="('routes.edit_route.route_id' | routeSegmentEqualsTo)"
-              ng-options="challenge.challenge_id as challenge.title for challenge in editRoute.challenges"
-              ng-change="editRoute.updateChallengeForm($index, editRoute.challengesFormArray[$index].challenge_id)"
-              required>
-        <option value="">Select Challenge {{$index + 1}}</option>
-      </select>
-
       <hr ng-show="newRoute.challengesFormArray.length > 0" class="space-new-route">
-
-      <!-- TODO Revisar como introducir el parámetro en las fuciones de la directiva -->
-
-      <!-- <dropdown show-dropdown="('routes.new_route' | routeSegmentEqualsTo)"
-                active-dropdown="showOptions"
-                model="newRoute.route.challenge"
-                placeholder="Select Challenges"
-                dropdown-style="{ 'height': 60 + (newRoute.challenges.length * 30) + 'px',
-                                  'max-height': 'calc(100vh - 481px)' }"
-                show-default-option="false"
-                repeater="newRoute.challenges"
-                get-option-function="newRoute.addChallenge()"
-                show-right-column="true"
-                delete-option-function="newRoute.deleteChallenge()">
-      </dropdown> -->
-
-      <!-- <dropdown show-dropdown="('routes.edit_route.route_id' | routeSegmentEqualsTo)"
-                active-dropdown="showOptions"
-                model="editRoute.route.challenge"
-                placeholder="Select Challenges"
-                dropdown-style="{ 'height': 60 + (editRoute.challenges.length * 30) + 'px',
-                                  'max-height': 'calc(100vh - 481px)' }"
-                show-default-option="false"
-                repeater="editRoute.challenges"
-                get-option-function="editRoute.addChallenge()"
-                show-right-column="true"
-                delete-option-function="editRoute.deleteChallenge()">
-      </dropdown> -->
 
       <button-form show-button="('routes.new_route' | routeSegmentEqualsTo)"
                    click-button="newRoute.save()"
                    text-button="Add Route">
-      </button-form>
-
-      <button-form show-button="('routes.edit_route.route_id' | routeSegmentEqualsTo)"
-                   click-button="editRoute.edit()"
-                   text-button="Edit Route">
       </button-form>
 
     </form>

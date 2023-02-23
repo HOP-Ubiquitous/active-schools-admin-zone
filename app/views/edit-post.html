@@ -1,0 +1,54 @@
+<div class="main-container-inner-right">
+
+  <div class="new-route-form" ng-show="('posts.edit_post.post_id' | routeSegmentEqualsTo)">
+
+    <form-section-header title="Edit Post"
+                         icon="{{editPost.icons.edit}}"
+                         close-icon="{{editPost.icons.close}}"
+                         close-function="editPost.goToPosts()">
+    </form-section-header>
+
+    <form>
+
+      <input type="text"
+             ng-show="('posts.edit_post.post_id' | routeSegmentEqualsTo)"
+             placeholder="Title"
+             class="input-text"
+             ng-model="editPost.post.title"
+             required>
+
+      <textarea name="post"
+                ng-show="('posts.edit_post.post_id' | routeSegmentEqualsTo)"
+                placeholder="Post Text"
+                class="new-post-textArea"
+                ng-model="editPost.post.description"
+                required>
+      </textarea>
+
+      <hr class="space-new-route">
+
+      <input type="url" placeholder="File Image" class="input-text" ng-model="editPost.post.image" ng-show="('posts.edit_post.post_id' | routeSegmentEqualsTo)" required>
+
+      <dropdown show-dropdown="('posts.edit_post.post_id' | routeSegmentEqualsTo)"
+                active-dropdown="showOptions"
+                model="editPost.post.country"
+                placeholder="Select Country to Publish"
+                dropdown-style="{ 'height': 60 + (editPost.countries.length * 30) + 'px',
+                                  'max-height': 'calc(100vh - 481px)' }"
+                show-default-option="true"
+                defalt-option-value="all"
+                default-option-name="ALL COUNTRIES"
+                repeater="editPost.countries"
+                get-option-function="editPost.getCountry()">
+      </dropdown>
+
+      <button-form show-button="('posts.edit_post.post_id' | routeSegmentEqualsTo)"
+                   click-button="editPost.edit()"
+                   text-button="Edit Post">
+      </button-form>
+
+    </form>
+
+  </div>
+
+</div>

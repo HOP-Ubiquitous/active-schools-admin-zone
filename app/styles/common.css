@@ -12,6 +12,8 @@
   --blue-selected: #003e80;
   --red: #dc3545;
   --red-selected: #872732;
+
+  --notification: #28a745;
 }
 
 body {
@@ -42,6 +44,10 @@ input, select{
   outline: none;
   background: transparent;
   color: var(--green);
+}
+
+select {
+  margin-top: 0;
 }
 
 ::placeholder {

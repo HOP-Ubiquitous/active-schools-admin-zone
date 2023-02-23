@@ -4,13 +4,13 @@
 
 <div class="main-container">
 
-  <section-header ng-show="('challenges' | routeSegmentEqualsTo)"
+  <section-header ng-show="('challenges' | routeSegmentStartsWith)"
                   title="Challenges"
                   icon="{{challenges.icons.challenges}}"
                   show-search-input="true">
   </section-header>
 
-  <section-header ng-show="('challenges.new_challenge' | routeSegmentEqualsTo)"
+  <!-- <section-header ng-show="('challenges.new_challenge' | routeSegmentEqualsTo)"
                   title="Challenges - New Challenge"
                   icon="{{challenges.icons.challenges}}"
                   show-search-input="true"
@@ -24,9 +24,18 @@
                   show-search-input="true"
                   show-close="true"
                   close-function="challenges.goToChallenges()">
-  </section-header>
+  </section-header> -->
 
   <div class="main-container-inner" ng-class="{ 'main-container-inner-left' : ('challenges.new_challenge' | routeSegmentEqualsTo) || ('challenges.edit_challenge.challenge_id' | routeSegmentEqualsTo) }">
+
+    <subsection-header title="Challenge List"
+                       icon="{{challenges.icons.challenges}}"
+                       map-buttons="false"
+                       new-button-icon="{{challenges.icons.add}}"
+                       new-button-title="New Challenge"
+                       new-button-function="challenges.goToNewChallenge()"
+                       hide-button-condition="('challenges.new_challenge' | routeSegmentEqualsTo) || ('challenges.edit_challenge.challenge_id' | routeSegmentEqualsTo)">
+    </subsection-header>
 
     <table class="tabla">
       <thead>
@@ -93,11 +102,11 @@
 
   <div app-view-segment="2" ng-show="('challenges.edit_challenge.challenge_id' | routeSegmentEqualsTo)"></div>
 
-  <new-button icon="{{challenges.icons.add}}"
+  <!-- <new-button icon="{{challenges.icons.add}}"
               title="New Challenge"
               button-function="challenges.goToNewChallenge()"
               ng-hide="('challenges.new_challenge' | routeSegmentEqualsTo)">
-  </new-button>
+  </new-button> -->
 
   </div>
 

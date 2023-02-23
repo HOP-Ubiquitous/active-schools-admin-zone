@@ -1,0 +1,32 @@
+<div class="main-container-inner-right">
+
+  <div class="new-route-form" ng-show="('users.edit_course.course_id' | routeSegmentEqualsTo)">
+
+    <form>
+
+      <input type="text"
+             ng-show="('users.edit_course.course_id' | routeSegmentEqualsTo)"
+             placeholder="Name"
+             class="input-text"
+             ng-model="editCourse.user.name"
+             required>
+
+      <input type="number"
+             ng-show="('users.edit_course.course_id' | routeSegmentEqualsTo)"
+             placeholder="Bonus"
+             class="input-text"
+             ng-model="editCourse.user.bonus"
+             required>
+
+      <hr class="space-new-route">
+
+      <button-form show-button="('users.edit_course.course_id' | routeSegmentEqualsTo)"
+                   click-button="editCourse.edit()"
+                   text-button="Edit Course">
+      </button-form>
+
+    </form>
+
+  </div>
+
+</div>

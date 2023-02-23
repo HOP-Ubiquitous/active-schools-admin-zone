@@ -1,32 +1,25 @@
-<div class="root" ng-show="users.userServiceData.loggedUser.rol ==='admin'">
+<div class="root" ng-show="users.userServiceData.loggedUser.rol ==='superAdmin'">
 
   <main-menu></main-menu>
 
 <div class="main-container" >
 
-  <section-header ng-show="('users' | routeSegmentEqualsTo)"
+  <section-header ng-show="('users' | routeSegmentStartsWith)"
                   title="Users"
                   icon="{{users.icons.users}}"
                   show-search-input="true">
   </section-header>
 
-  <section-header ng-show="('users.new_user' | routeSegmentEqualsTo)"
-                  title="Users - New User"
-                  icon="{{users.icons.users}}"
-                  show-search-input="true"
-                  show-close="true"
-                  close-function="users.goToUsers()">
-  </section-header>
-
-  <section-header ng-show="('users.edit_user.user_id' | routeSegmentEqualsTo)"
-                  title="Users - Edit User"
-                  icon="{{users.icons.users}}"
-                  show-search-input="true"
-                  show-close="true"
-                  close-function="users.goToUsers()">
-  </section-header>
-
   <div class="main-container-inner" ng-class="{ 'main-container-inner-left' : ('users.new_user' | routeSegmentEqualsTo) || ('users.edit_user.user_id' | routeSegmentEqualsTo) }">
+
+    <subsection-header title="User List"
+                       icon="{{users.icons.users}}"
+                       map-buttons="false"
+                       new-button-icon="{{users.icons.add}}"
+                       new-button-title="New User"
+                       new-button-function="users.goToNewUser()"
+                       hide-button-condition="('users.new_user' | routeSegmentEqualsTo) || ('users.edit_user.user_id' | routeSegmentEqualsTo)">
+    </subsection-header>
 
     <table class="tabla">
       <thead>
@@ -84,12 +77,6 @@
   <div app-view-segment="1" ng-show="('users.new_user' | routeSegmentEqualsTo)"></div>
 
   <div app-view-segment="2" ng-show="('users.edit_user.user_id' | routeSegmentEqualsTo)"></div>
-
-  <new-button icon="{{users.icons.add}}"
-              title="New User"
-              button-function="users.goToNewUser()"
-              ng-hide="('users.new_user' | routeSegmentEqualsTo)">
-  </new-button>
 
   </div>
 

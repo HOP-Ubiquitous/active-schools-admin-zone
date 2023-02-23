@@ -23,6 +23,11 @@ app.controller('routesCtrl', ['$scope', '$location', 'routeService', 'routeServi
 
     function getRoutes () {
       vm.routes = routeServiceData.routeList;
+
+      vm.routes.forEach((route) => {
+        route.showChallenges = false
+      });
+
     }
 
     vm.getChallengesByRouteId = function (index) {
@@ -72,6 +77,18 @@ app.controller('routesCtrl', ['$scope', '$location', 'routeService', 'routeServi
       $routeParams.route_id = route_id;
       $location.path('routes/edit_route/' + $routeParams.route_id);
     };
+
+    vm.toggleChallenges = (selectedIndex) => {
+
+      vm.routes.forEach((route, index) => {
+        if (index === selectedIndex) {
+          route.showChallenges = true;
+        } else {
+          route.showChallenges = false;
+        }
+      })
+
+    }
 
     function initWatchers() {
 

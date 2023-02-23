@@ -108,7 +108,7 @@ app.config([
       .within()
 
       .segment("route_id", {
-        templateUrl: "views/new-route.html",
+        templateUrl: "views/edit-route.html",
         controller: "editRouteCtrl",
         controllerAs: "editRoute",
         dependencies: ["route_id"],
@@ -136,7 +136,7 @@ app.config([
       .within()
 
       .segment("challenge_id", {
-        templateUrl: "views/new-challenge.html",
+        templateUrl: "views/edit-challenge.html",
         controller: "editChallengeCtrl",
         controllerAs: "editChallenge",
         dependencies: ["challenge_id"],
@@ -164,7 +164,7 @@ app.config([
       .within()
 
       .segment("post_id", {
-        templateUrl: "views/new-post.html",
+        templateUrl: "views/edit-post.html",
         controller: "editPostCtrl",
         controllerAs: "editPost",
         dependencies: ["post_id"],
@@ -192,7 +192,7 @@ app.config([
       .within()
 
       .segment("user_id", {
-        templateUrl: "views/new-user.html",
+        templateUrl: "views/edit-user.html",
         controller: "editUserCtrl",
         controllerAs: "editUser",
         dependencies: ["user_id"],
@@ -211,7 +211,7 @@ app.config([
       .within()
 
       .segment("course_id", {
-        templateUrl: "views/new-course.html",
+        templateUrl: "views/edit-course.html",
         controller: "editCourseCtrl",
         controllerAs: "editCourse",
         dependencies: ["course_id"],
@@ -239,7 +239,7 @@ app.config([
       .within()
 
       .segment("medical_center_id", {
-        templateUrl: "views/new-medical_center.html",
+        templateUrl: "views/edit-medical_center.html",
         controller: "editMedicalCenterCtrl",
         controllerAs: "editMedicalCenter",
         dependencies: ["medical_center_id"],
@@ -267,7 +267,7 @@ app.config([
       .within()
 
       .segment("school_id", {
-        templateUrl: "views/new-school.html",
+        templateUrl: "views/edit-school.html",
         controller: "editSchoolCtrl",
         controllerAs: "editSchool",
         dependencies: ["school_id"],
@@ -295,7 +295,7 @@ app.config([
       .within()
 
       .segment("team_id", {
-        templateUrl: "views/new-team.html",
+        templateUrl: "views/edit-team.html",
         controller: "editTeamCtrl",
         controllerAs: "editTeam",
         dependencies: ["team_id"],

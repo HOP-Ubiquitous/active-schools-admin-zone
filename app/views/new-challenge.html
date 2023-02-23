@@ -1,8 +1,12 @@
 <div class="main-container-inner-right">
 
-  <!-- TODO Mejorar o incluso separar New Challenge y Edit Challenge -->
+  <div class="new-route-form" ng-show="('challenges.new_challenge' | routeSegmentEqualsTo)">
 
-  <div class="new-route-form" ng-show="('challenges.new_challenge' | routeSegmentEqualsTo) || ('challenges.edit_challenge.challenge_id' | routeSegmentEqualsTo)">
+    <form-section-header title="New Challenge"
+                         icon="{{newChallenge.icons.add}}"
+                         close-icon="{{newChallenge.icons.close}}"
+                         close-function="newChallenge.goToChallenges()">
+    </form-section-header>
 
     <form>
 
@@ -13,26 +17,10 @@
              ng-model="newChallenge.challenge.title"
              required>
 
-      <input type="text"
-             ng-show="('challenges.edit_challenge.challenge_id' | routeSegmentEqualsTo)"
-             placeholder="Title"
-             class="input-text"
-             ng-model="editChallenge.challenge.title"
-             required>
-
-      <!-- TODO Revisar como introducir el parámetro en las fuciones de la directiva -->
-
       <select ng-model="newChallenge.challenge.category"
                 placeholder="Select Category"
                 ng-show="('challenges.new_challenge' | routeSegmentEqualsTo)"
                 ng-options="category.value as category.name for category in newChallenge.categories" required>
-        <option value="">Select Category</option>
-      </select>
-
-      <select ng-model="editChallenge.challenge.category"
-                placeholder="Select Category"
-                ng-show="('challenges.edit_challenge.challenge_id' | routeSegmentEqualsTo)"
-                ng-options="category.value as category.name for category in editChallenge.categories" required>
         <option value="">Select Category</option>
       </select>
 
@@ -43,27 +31,12 @@
                 required>
       </textarea>
 
-      <textarea ng-show="('challenges.edit_challenge.challenge_id' | routeSegmentEqualsTo)"
-                placeholder="Challenge Description"
-                class="new-post-textArea"
-                ng-model="editChallenge.challenge.description"
-                required>
-      </textarea>
-
       <input type="number"
              ng-show="('challenges.new_challenge' | routeSegmentEqualsTo)"
              placeholder="Target"
              class="input-number"
              ng-model="newChallenge.challenge.target"
              required>
-      <input type="number"
-             ng-show="('challenges.edit_challenge.challenge_id' | routeSegmentEqualsTo)"
-             placeholder="Target"
-             class="input-text"
-             ng-model="editChallenge.challenge.target"
-             required>
-
-      <!-- TODO Revisar como introducir el parámetro en las fuciones de la directiva -->
 
       <select ng-model="newChallenge.challenge.unit"
                 placeholder="Select Unit"
@@ -72,24 +45,10 @@
         <option value="">Select Unit</option>
       </select>
 
-       <select ng-model="editChallenge.challenge.unit"
-                placeholder="Select Unit"
-                ng-show="('challenges.edit_challenge' | routeSegmentEqualsTo)"
-                ng-options="unit.value as unit.name for unit in editChallenge.units" required>
-        <option value="">Select Unit</option>
-      </select>
-
-       <textarea ng-show="('challenges.new_challenge' | routeSegmentEqualsTo)"
+      <textarea ng-show="('challenges.new_challenge' | routeSegmentEqualsTo)"
                 placeholder="Challenge Instructions"
                 class="new-post-textArea"
                 ng-model="newChallenge.challenge.instructions"
-                required>
-      </textarea>
-
-      <textarea ng-show="('challenges.edit_challenge.challenge_id' | routeSegmentEqualsTo)"
-                placeholder="Challenge Instructions"
-                class="new-post-textArea"
-                ng-model="editChallenge.challenge.instructions"
                 required>
       </textarea>
 
@@ -99,15 +58,8 @@
              class="input-number"
              ng-model="newChallenge.challenge.reward"
              required>
-      <input type="number"
-             ng-show="('challenges.edit_challenge.challenge_id' | routeSegmentEqualsTo)"
-             placeholder="Experience reward"
-             class="input-text"
-             ng-model="editChallenge.challenge.reward"
-             required>
 
       <input type="url" placeholder="Youtube URL" class="input-text" ng-model="newChallenge.challenge.video" ng-show="('challenges.new_challenge' | routeSegmentEqualsTo)" required>
-      <input type="url" placeholder="Youtube URL" class="input-text" ng-model="editChallenge.challenge.video" ng-show="('challenges.edit_challenge.challenge_id' | routeSegmentEqualsTo)" required>
 
       <br>
 
@@ -119,11 +71,6 @@
       <button-form show-button="('challenges.new_challenge' | routeSegmentEqualsTo)"
                    click-button="newChallenge.save()"
                    text-button="Add Route">
-      </button-form>
-
-      <button-form show-button="('challenges.edit_challenge.challenge_id' | routeSegmentEqualsTo)"
-                   click-button="editChallenge.edit()"
-                   text-button="Edit Route">
       </button-form>
 
     </form>

@@ -34,4 +34,8 @@ app.controller('newTeamCtrl', ['$location', 'challengeService', 'ICONS', 'COUNTR
       challengeService.addChallenge(challenge);
     };
 
+    vm.goToTeams = function(){
+      $location.path('teams');
+    };
+
   }]);

@@ -1,0 +1,38 @@
+<div class="main-container-inner-right">
+
+  <div class="new-route-form" ng-show="('teams.edit_team.team_id' | routeSegmentEqualsTo)">
+
+    <form-section-header title="Edit Team"
+                         icon="{{editTeam.icons.add}}"
+                         close-icon="{{editTeam.icons.close}}"
+                         close-function="editTeam.goToTeams()">
+    </form-section-header>
+
+    <form>
+
+      <input type="text"
+             ng-show="('teams.edit_team.team_id' | routeSegmentEqualsTo)"
+             placeholder="Name"
+             class="input-text"
+             ng-model="editTeam.team.name"
+             required>
+
+      <input type="number"
+             ng-show="('teams.edit_team.team_id' | routeSegmentEqualsTo)"
+             placeholder="Bonus"
+             class="input-text"
+             ng-model="editTeam.team.bonus"
+             required>
+
+      <hr class="space-new-route">
+
+      <button-form show-button="('teams.edit_team.team_id' | routeSegmentEqualsTo)"
+                   click-button="editTeam.edit()"
+                   text-button="Edit Team">
+      </button-form>
+
+    </form>
+
+  </div>
+
+</div>

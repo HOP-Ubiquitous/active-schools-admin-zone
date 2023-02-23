@@ -87,6 +87,10 @@ app.controller('editMedicalCenterCtrl', ['$scope', '$location', 'medicalCenterSe
           }
   };
 
+  vm.goToMedicalCenters = function(){
+    $location.path('medical_centers');
+  };
+
     function initWatchers() {
 
       vm.postWatcher = $scope.$watch(

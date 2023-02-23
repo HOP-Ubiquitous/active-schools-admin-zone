@@ -13,6 +13,7 @@ app.controller('loginCtrl',
    '$timeout',
    '$location',
    '$window',
+   '$cookies',
    'userService',
    'userServiceData',
    'schoolService',
@@ -25,6 +26,7 @@ app.controller('loginCtrl',
              $timeout,
              $location,
              $window,
+             $cookies,
              userService,
              userServiceData,
              schoolService,
@@ -69,7 +71,14 @@ app.controller('loginCtrl',
         value: 'male'
       }
     ];
-    vm.user = {};
+
+
+    if ($cookies.get('active_school_user') !== undefined) {
+      vm.user = JSON.parse($cookies.get('active_school_user'));
+    } else {
+      vm.user = {};
+    }
+
     vm.newUser = {};
     vm.school = {};
     vm.medicalCenter = {};
@@ -200,7 +209,7 @@ app.controller('loginCtrl',
           (vm.newUser.country !== undefined && vm.newUser.country !== '')) {
 
         let director = {
-          rol: 'director',
+          rol: 'superAdmin',
           username: vm.newUser.email,
           password: vm.newUser.password,
           personal_data: {

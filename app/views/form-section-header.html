@@ -1,0 +1,22 @@
+<div class="form-section-title-container">
+
+  <div class="form-section-title-container-inner"
+       ng-class="{ 'form-section-title-container-inner-100' : hideCloseButton }">
+    <div class="form-section-title-icon-container">
+      <span class="{{icon}}"></span>
+    </div>
+    <h1>
+      {{title}}
+    </h1>
+  </div>
+
+  <div class="form-section-button-container" ng-hide="hideCloseButton">
+
+    <div class="form-section-button"
+         ng-click="closeFunction()">
+      <span class="{{closeIcon}}"></span>
+    </div>
+
+  </div>
+
+</div>

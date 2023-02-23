@@ -82,4 +82,8 @@ app.controller('newMedicalCenterCtrl', ['$location', 'medicalCenterService', 'IC
 
     };
 
+    vm.goToMedicalCenters = function(){
+      $location.path('medical_centers');
+    };
+
   }]);

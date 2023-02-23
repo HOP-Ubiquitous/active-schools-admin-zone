@@ -51,6 +51,10 @@ app.controller('editPostCtrl', ['$scope', '$location', '$routeParams', 'postServ
 
     };
 
+    vm.goToPosts = function() {
+      $location.path('posts');
+    };
+
     function initWatchers() {
 
       vm.postWatcher = $scope.$watch(

@@ -57,4 +57,8 @@ app.controller('newUserCtrl', ['$scope', '$location', 'userService', 'userServic
 
     };
 
+    vm.goToUsers = function(){
+      $location.path('users');
+    };
+
   }]);

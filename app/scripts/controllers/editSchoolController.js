@@ -86,6 +86,10 @@ app.controller('editSchoolCtrl', ['$scope', '$location', 'schoolService', 'schoo
           }
   };
 
+  vm.goToSchools = function(){
+    $location.path('schools');
+  };
+
     function initWatchers() {
 
       vm.postWatcher = $scope.$watch(

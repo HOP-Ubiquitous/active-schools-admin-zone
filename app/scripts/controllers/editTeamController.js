@@ -1,4 +1,4 @@
-'use strict';
+"use strict";
 
 /**
  * @ngdoc function
@@ -8,8 +8,23 @@
  * Controller of the activeSchoolsAdminZoneApp
  */
 
-app.controller('editTeamCtrl', ['$scope', '$location', 'challengeService', 'challengeServiceData', '$routeParams', 'ICONS', 'COUNTRIES',
-  function ($scope, $location, challengeService, challengeServiceData, $routeParams, ICONS, COUNTRIES) {
+app.controller("editTeamCtrl", [
+  "$scope",
+  "$location",
+  "challengeService",
+  "challengeServiceData",
+  "$routeParams",
+  "ICONS",
+  "COUNTRIES",
+  function (
+    $scope,
+    $location,
+    challengeService,
+    challengeServiceData,
+    $routeParams,
+    ICONS,
+    COUNTRIES
+  ) {
 
     var vm = this;
     vm.icons = ICONS;
@@ -18,7 +33,7 @@ app.controller('editTeamCtrl', ['$scope', '$location', 'challengeService', 'chal
 
     challengeService.getChallengeById(vm.id);
 
-    function getChallenge () {
+    function getChallenge() {
       vm.challenge = challengeServiceData.challengeById;
     }
 
@@ -27,26 +42,29 @@ app.controller('editTeamCtrl', ['$scope', '$location', 'challengeService', 'chal
     };
 
     vm.edit = function () {
-
-      let challenge =  {
+      let challenge = {
         name: vm.challenge.name,
         period: vm.challenge.period,
         unit: vm.challenge.unit,
         bonus: vm.challenge.bonus,
         video: vm.challenge.video,
-        images: ['image1', 'image2']
+        images: ["image1", "image2"],
       };
 
       challengeService.editChallenge(vm.id, challenge);
 
-  };
+    };
+
+    vm.goToTeams = function () {
+      $location.path("teams");
+    };
 
     function initWatchers() {
 
       vm.postWatcher = $scope.$watch(
         function () {
           return challengeService.challengeByIdLoaded;
-        }, function (newValue) {
+        },function (newValue) {
           if (newValue === true) {
             getChallenge();
             challengeService.challengeByIdLoaded = false;
@@ -58,4 +76,4 @@ app.controller('editTeamCtrl', ['$scope', '$location', 'challengeService', 'chal
 
     initWatchers();
 
-  }]);
+}]);

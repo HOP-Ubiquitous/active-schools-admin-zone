@@ -47,4 +47,8 @@ app.controller('newPostCtrl', ['$location', 'postService', 'postServiceData', 'I
 
     };
 
+    vm.goToPosts = function() {
+      $location.path('posts');
+    };
+
   }]);

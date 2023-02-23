@@ -1,0 +1,51 @@
+<div class="sub-section-title-container">
+
+  <div class="sub-section-title-container-inner" 
+       ng-class="{ 'sub-section-title-container-inner-show-new-button' : mapButtons,
+                   'sub-section-title-container-inner-show-100' : hideButtonCondition }">
+    <div class="sub-section-title-icon-container">
+      <span class="{{icon}}"></span>
+    </div>
+    <h1>
+      {{title}}
+    </h1>
+  </div>
+
+  <div class="sub-section-button-container" ng-show="mapButtons">
+
+    <!-- Map Buttons -->
+
+    <div class="diamond-container sub-section-button"
+         ng-click="clickRoute()">
+      <div class="diamond"
+           ng-class="{ 'diamond-selected': routeStatus }">
+        <span class="{{iconRoute}}"></span>
+      </div>
+    </div>
+
+    <div class="diamond-container sub-section-button map-button-challenges"
+         ng-click="clickChallenge()">
+      <div class="diamond"
+           ng-class="{ 'diamond-selected': challengeStatus }">
+        <span class="{{iconChallenge}}"></span>
+      </div>
+    </div>
+
+  </div>
+
+  <div class="sub-section-button-container sub-section-new-button-parent-container"
+       ng-show="!hideButtonCondition"
+       ng-hide="mapButtons">
+
+    <div class="sub-section-new-button-container" ng-click="newButtonFunction()">
+      <div class="sub-section-new-button-icon">
+        <span class="{{newButtonIcon}}"></span>
+      </div>
+      <div class="sub-section-new-button-text">
+        <span>{{newButtonTitle}}</span>
+      </div>
+    </div>
+
+  </div>
+
+</div>

@@ -16,47 +16,39 @@ function ($scope, $location, $window, $routeParams, routeService, routeServiceDa
   vm.countries = COUNTRIES.countries;
   vm.selectedMode = '';
   vm.selectedModeTitle = 'Route Edit Mode';
-  let route = routeServiceData.routeList[$routeParams.route_id];
+  vm.route = routeServiceData.routeList[$routeParams.route_id];
+  vm.routeUpdated = routeService.routeUpdated;
 
 
   vm.routeData;
   vm.geoJSON = '';
   vm.selectedChallenges = [];
-  vm.polyLinePoints = route.waypoints; // Cargando ruta de test
-  vm.challengePoints =  route.challenges;
-  vm.selectedChallenges =  route.challenges.selectedChallenges;
+  vm.polyLinePoints = vm.route.waypoints; // Cargando ruta de test
+  vm.challengePoints = vm.route.challenges;
+  vm.selectedChallengesIds = [];
+  vm.selectedChallenges = vm.route.challenges.selectedChallenges;
   vm.defaultLine = {};
   vm.line = {};
 
-  var challengeList;
   vm.challenges = [];
+  vm.allChallenges = [];
   vm.markers;
 
   challengeService.getChallenges();
 
+  function getRoute() {
+    vm.routeData = vm.allRoutes[route_id];
+  }
+
   function getChallengesLoaded () {
-      //Se trae todos los retos pero los filtra con los ids del vm.uniqueChallengesIds y solo muestra los que coincidan
-      vm.challengesLoaded = challengeServiceData.challengeList.filter(challenge => vm.uniqueChallengesIds.includes(challenge.challenge_id));
+    vm.challenges = challengeServiceData.challengeList;
   }
 
   function getChallenges () {
-
-    challengeList = challengeServiceData.challengeList;
-
-    challengeList.forEach(function(challenge) {
-      vm.selectedChallenges.forEach(function(singleChallenge) {
-        if (challenge.id === singleChallenge) {
-          vm.challenges.push(challenge);
-        }
-      });
-    });
-
-    console.log(vm.challenges);
-
+    vm.allChallenges = challengeServiceData.challengeList;
   }
 
   var routeMap = $window.L.map('routeMap').setView([38.08179, -1.275], 16);
-  console.log(routeMap);
 
   $window.L.tileLayer('https://cartodb-basemaps-{s}.global.ssl.fastly.net/light_all/{z}/{x}/{y}.png').addTo(routeMap);
 
@@ -84,6 +76,8 @@ function ($scope, $location, $window, $routeParams, routeService, routeServiceDa
 
   vm.line = new L.Polyline(vm.polyLinePoints, {color: '#00a195', draggable: true}).addTo(vm.polyLineGroup);
 
+  routeMap.fitBounds(vm.polyLineGroup.getBounds());
+
   vm.polyLinePoints.forEach(function(point, index) {
     vm.markers = L.marker(point, {icon: routePoint, draggable: true, index: index}).addTo(vm.markersGroup);
     vm.markers.on('click', removePointRoute);
@@ -91,14 +85,34 @@ function ($scope, $location, $window, $routeParams, routeService, routeServiceDa
   });
 
   if (vm.challengePoints.length > 0 && vm.challengePoints !== undefined) {
-    debugger;
+
+    let selectedChallengesIds = [];
+    
+    let challengesArray = []  
+    vm.challengeFormArray = [];
+
     vm.challengePoints.forEach(function(point) {
-      console.log(point);
+
       Object.keys(point).forEach(function(key,value) {
+        selectedChallengesIds.push(key);
+
+        let object = {
+          challenge_id: key,
+          location: [point[key][0], point[key][1]]
+        }
+
+        challengesArray.push(object);
+        selectedChallengesIds.push(key);
+
         vm.challengeMarkers = L.marker([point[key][0], point[key][1]], {icon: challengePoint, draggable: true}).addTo(vm.challengeGroup).on('click', removeChallengePoint);
       })
 
     });
+
+    vm.challengesFormArray = challengesArray;
+    vm.selectedChallengesIds = selectedChallengesIds;
+
+    getChallengesLoaded();
     updateLegend();
 
   }
@@ -180,13 +194,14 @@ function ($scope, $location, $window, $routeParams, routeService, routeServiceDa
   }
 
   function createChallengePoint(e) {
-  debugger;
     var latLng = [e.latlng.lat, e.latlng.lng]
     vm.challengeMarkers = L.marker(latLng, {icon: challengePoint, draggable: true}).addTo(vm.challengeGroup).on('click', removeChallengePoint);
+    createChallengesForm();
     updateLegend();
   }
 
   function removeChallengePoint(e) {
+    //TODO Actualizar selects cuando se borren puntos challenges
     vm.challengeGroup.removeLayer(e.target._leaflet_id);
     updateLegend();
   }
@@ -204,110 +219,144 @@ function ($scope, $location, $window, $routeParams, routeService, routeServiceDa
     legend.addTo(routeMap);
   }
 
+  function createChallengesForm() { //Crear objetos y array para el select
+
+    let challengesArray = [];
+
+    let i = 0;
+    vm.challengeGroup.eachLayer(function(layer) {
+
+      let object = {};
+
+      if (vm.challengesFormArray[i] === undefined) {
+        object = {
+          challenge_id: undefined,
+          location: [layer._latlng.lat, layer._latlng.lng]
+        }
+      } else {
+        object = {
+          challenge_id: vm.challengesFormArray[i].challenge_id,
+          location: [layer._latlng.lat, layer._latlng.lng]
+        }
+      }
+
+      challengesArray.push(object);
+
+      i++;
+
+    });
+
+    vm.challengesFormArray = challengesArray;
+
+    $scope.$apply(vm.challenges);
+
+  }
+
   function updateLegend() {
     var challengeNumber = document.getElementById('challenge-number');
     challengeNumber.innerHTML = Object.keys(vm.challengeGroup._layers).length;
   }
 
+  function checkChallenges () { //Comprobar formato de challenges
+
+    let result = [];
+    let challenges = [];
+
+    vm.challengesFormArray.forEach(function(challenge) {
+      if (challenge.challenge_id !== undefined) {
+        challenges.push(challenge.challenge_id); //Se crea un array con solo los challenges que están configurados
+      }
+    });
+
+    vm.challengesFormArray.forEach(function(challenge) {
+
+      let selectedChallenge = '';
+
+      if (challenge.challenge_id === undefined) {
+        selectedChallenge = challenges[Math.floor(Math.random() * challenges.length)] //Si no hay challenge configurado, se elige uno al azar entre los configurados
+      } else {
+        selectedChallenge = challenge.challenge_id; //Si hay un challenge configurado se elige el configurado
+      }
+
+      challenge.location.forEach(function(coord) {
+        coord.toFixed(15); //A las coordenadas se le ajusta un máximo de 15 decimales
+      });
+
+      let object = {
+        [selectedChallenge]: challenge.location //Se monta el formato requerido por el backend
+      }
+
+      result.push(object);
+
+    });
+    return result; //Se devuelve el resultado
+  }
+
   // -- -- //
 
-    vm.addChallenge = function (id) {
-      vm.challenges.forEach(function (challenge) {
-        if (challenge.id === id) {
-          let challengeObject = {
-            id : id,
-            name: challenge.name
-          };
-          challenge.show = false;
-          vm.selectedChallenges.push(challengeObject);
-        }
-      });
+  vm.edit = function () {
+
+    let route = {
+      route_name: vm.route.route_name,
+      route_city: vm. route.route_city,
+      route_province: vm.route.route_province,
+      route_country: vm.route.route_country,
+      waypoints: vm.polyLinePoints,
+      challenges: checkChallenges()
     };
 
-    vm.deleteChallenge = function (id) {
-      vm.selectedChallenges.forEach(function (challenge, index) {
-        if (challenge.id === id) {
-          vm.selectedChallenges.splice(index, 1);
-        }
-      });
-
-      vm.challenges.forEach(function (challenge) {
-        if (challenge.id === id) {
-          challenge.show = true;
-        }
-      });
-    };
-
-    vm.edit = function () {
-
-      //let instructions = vm.geoJSON;
-      let selectedChallengesIds = [];
-
-      vm.selectedChallenges.forEach(function (challenge) {
-        selectedChallengesIds.push(challenge.challenge_id);
-      });
-
-      let route = {
-        route_name: vm.route.route_name,
-        route_city: vm.route.route_city,
-        route_province: vm.route.route_province,
-        route_country: vm.route.route_country,
-        waypoints: vm.polyLinePoints,
-        challenges: selectedChallengesIds,
-        //geojson: instructions
-      };
-
-      console.log(route);
-
-      if (route.route_name !== '' && route.route_name !== undefined &&
+    if (route.route_name !== '' && route.route_name !== undefined &&
         route.route_city !== '' && route.route_city !== undefined &&
         route.route_province !== '' && route.route_province !== undefined &&
         route.route_country !== '' && route.route_country !== undefined &&
-        route.waypoints !== '' && route.route_country !== undefined &&
+        route.waypoints !== '' && route.waypoints !== undefined &&
         route.challenges !== undefined) {
-        //route.geojson !== undefined) {
-        routeService.editRoute($routeParams.route_id, route);
-      } else {
-        console.log('\x1b[31m%s\x1b[0m', 'Error al rellenar el formulario, revise los campos e inténtelo de nuevo');
+        routeService.editRoute(vm.route.route_id, route);
+    } else {
+      console.log('\x1b[31m%s\x1b[0m', 'Error al rellenar el formulario, revise los campos e inténtelo de nuevo');
+    }
+
+  };
+
+  vm.goToRoutes = function() {
+    $location.path('routes');
+  };
+
+  function initWatchers() {
+
+    vm.routeWatcher = $scope.$watch(
+      function () {
+        return routeService.routeByIdLoaded;
+      }, function (newValue) {
+        if (newValue === true) {
+          getRoute();
+          routeService.routeByIdLoaded = false;
+        }
       }
+    );
 
-    };
-
-    vm.editChallenge = function (id) {
-      $routeParams.challenge_id = id;
-      $location.path('challenges/edit_challenge/' + $routeParams.challenge_id);
-    };
-
-    function getRoute(){
-      vm.routeData = vm.allRoutes[route_id];
-    }
-
-    function initWatchers() {
-
-      vm.routeWatcher = $scope.$watch(
-        function () {
-          return routeService.routeByIdLoaded;
-        }, function (newValue) {
-          if (newValue === true) {
-            getRoute();
-            routeService.routeByIdLoaded = false;
-          }
+    vm.challengeWatcher = $scope.$watch(
+      function () {
+        return challengeService.challengesLoaded;
+      }, function (newValue) {
+        if (newValue === true) {
+          getChallenges();
+          challengeService.challengesLoaded = false;
         }
-      );
+      }
+    );
 
-      vm.challengeWatcher = $scope.$watch(
-        function () {
-          return challengeService.challengesLoaded;
-        }, function (newValue) {
-          if (newValue === true) {
-            getChallenges();
-            challengeService.challengesLoaded = false;
-          }
-        }
-      );
+    vm.routeUpdated = $scope.$watch(
+      function () {
+        return routeService.routeUpdated;
+      }, function (newValue) {
+        //TODO Revisar mostrar notificaciones
+        vm.routeUpdated = newValue;
+      }
+    );
 
-    }
+  }
 
-    initWatchers();
+  initWatchers();
 
-  }]);
+}]);

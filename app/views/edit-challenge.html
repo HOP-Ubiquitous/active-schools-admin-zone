@@ -1,0 +1,80 @@
+<div class="main-container-inner-right">
+
+  <div class="new-route-form" ng-show="('challenges.edit_challenge.challenge_id' | routeSegmentEqualsTo)">
+
+    <form-section-header title="Edit Challenge"
+                         icon="{{editChallenge.icons.edit}}"
+                         close-icon="{{editChallenge.icons.close}}"
+                         close-function="editChallenge.goToChallenges()">
+    </form-section-header>
+
+    <form>
+
+      <input type="text"
+             ng-show="('challenges.edit_challenge.challenge_id' | routeSegmentEqualsTo)"
+             placeholder="Title"
+             class="input-text"
+             ng-model="editChallenge.challenge.title"
+             required>
+
+      <select ng-model="editChallenge.challenge.category"
+                placeholder="Select Category"
+                ng-show="('challenges.edit_challenge.challenge_id' | routeSegmentEqualsTo)"
+                ng-options="category.value as category.name for category in editChallenge.categories" required>
+        <option value="">Select Category</option>
+      </select>
+
+      <textarea ng-show="('challenges.edit_challenge.challenge_id' | routeSegmentEqualsTo)"
+                placeholder="Challenge Description"
+                class="new-post-textArea"
+                ng-model="editChallenge.challenge.description"
+                required>
+      </textarea>
+
+      <input type="number"
+             ng-show="('challenges.edit_challenge.challenge_id' | routeSegmentEqualsTo)"
+             placeholder="Target"
+             class="input-text"
+             ng-model="editChallenge.challenge.target"
+             required>
+
+      <select ng-model="editChallenge.challenge.unit"
+                placeholder="Select Unit"
+                ng-show="('challenges.edit_challenge' | routeSegmentEqualsTo)"
+                ng-options="unit.value as unit.name for unit in editChallenge.units" required>
+        <option value="">Select Unit</option>
+      </select>
+
+      <textarea ng-show="('challenges.edit_challenge.challenge_id' | routeSegmentEqualsTo)"
+                placeholder="Challenge Instructions"
+                class="new-post-textArea"
+                ng-model="editChallenge.challenge.instructions"
+                required>
+      </textarea>
+
+      <input type="number"
+             ng-show="('challenges.edit_challenge.challenge_id' | routeSegmentEqualsTo)"
+             placeholder="Experience reward"
+             class="input-text"
+             ng-model="editChallenge.challenge.reward"
+             required>
+
+      <input type="url" placeholder="Youtube URL" class="input-text" ng-model="editChallenge.challenge.video" ng-show="('challenges.edit_challenge.challenge_id' | routeSegmentEqualsTo)" required>
+
+      <br>
+
+      <div class="new-challenge-video">
+        <iframe width="100%" height="100%" src="{{video}}"  >
+        </iframe>
+      </div>
+
+      <button-form show-button="('challenges.edit_challenge.challenge_id' | routeSegmentEqualsTo)"
+                   click-button="editChallenge.edit()"
+                   text-button="Edit Route">
+      </button-form>
+
+    </form>
+
+  </div>
+
+</div>

@@ -295,50 +295,6 @@ div.content {
   position: relative;
 }
 
-.map-mode-title-container {
-  height: 30px;
-  width: 100%;
-}
-
-.map-mode-title-container-inner {
-  height: 30px;
-  width: calc(100% - 80px);
-  background: var(--green);
-  color: #fff;
-  display: flex;
-  justify-content: left;
-  align-items: center;
-  padding-left: 10px;
-  margin-bottom: 10px;
-  float: left;
-  clip-path: polygon(0 0, calc(100% - 15px) 0, 100% 50%, calc(100% - 15px) 100%, 0 100%);
-}
-
-.map-mode-title-container-inner h1 {
-  font-size: 18px;
-  margin: 0;
-  line-height: 30px;
-  font-weight: 700;
-}
-
-.map-mode-title-container-inner span {
-  font-size: 12px;
-  margin-right: 5px;
-  line-height: 30px;
-}
-
-.map-mode-button-container {
-  width: 80px;
-  float: right;
-  display: flex;
-  justify-content: right;
-  align-items: center;
-}
-
-.map-button {
-  margin: 0 0 0 10px;
-}
-
 /*---- Formularios ----*/
 
 .new-route-form {
@@ -637,7 +593,7 @@ ul.tabs li {
 
 .home-content {
   height: 70%;
-  width: calc(100% - 720px);
+  /* width: calc(100% - 720px); */
   display: grid;
   grid-template-columns: repeat(4,1fr);
   font-size: 20px;

@@ -85,4 +85,8 @@ app.controller('newSchoolCtrl', ['$location', 'schoolService', 'ICONS', 'COUNTRI
 
     };
 
+    vm.goToSchools = function(){
+      $location.path('schools');
+    };
+
   }]);

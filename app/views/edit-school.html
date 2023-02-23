@@ -1,0 +1,73 @@
+<div class="main-container-inner-right">
+
+  <div class="new-route-form" ng-show="('schools.edit_school.school_id' | routeSegmentEqualsTo)">
+
+		<form-section-header title="Edit School"
+                         icon="{{editSchool.icons.edit}}"
+                         close-icon="{{editSchool.icons.close}}"
+                         close-function="editSchool.goToSchools()">
+    </form-section-header>
+
+    <form>
+
+      <input type="text"
+             ng-show="('schools.edit_school.school_id' | routeSegmentEqualsTo)"
+             placeholder="Director_id"
+             class="input-text"
+             ng-model="editSchool.school.director_id"
+             required>
+
+      <input type="text"
+             ng-show="('schools.edit_school.school_id' | routeSegmentEqualsTo)"
+             placeholder="Name"
+             class="input-text"
+             ng-model="editSchool.school.school_name"
+             required>
+
+      <input type="text"
+             ng-show="('schools.edit_school.school_id' | routeSegmentEqualsTo)"
+             placeholder="Address"
+             class="input-text"
+             ng-model="editSchool.school.school_address"
+             required>
+
+      <input type="text"
+             ng-show="('schools.edit_school.school_id' | routeSegmentEqualsTo)"
+             placeholder="Postal Code"
+             class="input-text"
+             ng-model="editSchool.school.school_postal_code"
+             required>
+
+      <input type="text"
+             ng-show="('schools.edit_school.school_id' | routeSegmentEqualsTo)"
+             placeholder="City"
+             class="input-text"
+             ng-model="editSchool.school.school_city"
+             required>
+
+      <input type="text"
+             ng-show="('schools.edit_school.school_id' | routeSegmentEqualsTo)"
+             placeholder="Province"
+             class="input-text"
+             ng-model="editSchool.school.school_province"
+             required>
+
+      <input type="text"
+             ng-show="('schools.edit_school.school_id' | routeSegmentEqualsTo)"
+             placeholder="Country"
+             class="input-text"
+             ng-model="editSchool.school.school_country"
+             required>
+
+      <br>
+
+      <button-form show-button="('schools.edit_school.school_id' | routeSegmentEqualsTo)"
+                   click-button="editSchool.editSchool()"
+                   text-button="Edit School">
+      </button-form>
+
+    </form>
+
+  </div>
+
+</div>

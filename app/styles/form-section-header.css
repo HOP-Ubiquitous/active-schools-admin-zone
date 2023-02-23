@@ -1,0 +1,71 @@
+.form-section-title-container {
+  height: 30px;
+  width: 100%;
+}
+
+.form-section-title-container-inner {
+  height: 30px;
+  width: calc(100% - 40px);
+  background: #f5f5f5;
+  color: var(--green);
+  display: flex;
+  justify-content: left;
+  align-items: center;
+  margin-bottom: 10px;
+  float: left;
+  clip-path: polygon(0 0, calc(100% - 15px) 0, 100% 50%, calc(100% - 15px) 100%, 0 100%);
+}
+
+.form-section-title-container-inner-100 {
+  width: 100%;
+}
+
+.form-section-title-icon-container {
+  width: 40px;
+  height: 100%;
+  background: var(--green);
+  color: #fff;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  clip-path: polygon(0 0, calc(100% - 15px) 0, 100% 50%, calc(100% - 15px) 100%, 0 100%);
+  margin-right: 10px;
+}
+
+.form-section-title-container-inner h1 {
+  font-size: 14px;
+  margin: 0;
+  line-height: 30px;
+  font-weight: 700;
+}
+
+.form-section-title-container-inner span {
+  font-size: 12px;
+  margin-right: 10px;
+}
+
+.form-section-button-container {
+  width: 40px;
+  float: right;
+  display: flex;
+  justify-content: right;
+  align-items: center;
+}
+
+.form-section-button {
+  width: 30px;
+  height: 30px;
+  display: flex;
+  background: var(--red);
+  justify-content: center;
+  align-items: center;
+  margin: 0 0 0 10px;
+  clip-path: polygon(15px 0, 100% 50%, calc(100% - 15px) 100%, 0 50%);
+  font-size: 12px;
+  color: #fff;
+  transition: 0.3s ease all;
+}
+
+.form-section-button:hover {
+  background: var(--red-selected);
+}

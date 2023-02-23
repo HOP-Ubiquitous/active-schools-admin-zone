@@ -7,8 +7,8 @@
  * # AboutCtrl
  * Controller of the activeSchoolsAdminZoneApp
  */
-app.service('userService', ['userServiceApi', 'userServiceData', '$location', '$q',
-  function(userServiceApi, userServiceData, $location, $q){
+app.service('userService', ['userServiceApi', 'userServiceData', '$location', '$q', '$cookies',
+  function(userServiceApi, userServiceData, $location, $q, $cookies){
 
   var service = this;
   service.usersLoaded = false;
@@ -49,9 +49,9 @@ app.service('userService', ['userServiceApi', 'userServiceData', '$location', '$
           userServiceData.loggedUser = response.data;
         } else if (type === 'redirect') {
           userServiceData.loggedUser = response.data;
+          $cookies.put('active_school_user', JSON.stringify(response.data));
           $location.path('/home');
         }
-
 
         service.userByIdLoaded = true;
         console.log('\x1b[32m%s\x1b[0m', 'El usuario ' + user_id + ' cargado con éxito! :)');

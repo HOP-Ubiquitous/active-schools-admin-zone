@@ -4,29 +4,22 @@
 
 <div class="main-container">
 
-  <section-header ng-show="('schools' | routeSegmentEqualsTo)"
+  <section-header ng-show="('schools' | routeSegmentStartsWith)"
                   title="Schools"
                   icon="{{schools.icons.school}}"
                   show-search-input="true">
   </section-header>
 
-  <section-header ng-show="('schools.new_school' | routeSegmentEqualsTo)"
-                  title="Schools - New School"
-                  icon="{{schools.icons.school}}"
-                  show-search-input="true"
-                  show-close="true"
-                  close-function="schools.goToSchools()">
-  </section-header>
-
-  <section-header ng-show="('schools.edit_school.school_id' | routeSegmentEqualsTo)"
-                  title="Schools - Edit School"
-                  icon="{{schools.icons.school}}"
-                  show-search-input="true"
-                  show-close="true"
-                  close-function="schools.goToSchools()">
-  </section-header>
-
   <div class="main-container-inner" ng-class="{ 'main-container-inner-left' : ('schools.new_school' | routeSegmentEqualsTo) || ('schools.edit_school.school_id' | routeSegmentEqualsTo) }">
+
+    <subsection-header title="School List"
+                       icon="{{schools.icons.school}}"
+                       map-buttons="false"
+                       new-button-icon="{{schools.icons.add}}"
+                       new-button-title="New School"
+                       new-button-function="schools.goToNewSchool()"
+                       hide-button-condition="('schools.new_school' | routeSegmentEqualsTo) || ('schools.edit_school.school_id' | routeSegmentEqualsTo)">
+    </subsection-header>
 
     <table class="tabla">
       <thead>
@@ -88,15 +81,6 @@
   <div app-view-segment="1" ng-show="('schools.new_school' | routeSegmentEqualsTo)"></div>
 
   <div app-view-segment="2" ng-show="('schools.edit_school.school_id' | routeSegmentEqualsTo)"></div>
-
-  <!--Código del botón New School -->
-  <div ng-show="schools.userServiceData.loggedUser.rol ==='admin'">
-    <new-button icon="{{schools.icons.add}}"
-              title="New School"
-              button-function="schools.goToNewSchool()"
-              ng-hide="('schools.new_school' | routeSegmentEqualsTo)">
-    </new-button>
-  </div>
 
   </div>
 

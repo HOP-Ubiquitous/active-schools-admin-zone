@@ -7,13 +7,14 @@
  * # AboutCtrl
  * Controller of the activeSchoolsAdminZoneApp
  */
-app.service('routeService', ['routeServiceApi', 'routeServiceData', '$location', '$q',
-  function(routeServiceApi, routeServiceData, $location, $q){
+app.service('routeService', ['routeServiceApi', 'routeServiceData', '$location', '$timeout', '$q',
+  function(routeServiceApi, routeServiceData, $location, $timeout, $q){
 
     var service = this;
     service.routesLoaded = false;
     service.routeByIdLoaded = false;
     service.routeChallengesLoaded = false;
+    service.routeUpdated = false;
 
     service.getRoutes = function () {
 
@@ -85,7 +86,14 @@ app.service('routeService', ['routeServiceApi', 'routeServiceData', '$location',
 
       routeServiceApi.edit_route(route_id, data).then(
         function success (response){
-          service.getRoutes();
+          service.routeUpdated = true;
+          
+          $timeout(function(){
+            $location.path('routes')
+            service.routeUpdated = false;
+          }, 4000);
+          
+          // service.getRoutes();
           console.log('\x1b[32m%s\x1b[0m', 'Ruta ' + route_id + ' editada con éxito! :)');
         }
       ).catch(

@@ -1,0 +1,66 @@
+<div class="main-container-inner-right">
+
+  <div class="new-route-form" ng-show="('medical_centers.edit_medical_center.medical_center_id' | routeSegmentEqualsTo)">
+
+    <form-section-header title="Edit Medical Center"
+                         icon="{{editMedicalCenter.icons.edit}}"
+                         close-icon="{{editMedicalCenter.icons.close}}"
+                         close-function="editMedicalCenter.goToMedicalCenters()">
+    </form-section-header>
+
+    <form>
+
+      <input type="text"
+             ng-show="('medical_centers.edit_medical_center.medical_center_id' | routeSegmentEqualsTo)"
+             placeholder="Name"
+             class="input-text"
+             ng-model="editMedicalCenter.medical_center.medical_center_name"
+             required>
+
+      <input type="text"
+             ng-show="('medical_centers.edit_medical_center.medical_center_id' | routeSegmentEqualsTo)"
+             placeholder="Address"
+             class="input-text"
+             ng-model="editMedicalCenter.medical_center.medical_center_address"
+             required>
+
+      <input type="text"
+             ng-show="('medical_centers.edit_medical_center.medical_center_id' | routeSegmentEqualsTo)"
+             placeholder="Postal Code"
+             class="input-text"
+             ng-model="editMedicalCenter.medical_center.medical_center_postal_code"
+             required>
+
+      <input type="text"
+             ng-show="('medical_centers.edit_medical_center.medical_center_id' | routeSegmentEqualsTo)"
+             placeholder="City"
+             class="input-text"
+             ng-model="editMedicalCenter.medical_center.medical_center_city"
+             required>
+
+      <input type="text"
+             ng-show="('medical_centers.edit_medical_center.medical_center_id' | routeSegmentEqualsTo)"
+             placeholder="Province"
+             class="input-text"
+             ng-model="editMedicalCenter.medical_center.medical_center_province"
+             required>
+
+      <input type="text"
+             ng-show="('medical_centers.edit_medical_center.medical_center_id' | routeSegmentEqualsTo)"
+             placeholder="Country"
+             class="input-text"
+             ng-model="editMedicalCenter.medical_center.medical_center_country"
+             required>
+
+      <br>
+
+      <button-form show-button="('medical_centers.edit_medical_center.medical_center_id' | routeSegmentEqualsTo)"
+                   click-button="editMedicalCenter.editMedicalCenter()"
+                   text-button="Edit MedicalCenter">
+      </button-form>
+
+    </form>
+
+  </div>
+
+</div>

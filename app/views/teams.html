@@ -4,29 +4,22 @@
 
 <div class="main-container">
 
-  <section-header ng-show="('teams' | routeSegmentEqualsTo)"
+  <section-header ng-show="('teams' | routeSegmentStartsWith)"
                   title="Teams"
                   icon="{{teams.icons.teams}}"
                   show-search-input="true">
   </section-header>
 
-  <section-header ng-show="('teams.new_team' | routeSegmentEqualsTo)"
-                  title="Teams - New Team"
-                  icon="{{teams.icons.teams}}"
-                  show-search-input="true"
-                  show-close="true"
-                  close-function="teams.goToTeams()">
-  </section-header>
-
-  <section-header ng-show="('teams.edit_team.team_id' | routeSegmentEqualsTo)"
-                  title="Teams - Edit Team"
-                  icon="{{teams.icons.teams}}"
-                  show-search-input="true"
-                  show-close="true"
-                  close-function="teams.goToTeams()">
-  </section-header>
-
   <div class="main-container-inner" ng-class="{ 'main-container-inner-left' : ('teams.new_team' | routeSegmentEqualsTo) || ('teams.edit_team.team_id' | routeSegmentEqualsTo) }">
+
+    <subsection-header title="Team List"
+                       icon="{{teams.icons.teams}}"
+                       map-buttons="false"
+                       new-button-icon="{{teams.icons.add}}"
+                       new-button-title="New Team"
+                       new-button-function="teams.goToNewTeam()"
+                       hide-button-condition="('teams.new_team' | routeSegmentEqualsTo) || ('teams.edit_team.team_id' | routeSegmentEqualsTo)">
+    </subsection-header>
 
     <table class="tabla">
       <thead>
@@ -86,12 +79,6 @@
   <div app-view-segment="1" ng-show="('teams.new_team' | routeSegmentEqualsTo)"></div>
 
   <div app-view-segment="2" ng-show="('teams.edit_team.team_id' | routeSegmentEqualsTo)"></div>
-
-  <new-button icon="{{teams.icons.add}}"
-              title="New Team"
-              button-function="teams.goToNewTeam()"
-              ng-hide="('teams.new_team' | routeSegmentEqualsTo)">
-  </new-button>
 
   </div>
 
