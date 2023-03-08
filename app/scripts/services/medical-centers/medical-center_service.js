@@ -1,12 +1,5 @@
 'use strict';
 
-/**
- * @ngdoc function
- * @name activeSchoolsAdminZoneApp.controller:AboutCtrl
- * @description
- * # AboutCtrl
- * Controller of the activeSchoolsAdminZoneApp
- */
 app.service('medicalCenterService', ['medicalCenterServiceApi', 'medicalCenterServiceData', '$location', '$q',
   function(medicalCenterServiceApi, medicalCenterServiceData, $location, $q){
 

@@ -1,13 +1,5 @@
 'use strict';
 
-/**
- * @ngdoc function
- * @name activeSchoolsAdminZoneApp.controller:AboutCtrl
- * @description
- * # AboutCtrl
- * Controller of the activeSchoolsAdminZoneApp
- */
-
 app.controller('routesCtrl', ['$scope', '$location', 'routeService', 'routeServiceData', 'challengeService', 'challengeServiceData', '$routeParams', 'ICONS', 'COUNTRIES',
   function ($scope, $location, routeService, routeServiceData, challengeService, challengeServiceData, $routeParams, ICONS, COUNTRIES) {
 
@@ -88,6 +80,18 @@ app.controller('routesCtrl', ['$scope', '$location', 'routeService', 'routeServi
         }
       })
 
+    }
+
+    vm.checkCountry = (code) => {
+      let i = 0;
+
+      while (i < vm.countries.length) {
+        if (vm.countries[i].code === code) {
+          return vm.countries[i].name;
+        }
+
+        i++
+      }
     }
 
     function initWatchers() {

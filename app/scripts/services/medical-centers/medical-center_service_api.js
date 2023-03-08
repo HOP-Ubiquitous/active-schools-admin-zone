@@ -1,26 +1,20 @@
 'use strict';
 
-/**
- * @ngdoc function
- * @name activeSchoolsAdminZoneApp.controller:AboutCtrl
- * @description
- * # AboutCtrl
- * Controller of the activeSchoolsAdminZoneApp
- */
-
-app.service('medicalCenterServiceApi', ['$http', 'API_URL', function($http, API_URL) {
+app.service('medicalCenterServiceApi', ['$http', 'API_URL', 'userServiceData', function($http, API_URL, userServiceData) {
 
   var apiService = {};
   var apiURL = API_URL.url;
+  var headers = {
+    'Content-Type': 'application/json',
+    'Access-Control-Allow-Origin': '*',
+    'Authorization': 'Bearer ' + userServiceData.accessToken
+  }
 
   apiService.get_medical_centers = function () {
     return $http({
       method: 'GET',
       url: apiURL + 'medical_centers',
-      headers: {
-        'Content-Type': 'application/json',
-        'Access-Control-Allow-Origin': '*'
-      }
+      headers: headers
     });
   };
 
@@ -28,10 +22,7 @@ app.service('medicalCenterServiceApi', ['$http', 'API_URL', function($http, API_
     return $http({
       method: 'GET',
       url: apiURL + 'medical_centers/' + medical_id,
-      headers: {
-        'Content-Type': 'application/json',
-        'Access-Control-Allow-Origin': '*'
-      }
+      headers: headers
     });
   };
 
@@ -40,10 +31,7 @@ app.service('medicalCenterServiceApi', ['$http', 'API_URL', function($http, API_
       method: 'POST',
       data: data,
       url: apiURL + 'medical_centers',
-      headers: {
-        'Content-Type': 'application/json',
-        'Access-Control-Allow-Origin': '*'
-      }
+      headers: headers
     });
   };
 
@@ -52,10 +40,7 @@ app.service('medicalCenterServiceApi', ['$http', 'API_URL', function($http, API_
       method: 'PUT',
       data: data,
       url: apiURL + 'medical_centers/' + medical_id,
-      headers: {
-        'Content-Type': 'application/json',
-        'Access-Control-Allow-Origin': '*'
-      }
+      headers: headers
     });
   };
 
@@ -63,23 +48,15 @@ app.service('medicalCenterServiceApi', ['$http', 'API_URL', function($http, API_
     return $http({
       method: 'DELETE',
       url: apiURL + 'medical_centers/' + medical_id,
-      headers: {
-        'Content-Type': 'application/json',
-        'Access-Control-Allow-Origin': '*'
-      }
+      headers: headers
     });
   };
-
-
 
   apiService.get_doctors_by_center = function (medical_id) {
     return $http({
       method: 'GET',
       url: apiURL + 'medical_centers/' + medical_id + '/doctors',
-      headers: {
-        'Content-Type': 'application/json',
-        'Access-Control-Allow-Origin': '*'
-      }
+      headers: headers
     });
   };
 
@@ -87,10 +64,7 @@ app.service('medicalCenterServiceApi', ['$http', 'API_URL', function($http, API_
     return $http({
       method: 'GET',
       url: apiURL + 'medical_centers/' + medical_id + '/doctors/' + doctor_id,
-      headers: {
-        'Content-Type': 'application/json',
-        'Access-Control-Allow-Origin': '*'
-      }
+      headers: headers
     });
   };
 
@@ -99,10 +73,7 @@ app.service('medicalCenterServiceApi', ['$http', 'API_URL', function($http, API_
       method: 'POST',
       data: data,
       url: apiURL + 'medical_centers/' + medical_id + '/doctors',
-      headers: {
-        'Content-Type': 'application/json',
-        'Access-Control-Allow-Origin': '*'
-      }
+      headers: headers
     });
   };
 
@@ -111,10 +82,7 @@ app.service('medicalCenterServiceApi', ['$http', 'API_URL', function($http, API_
       method: 'PUT',
       data: data,
       url: apiURL + 'medical_centers/' + medical_id + '/doctors/' + doctor_id,
-      headers: {
-        'Content-Type': 'application/json',
-        'Access-Control-Allow-Origin': '*'
-      }
+      headers: headers
     });
   };
 
@@ -122,10 +90,7 @@ app.service('medicalCenterServiceApi', ['$http', 'API_URL', function($http, API_
     return $http({
       method: 'DELETE',
       url: apiURL + 'medical_centers/' + medical_id + '/doctors/' + doctor_id,
-      headers: {
-        'Content-Type': 'application/json',
-        'Access-Control-Allow-Origin': '*'
-      }
+      headers: headers
     });
   };
 

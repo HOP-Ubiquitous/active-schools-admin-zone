@@ -1,6 +1,5 @@
 <notification text="Route Updated!"
               show-condition="editRoute.routeUpdated">
-
 </notification>
 
 <div class="main-container-inner">
@@ -52,13 +51,13 @@
              ng-model="editRoute.route.route_province"
              required>
 
-      <input type="text"
-             placeholder="Country"
-             class="input-text"
-             ng-model="editRoute.route.route_country"
-             required>
+      <select class="width-100"
+              ng-model="editRoute.route.route_country"
+              ng-options="country.code as country.name for country in editRoute.countries" required>
+        <option value="">Country</option>
+      </select>
 
-      <hr ng-show="editRoute.challengesFormArray.length > 0" class="space-edit-route">
+      <hr class="space-new-route">
 
       <form-section-header title="Selected Challenges"
                            icon="{{editRoute.icons.challenges}}"

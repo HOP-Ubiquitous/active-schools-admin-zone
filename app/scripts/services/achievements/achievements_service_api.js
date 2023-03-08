@@ -1,26 +1,20 @@
 'use strict';
 
-/**
- * @ngdoc function
- * @name activeSchoolsAdminZoneApp.controller:AboutCtrl
- * @description
- * # AboutCtrl
- * Controller of the activeSchoolsAdminZoneApp
- */
-
-app.service('achievementsServiceApi', ['$http', 'API_URL', function($http, API_URL) {
+app.service('achievementsServiceApi', ['$http', 'API_URL', 'userServiceData', function($http, API_URL, userServiceData) {
 
   var apiService = {};
   var apiURL = API_URL.url;
+  var headers = {
+    'Content-Type': 'application/json',
+    'Access-Control-Allow-Origin': '*',
+    'Authorization': 'Bearer ' + userServiceData.accessToken
+  }
 
   apiService.get_achievements = function () {
     return $http({
       method: 'GET',
       url: apiURL + 'achievements',
-      headers: {
-        'Content-Type': 'application/json',
-        'Access-Control-Allow-Origin': '*'
-      }
+      headers: headers
     });
   };
 
@@ -28,10 +22,7 @@ app.service('achievementsServiceApi', ['$http', 'API_URL', function($http, API_U
     return $http({
       method: 'GET',
       url: apiURL + 'achievements/' + achievement_id,
-      headers: {
-        'Content-Type': 'application/json',
-        'Access-Control-Allow-Origin': '*'
-      }
+      headers: headers
     });
   };
 
@@ -40,10 +31,7 @@ app.service('achievementsServiceApi', ['$http', 'API_URL', function($http, API_U
       method: 'POST',
       data: data,
       url: apiURL + 'achievements',
-      headers: {
-        'Content-Type': 'application/json',
-        'Access-Control-Allow-Origin': '*'
-      }
+      headers: headers
     });
   };
 
@@ -52,10 +40,7 @@ app.service('achievementsServiceApi', ['$http', 'API_URL', function($http, API_U
       method: 'PUT',
       data: data,
       url: apiURL + 'achievements/' + achievement_id,
-      headers: {
-        'Content-Type': 'application/json',
-        'Access-Control-Allow-Origin': '*'
-      }
+      headers: headers
     });
   };
 
@@ -63,10 +48,7 @@ app.service('achievementsServiceApi', ['$http', 'API_URL', function($http, API_U
     return $http({
       method: 'DELETE',
       url: apiURL + 'achievements/' + achievement_id,
-      headers: {
-        'Content-Type': 'application/json',
-        'Access-Control-Allow-Origin': '*'
-      }
+      headers: headers
     });
   };
 

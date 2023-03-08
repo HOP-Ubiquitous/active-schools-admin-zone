@@ -1,12 +1,5 @@
 'use strict';
 
-/**
- * @ngdoc function
- * @name activeSchoolsAdminZoneApp.controller:AboutCtrl
- * @description
- * # AboutCtrl
- * Controller of the activeSchoolsAdminZoneApp
- */
 app.service('userServiceData', ['$cookies', function($cookies){
 
   var serviceUser = {};
@@ -18,6 +11,12 @@ app.service('userServiceData', ['$cookies', function($cookies){
     serviceUser.loggedUser = JSON.parse($cookies.get('active_school_user'));
   } else {
     serviceUser.loggedUser = {};
+  }
+
+  if ($cookies.get('access_token') !== undefined) {
+    serviceUser.accessToken = JSON.parse($cookies.get('access_token'));
+  } else {
+    serviceUser.accessToken = '';
   }
 
   // serviceChallenge.challengeList = [

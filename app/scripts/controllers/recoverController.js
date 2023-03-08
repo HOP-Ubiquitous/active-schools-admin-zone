@@ -1,13 +1,5 @@
 'use strict';
 
-/**
- * @ngdoc function
- * @name activeSchoolsAdminZoneApp.controller:AboutCtrl
- * @description
- * # AboutCtrl
- * Controller of the activeSchoolsAdminZoneApp
- */
-
 app.controller('recoverCtrl', ['$location', 'ICONS', 'COUNTRIES',
   function ($location, ICONS, COUNTRIES) {
 

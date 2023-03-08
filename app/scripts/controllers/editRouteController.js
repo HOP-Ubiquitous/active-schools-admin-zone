@@ -1,13 +1,5 @@
 'use strict';
 
-/**
- * @ngdoc function
- * @name activeSchoolsAdminZoneApp.controller:AboutCtrl
- * @description
- * # AboutCtrl
- * Controller of the activeSchoolsAdminZoneApp
- */
-
 app.controller('editRouteCtrl', ['$scope', '$location', '$window', '$routeParams', 'routeService', 'routeServiceData', 'challengeService', 'challengeServiceData', 'ICONS', 'COUNTRIES',
 function ($scope, $location, $window, $routeParams, routeService, routeServiceData, challengeService, challengeServiceData, ICONS, COUNTRIES) {
 
@@ -89,7 +81,7 @@ function ($scope, $location, $window, $routeParams, routeService, routeServiceDa
     let selectedChallengesIds = [];
     
     let challengesArray = []  
-    vm.challengeFormArray = [];
+    vm.challengesFormArray = [];
 
     vm.challengePoints.forEach(function(point) {
 
@@ -201,8 +193,23 @@ function ($scope, $location, $window, $routeParams, routeService, routeServiceDa
   }
 
   function removeChallengePoint(e) {
-    //TODO Actualizar selects cuando se borren puntos challenges
+    let i = 0;
+    let index = 0;
+
+    vm.challengeGroup.eachLayer(function(layer) {
+      
+      if (layer._leaflet_id === e.target._leaflet_id) {
+        index = i;
+      }
+
+      i++;
+    });
+
     vm.challengeGroup.removeLayer(e.target._leaflet_id);
+    vm.challengesFormArray.splice(index, 1);
+
+    $scope.$apply(vm.challenges);
+
     updateLegend();
   }
 
@@ -346,12 +353,13 @@ function ($scope, $location, $window, $routeParams, routeService, routeServiceDa
       }
     );
 
-    vm.routeUpdated = $scope.$watch(
+    vm.routeUpdatedWatcher = $scope.$watch(
       function () {
         return routeService.routeUpdated;
       }, function (newValue) {
         //TODO Revisar mostrar notificaciones
         vm.routeUpdated = newValue;
+        $scope.$apply(vm.routeUpdated);
       }
     );
 

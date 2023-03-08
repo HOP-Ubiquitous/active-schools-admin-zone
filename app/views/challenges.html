@@ -10,22 +10,6 @@
                   show-search-input="true">
   </section-header>
 
-  <!-- <section-header ng-show="('challenges.new_challenge' | routeSegmentEqualsTo)"
-                  title="Challenges - New Challenge"
-                  icon="{{challenges.icons.challenges}}"
-                  show-search-input="true"
-                  show-close="true"
-                  close-function="challenges.goToChallenges()">
-  </section-header>
-
-  <section-header ng-show="('challenges.edit_challenge.challenge_id' | routeSegmentEqualsTo)"
-                  title="Challenges - Edit Challenge"
-                  icon="{{challenges.icons.challenges}}"
-                  show-search-input="true"
-                  show-close="true"
-                  close-function="challenges.goToChallenges()">
-  </section-header> -->
-
   <div class="main-container-inner" ng-class="{ 'main-container-inner-left' : ('challenges.new_challenge' | routeSegmentEqualsTo) || ('challenges.edit_challenge.challenge_id' | routeSegmentEqualsTo) }">
 
     <subsection-header title="Challenge List"
@@ -42,10 +26,7 @@
       <tr>
         <th scope="col">Title</th>
         <th scope="col">Category</th>
-        <th scope="col">Description</th>
         <th scope="col">Target</th>
-        <th scope="col">Unit</th>
-        <th scope="col">Instructions</th>
         <th scope="col">Reward</th>
         <th scope="col">Video</th>
         <th scope="col" class="option-header">Options</th>
@@ -56,12 +37,11 @@
       <tr>
         <td class="bold">{{challenge.title}}</td>
         <td>{{challenge.category}}</td>
-        <td>{{challenge.description}}</td>
-        <td>{{challenge.target}}</td>
-        <td>{{challenge.unit}}</td>
-        <td>{{challenge.instructions}}</td>
-        <td>{{challenge.reward}}</td>
-        <td>{{challenge.video}}</td>
+        <td>
+          <span class="bold" ng-show="challenge.unit === 'reps'">x</span>{{challenge.target}}<span class="bold" ng-show="challenge.unit === 'seconds'">s</span><span class="bold" ng-show="challenge.unit === 'minutes'">m</span>
+        </td>
+        <td>{{challenge.reward}} <span class="bold">Exp</span></td>
+        <td><a href="{{challenge.video}}" target="_blank">Link</a></td>
         <td class="option">
 
           <div class="rombo-table small-square edit-bg" ng-click="challenges.editChallenge(challenge.challenge_id)">

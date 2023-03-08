@@ -1,26 +1,26 @@
 'use strict';
 
-/**
- * @ngdoc function
- * @name activeSchoolsAdminZoneApp.controller:AboutCtrl
- * @description
- * # AboutCtrl
- * Controller of the activeSchoolsAdminZoneApp
- */
-
-app.service('routeServiceApi', ['$http', 'API_URL', function($http, API_URL) {
+app.service('routeServiceApi', ['$http', 'API_URL', 'userServiceData', function($http, API_URL, userServiceData) {
 
   var apiService = {};
   var apiURL = API_URL.url;
+  var headers = {
+    'Content-Type': 'application/json',
+    'Access-Control-Allow-Origin': '*',
+    'Authorization': 'Bearer ' + userServiceData.accessToken
+  }
+
+  var test = {
+    "fiware-service": "puertomalaga",
+    "fiware-servicepath": "/puertomalaga",
+    "Authorization": "Basic cWxfcm86VkRhUDNGaHBmVU42RlQzR1RIcVZReklmUFdKT1F1dHM="
+  }
 
   apiService.get_routes = function () {
     return $http({
       method: 'GET',
-      url: apiURL + 'routes',
-      headers: {
-        'Content-Type': 'application/json',
-        'Access-Control-Allow-Origin': '*'
-      }
+      url: 'https://fiware.hopu.eu/quantumleap-readonly/v2/attrs?type=device_lastdata&attrs=location,controlledDatamodels&lastN=1000',
+      headers: test
     });
   };
 
@@ -28,10 +28,7 @@ app.service('routeServiceApi', ['$http', 'API_URL', function($http, API_URL) {
     return $http({
       method: 'GET',
       url: apiURL + 'routes/' + route_id,
-      headers: {
-        'Content-Type': 'application/json',
-        'Access-Control-Allow-Origin': '*'
-      }
+      headers: headers
     });
   };
 
@@ -39,10 +36,7 @@ app.service('routeServiceApi', ['$http', 'API_URL', function($http, API_URL) {
     return $http({
       method: 'GET',
       url: apiURL + 'routes/' + route_id + '/challenges',
-      headers: {
-        'Content-Type': 'application/json',
-        'Access-Control-Allow-Origin': '*'
-      }
+      headers: headers
     });
   };
 
@@ -51,10 +45,7 @@ app.service('routeServiceApi', ['$http', 'API_URL', function($http, API_URL) {
       method: 'POST',
       data: data,
       url: apiURL + 'routes',
-      headers: {
-        'Content-Type': 'application/json',
-        'Access-Control-Allow-Origin': '*'
-      }
+      headers: headers
     });
   };
 
@@ -63,10 +54,7 @@ app.service('routeServiceApi', ['$http', 'API_URL', function($http, API_URL) {
       method: 'PUT',
       data: data,
       url: apiURL + 'routes/' + route_id,
-      headers: {
-        'Content-Type': 'application/json',
-        'Access-Control-Allow-Origin': '*'
-      }
+      headers: headers
     });
   };
 
@@ -74,10 +62,7 @@ app.service('routeServiceApi', ['$http', 'API_URL', function($http, API_URL) {
     return $http({
       method: 'DELETE',
       url: apiURL + 'routes/' + route_id,
-      headers: {
-        'Content-Type': 'application/json',
-        'Access-Control-Allow-Origin': '*'
-      }
+      headers: headers
     });
   };
 

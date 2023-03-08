@@ -1,19 +1,12 @@
 'use strict';
 
-/**
- * @ngdoc function
- * @name activeSchoolsAdminZoneApp.controller:AboutCtrl
- * @description
- * # AboutCtrl
- * Controller of the activeSchoolsAdminZoneApp
- */
-
 app.controller('newRouteCtrl', ['$scope', '$location', '$window', '$routeParams', 'routeService', 'challengeService', 'challengeServiceData', 'ROUTE', 'ICONS', 'COUNTRIES',
   function ($scope, $location, $window, $routeParams, routeService, challengeService, challengeServiceData, ROUTE, ICONS, COUNTRIES) {
 
     var vm = this;
     vm.icons = ICONS;
     vm.countries = COUNTRIES.countries;
+    vm.newRouteUpdated = routeService.newRouteUpdated;
 
     vm.selectedMode = '';
     vm.selectedModeTitle = 'Route Edit Mode';
@@ -165,7 +158,23 @@ app.controller('newRouteCtrl', ['$scope', '$location', '$window', '$routeParams'
     }
 
     function removeChallengePoint(e) {
+      let i = 0;
+      let index = 0;
+
+      vm.challengeGroup.eachLayer(function(layer) {
+        
+        if (layer._leaflet_id === e.target._leaflet_id) {
+          index = i;
+        }
+
+        i++;
+      });
+
       vm.challengeGroup.removeLayer(e.target._leaflet_id);
+      vm.challengesFormArray.splice(index, 1);
+
+      $scope.$apply(vm.challenges);
+
       updateLegend();
     }
 
@@ -191,7 +200,7 @@ app.controller('newRouteCtrl', ['$scope', '$location', '$window', '$routeParams'
 
       let challengesArray = []
       
-      vm.challengeFormArray = [];
+      vm.challengesFormArray = [];
 
       vm.challengeGroup.eachLayer(function(layer) {
 
@@ -297,6 +306,15 @@ app.controller('newRouteCtrl', ['$scope', '$location', '$window', '$routeParams'
             getChallenges();
             challengeService.newRouteChallengesLoaded = false;
           }
+        }
+      );
+
+      vm.newRouteUpdatedWatcher = $scope.$watch(
+        function () {
+          return routeService.newRouteUpdated;
+        }, function (newValue) {
+          vm.newRouteUpdated = newValue;
+          $scope.$apply(vm.newRouteUpdated);
         }
       );
 

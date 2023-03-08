@@ -1,13 +1,5 @@
 'use strict';
 
-/**
- * @ngdoc function
- * @name activeSchoolsAdminZoneApp.controller:AboutCtrl
- * @description
- * # AboutCtrl
- * Controller of the activeSchoolsAdminZoneApp
- */
-
 app.controller('loginCtrl',
   ['$scope',
    '$timeout',
@@ -37,26 +29,19 @@ app.controller('loginCtrl',
              FIREBASE) {
 
     var vm = this;
+    vm.showRegister = false;
 
     var firebaseConfig = FIREBASE;
 
     firebase.initializeApp(firebaseConfig);
+    // if (firebase === undefined) {
+    //   firebase.initializeApp(firebaseConfig);
+    // }
 
     var provider = new firebase.auth.GoogleAuthProvider();
     provider.addScope('email');
     provider.addScope('openid');
     provider.addScope('profile');
-    // provider.addScope('https://www.googleapis.com/auth/fitness.activity.read');
-    // provider.addScope('https://www.googleapis.com/auth/fitness.activity.write');
-    // provider.addScope('https://www.googleapis.com/auth/fitness.blood_glucose.read');
-    // provider.addScope('https://www.googleapis.com/auth/fitness.blood_pressure.read');
-    // provider.addScope('https://www.googleapis.com/auth/fitness.body.read');
-    // provider.addScope('https://www.googleapis.com/auth/fitness.body_temperature.read');
-    // provider.addScope('https://www.googleapis.com/auth/fitness.heart_rate.read');
-    // provider.addScope('https://www.googleapis.com/auth/fitness.location.read');
-    // provider.addScope('https://www.googleapis.com/auth/fitness.location.write');
-    // provider.addScope('https://www.googleapis.com/auth/fitness.oxygen_saturation.read');
-    // provider.addScope('https://www.googleapis.com/auth/fitness.sleep.read');
     console.log(provider);
 
     vm.icons = ICONS;
@@ -113,24 +98,12 @@ app.controller('loginCtrl',
 
     vm.login = function(){
 
-      let i = 0;
-
-      while (i < vm.users.length) {
-        if(vm.users[i].username === vm.user.username && vm.users[i].password === vm.user.password) {
-          userService.getUserById(vm.users[i].id, 'redirect');
-          break;
-        }
-
-        i++
+      let user = {
+        username: vm.user.username,
+        password: vm.user.password
       }
 
-      // if (userServiceData.loggedUser.username === undefined) {
-      //   vm.errorMessage = 'Incorrect User or Password';
-      // }
-
-      // vm.openMessageWindow = true;
-
-      // $timeout(function () {vm.openMessageWindow = false;}, 3000);
+      userService.login(user);
 
     };
 
@@ -146,6 +119,14 @@ app.controller('loginCtrl',
         var user = result.user;
         // IdP data available in result.additionalUserInfo.profile.
         console.log(credential);
+
+        let googleUser = {
+          username: result.user.email,
+          password: result.user.uid,
+        }
+
+        userService.googleLogin(googleUser);
+
         vm.newUser = {
           email: result.user.email,
           password: result.user.uid,
@@ -192,6 +173,15 @@ app.controller('loginCtrl',
       }
     }
 
+    function goToPersonalData () {
+      vm.registerStep1 = false;
+      vm.registerStep2 = true;
+      vm.registerStep3 = false;
+      vm.registerStep4 = false;
+      vm.showRegisterForm = false;
+      vm.showRegister = true;
+    }
+
     vm.checkUserInfo = function () {
 
       if ((vm.newUser.email !== undefined && vm.newUser.email !== '') &&
@@ -209,9 +199,10 @@ app.controller('loginCtrl',
           (vm.newUser.country !== undefined && vm.newUser.country !== '')) {
 
         let director = {
-          rol: 'superAdmin',
+          rol: 'admin',
           username: vm.newUser.email,
           password: vm.newUser.password,
+          google_user: false,
           personal_data: {
             name: vm.newUser.username,
             surname: vm.newUser.surname,
@@ -266,7 +257,7 @@ app.controller('loginCtrl',
           school_country: vm.school.country
         }
 
-        schoolService.addSchool(school);
+        schoolService.addSchool(school, 'signin');
 
         vm.registerStep1 = false;
         vm.registerStep2 = false;
@@ -288,68 +279,68 @@ app.controller('loginCtrl',
       }
     }
 
-    vm.checkMedicalCenter = function () {
-      if (vm.showNewMedicalCenterList === true) {
+    // vm.checkMedicalCenter = function () {
+    //   if (vm.showNewMedicalCenterList === true) {
 
-        let userInfo = {
-          rol: 'director',
-          username: userServiceData.loggedUser.username,
-          password: userServiceData.loggedUser.password,
-          health_data: {
-            med_center_id: vm.medicalCenterSelected
-          }
-        }
+    //     let userInfo = {
+    //       rol: 'admin',
+    //       username: userServiceData.loggedUser.username,
+    //       password: userServiceData.loggedUser.password,
+    //       health_data: {
+    //         med_center_id: vm.medicalCenterSelected
+    //       }
+    //     }
 
-        userService.editUser(userServiceData.loggedUser.id, userInfo, 'redirect');
+    //     userService.editUser(userServiceData.loggedUser.id, userInfo, 'redirect');
 
-      } else {
+    //   } else {
 
-        if ((vm.medicalCenter.name !== undefined && vm.medicalCenter.name !== '') &&
-            (vm.medicalCenter.address !== undefined && vm.medicalCenter.address !== '') &&
-            (vm.medicalCenter.postalCode !== undefined && vm.medicalCenter.postalCode !== '') &&
-            (vm.medicalCenter.city !== undefined && vm.medicalCenter.city !== '') &&
-            (vm.medicalCenter.province !== undefined && vm.medicalCenter.province !== '') &&
-            (vm.medicalCenter.country !== undefined && vm.medicalCenter.country !== '')) {
+    //     if ((vm.medicalCenter.name !== undefined && vm.medicalCenter.name !== '') &&
+    //         (vm.medicalCenter.address !== undefined && vm.medicalCenter.address !== '') &&
+    //         (vm.medicalCenter.postalCode !== undefined && vm.medicalCenter.postalCode !== '') &&
+    //         (vm.medicalCenter.city !== undefined && vm.medicalCenter.city !== '') &&
+    //         (vm.medicalCenter.province !== undefined && vm.medicalCenter.province !== '') &&
+    //         (vm.medicalCenter.country !== undefined && vm.medicalCenter.country !== '')) {
 
-          let medicalCenter = {
-            medical_center_name: vm.medicalCenter.name,
-            medical_center_address: vm.medicalCenter.address,
-            medical_center_postal_code: vm.medicalCenter.postalCode,
-            medical_center_city: vm.medicalCenter.city,
-            medical_center_province: vm.medicalCenter.province,
-            medical_center_country: vm.medicalCenter.country
-          }
+    //       let medicalCenter = {
+    //         medical_center_name: vm.medicalCenter.name,
+    //         medical_center_address: vm.medicalCenter.address,
+    //         medical_center_postal_code: vm.medicalCenter.postalCode,
+    //         medical_center_city: vm.medicalCenter.city,
+    //         medical_center_province: vm.medicalCenter.province,
+    //         medical_center_country: vm.medicalCenter.country
+    //       }
 
-          medicalCenterService.addMedicalCenter(medicalCenter);
+    //       medicalCenterService.addMedicalCenter(medicalCenter);
 
-          let userInfo = {
-            rol: 'director',
-            username: userServiceData.loggedUser.username,
-            password: userServiceData.loggedUser.password,
-            health_data: {
-              med_center_id: medicalCenterServiceData.medicalCenterCreated
-            }
-          }
+    //       let userInfo = {
+    //         rol: 'director',
+    //         username: userServiceData.loggedUser.username,
+    //         password: userServiceData.loggedUser.password,
+    //         health_data: {
+    //           med_center_id: medicalCenterServiceData.medicalCenterCreated
+    //         }
+    //       }
 
-          userService.editUser(userServiceData.loggedUser.id, userInfo, 'redirect');
+    //       userService.editUser(userServiceData.loggedUser.id, userInfo, 'redirect');
 
-        } else {
+    //     } else {
 
-          vm.registerStep1 = false;
-          vm.registerStep2 = false;
-          vm.registerStep3 = false;
-          vm.registerStep4 = true;
+    //       vm.registerStep1 = false;
+    //       vm.registerStep2 = false;
+    //       vm.registerStep3 = false;
+    //       vm.registerStep4 = true;
 
-          vm.errorMessage = 'Required field not filled in or incorrect';
+    //       vm.errorMessage = 'Required field not filled in or incorrect';
 
-          vm.openMessageWindow = true;
-          $timeout(function () {vm.openMessageWindow = false;}, 3000);
+    //       vm.openMessageWindow = true;
+    //       $timeout(function () {vm.openMessageWindow = false;}, 3000);
 
-        }
+    //     }
 
-      }
+    //   }
 
-    }
+    // }
 
     function initWatchers() {
 
@@ -382,6 +373,17 @@ app.controller('loginCtrl',
           if (newValue === true) {
             getLoggedUser();
             userService.userLoadedAfterLogin = false;
+          }
+        }
+      );
+
+      vm.googleUserWatcher = $scope.$watch(
+        function () {
+          return userService.newGoogleUser;
+        }, function (newValue) {
+          if (newValue === true) {
+            goToPersonalData();
+            userService.newGoogleUser = false;
           }
         }
       );

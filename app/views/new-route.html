@@ -1,3 +1,7 @@
+<notification text="Route Created!"
+              show-condition="newRoute.newRouteUpdated">
+</notification>
+
 <div class="main-container-inner">
 
   <div class="map-container">
@@ -49,12 +53,11 @@
              ng-show="('routes.new_route' | routeSegmentEqualsTo)"
              required>
 
-      <input type="text"
-             placeholder="Country"
-             class="input-text"
-             ng-model="newRoute.route.route_country"
-             ng-show="('routes.new_route' | routeSegmentEqualsTo)"
-             required>
+      <select class="width-100"
+              ng-model="newRoute.route.route_country"
+              ng-options="country.code as country.name for country in newRoute.countries" required>
+        <option value="">Country</option>
+      </select>
 
       <hr class="space-new-route">
 

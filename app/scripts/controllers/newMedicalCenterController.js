@@ -1,13 +1,5 @@
 'use strict';
 
-/**
- * @ngdoc function
- * @name activeSchoolsAdminZoneApp.controller:AboutCtrl
- * @description
- * # AboutCtrl
- * Controller of the activeSchoolsAdminZoneApp
- */
-
 app.controller('newMedicalCenterCtrl', ['$location', 'medicalCenterService', 'ICONS', 'COUNTRIES',
   function ($location, medicalCenterService, ICONS, COUNTRIES) {
 

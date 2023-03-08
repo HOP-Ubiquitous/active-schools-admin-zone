@@ -1,19 +1,13 @@
 'use strict';
 
-/**
- * @ngdoc function
- * @name activeSchoolsAdminZoneApp.controller:AboutCtrl
- * @description
- * # AboutCtrl
- * Controller of the activeSchoolsAdminZoneApp
- */
-
-app.controller('newChallengeCtrl', ['$location', 'challengeService', 'ICONS', 'COUNTRIES',
-  function ($location, challengeService, ICONS, COUNTRIES) {
+app.controller('newChallengeCtrl', ['$scope', '$sce', '$location', 'challengeService', 'ICONS', 'COUNTRIES',
+  function ($scope, $sce, $location, challengeService, ICONS, COUNTRIES) {
 
     var vm = this;
     vm.icons = ICONS;
     vm.countries = COUNTRIES.countries;
+    vm.newChallengeUpdated = challengeService.newChallengeUpdated;
+    vm.videoTransformed = false;
     vm.categories = [
       {
         name: 'Aerobics',
@@ -60,7 +54,7 @@ app.controller('newChallengeCtrl', ['$location', 'challengeService', 'ICONS', 'C
 
       let challenge =  {
         title: vm.challenge.title,
-        //category: vm.challenge.category,
+        category: vm.challenge.category,
         description: vm.challenge.description,
         target: vm.challenge.target,
         unit: vm.challenge.unit,
@@ -75,5 +69,51 @@ app.controller('newChallengeCtrl', ['$location', 'challengeService', 'ICONS', 'C
     vm.goToChallenges = function(){
       $location.path('challenges');
     };
+
+    vm.getEmbedUrl = function(event) {
+      vm.embedUrl = '';
+      vm.videoId = '';
+  
+      var regExp = /^.*((youtu.be\/)|(v\/)|(\/u\/\w\/)|(embed\/)|(watch\?))\??v?=?([^#&?]*).*/;
+      var match = event.currentTarget.value.match(regExp);
+      vm.videoId = (match&&match[7].length==11)? match[7] : false;
+  
+      vm.videoTransformed = true;
+  
+    }
+  
+    function getVideoTransformed () {
+      vm.embedUrl = vm.videoId;
+    }
+  
+    vm.trustSrc = (url) => {
+      return $sce.trustAsResourceUrl(url);
+    }
+
+    function initWatchers() {
+
+      vm.newVideoWatcher = $scope.$watch(
+        function () {
+          return vm.videoTransformed;
+        }, function (newValue) {
+          if (newValue === true) {
+            getVideoTransformed();
+            vm.videoTransformed = false;
+          }
+        }
+      );
+
+      vm.newChallengeUpdatedWathcher = $scope.$watch(
+        function () {
+          return challengeService.newChallengeUpdated;
+        }, function (newValue) {
+          //TODO Revisar mostrar notificaciones
+          vm.newChallengeUpdated = newValue;
+        }
+      );
+
+    }
+
+    initWatchers();
 
   }]);

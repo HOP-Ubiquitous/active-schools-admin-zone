@@ -1,12 +1,5 @@
 'use strict';
 
-/**
- * @ngdoc function
- * @name activeSchoolsAdminZoneApp.controller:AboutCtrl
- * @description
- * # AboutCtrl
- * Controller of the activeSchoolsAdminZoneApp
- */
 app.service('schoolService', ['schoolServiceApi', 'schoolServiceData', '$location', '$q',
   function(schoolServiceApi, schoolServiceData, $location, $q){
 
@@ -58,14 +51,20 @@ app.service('schoolService', ['schoolServiceApi', 'schoolServiceData', '$locatio
     return promise;
   };
 
-  service.addSchool = function (data) {
+  service.addSchool = function (data, type) {
 
     var deferred = $q.defer();
     var promise = deferred.promise;
 
     schoolServiceApi.add_school(data).then(
       function success(response){
-        service.getSchools();
+        
+        if(type === 'signin') {
+          $location.path('/home');
+        } else {
+          service.getSchools();
+        }
+        
         console.log('\x1b[32m%s\x1b[0m', 'Colegio añadido con éxito! :)');
       }
     ).catch(

@@ -1,12 +1,5 @@
 'use strict';
 
-/**
- * @ngdoc function
- * @name activeSchoolsAdminZoneApp.controller:AboutCtrl
- * @description
- * # AboutCtrl
- * Controller of the activeSchoolsAdminZoneApp
- */
 app.service('recoverService', ['recoverServiceApi', 'recoverServiceData', '$location', 'cookies', 'timeout', '$q', function(recoverServiceApi, recoverServiceData, $location, $cookies, $timeout, $q){
 
   var service = this;

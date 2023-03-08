@@ -1,13 +1,5 @@
 'use strict';
 
-/**
- * @ngdoc function
- * @name activeSchoolsAdminZoneApp.controller:AboutCtrl
- * @description
- * # AboutCtrl
- * Controller of the activeSchoolsAdminZoneApp
- */
-
 app.controller('editUserCtrl', ['$scope', '$location', 'userService', 'userServiceData', '$routeParams', 'ICONS', 'COUNTRIES',
   function ($scope, $location, userService, userServiceData, $routeParams, ICONS, COUNTRIES) {
 

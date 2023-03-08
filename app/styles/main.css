@@ -37,8 +37,8 @@ table {
 }
 
 .table-see{
-  margin: 0 auto;
-  width: 100%;
+  margin: 0 auto 0 -7px;
+  width: calc(100% + 7px);
   position:relative;
   text-align: center;
   background-size: auto;
@@ -66,6 +66,11 @@ th {
 td {
   color: var(--green);
   font-weight: normal;
+}
+
+th:first-child, td:first-child {
+  text-align: left;
+  padding-left: 7px;
 }
 
 tr {
@@ -376,12 +381,14 @@ ul.tabs li {
 .new-challenge-video {
   width: 100%;
   aspect-ratio: 16 / 9;
-  border: 1px solid #00A195;
+  /* border: 1px solid #00A195; */
   margin-bottom: 10px;
 }
 
 .new-challenge-video iframe {
   border: none;
+  width: 100%;
+  aspect-ratio: 16 / 9;
 }
 
 .new-challenge-table{

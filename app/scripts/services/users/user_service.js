@@ -1,12 +1,5 @@
 'use strict';
 
-/**
- * @ngdoc function
- * @name activeSchoolsAdminZoneApp.controller:AboutCtrl
- * @description
- * # AboutCtrl
- * Controller of the activeSchoolsAdminZoneApp
- */
 app.service('userService', ['userServiceApi', 'userServiceData', '$location', '$q', '$cookies',
   function(userServiceApi, userServiceData, $location, $q, $cookies){
 
@@ -14,6 +7,7 @@ app.service('userService', ['userServiceApi', 'userServiceData', '$location', '$
   service.usersLoaded = false;
   service.userByIdLoaded = false;
   service.userLoadedAfterLogin = false;
+  service.newGoogleUser = false;
 
   service.getUsers = function () {
 
@@ -44,15 +38,6 @@ app.service('userService', ['userServiceApi', 'userServiceData', '$location', '$
     userServiceApi.get_user_by_id(user_id).then(
       function success (response) {
         userServiceData.userById = response.data;
-
-        if (type === 'addUser' || type === 'loggedUser') {
-          userServiceData.loggedUser = response.data;
-        } else if (type === 'redirect') {
-          userServiceData.loggedUser = response.data;
-          $cookies.put('active_school_user', JSON.stringify(response.data));
-          $location.path('/home');
-        }
-
         service.userByIdLoaded = true;
         console.log('\x1b[32m%s\x1b[0m', 'El usuario ' + user_id + ' cargado con éxito! :)');
       }
@@ -171,6 +156,143 @@ app.service('userService', ['userServiceApi', 'userServiceData', '$location', '$
     );
 
     return promise;
+  };
+
+  service.login = function(data) {
+
+    var deferred = $q.defer();
+    var promise = deferred.promise;
+
+    userServiceApi.login(data).then(
+      function success (response) {
+        
+        console.log(response.data);
+        if ($cookies.get('access_token') !== undefined) {
+         $cookies.remove('access_token');
+        }
+
+        $cookies.put('access_token', JSON.stringify(response.data.access_token));
+        service.getLoggedUser(response.data.user_id)
+
+        service.userLoadedAfterLogin = true;
+        console.log('\x1b[32m%s\x1b[0m', 'Usuario logueado con éxito! :)');
+
+      }
+    ).catch(
+      function () {
+        console.log('\x1b[31m%s\x1b[0m', 'Error al loguear el usuario! :_(');
+      }
+    );
+
+    return promise;
+
+  };
+
+  service.googleLogin = function(data) {
+
+    var deferred = $q.defer();
+    var promise = deferred.promise;
+
+    userServiceApi.login(data).then(
+      function success (response) {
+        
+        console.log(response.data);
+        if ($cookies.get('access_token') !== undefined) {
+         $cookies.remove('access_token');
+        }
+
+        $cookies.put('access_token', JSON.stringify(response.data.access_token));
+        service.getLoggedUser(response.data.user_id)
+
+        service.userLoadedAfterLogin = true;
+        service.newGoogleUser = false;
+        console.log('\x1b[32m%s\x1b[0m', 'Usuario logueado con éxito! :)');
+
+      }
+    ).catch(
+      function () {
+        service.newGoogleUser = true;
+        console.log('\x1b[31m%s\x1b[0m', 'Error al loguear el usuario! :_(');
+      }
+    );
+
+    return promise;
+
+  };
+
+  service.getLoggedUser = function(user_id) {
+
+    var deferred = $q.defer();
+    var promise = deferred.promise;
+
+    userServiceApi.get_user_by_id(user_id).then(
+      function success (response) {
+
+        userServiceData.loggedUser = response.data;
+        $cookies.put('active_school_user', JSON.stringify(response.data));
+        $location.path('/home');
+
+        service.userByIdLoaded = true;
+        console.log('\x1b[32m%s\x1b[0m', 'El usuario ' + user_id + ' cargado con éxito! :)');
+      }
+    ).catch(
+      function () {
+        console.log('\x1b[31m%s\x1b[0m', 'Error al cargar el usuario ' + user_id + '! :_(');
+      }
+    );
+
+    return promise;
+
+  };
+
+  service.logout = function() {
+
+    var deferred = $q.defer();
+    var promise = deferred.promise;
+
+    userServiceApi.logout().then(
+      function success (response) {
+        
+        userServiceData.loggedUser = {};
+        service.userLoadedAfterLogin = true;
+        $location.path('/login');
+        console.log('\x1b[32m%s\x1b[0m', 'Usuario deslogueado con éxito! :)');
+
+      }
+    ).catch(
+      function () {
+        userServiceData.loggedUser = {};
+        $location.path('/login');
+        console.log('\x1b[31m%s\x1b[0m', 'Error al desloguear el usuario! :_(');
+      }
+    );
+
+    return promise;
+
+  };
+
+  service.refreshToken = function() {
+
+    var deferred = $q.defer();
+    var promise = deferred.promise;
+
+    userServiceApi.refresh_token().then(
+      function success (response) {
+        
+        userServiceData.loggedUser = {};
+        //TODO Guardar token en una $cookie
+        service.userLoadedAfterLogin = true;
+        console.log('\x1b[32m%s\x1b[0m', 'Token recibido con éxito! :)');
+
+      }
+    ).catch(
+      function () {
+        console.log('\x1b[31m%s\x1b[0m', 'Error al recibir token! :_(');
+      }
+    );
+
+    return promise;
+
   };
 
 }]);

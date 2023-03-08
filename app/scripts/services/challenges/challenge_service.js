@@ -1,20 +1,15 @@
 'use strict';
 
-/**
- * @ngdoc function
- * @name activeSchoolsAdminZoneApp.controller:AboutCtrl
- * @description
- * # AboutCtrl
- * Controller of the activeSchoolsAdminZoneApp
- */
-app.service('challengeService', ['challengeServiceApi', 'challengeServiceData', '$location', '$q',
-  function(challengeServiceApi, challengeServiceData, $location, $q){
+app.service('challengeService', ['challengeServiceApi', 'challengeServiceData', '$location', '$q', '$timeout',
+  function(challengeServiceApi, challengeServiceData, $location, $q, $timeout){
 
   var service = this;
   service.allChallengesLoaded = false;
   service.newRouteChallengesLoaded = false;
   service.editRouteChallengesLoaded = false;
   service.challengeByIdLoaded = false;
+  service.newChallengeUpdated = false;
+  service.challengeUpdated = false;
 
   service.getChallenges = function () {
 
@@ -67,12 +62,20 @@ app.service('challengeService', ['challengeServiceApi', 'challengeServiceData', 
 
     challengeServiceApi.add_challenge(data).then(
       function success(response){
+
+        service.newChallengeUpdated = true;
+          
+        $timeout(function(){
+          $location.path('/challenges')
+          service.newChallengeUpdated = false;
+        }, 4000);
+
         service.getChallenges();
         console.log('\x1b[32m%s\x1b[0m', 'Reto añadido con éxito! :)');
       }
     ).catch(
-      function () {
-        console.log('\x1b[31m%s\x1b[0m', 'Error al crear reto! :_(');
+      function (error) {
+        console.log('\x1b[31m%s\x1b[0m', 'Error al crear reto! :_( - ' + error);
       }
     );
 
@@ -86,6 +89,14 @@ app.service('challengeService', ['challengeServiceApi', 'challengeServiceData', 
 
     challengeServiceApi.edit_challenge(challenge_id, data).then(
       function success(response){
+
+        service.challengeUpdated = true;
+          
+        $timeout(function(){
+          $location.path('/challenges')
+          service.challengeUpdated = false;
+        }, 4000);
+
         service.getChallenges();
         console.log('\x1b[32m%s\x1b[0m', 'El reto ' + challenge_id + ' editado con éxito! :)');
       }

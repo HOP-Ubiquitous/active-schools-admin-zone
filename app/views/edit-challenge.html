@@ -1,3 +1,7 @@
+<notification text="Challenge Updated!"
+              show-condition="editChallenge.challengeUpdated">
+</notification>
+
 <div class="main-container-inner-right">
 
   <div class="new-route-form" ng-show="('challenges.edit_challenge.challenge_id' | routeSegmentEqualsTo)">
@@ -17,10 +21,11 @@
              ng-model="editChallenge.challenge.title"
              required>
 
-      <select ng-model="editChallenge.challenge.category"
-                placeholder="Select Category"
-                ng-show="('challenges.edit_challenge.challenge_id' | routeSegmentEqualsTo)"
-                ng-options="category.value as category.name for category in editChallenge.categories" required>
+      <select class="width-100"
+              ng-model="editChallenge.challenge.category"
+              placeholder="Select Category"
+              ng-show="('challenges.edit_challenge.challenge_id' | routeSegmentEqualsTo)"
+              ng-options="category.value as category.name for category in editChallenge.categories" required>
         <option value="">Select Category</option>
       </select>
 
@@ -38,10 +43,11 @@
              ng-model="editChallenge.challenge.target"
              required>
 
-      <select ng-model="editChallenge.challenge.unit"
-                placeholder="Select Unit"
-                ng-show="('challenges.edit_challenge' | routeSegmentEqualsTo)"
-                ng-options="unit.value as unit.name for unit in editChallenge.units" required>
+      <select class="width-100"
+              ng-model="editChallenge.challenge.unit"
+              placeholder="Select Unit"
+              ng-show="('challenges.edit_challenge' | routeSegmentEqualsTo)"
+              ng-options="unit.value as unit.name for unit in editChallenge.units" required>
         <option value="">Select Unit</option>
       </select>
 
@@ -59,18 +65,25 @@
              ng-model="editChallenge.challenge.reward"
              required>
 
-      <input type="url" placeholder="Youtube URL" class="input-text" ng-model="editChallenge.challenge.video" ng-show="('challenges.edit_challenge.challenge_id' | routeSegmentEqualsTo)" required>
+      <input type="url"
+             placeholder="Youtube URL"
+             class="input-text"
+             ng-model="editChallenge.challenge.video"
+             ng-blur="editChallenge.getEmbedUrl($event)"
+             ng-show="('challenges.edit_challenge.challenge_id' | routeSegmentEqualsTo)" required>
 
       <br>
 
       <div class="new-challenge-video">
-        <iframe width="100%" height="100%" src="{{video}}"  >
+        <iframe src="{{editChallenge.trustSrc('https://www.youtube.com/embed/' + editChallenge.embedUrl)}}" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen >
         </iframe>
       </div>
 
+      <hr class="space-new-route">
+
       <button-form show-button="('challenges.edit_challenge.challenge_id' | routeSegmentEqualsTo)"
                    click-button="editChallenge.edit()"
-                   text-button="Edit Route">
+                   text-button="Edit Challenge">
       </button-form>
 
     </form>

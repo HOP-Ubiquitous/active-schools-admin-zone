@@ -81,7 +81,8 @@
   font-size: 14px;
  -webkit-clip-path: polygon(20px 0%, calc(100% - 20px) 0%, 100% 20px, calc(100% - 20px) 100%, 20px 100%, 0% 20px);
   clip-path: polygon(20px 0%, calc(100% - 20px) 0%, 100% 20px, calc(100% - 20px) 100%, 20px 100%, 0% 20px);
-  margin-bottom: 10px;
+  /* margin-bottom: 10px; */
+  text-align: center;
 }
 
 ::-webkit-input-placeholder {
@@ -254,13 +255,13 @@
   width: 0;
 }
 
-.login-register-progress-inner-25 {
-  width: 33.33%;
+.login-register-progress-inner-50 {
+  width: 50%;
 }
 
-.login-register-progress-inner-75 {
+/* .login-register-progress-inner-75 {
   width: 66.66%;
-}
+} */
 
 .login-register-progress-inner-100 {
   width: 100%;
@@ -288,4 +289,12 @@
   justify-content: center;
   align-items: center;
   margin: 20px auto 0 auto;
+}
+
+.login-form {
+  padding: 20px 0;
+}
+
+.input-login {
+  margin: 0 auto 10px 0 ;
 }

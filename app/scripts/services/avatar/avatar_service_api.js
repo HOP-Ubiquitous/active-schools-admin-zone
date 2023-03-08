@@ -1,26 +1,20 @@
 'use strict';
 
-/**
- * @ngdoc function
- * @name activeSchoolsAdminZoneApp.controller:AboutCtrl
- * @description
- * # AboutCtrl
- * Controller of the activeSchoolsAdminZoneApp
- */
-
-app.service('avatarServiceApi', ['$http', 'API_URL', function($http, API_URL) {
+app.service('avatarServiceApi', ['$http', 'API_URL', 'userServiceData', function($http, API_URL, userServiceData) {
 
   var apiService = {};
   var apiURL = API_URL.url;
+  var headers = {
+    'Content-Type': 'application/json',
+    'Access-Control-Allow-Origin': '*',
+    'Authorization': 'Bearer ' + userServiceData.accessToken
+  }
 
   apiService.get_avatar_levels = function () {
     return $http({
       method: 'GET',
       url: apiURL + 'avatar_levels',
-      headers: {
-        'Content-Type': 'application/json',
-        'Access-Control-Allow-Origin': '*'
-      }
+      headers: headers
     });
   };
 
@@ -28,10 +22,7 @@ app.service('avatarServiceApi', ['$http', 'API_URL', function($http, API_URL) {
     return $http({
       method: 'GET',
       url: apiURL + 'avatar_levels/' + avatar_level_id,
-      headers: {
-        'Content-Type': 'application/json',
-        'Access-Control-Allow-Origin': '*'
-      }
+      headers: headers
     });
   };
 
@@ -40,10 +31,7 @@ app.service('avatarServiceApi', ['$http', 'API_URL', function($http, API_URL) {
       method: 'POST',
       data: data,
       url: apiURL + 'avatar_levels',
-      headers: {
-        'Content-Type': 'application/json',
-        'Access-Control-Allow-Origin': '*'
-      }
+      headers: headers
     });
   };
 
@@ -52,10 +40,7 @@ app.service('avatarServiceApi', ['$http', 'API_URL', function($http, API_URL) {
       method: 'PUT',
       data: data,
       url: apiURL + 'avatar_levels/' + avatar_level_id,
-      headers: {
-        'Content-Type': 'application/json',
-        'Access-Control-Allow-Origin': '*'
-      }
+      headers: headers
     });
   };
 
@@ -63,10 +48,7 @@ app.service('avatarServiceApi', ['$http', 'API_URL', function($http, API_URL) {
     return $http({
       method: 'DELETE',
       url: apiURL + 'avatar_levels/' + avatar_level_id,
-      headers: {
-        'Content-Type': 'application/json',
-        'Access-Control-Allow-Origin': '*'
-      }
+      headers: headers
     });
   };
 
@@ -74,10 +56,7 @@ app.service('avatarServiceApi', ['$http', 'API_URL', function($http, API_URL) {
     return $http({
       method: 'GET',
       url: apiURL + 'avatar_accessories',
-      headers: {
-        'Content-Type': 'application/json',
-        'Access-Control-Allow-Origin': '*'
-      }
+      headers: headers
     });
   };
 
@@ -85,10 +64,7 @@ app.service('avatarServiceApi', ['$http', 'API_URL', function($http, API_URL) {
     return $http({
       method: 'GET',
       url: apiURL + 'avatar_accessories/' + avatar_accessory_id,
-      headers: {
-        'Content-Type': 'application/json',
-        'Access-Control-Allow-Origin': '*'
-      }
+      headers: headers
     });
   };
 
@@ -97,10 +73,7 @@ app.service('avatarServiceApi', ['$http', 'API_URL', function($http, API_URL) {
       method: 'POST',
       data: data,
       url: apiURL + 'avatar_accessories',
-      headers: {
-        'Content-Type': 'application/json',
-        'Access-Control-Allow-Origin': '*'
-      }
+      headers: headers
     });
   };
 
@@ -109,10 +82,7 @@ app.service('avatarServiceApi', ['$http', 'API_URL', function($http, API_URL) {
       method: 'PUT',
       data: data,
       url: apiURL + 'avatar_accessories/' + avatar_accessory_id,
-      headers: {
-        'Content-Type': 'application/json',
-        'Access-Control-Allow-Origin': '*'
-      }
+      headers: headers
     });
   };
 
@@ -120,10 +90,7 @@ app.service('avatarServiceApi', ['$http', 'API_URL', function($http, API_URL) {
     return $http({
       method: 'DELETE',
       url: apiURL + 'avatar_accessories/' + avatar_accessory_id,
-      headers: {
-        'Content-Type': 'application/json',
-        'Access-Control-Allow-Origin': '*'
-      }
+      headers: headers
     });
   };
 

@@ -1,26 +1,20 @@
 'use strict';
 
-/**
- * @ngdoc function
- * @name activeSchoolsAdminZoneApp.controller:AboutCtrl
- * @description
- * # AboutCtrl
- * Controller of the activeSchoolsAdminZoneApp
- */
-
-app.service('userServiceApi', ['$http', 'API_URL', function($http, API_URL) {
+app.service('userServiceApi', ['$http', 'API_URL', 'userServiceData', function($http, API_URL, userServiceData) {
 
   var apiService = {};
   var apiURL = API_URL.url;
+  var headers = {
+    'Content-Type': 'application/json',
+    'Access-Control-Allow-Origin': '*',
+    'Authorization': 'Bearer ' + userServiceData.accessToken
+  }
 
   apiService.get_users = function () {
     return $http({
       method: 'GET',
       url: apiURL + 'users',
-      headers: {
-        'Content-Type': 'application/json',
-        'Access-Control-Allow-Origin': '*'
-      }
+      headers: headers
     });
   };
 
@@ -28,10 +22,7 @@ app.service('userServiceApi', ['$http', 'API_URL', function($http, API_URL) {
     return $http({
       method: 'GET',
       url: apiURL + 'users/' + user_id,
-      headers: {
-        'Content-Type': 'application/json',
-        'Access-Control-Allow-Origin': '*'
-      }
+      headers: headers
     });
   };
 
@@ -52,10 +43,7 @@ app.service('userServiceApi', ['$http', 'API_URL', function($http, API_URL) {
       method: 'PUT',
       data: data,
       url: apiURL + 'users/' + user_id,
-      headers: {
-        'Content-Type': 'application/json',
-        'Access-Control-Allow-Origin': '*'
-      }
+      headers: headers
     });
   };
 
@@ -63,10 +51,7 @@ app.service('userServiceApi', ['$http', 'API_URL', function($http, API_URL) {
     return $http({
       method: 'DELETE',
       url: apiURL + 'users/' + user_id,
-      headers: {
-        'Content-Type': 'application/json',
-        'Access-Control-Allow-Origin': '*'
-      }
+      headers: headers
     });
   };
 
@@ -75,10 +60,7 @@ app.service('userServiceApi', ['$http', 'API_URL', function($http, API_URL) {
       method: 'POST',
       data: data,
       url: apiURL + 'users/' + user_id + '/routes/' + route_id,
-      headers: {
-        'Content-Type': 'application/json',
-        'Access-Control-Allow-Origin': '*'
-      }
+      headers: headers
     });
   };
 
@@ -87,10 +69,35 @@ app.service('userServiceApi', ['$http', 'API_URL', function($http, API_URL) {
       method: 'POST',
       data: data,
       url: apiURL + 'users/' + user_id + '/routes/' + route_id + '/challenges/' + challenge_id,
+      headers: headers
+    });
+  };
+
+  apiService.login = function (data) {
+    return $http({
+      method: 'POST',
+      data: data,
+      url: apiURL + 'login',
       headers: {
         'Content-Type': 'application/json',
         'Access-Control-Allow-Origin': '*'
       }
+    });
+  };
+
+  apiService.logout = function () {
+    return $http({
+      method: 'GET',
+      url: apiURL + 'logout',
+      headers: headers
+    });
+  };
+
+  apiService.refresh_token = function () {
+    return $http({
+      method: 'GET',
+      url: apiURL + 'refresh_token',
+      headers: headers
     });
   };
 

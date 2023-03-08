@@ -1,3 +1,7 @@
+<notification text="Challenge Created!"
+              show-condition="newChallenge.newChallengeUpdated">
+</notification>
+
 <div class="main-container-inner-right">
 
   <div class="new-route-form" ng-show="('challenges.new_challenge' | routeSegmentEqualsTo)">
@@ -17,10 +21,11 @@
              ng-model="newChallenge.challenge.title"
              required>
 
-      <select ng-model="newChallenge.challenge.category"
-                placeholder="Select Category"
-                ng-show="('challenges.new_challenge' | routeSegmentEqualsTo)"
-                ng-options="category.value as category.name for category in newChallenge.categories" required>
+      <select class="width-100"
+              ng-model="newChallenge.challenge.category"
+              placeholder="Select Category"
+              ng-show="('challenges.new_challenge' | routeSegmentEqualsTo)"
+              ng-options="category.value as category.name for category in newChallenge.categories" required>
         <option value="">Select Category</option>
       </select>
 
@@ -34,14 +39,15 @@
       <input type="number"
              ng-show="('challenges.new_challenge' | routeSegmentEqualsTo)"
              placeholder="Target"
-             class="input-number"
+             class="input-text"
              ng-model="newChallenge.challenge.target"
              required>
 
-      <select ng-model="newChallenge.challenge.unit"
-                placeholder="Select Unit"
-                ng-show="('challenges.new_challenge' | routeSegmentEqualsTo)"
-                ng-options="unit.value as unit.name for unit in newChallenge.units" required>
+      <select class="width-100"
+              ng-model="newChallenge.challenge.unit"
+              placeholder="Select Unit"
+              ng-show="('challenges.new_challenge' | routeSegmentEqualsTo)"
+              ng-options="unit.value as unit.name for unit in newChallenge.units" required>
         <option value="">Select Unit</option>
       </select>
 
@@ -55,22 +61,27 @@
       <input type="number"
              ng-show="('challenges.new_challenge' | routeSegmentEqualsTo)"
              placeholder="Experience reward"
-             class="input-number"
+             class="input-text"
              ng-model="newChallenge.challenge.reward"
              required>
 
-      <input type="url" placeholder="Youtube URL" class="input-text" ng-model="newChallenge.challenge.video" ng-show="('challenges.new_challenge' | routeSegmentEqualsTo)" required>
-
-      <br>
+      <input type="url"
+             placeholder="Youtube URL"
+             class="input-text"
+             ng-model="newChallenge.challenge.video"
+             ng-blur="newChallenge.getEmbedUrl($event)"
+             ng-show="('challenges.new_challenge' | routeSegmentEqualsTo)" required>
 
       <div class="new-challenge-video">
-        <iframe width="100%" height="100%" src="{{video}}"  >
+        <iframe src="{{newChallenge.trustSrc('https://www.youtube.com/embed/' + newChallenge.embedUrl)}}" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen >
         </iframe>
       </div>
 
+      <hr class="space-new-route">
+
       <button-form show-button="('challenges.new_challenge' | routeSegmentEqualsTo)"
                    click-button="newChallenge.save()"
-                   text-button="Add Route">
+                   text-button="Add Challenge">
       </button-form>
 
     </form>
