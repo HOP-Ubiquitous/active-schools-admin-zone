@@ -10,17 +10,11 @@ app.service('routeServiceApi', ['$http', 'API_URL', 'userServiceData', function(
     'Authorization': 'Bearer ' + userServiceData.accessToken
   }
 
-  var test = {
-    "fiware-service": "puertomalaga",
-    "fiware-servicepath": "/puertomalaga",
-    "Authorization": "Basic cWxfcm86VkRhUDNGaHBmVU42RlQzR1RIcVZReklmUFdKT1F1dHM="
-  }
-
   apiService.get_routes = function () {
     return $http({
       method: 'GET',
-      url: 'https://fiware.hopu.eu/quantumleap-readonly/v2/attrs?type=device_lastdata&attrs=location,controlledDatamodels&lastN=1000',
-      headers: test
+      url: apiURL + 'routes',
+      headers: headers
     });
   };
 
