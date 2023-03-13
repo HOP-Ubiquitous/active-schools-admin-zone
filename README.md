@@ -1,12 +1,12 @@
-# active-schools-admin-zone
+# To install dependencies
 
-This project is generated with [yo angular generator](https://github.com/yeoman/generator-angular)
-version 0.16.0.
+- `npm install`
+- `bower install`
 
-## Build & development
+## Develop version
 
-Run `grunt` for building and `grunt serve` for preview.
+Run `grunt serve`
 
-## Testing
+## Release
 
-Running `grunt test` will run the unit tests with karma.
+Run `grunt serve:dist`

@@ -14,9 +14,10 @@ module.exports = function (grunt) {
 
   // Automatically load required Grunt tasks
   require('jit-grunt')(grunt, {
+    uglify : "grunt-contrib-uglify",
     useminPrepare: 'grunt-usemin',
     ngtemplates: 'grunt-angular-templates',
-    cdnify: 'grunt-google-cdn'
+    cdnify: 'grunt-google-cdn2'
   });
 
   // Configurable paths for the application
@@ -226,9 +227,9 @@ module.exports = function (grunt) {
     filerev: {
       dist: {
         src: [
-          '<%= yeoman.dist %>/scripts/{,*/}*.js',
-          '<%= yeoman.dist %>/styles/{,*/}*.css',
-          '<%= yeoman.dist %>/images/{,*/}*.{png,jpg,jpeg,gif,webp,svg}',
+          //'<%= yeoman.dist %>/scripts/{,*/}*.js',
+          //'<%= yeoman.dist %>/styles/{,*/}*.css',
+          //'<%= yeoman.dist %>/images/{,*/}*.{png,jpg,jpeg,gif,webp,svg}',
           '<%= yeoman.dist %>/styles/fonts/*'
         ]
       }
@@ -382,6 +383,24 @@ module.exports = function (grunt) {
             'images/{,*/}*.{webp}',
             'styles/fonts/{,*/}*.*'
           ]
+        }, {
+          expand: true,
+          dot: true,
+          cwd: 'https://kit.fontawesome.com/b4d651f5d6.js',
+          src: ['*.js'],
+          dest: '<%= yeoman.dist %>/scripts'
+        }, {
+          expand: true,
+          dot: true,
+          cwd: 'scripts/vendor/leaflet/dist/leaflet.css',
+          src: ['*.css'],
+          dest: '<%= yeoman.dist %>/styles'
+        }, {
+          expand: true,
+          dot: true,
+          cwd: 'scripts/vendor/leaflet-routing-machine/dist/leaflet-routing-machine.css',
+          src: ['*.css'],
+          dest: '<%= yeoman.dist %>/styles'
         }, {
           expand: true,
           cwd: '.tmp/images',

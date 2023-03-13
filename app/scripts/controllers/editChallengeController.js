@@ -66,7 +66,7 @@ app.controller('editChallengeCtrl', ['$scope', '$location', '$sce', 'challengeSe
         unit: vm.challenge.unit,
         instructions: vm.challenge.instructions,
         reward: vm.challenge.reward,
-        video: vm.challenge.video
+        video: vm.videoId
       };
 
       challengeService.editChallenge(vm.id, challenge);

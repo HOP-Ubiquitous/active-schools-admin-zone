@@ -60,7 +60,7 @@ app.controller('newChallengeCtrl', ['$scope', '$sce', '$location', 'challengeSer
         unit: vm.challenge.unit,
         instructions: vm.challenge.instructions,
         reward: vm.challenge.reward,
-        video: vm.challenge.video
+        video: vm.videoId
       };
 
       challengeService.addChallenge(challenge);
