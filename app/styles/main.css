@@ -621,12 +621,13 @@ ul.tabs li {
 
 .home-button-span {
   background-color: var(--green);
-  grid-column: 3 / span 2;
+  grid-column: 2 / span 3;
   aspect-ratio: unset;
   pointer-events: none;
   display: grid;
-  grid-template-columns: repeat(2,1fr);
+  grid-template-columns: repeat(3,1fr);
   padding: 20px 0;
+  max-height: 150px;
 }
 
 .home-button span {
@@ -662,5 +663,27 @@ ul.tabs li {
 }
 
 .home-stat span {
+  display: block;
+  flex-wrap: wrap;
+  flex-basis: 100%;
+  width: 50%;
+  height: 50px;
+  line-height: 50px;
   font-size: 42px;
+  color: rgba(255, 255, 255, 0.8);
+  margin: auto;
+  transition: 0.15s ease all;
+}
+
+.home-stat p {
+  font-weight: 600;
+  font-size: 16px;
+  color: rgba(255, 255, 255, 0.8);
+  transition: 0.15s ease all;
+}
+
+.home-button-unactive {
+  background: #ccc;
+  opacity: 0.5;
+  pointer-events: none;
 }

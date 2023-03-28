@@ -309,14 +309,14 @@ app.controller('newRouteCtrl', ['$scope', '$location', '$window', '$routeParams'
         }
       );
 
-      vm.newRouteUpdatedWatcher = $scope.$watch(
-        function () {
-          return routeService.newRouteUpdated;
-        }, function (newValue) {
-          vm.newRouteUpdated = newValue;
-          $scope.$apply(vm.newRouteUpdated);
-        }
-      );
+      // vm.newRouteUpdatedWatcher = $scope.$watch(
+      //   function () {
+      //     return routeService.newRouteUpdated;
+      //   }, function (newValue) {
+      //     vm.newRouteUpdated = newValue;
+      //     $scope.$apply(vm.newRouteUpdated);
+      //   }
+      // );
 
     }
 

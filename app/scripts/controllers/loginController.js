@@ -33,10 +33,9 @@ app.controller('loginCtrl',
 
     var firebaseConfig = FIREBASE;
 
-    firebase.initializeApp(firebaseConfig);
-    // if (firebase === undefined) {
-    //   firebase.initializeApp(firebaseConfig);
-    // }
+    if (firebase.apps.length === 0) {
+      firebase.initializeApp(firebaseConfig);
+    }
 
     var provider = new firebase.auth.GoogleAuthProvider();
     provider.addScope('email');
@@ -57,7 +56,6 @@ app.controller('loginCtrl',
       }
     ];
 
-
     if ($cookies.get('active_school_user') !== undefined) {
       vm.user = JSON.parse($cookies.get('active_school_user'));
     } else {
@@ -76,16 +74,16 @@ app.controller('loginCtrl',
     vm.showNewMedicalCenterList = true;
     vm.medicalCenterSelected = '';
 
-    userService.getUsers();
-    medicalCenterService.getMedicalCenters();
+    // userService.getUsers();
+    // medicalCenterService.getMedicalCenters();
 
-    function getUsers () {
-      vm.users = userServiceData.userList;
-    }
+    // function getUsers () {
+    //   vm.users = userServiceData.userList;
+    // }
 
-    function getMedicalCenters () {
-      vm.medicalCenters = medicalCenterServiceData.medicalCenterList;
-    }
+    // function getMedicalCenters () {
+    //   vm.medicalCenters = medicalCenterServiceData.medicalCenterList;
+    // }
 
     function getLoggedUser () {
       vm.loggedUser = userServiceData.loggedUser;

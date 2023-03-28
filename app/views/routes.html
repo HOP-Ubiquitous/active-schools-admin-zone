@@ -77,23 +77,23 @@
               <tr>
                 <th scope="col">Title</th>
                 <th scope="col">Category</th>
-                <th scope="col">Description</th>
+                <!-- <th scope="col">Description</th> -->
                 <th scope="col">Target</th>
                 <th scope="col">Unit</th>
-                <th scope="col">Instructions</th>
+                <!-- <th scope="col">Instructions</th> -->
                 <th scope="col">Reward</th>
-                <th scope="col">Video</th>
+                <!-- <th scope="col">Video</th> -->
                 <th scope="col" class="option-header">Options</th>
               </tr>
               <tr ng-repeat="challenge in routes.challengesLoaded">
                 <td class="bold">{{challenge.title}}</td>
                 <td>{{challenge.category}}</td>
-                <td>{{challenge.description}}</td>
+                <!-- <td>{{challenge.description}}</td> -->
                 <td>{{challenge.target}}</td>
                 <td>{{challenge.unit}}</td>
-                <td>{{challenge.instructions}}</td>
+                <!-- <td>{{challenge.instructions}}</td> -->
                 <td>{{challenge.reward}}</td>
-                <td>{{challenge.video}}</td>
+                <!-- <td>{{challenge.video}}</td> -->
                 <td class="option">
 
                   <div class="rombo-table small-square edit-bg" ng-click="routes.editChallenge(challenge.challenge_id)">

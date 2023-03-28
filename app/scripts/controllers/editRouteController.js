@@ -353,15 +353,15 @@ function ($scope, $location, $window, $routeParams, routeService, routeServiceDa
       }
     );
 
-    vm.routeUpdatedWatcher = $scope.$watch(
-      function () {
-        return routeService.routeUpdated;
-      }, function (newValue) {
-        //TODO Revisar mostrar notificaciones
-        vm.routeUpdated = newValue;
-        $scope.$apply(vm.routeUpdated);
-      }
-    );
+    // vm.routeUpdatedWatcher = $scope.$watch(
+    //   function () {
+    //     return routeService.routeUpdated;
+    //   }, function (newValue) {
+    //     //TODO Revisar mostrar notificaciones
+    //     vm.routeUpdated = newValue;
+    //     $scope.$apply(vm.routeUpdated);
+    //   }
+    // );
 
   }
 

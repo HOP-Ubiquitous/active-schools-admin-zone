@@ -1,7 +1,7 @@
 'use strict';
 
-app.service('userService', ['userServiceApi', 'userServiceData', '$location', '$q', '$cookies',
-  function(userServiceApi, userServiceData, $location, $q, $cookies){
+app.service('userService', ['userServiceApi', 'userServiceData', '$location', '$q', '$cookies', '$timeout',
+  function(userServiceApi, userServiceData, $location, $q, $cookies, $timeout){
 
   var service = this;
   service.usersLoaded = false;
@@ -61,8 +61,16 @@ app.service('userService', ['userServiceApi', 'userServiceData', '$location', '$
         service.getUsers();
         
         if (type === 'addUser') {
-          service.getUserById(response.data.id, type);
+          //service.getUserById(response.data.id, type);
+          
+          let userInfo = {
+            username: data.username,
+            password: data.password
+          }
+
+          service.login(userInfo)
           service.userLoadedAfterLogin = true;
+          
         }
 
         console.log('\x1b[32m%s\x1b[0m', 'Usuario añadido con éxito! :)');
@@ -165,15 +173,15 @@ app.service('userService', ['userServiceApi', 'userServiceData', '$location', '$
 
     userServiceApi.login(data).then(
       function success (response) {
+
+        userServiceData.access_token = response.data.access_token;
+        $cookies.put('access_token', response.data.access_token);
         
-        console.log(response.data);
-        if ($cookies.get('access_token') !== undefined) {
-         $cookies.remove('access_token');
-        }
+        userServiceData.loggedUser = response.data;
+        $cookies.put('active_school_user', JSON.stringify(response.data));
+        $location.path('/home');
 
-        $cookies.put('access_token', JSON.stringify(response.data.access_token));
-        service.getLoggedUser(response.data.user_id)
-
+        // service.getLoggedUser(response.data.user_id)
         service.userLoadedAfterLogin = true;
         console.log('\x1b[32m%s\x1b[0m', 'Usuario logueado con éxito! :)');
 
@@ -195,17 +203,18 @@ app.service('userService', ['userServiceApi', 'userServiceData', '$location', '$
 
     userServiceApi.login(data).then(
       function success (response) {
-        
-        console.log(response.data);
-        if ($cookies.get('access_token') !== undefined) {
-         $cookies.remove('access_token');
-        }
 
-        $cookies.put('access_token', JSON.stringify(response.data.access_token));
+        $cookies.put('access_token', response.data.access_token);
         service.getLoggedUser(response.data.user_id)
+
+        userServiceData.loggedUser = response.data;
+        $cookies.put('active_school_user', JSON.stringify(response.data));
 
         service.userLoadedAfterLogin = true;
         service.newGoogleUser = false;
+
+        $location.path('/home');
+
         console.log('\x1b[32m%s\x1b[0m', 'Usuario logueado con éxito! :)');
 
       }
@@ -220,30 +229,30 @@ app.service('userService', ['userServiceApi', 'userServiceData', '$location', '$
 
   };
 
-  service.getLoggedUser = function(user_id) {
+  // service.getLoggedUser = function(user_id) {
 
-    var deferred = $q.defer();
-    var promise = deferred.promise;
+  //   var deferred = $q.defer();
+  //   var promise = deferred.promise;
 
-    userServiceApi.get_user_by_id(user_id).then(
-      function success (response) {
+  //   userServiceApi.get_user_by_id(user_id).then(
+  //     function success (response) {
 
-        userServiceData.loggedUser = response.data;
-        $cookies.put('active_school_user', JSON.stringify(response.data));
-        $location.path('/home');
+  //       userServiceData.loggedUser = response.data;
+  //       $cookies.put('active_school_user', JSON.stringify(response.data));
+  //       $location.path('/home');
 
-        service.userByIdLoaded = true;
-        console.log('\x1b[32m%s\x1b[0m', 'El usuario ' + user_id + ' cargado con éxito! :)');
-      }
-    ).catch(
-      function () {
-        console.log('\x1b[31m%s\x1b[0m', 'Error al cargar el usuario ' + user_id + '! :_(');
-      }
-    );
+  //       service.userByIdLoaded = true;
+  //       console.log('\x1b[32m%s\x1b[0m', 'El usuario ' + user_id + ' cargado con éxito! :)');
+  //     }
+  //   ).catch(
+  //     function () {
+  //       console.log('\x1b[31m%s\x1b[0m', 'Error al cargar el usuario ' + user_id + '! :_(');
+  //     }
+  //   );
 
-    return promise;
+  //   return promise;
 
-  };
+  // };
 
   service.logout = function() {
 

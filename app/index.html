@@ -8,6 +8,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <!-- Place favicon.ico and apple-touch-icon.png in the root directory -->
   <!-- build:css(.) styles/vendor.css -->
+
   <!-- bower:css -->
   <link rel="stylesheet" href="bower_components/bootstrap/dist/css/bootstrap.css" />
   <!-- endbower -->
@@ -26,21 +27,20 @@
   <link rel="stylesheet" href="styles/form-section-header.css">
   <link rel="stylesheet" href="styles/notification.css">
 
-  <link rel="stylesheet" href="scripts/vendor/leaflet/dist/leaflet.css">
-  <link rel="stylesheet" href="scripts/vendor/leaflet-routing-machine/dist/leaflet-routing-machine.css">
-
   <!-- <link type="text/css" rel="stylesheet" href="bower_components/firebaseui/dist/firebaseui.css" /> -->
-
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;700;800&display=swap" rel="stylesheet">
-  <script src="https://kit.fontawesome.com/b4d651f5d6.js" crossorigin="anonymous"></script>
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+  
   <!-- endbuild -->
 </head>
 <body ng-app="activeSchoolsAdminZoneApp">
 
 <div app-view-segment="0"></div>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.7.1/leaflet.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet-routing-machine/3.2.12/leaflet-routing-machine.min.js"></script>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.7.1/leaflet.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet-routing-machine/3.2.12/leaflet-routing-machine.css">
 
 <script>
   !function(A,n,g,u,l,a,r){A.GoogleAnalyticsObject=l,A[l]=A[l]||function(){
@@ -51,6 +51,19 @@
   ga('create', 'UA-XXXXX-X');
   ga('send', 'pageview');
 </script>
+
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;700;800&display=swap" rel="stylesheet">
+<script src="https://kit.fontawesome.com/b4d651f5d6.js" crossorigin="anonymous"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+<!-- <script src="vendor/leaflet-draggable-polyline/leaflet-draggable-polyline.js"></script>
+<script src="vendor/leaflet-geometry-util/src/leaflet.geometryutil.js"></script> -->
+
+
+<!-- <script src="vendor/leaflet/dist/leaflet.js"></script>
+<script src="vendor/leaflet-routing-machine/dist/leaflet-routing-machine.js"></script>
+<script src="vendor/leaflet-draggable-polyline/leaflet-draggable-polyline.js"></script>
+<script src="vendor/leaflet-geometry-util/src/leaflet.geometryutil.js"></script> -->
+
 
 <!-- build:js(.) scripts/vendor.js -->
 <!-- bower:js -->
@@ -71,13 +84,8 @@
 <!-- endbuild -->
 
 <!-- build:js({.tmp,app}) scripts/scripts.js -->
-<script src="scripts/vendor/leaflet/dist/leaflet.js"></script>
-<script src="scripts/vendor/leaflet-routing-machine/dist/leaflet-routing-machine.js"></script>
-<script src="scripts/vendor/leaflet-draggable-polyline/leaflet-draggable-polyline.js"></script>
-<!-- <script src="scripts/vendor/leaflet-draggable-lines/src/index.ts"></script> -->
-<script src="scripts/vendor/leaflet-geometry-util/src/leaflet.geometryutil.js"></script>
-
 <script src="scripts/app.js"></script>
+
 <script src="scripts/controllers/loginController.js"></script>
 <script src="scripts/controllers/homeController.js"></script>
 <script src="scripts/controllers/challengesController.js"></script>
