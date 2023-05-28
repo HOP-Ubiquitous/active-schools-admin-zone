@@ -21,26 +21,24 @@
                 ng-show="('posts.edit_post.post_id' | routeSegmentEqualsTo)"
                 placeholder="Post Text"
                 class="new-post-textArea"
-                ng-model="editPost.post.description"
+                ng-model="editPost.post.content"
                 required>
       </textarea>
 
       <hr class="space-new-route">
 
-      <input type="url" placeholder="File Image" class="input-text" ng-model="editPost.post.image" ng-show="('posts.edit_post.post_id' | routeSegmentEqualsTo)" required>
+      <input type="url"
+             placeholder="Url Image"
+             class="input-text"
+             ng-model="editPost.post.image"
+             ng-show="('posts.edit_post.post_id' | routeSegmentEqualsTo)"
+             required>
 
-      <dropdown show-dropdown="('posts.edit_post.post_id' | routeSegmentEqualsTo)"
-                active-dropdown="showOptions"
-                model="editPost.post.country"
-                placeholder="Select Country to Publish"
-                dropdown-style="{ 'height': 60 + (editPost.countries.length * 30) + 'px',
-                                  'max-height': 'calc(100vh - 481px)' }"
-                show-default-option="true"
-                defalt-option-value="all"
-                default-option-name="ALL COUNTRIES"
-                repeater="editPost.countries"
-                get-option-function="editPost.getCountry()">
-      </dropdown>
+      <select class="width-100"
+              ng-model="editPost.route.country"
+              ng-options="country.code as country.name for country in editPost.countries" required>
+        <option value="">All</option>
+      </select>
 
       <button-form show-button="('posts.edit_post.post_id' | routeSegmentEqualsTo)"
                    click-button="editPost.edit()"

@@ -8,11 +8,13 @@ app.controller('editPostCtrl', ['$scope', '$location', '$routeParams', 'postServ
     vm.countries = COUNTRIES.countries;
     vm.id = $routeParams.post_id
 
-    postService.getPostById(vm.id);
+    vm.post = postServiceData.postsList[vm.id];
+    // postService.getPostById(vm.id);
 
-    function getPost () {
-      vm.post = postServiceData.postById;
-    }
+    // function getPost () {
+    //   vm.post = postServiceData.postById;
+    //   vm.post.language = vm.post.language === 'ALL' ? '' : vm.post.language;
+    // }
 
     vm.getCountry = function (country) {
       vm.post.country = country;
@@ -20,26 +22,15 @@ app.controller('editPostCtrl', ['$scope', '$location', '$routeParams', 'postServ
 
     vm.edit = function(){
 
-      let language;
-
-      if (vm.post.country === 'All' || vm.post.country === 'England') {
-        language = 0;
-      } else if (vm.post.country === 'Greece') {
-        language = 1;
-      } else if (vm.post.country === 'Spain') {
-        language = 2;
-      }
-
       let post = {
         date: new Date().toISOString(),
         title: vm.post.title,
-        description: vm.post.description,
+        content: vm.post.content,
         image: vm.post.image,
-        country: vm.post.country,
-        language: language
+        language: vm.post.country === undefined ? 'ALL' : vm.post.country
       };
 
-      postService.editPost(vm.id, post);
+      postService.editPost(vm.post.post_id, post);
 
     };
 

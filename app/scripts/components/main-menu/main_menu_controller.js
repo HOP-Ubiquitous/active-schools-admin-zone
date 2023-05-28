@@ -18,9 +18,9 @@
         $location.path('/challenges');
       };
 
-      // vm.goToPosts = function () {
-      //   $location.path('/posts');
-      // };
+      vm.goToPosts = function () {
+        $location.path('/posts');
+      };
 
       // vm.goToProfile = function () {
       //   $location.path('/profile');
@@ -38,9 +38,9 @@
       //   $location.path('/medical_centers');
       // };
 
-      // vm.goToSchools = function () {
-      //   $location.path('/schools');
-      // };
+      vm.goToSchools = function () {
+        $location.path('/schools');
+      };
 
 
       vm.goToLogin = function () {

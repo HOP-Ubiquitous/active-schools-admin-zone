@@ -43,7 +43,7 @@
           <td class="option">
 
 
-            <div class="rombo-table small-square edit-bg" ng-click="posts.editPost(post.id)">
+            <div class="rombo-table small-square edit-bg" ng-click="posts.editPost($index)">
               <i class="{{posts.icons.edit}} icon-size"></i>
             </div>
 
@@ -57,7 +57,7 @@
                 <span>are you sure you want to delete this post?</span>
                 <h5 class="bold">{{post.title}}</h5>
                 <div class="popup-buttons-container">
-                  <button class="delete-button" ng-click="posts.deletePost(post.id); showDeletePopup[$index] = false">Delete</button>
+                  <button class="delete-button" ng-click="posts.deletePost(post.post_id); showDeletePopup[$index] = false">Delete</button>
                   <button class="cancel-button"  ng-click="showDeletePopup[$index] = false">Cancel</button>
                 </div>
               </div>

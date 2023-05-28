@@ -6,6 +6,32 @@ app.controller('editUserCtrl', ['$scope', '$location', 'userService', 'userServi
     var vm = this;
     vm.icons = ICONS;
     vm.countries = COUNTRIES.countries;
+    vm.sex = [
+      {
+        text: 'Female',
+        value: 'female'
+      },
+      {
+        text: 'Male',
+        value: 'male'
+      }
+    ]
+
+    vm.roles = [
+      {
+        text: 'Director',
+        value: 'admin'
+      },
+      {
+        text: 'Teacher',
+        value: 'editor'
+      },
+      {
+        text: 'Student',
+        value: 'user'
+      }
+    ]
+
     vm.id = $routeParams.user_id;
 
     userService.getUserById(vm.id);
@@ -32,6 +58,7 @@ app.controller('editUserCtrl', ['$scope', '$location', 'userService', 'userServi
               rol: vm.user.rol,
               username: vm.user.username,
               password: vm.user.password,
+              google_user: false,
               personal_data: {
                 name: vm.user.personal_data.name,
                 surname: vm.user.personal_data.surname,

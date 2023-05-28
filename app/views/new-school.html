@@ -2,7 +2,7 @@
 
   <div class="new-route-form" ng-show="('schools.new_school' | routeSegmentEqualsTo)">
 
-    <form-section-header title="New School"
+    <form-section-header title="{{newSchool.user.rol === 'superadmin' ? 'New School' : 'Create School'}}"
                          icon="{{newSchool.icons.add}}"
                          close-icon="{{newSchool.icons.close}}"
                          close-function="newSchool.goToSchools()">
@@ -11,7 +11,7 @@
     <form>
 
       <input type="text"
-             ng-show="('schools.new_school' | routeSegmentEqualsTo)"
+             ng-show="newSchool.user.rol === 'superadmin' && ('schools.new_school' | routeSegmentEqualsTo)"
              placeholder="Director_id"
              class="input-text"
              ng-model="newSchool.school.director_id"
@@ -19,14 +19,14 @@
 
       <input type="text"
              ng-show="('schools.new_school' | routeSegmentEqualsTo)"
-             placeholder="Name"
+             placeholder="School Name"
              class="input-text"
              ng-model="newSchool.school.school_name"
              required>
 
       <input type="text"
              ng-show="('schools.new_school' | routeSegmentEqualsTo)"
-             placeholder="Address"
+             placeholder="School Address"
              class="input-text"
              ng-model="newSchool.school.school_address"
              required>
@@ -52,12 +52,12 @@
              ng-model="newSchool.school.school_province"
              required>
 
-      <input type="text"
-             ng-show="('schools.new_school' | routeSegmentEqualsTo)"
-             placeholder="Country"
-             class="input-text"
+       <select class="width-100"
              ng-model="newSchool.school.school_country"
+             ng-options="country.code as country.name for country in newSchool.countries"
              required>
+              <option value="">Country</option>
+       </select>
 
       <br>
 

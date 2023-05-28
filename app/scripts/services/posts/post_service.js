@@ -13,7 +13,7 @@ app.service('postService', ['postServiceApi', 'postServiceData','$q',
       var promise = deferred.promise;
 
       postServiceApi.get_posts().then(
-        function success(response){
+        function success(response) {
           postServiceData.postsList = response.data;
           service.postsLoaded = true;
           console.log('\x1b[32m%s\x1b[0m', 'Noticias cargadas con éxito! :)');

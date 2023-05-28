@@ -37,44 +37,59 @@ app.config([
     $routeSegmentProvider
 
       .when("/login", "login")
+      .when("/privacy_policy", "privacy_policy")
       .when("/recover", "recover")
+      
       .when("/home", "home")
+      
       .when("/routes", "routes")
       .when("/routes/new_route", "routes.new_route")
       .when("/routes/edit_route", "routes.edit_route")
       .when("/routes/edit_route/:route_id", "routes.edit_route.route_id")
+      
       .when("/challenges", "challenges")
       .when("/challenges/new_challenge", "challenges.new_challenge")
       .when("/routes/edit_challenge", "routes.edit_challenge")
       .when("/challenges/edit_challenge/:challenge_id", "challenges.edit_challenge.challenge_id")
+
       .when("/posts", "posts")
       .when("/posts/new_post", "posts.new_post")
       .when("/posts/edit_post", "posts.edit_post")
       .when("/posts/edit_post/:post_id", "posts.edit_post.post_id")
+      
       .when("/users", "users")
       .when("/users/new_user", "users.new_user")
       .when("/users/edit_user", "users.edit_user")
       .when("/users/edit_user/:user_id", "users.edit_user.user_id")
-      .when("/users/new_course", "users.new_course")
-      .when("/users/edit_course", "users.edit_course")
-      .when("/users/edit_course/:course_id", "users.edit_course.course_id")
+      
       .when("/teams", "teams")
       .when("/teams/new_team", "teams.new_team")
       .when("/teams/edit_team", "teams.edit_team")
       .when("/teams/edit_team/:team_id", "teams.edit_team.team_id")
+      
       .when("/medical_centers", "medical_centers")
       .when("/medical_centers/new_medical_center", "medical_centers.new_medical_center")
       .when("/medical_centers/edit_medical_center", "medical_centers.edit_medical_center")
       .when("/medical_centers/edit_medical_center/:medical_center_id", "medical_centers.edit_medical_center.medical_center_id")
+      
       .when("/schools", "schools")
       .when("/schools/new_school", "schools.new_school")
       .when("/schools/edit_school", "schools.edit_school")
       .when("/schools/edit_school/:school_id", "schools.edit_school.school_id")
+      .when("/schools/new_course", "schools.new_course")
+      .when("/schools/edit_course", "schools.edit_course")
+      .when("/schools/edit_course/:course_id", "schools.edit_course.course_id")
 
       .segment("login", {
         templateUrl: "views/login.html",
         controller: "loginCtrl",
         controllerAs: "login",
+      })
+
+      .segment("privacy_policy", {
+        templateUrl: "views/privacy-policy.html",
+        controller: "privacyCtrl",
+        controllerAs: "privacy",
       })
 
       .segment("recover", {
@@ -199,22 +214,31 @@ app.config([
       })
 
       .up()
+      .up()
 
-      .segment("new_course", {
-        templateUrl: "views/new-course.html",
-        controller: "newCourseCtrl",
-        controllerAs: "newCourse",
+      .segment("teams", {
+        templateUrl: "views/teams.html",
+        controller: "teamsCtrl",
+        controllerAs: "teams",
       })
-
-      .segment("edit_course", {})
 
       .within()
 
-      .segment("course_id", {
-        templateUrl: "views/edit-course.html",
-        controller: "editCourseCtrl",
-        controllerAs: "editCourse",
-        dependencies: ["course_id"],
+      .segment("new_team", {
+        templateUrl: "views/new-team.html",
+        controller: "newTeamCtrl",
+        controllerAs: "newTeam",
+      })
+
+      .segment("edit_team", {})
+
+      .within()
+
+      .segment("team_id", {
+        templateUrl: "views/edit-team.html",
+        controller: "editTeamCtrl",
+        controllerAs: "editTeam",
+        dependencies: ["team_id"],
       })
 
       .up()
@@ -274,31 +298,22 @@ app.config([
       })
 
       .up()
-      .up()
 
-      .segment("teams", {
-        templateUrl: "views/teams.html",
-        controller: "teamsCtrl",
-        controllerAs: "teams",
+      .segment("new_course", {
+        templateUrl: "views/new-course.html",
+        controller: "newCourseCtrl",
+        controllerAs: "newCourse",
       })
+
+      .segment("edit_course", {})
 
       .within()
 
-      .segment("new_team", {
-        templateUrl: "views/new-team.html",
-        controller: "newTeamCtrl",
-        controllerAs: "newTeam",
-      })
-
-      .segment("edit_team", {})
-
-      .within()
-
-      .segment("team_id", {
-        templateUrl: "views/edit-team.html",
-        controller: "editTeamCtrl",
-        controllerAs: "editTeam",
-        dependencies: ["team_id"],
+      .segment("course_id", {
+        templateUrl: "views/edit-course.html",
+        controller: "editCourseCtrl",
+        controllerAs: "editCourse",
+        dependencies: ["course_id"],
       });
 
     $routeProvider.otherwise({

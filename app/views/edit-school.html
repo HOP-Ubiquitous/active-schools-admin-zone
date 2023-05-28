@@ -51,13 +51,13 @@
              class="input-text"
              ng-model="editSchool.school.school_province"
              required>
-
-      <input type="text"
-             ng-show="('schools.edit_school.school_id' | routeSegmentEqualsTo)"
-             placeholder="Country"
-             class="input-text"
-             ng-model="editSchool.school.school_country"
-             required>
+       
+       <select class="width-100"
+               ng-model="editSchool.school.country"
+               ng-options="country.code as country.name for country in editSchool.countries"
+               required>
+              <option value="">Country</option>
+       </select>
 
       <br>
 

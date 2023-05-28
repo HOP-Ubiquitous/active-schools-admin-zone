@@ -1,54 +1,19 @@
 'use strict';
 
-app.controller('newSchoolCtrl', ['$location', 'schoolService', 'ICONS', 'COUNTRIES',
-  function ($location, schoolService, ICONS, COUNTRIES) {
+app.controller('newSchoolCtrl', ['$location', 'schoolService', 'userServiceData', 'ICONS', 'COUNTRIES',
+  function ($location, schoolService, userServiceData, ICONS, COUNTRIES) {
 
     var vm = this;
     vm.icons = ICONS;
     vm.countries = COUNTRIES.countries;
-    vm.categories = [
-      {
-        name: 'Aerobics',
-        value: 'aerobics'
-      },
-      {
-        name: 'Balance',
-        value: 'balance'
-      },
-      {
-        name: 'Mental',
-        value: 'mental'
-      },
-      {
-        name: 'Strength',
-        value: 'strength'
-      },
-      {
-        name: 'Stretch',
-        value: 'stretch'
-      }
-    ];
-    vm.units = [
-      {
-        name: 'Minutes',
-        value: 'minutes'
-      },
-      {
-        name: 'Seconds',
-        value: 'seconds'
-      },
-      {
-        name: 'Repeats',
-        value: 'reps'
-      }
-    ];
+    vm.user = userServiceData.loggedUser;
+    
     vm.school = {};
 
-    vm.getUnit = function (unit) {
-      vm.school.unit = unit;
-    };
+    if (vm.user.rol !== 'superadmin') {
+      vm.school.director_id = vm.user.id;
+    }
 
-    //Habrá que implementar el que guarde el id del director que lo cree como una variable
     vm.addSchool = function(){
 
       if ((vm.school.director_id !== undefined && vm.school.director_id !== '') &&
@@ -59,21 +24,23 @@ app.controller('newSchoolCtrl', ['$location', 'schoolService', 'ICONS', 'COUNTRI
           (vm.school.school_province === vm.school.school_province) &&
           (vm.school.school_country !== undefined && vm.school.school_country !== '')) {
 
-            let school =  {
-              director_id: vm.school.director_id,
-              school_name: vm.school.school_name,
-              school_address: vm.school.school_address,
-              school_postal_code: vm.school.school_postal_code,
-              school_city: vm.school.school_city,
-              school_province: vm.school.school_province,
-              school_country: vm.school.school_country
-            }
+        let school =  {
+          director_id: vm.school.director_id,
+          school_name: vm.school.school_name,
+          school_address: vm.school.school_address,
+          school_postal_code: vm.school.school_postal_code,
+          school_city: vm.school.school_city,
+          school_province: vm.school.school_province,
+          school_country: vm.school.school_country
+        }
 
-            schoolService.addSchool(school, 'new_school');
+        if (vm.user.rol !== 'superadmin') {
+          schoolService.addSchool(school, 'single');
+        } else {
+          schoolService.addSchool(school, 'all');
+        }
 
-          }else{
-
-          }
+      }
 
     };
 

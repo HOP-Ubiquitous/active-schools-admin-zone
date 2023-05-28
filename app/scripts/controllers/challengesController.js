@@ -23,16 +23,7 @@ app.controller('challengesCtrl', ['$scope', '$location', 'challengeService', 'ch
     };
 
     vm.deleteChallenge = function(id){
-      //Con backend
       challengeService.deleteChallenge(id);
-
-      //Sin backend
-      // vm.challenges.forEach(function (challenge, index) {
-      //   if (id === challenge.id) {
-      //     vm.challenges.splice(index, 1);
-      //   }
-      // });
-
     };
 
     vm.editChallenge = function(challenge_id){

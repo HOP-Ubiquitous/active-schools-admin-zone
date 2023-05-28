@@ -1,6 +1,6 @@
-<div class="main-container-inner-right">
+<div class="main-container-inner-right" ng-show="('users.new_user' | routeSegmentEqualsTo)">
 
-  <div class="new-route-form" ng-show="('users.new_user' | routeSegmentEqualsTo)">
+  <div class="new-route-form">
 
     <form-section-header title="New User"
                          icon="{{newUser.icons.add}}"
@@ -10,96 +10,104 @@
 
     <form>
 
-      <input type="text"
-             ng-show="('users.new_user' | routeSegmentEqualsTo)"
+       <select class="width-100"
+               ng-model="newUser.user.rol"
+               ng-options="rol.value as rol.text for rol in newUser.roles" required>
+              <option value="">Rol</option>
+       </select>
+
+      <!-- <input type="text"
              placeholder="Rol"
              class="input-text"
              ng-model="newUser.user.rol"
-             required>
+             required> -->
 
       <input type="text"
-             ng-show="('users.new_user' | routeSegmentEqualsTo)"
+             autocomplete="new-username"
              placeholder="Username"
              class="input-text"
              ng-model="newUser.user.username"
              required>
 
       <input type="password"
-             ng-show="('users.new_user' | routeSegmentEqualsTo)"
+             autocomplete="new-password"
              placeholder="Password"
              class="input-text"
              ng-model="newUser.user.password"
              required>
 
       <input type="password"
-             ng-show="('users.new_user' | routeSegmentEqualsTo)"
+             autocomplete="repeat-new-password"
              placeholder="Repeat Password"
              class="input-text"
              ng-model="newUser.user.checkPassword"
              required>
 
       <input type="text"
-             ng-show="('users.new_user' | routeSegmentEqualsTo)"
              placeholder="Name"
              class="input-text"
              ng-model="newUser.user.personal_data.name"
              required>
 
       <input type="text"
-             ng-show="('users.new_user' | routeSegmentEqualsTo)"
              placeholder="Surname"
              class="input-text"
              ng-model="newUser.user.personal_data.surname"
              required>
 
-      <input type="text"
-             ng-show="('users.new_user' | routeSegmentEqualsTo)"
+       <select class="width-100"
+             ng-model="newUser.user.personal_data.sex"
+             ng-options="sex.value as sex.text for sex in newUser.sex" required>
+              <option value="">Sex</option>
+       </select>
+
+      <!-- <input type="text"
              placeholder="Sex"
              class="input-text"
              ng-model="newUser.user.personal_data.sex"
-             required>
+             required> -->
 
-      <input type="number"
-             ng-show="('users.new_user' | routeSegmentEqualsTo)"
-             placeholder="Weight"
-             class="input-text"
-             ng-model="newUser.user.personal_data.weight"
-             required>
-
-      <input type="number"
-             ng-show="('users.new_user' | routeSegmentEqualsTo)"
+       <input type="number"
              placeholder="Height"
              class="input-text"
              ng-model="newUser.user.personal_data.height"
              required>
 
+      <input type="number"
+             placeholder="Weight"
+             class="input-text"
+             ng-model="newUser.user.personal_data.weight"
+             required>
+
       <input type="text"
-             ng-show="('users.new_user' | routeSegmentEqualsTo)"
              placeholder="Address"
              class="input-text"
              ng-model="newUser.user.personal_data.address"
              required>
 
       <input type="text"
-             ng-show="('users.new_user' | routeSegmentEqualsTo)"
              placeholder="City"
              class="input-text"
              ng-model="newUser.user.personal_data.city"
              required>
 
       <input type="text"
-             ng-show="('users.new_user' | routeSegmentEqualsTo)"
              placeholder="Province"
              class="input-text"
              ng-model="newUser.user.personal_data.province"
              required>
 
-      <input type="text"
-             ng-show="('users.new_user' | routeSegmentEqualsTo)"
+       <select class="width-100"
+               ng-model="newUser.user.personal_data.country"
+               ng-options="country.code as country.name for country in newUser.countries" required>
+              <option value="">Country</option>
+       </select>
+
+      <!-- <input type="text"
              placeholder="Country"
              class="input-text"
              ng-model="newUser.user.personal_data.country"
-             required>
+             required> -->
 
       <br>
 

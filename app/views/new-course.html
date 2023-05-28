@@ -1,27 +1,33 @@
 <div class="main-container-inner-right">
 
-  <div class="new-route-form" ng-show="('users.new_course' | routeSegmentEqualsTo)">
+  <div class="new-route-form" ng-show="('schools.new_course' | routeSegmentEqualsTo)">
+
+    <form-section-header title="{{newCourse.user.rol === 'superadmin' ? 'New School' : 'Create School'}}"
+                         icon="{{newCourse.icons.add}}"
+                         close-icon="{{newCourse.icons.close}}"
+                         close-function="newCourse.goToSchools()">
+    </form-section-header>
 
     <form>
 
       <input type="text"
-             ng-show="('users.new_course' | routeSegmentEqualsTo)"
-             placeholder="Name"
+             ng-show="('schools.new_course' | routeSegmentEqualsTo)"
+             placeholder="Course Name"
              class="input-text"
-             ng-model="newCourse.user.name"
+             ng-model="newCourse.course.course_name"
              required>
 
-      <input type="number"
-             ng-show="('users.new_course' | routeSegmentEqualsTo)"
-             placeholder="Bonus"
-             class="input-text"
-             ng-model="newCourse.user.bonus"
+      <select class="width-100"
+             ng-model="newCourse.course.teacher_id"
+             ng-options="user.id as (user.personal_data.name + ' ' + user.personal_data.surname) for user in newCourse.getUsers()"
              required>
+              <option value="">Tutor</option>
+      </select>
 
-      <hr class="space-new-route">
+      <br>
 
-      <button-form show-button="('users.new_course' | routeSegmentEqualsTo)"
-                   click-button="newCourse.save()"
+      <button-form show-button="('schools.new_course' | routeSegmentEqualsTo)"
+                   click-button="newCourse.addCourse()"
                    text-button="Add Course">
       </button-form>
 

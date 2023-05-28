@@ -58,7 +58,8 @@ app.service('userService', ['userServiceApi', 'userServiceData', '$location', '$
 
     userServiceApi.add_user(data).then(
       function success(response){
-        service.getUsers();
+
+        console.log('\x1b[32m%s\x1b[0m', 'Usuario añadido con éxito! :)');
         
         if (type === 'addUser') {
           //service.getUserById(response.data.id, type);
@@ -68,12 +69,14 @@ app.service('userService', ['userServiceApi', 'userServiceData', '$location', '$
             password: data.password
           }
 
-          service.login(userInfo)
+          service.login(userInfo, 'no-redirect');
           service.userLoadedAfterLogin = true;
           
+        } else {
+          service.getUsers();
+          $location.path('/users');
         }
 
-        console.log('\x1b[32m%s\x1b[0m', 'Usuario añadido con éxito! :)');
       }
     ).catch(
       function () {
@@ -98,6 +101,7 @@ app.service('userService', ['userServiceApi', 'userServiceData', '$location', '$
         }
 
         service.getUsers();
+        $location.path('/users');
         console.log('\x1b[32m%s\x1b[0m', 'El usuario ' + user_id + ' ha sido editado con éxito! :)');
       }
     ).catch(
@@ -166,7 +170,7 @@ app.service('userService', ['userServiceApi', 'userServiceData', '$location', '$
     return promise;
   };
 
-  service.login = function(data) {
+  service.login = function(data, type) {
 
     var deferred = $q.defer();
     var promise = deferred.promise;
@@ -174,12 +178,15 @@ app.service('userService', ['userServiceApi', 'userServiceData', '$location', '$
     userServiceApi.login(data).then(
       function success (response) {
 
-        userServiceData.access_token = response.data.access_token;
+        userServiceData.accessToken = response.data.access_token;
         $cookies.put('access_token', response.data.access_token);
         
         userServiceData.loggedUser = response.data;
         $cookies.put('active_school_user', JSON.stringify(response.data));
-        $location.path('/home');
+
+        if (type !== 'no-redirect') {
+          $location.path('/home');
+        }
 
         // service.getLoggedUser(response.data.user_id)
         service.userLoadedAfterLogin = true;
@@ -204,11 +211,11 @@ app.service('userService', ['userServiceApi', 'userServiceData', '$location', '$
     userServiceApi.login(data).then(
       function success (response) {
 
+        userServiceData.accessToken = response.data.access_token;
         $cookies.put('access_token', response.data.access_token);
-        service.getLoggedUser(response.data.user_id)
 
         userServiceData.loggedUser = response.data;
-        $cookies.put('active_school_user', JSON.stringify(response.data));
+        // $cookies.put('active_school_user', JSON.stringify(response.data));
 
         service.userLoadedAfterLogin = true;
         service.newGoogleUser = false;
@@ -228,31 +235,6 @@ app.service('userService', ['userServiceApi', 'userServiceData', '$location', '$
     return promise;
 
   };
-
-  // service.getLoggedUser = function(user_id) {
-
-  //   var deferred = $q.defer();
-  //   var promise = deferred.promise;
-
-  //   userServiceApi.get_user_by_id(user_id).then(
-  //     function success (response) {
-
-  //       userServiceData.loggedUser = response.data;
-  //       $cookies.put('active_school_user', JSON.stringify(response.data));
-  //       $location.path('/home');
-
-  //       service.userByIdLoaded = true;
-  //       console.log('\x1b[32m%s\x1b[0m', 'El usuario ' + user_id + ' cargado con éxito! :)');
-  //     }
-  //   ).catch(
-  //     function () {
-  //       console.log('\x1b[31m%s\x1b[0m', 'Error al cargar el usuario ' + user_id + '! :_(');
-  //     }
-  //   );
-
-  //   return promise;
-
-  // };
 
   service.logout = function() {
 

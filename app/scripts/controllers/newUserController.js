@@ -6,6 +6,31 @@ app.controller('newUserCtrl', ['$scope', '$location', 'userService', 'userServic
     var vm = this;
     vm.icons = ICONS;
     vm.countries = COUNTRIES.countries;
+    vm.sex = [
+      {
+        text: 'Female',
+        value: 'female'
+      },
+      {
+        text: 'Male',
+        value: 'male'
+      }
+    ]
+
+    vm.roles = [
+      {
+        text: 'Director',
+        value: 'admin'
+      },
+      {
+        text: 'Teacher',
+        value: 'editor'
+      },
+      {
+        text: 'Student',
+        value: 'user'
+      }
+    ]
 
     vm.addUser = function () {
 
@@ -28,6 +53,7 @@ app.controller('newUserCtrl', ['$scope', '$location', 'userService', 'userServic
               rol: vm.user.rol,
               username: vm.user.username,
               password: vm.user.password,
+              google_user: vm.user.google_user === 0 ? false : true,
               personal_data: {
                 name: vm.user.personal_data.name,
                 surname: vm.user.personal_data.surname,

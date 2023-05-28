@@ -5,23 +5,27 @@
 <div class="main-container">
 
   <section-header ng-show="('schools' | routeSegmentStartsWith)"
-                  title="Schools"
+                  title="{{schools.user.rol === 'superadmin' ? 'Schools' : 'Your School'}}"
                   icon="{{schools.icons.school}}"
                   show-search-input="true">
   </section-header>
 
-  <div class="main-container-inner" ng-class="{ 'main-container-inner-left' : ('schools.new_school' | routeSegmentEqualsTo) || ('schools.edit_school.school_id' | routeSegmentEqualsTo) }">
+  <div class="main-container-inner"
+       ng-class="{ 'main-container-inner-left' : ('schools.new_school' | routeSegmentEqualsTo) ||
+                                                 ('schools.edit_school.school_id' | routeSegmentEqualsTo) || 
+                                                 ('schools.new_course' | routeSegmentEqualsTo) ||
+                                                 ('schools.edit_course.course_id' | routeSegmentEqualsTo) }">
 
-    <subsection-header title="School List"
+    <subsection-header title="{{schools.user.rol === 'superadmin' ? 'School List' : 'School Data'}}"
                        icon="{{schools.icons.school}}"
                        map-buttons="false"
                        new-button-icon="{{schools.icons.add}}"
-                       new-button-title="New School"
+                       new-button-title="Create School"
                        new-button-function="schools.goToNewSchool()"
-                       hide-button-condition="('schools.new_school' | routeSegmentEqualsTo) || ('schools.edit_school.school_id' | routeSegmentEqualsTo)">
+                       hide-button-condition="schools.directorCheck === true || ('schools.new_school' | routeSegmentEqualsTo) || ('schools.edit_school.school_id' | routeSegmentEqualsTo)">
     </subsection-header>
 
-    <table class="tabla">
+    <table class="tabla" ng-show="schools.directorCheck === true || schools.user.rol === 'superadmin'">
       <thead>
       <tr>
         <th scope="col">Name</th>
@@ -44,11 +48,15 @@
         <td>{{school.school_country}}</td>
         <td class="option">
 
-          <div class="rombo-table small-square edit-bg" ng-show="schools.userServiceData.loggedUser.rol ==='admin'" ng-click="schools.editSchool(school.school_id)">
+          <div class="rombo-table small-square edit-bg"
+               ng-show="schools.user.rol === 'admin' || schools.user.rol === 'superadmin'"
+               ng-click="schools.editSchool(school.school_id)">
             <i class="{{schools.icons.edit}} icon-size"></i>
           </div>
 
-          <div class="rombo-table small-square delete-bg" ng-show="schools.userServiceData.loggedUser.rol ==='admin'" ng-click="showDeletePopup[$index] = !showDeletePopup[$index]">
+          <div class="rombo-table small-square delete-bg"
+               ng-show="schools.user.rol === 'admin' || schools.user.rol === 'superadmin'"
+               ng-click="showDeletePopup[$index] = !showDeletePopup[$index]">
             <i class="{{schools.icons.deleteDocument}} icon-size"></i>
           </div>
 
@@ -76,11 +84,104 @@
       </tbody>
     </table>
 
+    <div class="centered-window" ng-show="schools.directorCheck === false && schools.user.rol !== 'superadmin'">
+
+      <p>
+        As a principal, you can create a school associated with your user.
+      </p>
+
+      <p>
+        It will automatically appear in the app and users will be able to link to your school when they register.
+      </p>
+
+      <p>
+        You will be able to divide your registered users by courses and modify the role of the users you choose
+        by transforming them into "teacher" and linking them to a course.
+      </p>
+
+      <hr>
+
+      <div class="sub-section-new-button-container" ng-click="schools.goToNewSchool()">
+        <div class="sub-section-new-button-icon">
+          <span class="{{schools.icons.add}}"></span>
+        </div>
+        <div class="sub-section-new-button-text">
+          <span>Create School</span>
+        </div>
+      </div>
+
+    </div>
+
+    <div class="margin-40"></div>
+
+    <subsection-header title="Course List"
+                       ng-show="schools.user.rol !== 'superadmin'"
+                       icon="{{schools.icons.school}}"
+                       map-buttons="false"
+                       new-button-icon="{{schools.icons.add}}"
+                       new-button-title="Create Course"
+                       new-button-function="schools.goToNewCourse()"
+                       hide-button-condition="('schools.new_course' | routeSegmentEqualsTo) || ('schools.edit_course.course_id' | routeSegmentEqualsTo)">
+    </subsection-header>
+
+    <table class="tabla" ng-show="schools.directorCheck === true || schools.user.rol === 'superadmin'">
+      <thead>
+      <tr>
+        <th scope="col">Name</th>
+        <th scope="col">Tutor</th>
+        <th scope="col">Students</th>
+        <th scope="col" class="option-header">Options</th>
+      </tr>
+      </thead>
+      <tbody ng-repeat="course in schools.courses">
+
+      <tr>
+        <td class="bold">{{course.course_name}}</td>
+        <td>{{schools.getUserName(course.teacher_id)}}</td>
+        <td>{{course.students}}</td>
+        <td class="option">
+
+          <div class="rombo-table small-square edit-bg"
+               ng-show="schools.user.rol === 'admin' || schools.user.rol === 'superadmin'"
+               ng-click="schools.editCourse(course.course_id)">
+            <i class="{{schools.icons.edit}} icon-size"></i>
+          </div>
+
+          <div class="rombo-table small-square delete-bg"
+               ng-show="schools.user.rol === 'admin' || schools.user.rol === 'superadmin'"
+               ng-click="showDeleteCoursePopup[$index] = !showDeleteCoursePopup[$index]">
+            <i class="{{schools.icons.deleteDocument}} icon-size"></i>
+          </div>
+
+          <!-- TODO Hacer Directiva -->
+
+          <div class="bg-popup" ng-show="showDeleteCoursePopup[$index]">
+
+            <div class="popup-container">
+              <span>are you sure you want to delete this course?</span>
+              <h5 class="bold">{{course.course_name}}</h5>
+              <div class="popup-buttons-container">
+                <button class="delete-button" ng-click="schools.deleteCourse(course.course_id); showDeleteCoursePopup[$index] = false">Delete</button>
+                <button class="cancel-button"  ng-click="showDeleteCoursePopup[$index] = false">Cancel</button>
+              </div>
+            </div>
+
+          </div>
+
+          <!-- -->
+
+        </td>
+
+      </tr>
+
+      </tbody>
+    </table>
+
   </div>
 
-  <div app-view-segment="1" ng-show="('schools.new_school' | routeSegmentEqualsTo)"></div>
+  <div app-view-segment="1" ng-show="('schools.new_school' | routeSegmentEqualsTo) || ('schools.new_course' | routeSegmentEqualsTo)"></div>
 
-  <div app-view-segment="2" ng-show="('schools.edit_school.school_id' | routeSegmentEqualsTo)"></div>
+  <div app-view-segment="2" ng-show="('schools.edit_school.school_id' | routeSegmentEqualsTo) || ('schools.edit_course.course_id' | routeSegmentEqualsTo)"></div>
 
   </div>
 

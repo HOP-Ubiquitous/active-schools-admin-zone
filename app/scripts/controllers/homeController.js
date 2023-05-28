@@ -1,10 +1,46 @@
-  app.controller('homeCtrl', ['$location', 'userServiceData', '$routeParams', 'ICONS',
-    function ($location, userServiceData, $routeParams, ICONS) {
+  app.controller('homeCtrl', [
+    '$location',
+    '$scope',
+    'userService',
+    'userServiceData',
+    'routeService',
+    'routeServiceData',
+    'challengeService',
+    'challengeServiceData',
+    'ICONS',
+    function ($location,
+              $scope,
+              userService,
+              userServiceData,
+              routeService,
+              routeServiceData,
+              challengeService,
+              challengeServiceData,
+              ICONS) {
 
       var vm = this;
       vm.icons = ICONS;
       vm.userServiceData = userServiceData;
       vm.user = userServiceData.loggedUser;
+      vm.routes = [];
+      vm.challenges = [];
+      vm.users = [];
+
+      routeService.getRoutes();
+      challengeService.getChallenges();
+      userService.getUsers();
+
+      function getRoutes () {
+        vm.routes = routeServiceData.routeList;
+      }
+
+      function getChallenges () {
+        vm.challenges = challengeServiceData.challengeList;
+      }
+
+      function getUsers () {
+        vm.users = userServiceData.userList;
+      }
 
       vm.goToRoutes = function () {
         $location.path('/routes');
@@ -37,6 +73,45 @@
       vm.goToSchools = function () {
         $location.path('/schools');
       };
+
+      function initWatchers() {
+
+        vm.routeWatcher = $scope.$watch(
+          function () {
+            return routeService.routesLoaded;
+          }, function (newValue) {
+            if (newValue === true) {
+              getRoutes();
+              routeService.routesLoaded = false;
+            }
+          }
+        );
+
+        vm.challengeWatcher = $scope.$watch(
+          function () {
+            return challengeService.allChallengesLoaded;
+          }, function (newValue) {
+            if (newValue === true) {
+              getChallenges();
+              challengeService.allChallengesLoaded = false;
+            }
+          }
+        );
+
+        vm.userWatcher = $scope.$watch(
+          function () {
+            return userService.usersLoaded;
+          }, function (newValue) {
+            if (newValue === true) {
+              getUsers();
+              userService.usersLoaded = false;
+            }
+          }
+        );
+      
+      }
+
+      initWatchers();
 
     }
   ]

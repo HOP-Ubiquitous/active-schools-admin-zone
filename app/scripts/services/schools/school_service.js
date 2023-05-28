@@ -61,6 +61,9 @@ app.service('schoolService', ['schoolServiceApi', 'schoolServiceData', '$locatio
         
         if(type === 'signin') {
           $location.path('/home');
+        } else if (type === 'single') {
+          userService.addSchool(response.data.id);
+          service.getSchoolById(response.data.id)
         } else {
           service.getSchools();
         }
@@ -136,20 +139,20 @@ app.service('schoolService', ['schoolServiceApi', 'schoolServiceData', '$locatio
     return promise;
   };
 
-  service.getCourseById = function(school_id, course_id) {
+  service.getCourseById = function(course_id) {
 
     var deferred = $q.defer();
     var promise = deferred.promise;
 
-    schoolServiceApi.get_course_by_id(school_id, course_id).then(
+    schoolServiceApi.get_course_by_id(course_id).then(
       function success (response) {
         schoolServiceData.courseById = response.data;
         service.courseByIdLoaded = true;
-        console.log('\x1b[32m%s\x1b[0m', 'El curso ' + course_id + ' del colegio ' + school_id + ' cargado con éxito! :)');
+        console.log('\x1b[32m%s\x1b[0m', 'El curso ' + course_id + ' cargado con éxito! :)');
       }
     ).catch(
       function () {
-        console.log('\x1b[31m%s\x1b[0m', 'Error al cargar el curso ' + course_id + ' del colegio ' + school_id + '! :_(');
+        console.log('\x1b[31m%s\x1b[0m', 'Error al cargar el curso ' + course_id + '! :_(');
       }
     );
 
@@ -175,38 +178,38 @@ app.service('schoolService', ['schoolServiceApi', 'schoolServiceData', '$locatio
     return promise;
   };
 
-  service.editCourse = function (school_id, course_id, data) {
+  service.editCourse = function (course_id, data) {
 
     var deferred = $q.defer();
     var promise = deferred.promise;
 
-    schoolServiceApi.edit_course(school_id, course_id, data).then(
+    schoolServiceApi.edit_course(course_id, data).then(
       function success(response){
-        service.getCourseById(school_id, course_id);
-        console.log('\x1b[32m%s\x1b[0m', 'El curso ' + course_id + ' del colegio ' + school_id + ' ha sido editado con éxito! :)');
+        service.getCourseById(course_id);
+        console.log('\x1b[32m%s\x1b[0m', 'El curso ' + course_id + ' ha sido editado con éxito! :)');
       }
     ).catch(
       function () {
-        console.log('\x1b[31m%s\x1b[0m', 'Error al editar el curso ' + course_id + ' del colegio ' + school_id +'! :_(');
+        console.log('\x1b[31m%s\x1b[0m', 'Error al editar el curso ' + course_id + '! :_(');
       }
     );
 
     return promise;
   };
 
-  service.deleteCourse = function (school_id, course_id) {
+  service.deleteCourse = function (course_id) {
 
     var deferred = $q.defer();
     var promise = deferred.promise;
 
-    schoolServiceApi.delete_course(school_id, course_id).then(
+    schoolServiceApi.delete_course(course_id).then(
       function success(response){
-        service.getCourseById(school_id, course_id);
-        console.log('\x1b[32m%s\x1b[0m', 'El curso ' + course_id + ' del colegio ' + school_id + ' ha sido borrado con éxito! :)');
+        service.getCourseById(course_id);
+        console.log('\x1b[32m%s\x1b[0m', 'El curso ' + course_id + ' ha sido borrado con éxito! :)');
       }
     ).catch(
       function () {
-        console.log('\x1b[31m%s\x1b[0m', 'Error al borrar el curso ' + course_id + ' del colegio ' + school_id + '! :_(');
+        console.log('\x1b[31m%s\x1b[0m', 'Error al borrar el curso ' + course_id + '! :_(');
       }
     );
 
@@ -215,97 +218,97 @@ app.service('schoolService', ['schoolServiceApi', 'schoolServiceData', '$locatio
 
   //---- STUDENTS ----//
 
-  service.getStudentsByCourse = function (school_id, course_id) {
+  service.getStudentsByCourse = function (course_id) {
 
     var deferred = $q.defer();
     var promise = deferred.promise;
 
-    schoolServiceApi.get_students_by_course(school_id, course_id).then(
+    schoolServiceApi.get_students_by_course(course_id).then(
       function (response) {
         service.studentsLoaded = true;
         schoolServiceData.studentsByCourse = response.data;
-        console.log('\x1b[32m%s\x1b[0m', 'Estudiantes del curso ' + course_id + ' del colegio ' + school_id + ' cargados con éxito! :)');
+        console.log('\x1b[32m%s\x1b[0m', 'Estudiantes del curso ' + course_id + ' cargados con éxito! :)');
       }
     ).catch(
       function (error) {
-        console.log('\x1b[31m%s\x1b[0m', 'Error al cargar los estudiantes del curso ' + course_id + ' del colegio ' + school_id +'! :_(');
+        console.log('\x1b[31m%s\x1b[0m', 'Error al cargar los estudiantes del curso ' + course_id + '! :_(');
       }
     );
 
     return promise;
   };
 
-  service.getStudentById = function(school_id, course_id, student_id) {
+  service.getStudentById = function(course_id, student_id) {
 
     var deferred = $q.defer();
     var promise = deferred.promise;
 
-    schoolServiceApi.get_student_by_id(school_id, course_id, student_id).then(
+    schoolServiceApi.get_student_by_id(course_id, student_id).then(
       function success (response) {
         schoolServiceData.studentById = response.data;
         service.studentByIdLoaded = true;
-        console.log('\x1b[32m%s\x1b[0m', 'El estudiante ' + student_id + ' del curso ' + course_id + ' del colegio ' + school_id + ' cargado con éxito! :)');
+        console.log('\x1b[32m%s\x1b[0m', 'El estudiante ' + student_id + ' del curso ' + course_id + ' cargado con éxito! :)');
       }
     ).catch(
       function () {
-        console.log('\x1b[31m%s\x1b[0m', 'Error al cargar el estudiante ' + student_id + ' curso ' + course_id + ' del colegio ' + school_id + '! :_(');
+        console.log('\x1b[31m%s\x1b[0m', 'Error al cargar el estudiante ' + student_id + ' curso ' + course_id + '! :_(');
       }
     );
 
     return promise;
   };
 
-  service.addStudent = function (school_id, course_id, data) {
+  service.addStudent = function (course_id, student_id, data) {
 
     var deferred = $q.defer();
     var promise = deferred.promise;
 
-    schoolServiceApi.add_student(school_id, course_id, data).then(
+    schoolServiceApi.add_student(course_id, student_id, data).then(
       function success(response){
-        service.getStudentsByCourse(school_id, course_id);
-        console.log('\x1b[32m%s\x1b[0m', 'Estudiante añadido con éxito al curso ' + course_id + ' del colegio ' + school_id + '! :)');
+        service.getStudentsByCourse(course_id);
+        console.log('\x1b[32m%s\x1b[0m', 'Estudiante con id ' + student_id + ' añadido con éxito al curso ' + course_id + '! :)');
       }
     ).catch(
       function () {
-        console.log('\x1b[31m%s\x1b[0m', 'Error al crear el estudiante al curso ' + course_id + ' del colegio ' + school_id + '! :_(');
+        console.log('\x1b[31m%s\x1b[0m', 'Error al añadir estudiante ' + student_id + ' al curso ' + course_id + '! :_(');
       }
     );
 
     return promise;
   };
 
-  service.editStudent = function (school_id, course_id, student_id, data) {
+  service.editStudent = function (course_id, student_id, data) {
 
     var deferred = $q.defer();
     var promise = deferred.promise;
 
-    schoolServiceApi.edit_student(school_id, course_id, student_id, data).then(
+    schoolServiceApi.edit_student(course_id, student_id, data).then(
       function success(response){
-        service.getStudentById(school_id, course_id, student_id);
-        console.log('\x1b[32m%s\x1b[0m', 'El estudiante ' + student_id + ' del curso ' + course_id + ' del colegio ' + school_id + ' ha sido editado con éxito! :)');
+        service.getStudentById(course_id, student_id);
+        console.log('\x1b[32m%s\x1b[0m', 'El estudiante ' + student_id + ' del curso ' + course_id + ' ha sido editado con éxito! :)');
       }
     ).catch(
       function () {
-        console.log('\x1b[31m%s\x1b[0m', 'Error al editar el estudiante ' + student_id + ' del curso ' + course_id + ' del colegio ' + school_id +'! :_(');
+        console.log('\x1b[31m%s\x1b[0m', 'Error al editar el estudiante ' + student_id + ' del curso ' + course_id + '! :_(');
       }
     );
 
     return promise;
   };
 
-  service.deleteStudent = function (school_id, course_id, student_id) {
+  service.deleteStudent = function (course_id, student_id) {
 
     var deferred = $q.defer();
     var promise = deferred.promise;
 
-    schoolServiceApi.delete_student(school_id, course_id, student_id).then(
+    schoolServiceApi.delete_student(course_id, student_id).then(
       function success(response){
-        service.getStudentById(school_id, course_id, student_id);
-        console.log('\x1b[32m%s\x1b[0m', 'El estudiante ' + student_id + ' del curso ' + course_id + ' del colegio ' + school_id + ' ha sido borrado con éxito! :)');
+        service.getStudentById(course_id, student_id);
+        console.log('\x1b[32m%s\x1b[0m', 'El estudiante ' + student_id + ' del curso ' + course_id + ' ha sido borrado con éxito! :)');
       }
     ).catch(
       function () {
-        console.log('\x1b[31m%s\x1b[0m', 'Error al borrar el estudiante ' + student_id + ' del curso ' + course_id + ' del colegio ' + school_id + '! :_(');
+        console.log('\x1b[31m%s\x1b[0m', 'Error al borrar el estudiante ' + student_id + ' del curso ' + course_id + '! :_(');
       }
     );
 

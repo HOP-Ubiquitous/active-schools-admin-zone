@@ -1,6 +1,6 @@
-<div class="main-container-inner-right">
+<div class="main-container-inner-right"  ng-show="('users.edit_user.user_id' | routeSegmentEqualsTo)">
 
-  <div class="new-route-form" ng-show="('users.edit_user.user_id' | routeSegmentEqualsTo)">
+  <div class="new-route-form">
 
     <form-section-header title="Edit User"
                          icon="{{editUser.icons.edit}}"
@@ -10,15 +10,19 @@
 
     <form>
 
-      <input type="text"
-             ng-show="('users.edit_user.user_id' | routeSegmentEqualsTo)"
+       <select class="width-100"
+               ng-model="editUser.user.rol"
+               ng-options="rol.value as rol.text for rol in editUser.roles" required>
+              <option value="">Rol</option>
+       </select>
+
+      <!-- <input type="text"
              placeholder="Rol"
              class="input-text"
              ng-model="editUser.user.rol"
-             required>
+             required> -->
 
       <input type="text"
-             ng-show="('users.edit_user.user_id' | routeSegmentEqualsTo)"
              placeholder="Username"
              class="input-text"
              ng-model="editUser.user.username"
@@ -39,67 +43,70 @@
              required> -->
 
       <input type="text"
-             ng-show="('users.edit_user.user_id' | routeSegmentEqualsTo)"
              placeholder="Name"
              class="input-text"
              ng-model="editUser.user.personal_data.name"
              required>
 
       <input type="text"
-             ng-show="('users.edit_user.user_id' | routeSegmentEqualsTo)"
              placeholder="Surname"
              class="input-text"
              ng-model="editUser.user.personal_data.surname"
              required>
 
-      <input type="text"
-             ng-show="('users.edit_user.user_id' | routeSegmentEqualsTo)"
+       <select class="width-100"
+             ng-model="editUser.user.personal_data.sex"
+             ng-options="sex.value as sex.text for sex in editUser.sex" required>
+              <option value="">Sex</option>
+       </select>
+
+      <!-- <input type="text"
              placeholder="Sex"
              class="input-text"
              ng-model="editUser.user.personal_data.sex"
-             required>
+             required> -->
 
-      <input type="number"
-             ng-show="('users.edit_user.user_id' | routeSegmentEqualsTo)"
-             placeholder="Weight"
-             class="input-text"
-             ng-model="editUser.user.personal_data.weight"
-             required>
-
-      <input type="number"
-             ng-show="('users.edit_user.user_id' | routeSegmentEqualsTo)"
+       <input type="number"
              placeholder="Height"
              class="input-text"
              ng-model="editUser.user.personal_data.height"
              required>
 
+      <input type="number"
+             placeholder="Weight"
+             class="input-text"
+             ng-model="editUser.user.personal_data.weight"
+             required>
+
       <input type="text"
-             ng-show="('users.edit_user.user_id' | routeSegmentEqualsTo)"
              placeholder="Address"
              class="input-text"
              ng-model="editUser.user.personal_data.address"
              required>
 
       <input type="text"
-             ng-show="('users.edit_user.user_id' | routeSegmentEqualsTo)"
              placeholder="City"
              class="input-text"
              ng-model="editUser.user.personal_data.city"
              required>
 
       <input type="text"
-             ng-show="('users.edit_user.user_id' | routeSegmentEqualsTo)"
              placeholder="Province"
              class="input-text"
              ng-model="editUser.user.personal_data.province"
              required>
 
-      <input type="text"
-             ng-show="('users.edit_user.user_id' | routeSegmentEqualsTo)"
+       <select class="width-100"
+             ng-model="editUser.user.personal_data.country"
+             ng-options="country.code as country.name for country in editUser.countries" required>
+            <option value="">Country</option>
+       </select>
+
+      <!-- <input type="text"
              placeholder="Country"
              class="input-text"
              ng-model="editUser.user.personal_data.country"
-             required>
+             required> -->
 
       <br>
 

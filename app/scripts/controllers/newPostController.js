@@ -16,26 +16,15 @@ app.controller('newPostCtrl', ['$location', 'postService', 'postServiceData', 'I
 
     vm.save = function() {
 
-       let language;
-
-       if (vm.post.country === 'All' || vm.post.country === 'England') {
-         language = 0;
-       } else if (vm.post.country === 'Greece') {
-         language = 1;
-       } else if (vm.post.country === 'Spain') {
-         language = 2;
-       }
-
        let post = {
          date: new Date().toISOString(),
          title: vm.post.title,
-         description: vm.post.description,
+         content: vm.post.description,
          image: vm.post.image,
-         country: vm.post.country,
-         language: language
+         language: vm.post.country === undefined ? 'ALL' : vm.post.country
        };
 
-       postService.addPost(post);
+      postService.addPost(post);
 
     };
 

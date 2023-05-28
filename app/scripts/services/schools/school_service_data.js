@@ -11,6 +11,8 @@ app.service('schoolServiceData', ['$cookies', function($cookies){
   serviceSchool.studentsByCourse = [];
   serviceSchool.studentById = {};
 
+  serviceSchool.selectedSchool = {};
+
  return serviceSchool;
 
 }]);

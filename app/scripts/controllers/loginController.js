@@ -101,7 +101,7 @@ app.controller('loginCtrl',
         password: vm.user.password
       }
 
-      userService.login(user);
+      userService.login(user, undefined);
 
     };
 
@@ -339,6 +339,10 @@ app.controller('loginCtrl',
     //   }
 
     // }
+
+    vm.goToPrivacyPolicy = () => {
+      $location.path('/privacy_policy');
+    }
 
     function initWatchers() {
 

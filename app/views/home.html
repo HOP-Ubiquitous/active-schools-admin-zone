@@ -2,92 +2,75 @@
 
   <main-menu></main-menu>
 
-<div class="main-container">
+  <div class="main-container">
 
-  <section-header ng-show="('home' | routeSegmentEqualsTo)"
-                  title="Home"
-                  icon="{{home.icons.home}}">
-  </section-header>
+    <section-header ng-show="('home' | routeSegmentEqualsTo)"
+                    title="Home"
+                    icon="{{home.icons.home}}">
+    </section-header>
 
-  <div class="home-title-container">
-    <div class="home-title-inner-container">
-      <img src="../images/active-schools.svg">
-      <p>Welcome {{home.user.personal_data.name}}!</p>
+    <div class="home-title-container">
+      <div class="home-title-inner-container">
+        <img src="../images/active-schools.svg">
+        <p>Welcome {{home.user.personal_data.name}}!</p>
+      </div>
     </div>
-  </div>
 
-  <div class="home-main-container">
-    
-    <div class="home-content">
+    <div class="home-main-container">
+      
+      <div class="home-content">
 
-      <button class="home-button"
-              title="Go to Routes"
-              ng-click="home.goToRoutes()">
-        <span class="{{home.icons.routes}}"></span>
-        <p>Routes</p>
-      </button>
-
-      <button class="home-button"
-                  title="Go to Challenges"
-                  ng-click="home.goToChallenges()">
-        <span class="{{home.icons.challenges}}"></span>
-        <p>Challenges</p>
-      </button>
-
-      <button class="home-button home-button-unactive"
-                  title="Go to MedicalCenter">
-        <span class="{{home.icons.school}}"></span>
-        <p>Schools</p>
-      </button>
-
-      <!-- <button class="home-button"
-                  title="Go to Medical Centers"
-                  ng-click="home.goToMedicalCenters()">
-        <span class="{{home.icons.medical_centers}}"></span>
-        <p>Medical Centers</p>
-      </button> -->
-
-      <button class="home-button home-button-unactive"
-                  title="Go to Posts">
-        <span class="{{home.icons.posts}}"></span>
-        <p>Posts</p>
-      </button>
-
-      <button class="home-button home-button-unactive"
-                  title="Go to Teams">
-        <span class="{{home.icons.teams}}"></span>
-        <p>Teams</p>
-      </button>
-
-      <!-- <button class="home-button"
-                  title="Go to Users"
-                  ng-click="home.goToUsers()"
-                  ng-show="users.userServiceData.loggedUser.rol ==='superadmin'">
-        <span class="{{home.icons.users}}"></span>
-        <t>Users</t>
-      </button> -->
-
-      <!-- Completar lo de abajo-->
-      <div class="home-button home-button-span">
-        
-        <div class="home-stat">
-          <span>20</span>
+        <button class="home-button"
+                title="Go to Routes"
+                ng-click="home.goToRoutes()">
+          <span class="{{home.icons.routes}}"></span>
           <p>Routes</p>
-        </div>
+        </button>
 
-        <div class="home-stat">
-          <span>75</span>
+        <button class="home-button"
+                title="Go to Challenges"
+                ng-click="home.goToChallenges()">
+          <span class="{{home.icons.challenges}}"></span>
           <p>Challenges</p>
-        </div>
+        </button>
 
-        <!-- <div class="home-stat">
-          <span>12</span>
-          <p>Teachers</p>
-        </div> -->
+        <button class="home-button home-button-unactive"
+                ng-click="home.goToSchools()"
+                title="Go to Schools">
+          <span class="{{home.icons.school}}"></span>
+          <p>Schools</p>
+        </button>
 
-        <div class="home-stat">
-          <span>263</span>
-          <p>Users</p>
+        <button class="home-button home-button-unactive"
+                ng-click="home.goToPosts()"
+                title="Go to Posts">
+          <span class="{{home.icons.posts}}"></span>
+          <p>Posts</p>
+        </button>
+
+        <button class="home-button home-button-unactive"
+                title="Go to Teams">
+          <span class="{{home.icons.teams}}"></span>
+          <p>Teams</p>
+        </button>
+
+        <div class="home-button home-button-span">
+          
+          <div class="home-stat">
+            <span>{{home.routes.length}}</span>
+            <p>Routes</p>
+          </div>
+
+          <div class="home-stat">
+            <span>{{home.challenges.length}}</span>
+            <p>Challenges</p>
+          </div>
+
+          <div class="home-stat">
+            <span>{{home.users.length}}</span>
+            <p>Users</p>
+          </div>
+
         </div>
 
       </div>
@@ -95,7 +78,5 @@
     </div>
 
   </div>
-
-</div>
 
 </div>

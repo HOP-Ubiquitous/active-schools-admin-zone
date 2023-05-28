@@ -687,3 +687,33 @@ ul.tabs li {
   opacity: 0.5;
   pointer-events: none;
 }
+
+.centered-window {
+  width: 480px;
+  height: auto;
+  background: #f5f5f5;
+  padding: 20px;
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  margin: auto;
+}
+
+.centered-window p {
+  text-align: left;
+  font-size: 12px
+}
+
+.centered-window hr {
+  border-top: 1px solid #ddd;
+  width: 100%;
+  margin-top: 10px;
+}
+
+.centered-window .sub-section-new-button-container {
+  margin: auto;
+}
+
+.margin-40 {
+  margin: 20px 0;
+}

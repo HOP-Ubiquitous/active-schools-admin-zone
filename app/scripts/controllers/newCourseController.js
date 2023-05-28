@@ -1,29 +1,56 @@
 'use strict';
 
-app.controller('newCourseCtrl', ['$location', 'challengeService', 'ICONS', 'COUNTRIES',
-  function ($location, challengeService, ICONS, COUNTRIES) {
+app.controller('newCourseCtrl', ['$scope', '$location', 'userService', 'userServiceData', 'schoolService', 'schoolServiceData', 'ICONS',
+  function ($scope, $location, userService, userServiceData, schoolService, schoolServiceData, ICONS) {
 
     var vm = this;
     vm.icons = ICONS;
-    vm.countries = COUNTRIES.countries;
-    vm.challenge = {};
+    vm.course = {};
 
-    vm.getUnit = function (unit) {
-      vm.challenge.unit = unit;
+    vm.userServiceData = userServiceData;
+    vm.user = userServiceData.loggedUser;
+    vm.users = [];
+
+    userService.getUsers();
+
+    vm.getUsers = function () {
+      vm.users = userServiceData.userList;
+      return vm.users;
+    }
+
+    vm.goToSchools = function() {
+      $location.path('schools');
+    }
+
+    vm.addCourse = function(){
+
+      if (vm.course.course_name !== '' && vm.course.course_name!== undefined &&
+          vm.course.teacher_id !== '' && vm.course.teacher_id !== undefined) {
+        let course =  {
+          course_name: vm.course.course_name,
+          teacher_id: vm.course.teacher_id
+        };
+
+        schoolService.addCourse(schoolServiceData.selectedSchool.school_id, course);
+      }
+
     };
 
-    vm.save = function(){
+    function initWatchers() {
 
-      let challenge =  {
-        name: vm.challenge.name,
-        period: vm.challenge.period,
-        unit: vm.challenge.unit,
-        bonus: vm.challenge.bonus,
-        video: vm.challenge.video,
-        images: ['image1', 'image2']
-      };
+      vm.userWatcher = $scope.$watch(
+        function () {
+          return userService.usersLoaded;
+        }, function (newValue) {
+          if (newValue === true) {
+            this.getUsers();
+            userService.usersLoaded = false;
+          }
+        }
+      );
+    
+    }
 
-      challengeService.addChallenge(challenge);
-    };
+    initWatchers();
 
   }]);

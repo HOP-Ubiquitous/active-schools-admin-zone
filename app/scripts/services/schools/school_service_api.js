@@ -63,10 +63,10 @@ app.service('schoolServiceApi', ['$http', 'API_URL', 'userServiceData', function
     });
   };
 
-  apiService.get_course_by_id = function (school_id, course_id) {
+  apiService.get_course_by_id = function (course_id) {
     return $http({
       method: 'GET',
-      url: apiURL + 'schools/' + school_id + '/courses/' + course_id,
+      url: apiURL + 'schools/courses/' + course_id,
       headers: headers
     });
   };
@@ -80,63 +80,63 @@ app.service('schoolServiceApi', ['$http', 'API_URL', 'userServiceData', function
     });
   };
 
-  apiService.edit_course = function (school_id, course_id, data) {
+  apiService.edit_course = function (course_id, data) {
     return $http({
       method: 'PUT',
       data: data,
-      url: apiURL + 'schools/' + school_id + '/courses/' + course_id,
+      url: apiURL + 'schools/courses/' + course_id,
       headers: headers
     });
   };
 
-  apiService.delete_course = function (school_id, course_id) {
+  apiService.delete_course = function (course_id) {
     return $http({
       method: 'DELETE',
-      url: apiURL + 'schools/' + school_id + '/courses/' + course_id,
+      url: apiURL + 'schools/courses/' + course_id,
       headers: headers
     });
   };
 
   //---- STUDENTS ----//
 
-  apiService.get_students_by_course = function (school_id, course_id) {
+  apiService.get_students_by_course = function (course_id) {
     return $http({
       method: 'GET',
-      url: apiURL + 'schools/' + school_id + '/courses/' + course_id + '/students',
+      url: apiURL + 'schools/courses/' + course_id + '/students',
       headers: headers
     });
   };
 
-  apiService.get_student_by_id = function (school_id, course_id, student_id) {
+  apiService.get_student_by_id = function (course_id, student_id) {
     return $http({
       method: 'GET',
-      url: apiURL + 'schools/' + school_id + '/courses/' + course_id + '/students/' + student_id,
+      url: apiURL + 'schools/courses/' + course_id + '/students/' + student_id,
       headers: headers
     });
   };
 
-  apiService.add_student = function (school_id, course_id, data) {
+  apiService.add_student = function (course_id, student_id, data) { //data is {}
     return $http({
       method: 'POST',
       data: data,
-      url: apiURL + 'schools/' + school_id + '/courses/' + course_id + '/students',
+      url: apiURL + 'schools/courses/' + course_id + '/students/' + student_id,
       headers: headers
     });
   };
 
-  apiService.edit_student = function (school_id, course_id, student_id, data) {
+  apiService.edit_student = function (course_id, student_id, data) {
     return $http({
       method: 'PUT',
       data: data,
-      url: apiURL + 'schools/' + school_id + '/courses/' + course_id + '/students/' + student_id,
+      url: apiURL + 'schools/courses/' + course_id + '/students/' + student_id,
       headers: headers
     });
   };
 
-  apiService.delete_student = function (school_id, course_id, student_id) {
+  apiService.delete_student = function (course_id, student_id) {
     return $http({
       method: 'DELETE',
-      url: apiURL + 'schools/' + school_id + '/courses/' + course_id + '/students/' + student_id,
+      url: apiURL + 'schools/courses/' + course_id + '/students/' + student_id,
       headers: headers
     });
   };

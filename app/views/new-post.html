@@ -28,20 +28,18 @@
 
       <hr class="space-new-route">
 
-      <input type="url" placeholder="File Image" class="input-text" ng-model="newPost.post.image" ng-show="('posts.new_post' | routeSegmentEqualsTo)" required>
+      <input type="url"
+             placeholder="Url Image"
+             class="input-text"
+             ng-model="newPost.post.image"
+             ng-show="('posts.new_post' | routeSegmentEqualsTo)"
+             required>
 
-      <dropdown show-dropdown="('posts.new_post' | routeSegmentEqualsTo)"
-                active-dropdown="showOptions"
-                model="newPost.post.country"
-                placeholder="Select Country to Publish"
-                dropdown-style="{ 'height': 60 + (newPost.countries.length * 30) + 'px',
-                                  'max-height': 'calc(100vh - 481px)' }"
-                show-default-option="true"
-                defalt-option-value="all"
-                default-option-name="ALL COUNTRIES"
-                repeater="newPost.countries"
-                get-option-function="newPost.getCountry()">
-      </dropdown>
+      <select class="width-100"
+              ng-model="newPost.post.country"
+              ng-options="country.code as country.name for country in newPost.countries" required>
+        <option value="">All</option>
+      </select>
 
       <button-form show-button="('posts.new_post' | routeSegmentEqualsTo)"
                    click-button="newPost.save()"
