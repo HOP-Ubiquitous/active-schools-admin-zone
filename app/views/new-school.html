@@ -2,7 +2,7 @@
 
   <div class="new-route-form" ng-show="('schools.new_school' | routeSegmentEqualsTo)">
 
-    <form-section-header title="{{newSchool.user.rol === 'superadmin' ? 'New School' : 'Create School'}}"
+    <form-section-header title="{{newSchool.getTitle()}}"
                          icon="{{newSchool.icons.add}}"
                          close-icon="{{newSchool.icons.close}}"
                          close-function="newSchool.goToSchools()">
@@ -12,42 +12,42 @@
 
       <input type="text"
              ng-show="newSchool.user.rol === 'superadmin' && ('schools.new_school' | routeSegmentEqualsTo)"
-             placeholder="Director_id"
+             placeholder="{{newSchool.language.SCHOOLS.principalId}}"
              class="input-text"
              ng-model="newSchool.school.director_id"
              required>
 
       <input type="text"
              ng-show="('schools.new_school' | routeSegmentEqualsTo)"
-             placeholder="School Name"
+             placeholder="{{newSchool.language.SCHOOLS.schoolName}}"
              class="input-text"
              ng-model="newSchool.school.school_name"
              required>
 
       <input type="text"
              ng-show="('schools.new_school' | routeSegmentEqualsTo)"
-             placeholder="School Address"
+             placeholder="{{newSchool.language.SCHOOLS.schoolAddress}}"
              class="input-text"
              ng-model="newSchool.school.school_address"
              required>
 
       <input type="text"
              ng-show="('schools.new_school' | routeSegmentEqualsTo)"
-             placeholder="Postal Code"
+             placeholder="{{newSchool.language.LOGIN.postalCode}}"
              class="input-text"
              ng-model="newSchool.school.school_postal_code"
              required>
 
       <input type="text"
              ng-show="('schools.new_school' | routeSegmentEqualsTo)"
-             placeholder="City"
+             placeholder="{{newSchool.language.LOGIN.city}}"
              class="input-text"
              ng-model="newSchool.school.school_city"
              required>
 
       <input type="text"
              ng-show="('schools.new_school' | routeSegmentEqualsTo)"
-             placeholder="Province"
+             placeholder="{{newSchool.language.LOGIN.province}}"
              class="input-text"
              ng-model="newSchool.school.school_province"
              required>
@@ -56,14 +56,14 @@
              ng-model="newSchool.school.school_country"
              ng-options="country.code as country.name for country in newSchool.countries"
              required>
-              <option value="">Country</option>
+              <option value="">{{newSchool.language.LOGIN.country}}</option>
        </select>
 
       <br>
 
       <button-form show-button="('schools.new_school' | routeSegmentEqualsTo)"
                    click-button="newSchool.addSchool()"
-                   text-button="Add School">
+                   text-button="{{newSchool.language.SCHOOLS.addSchool}}">
       </button-form>
 
     </form>

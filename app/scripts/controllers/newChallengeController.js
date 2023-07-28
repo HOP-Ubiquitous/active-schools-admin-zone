@@ -1,46 +1,55 @@
 'use strict';
 
-app.controller('newChallengeCtrl', ['$scope', '$sce', '$location', 'challengeService', 'ICONS', 'COUNTRIES',
-  function ($scope, $sce, $location, challengeService, ICONS, COUNTRIES) {
+app.controller('newChallengeCtrl', ['$scope', '$sce', '$location', 'challengeService', 'ICONS', 'languageService',
+  function ($scope, $sce, $location, challengeService, ICONS, languageService) {
 
     var vm = this;
     vm.icons = ICONS;
-    vm.countries = COUNTRIES.countries;
     vm.newChallengeUpdated = challengeService.newChallengeUpdated;
     vm.videoTransformed = false;
+
+    languageService.getSelectedLanguage();
+
+    function updateLanguage() {
+      vm.language = languageService.language;
+      vm.countries = languageService.countries;
+    }
+
+    updateLanguage();
+
     vm.categories = [
       {
-        name: 'Aerobics',
+        name: languageService.language.ROUTES.aerobics,
         value: 'aerobics'
       },
       {
-        name: 'Balance',
+        name: languageService.language.ROUTES.balance,
         value: 'balance'
       },
       {
-        name: 'Mental',
+        name: languageService.language.ROUTES.mental,
         value: 'mental'
       },
       {
-        name: 'Strength',
+        name: languageService.language.ROUTES.strength,
         value: 'strength'
       },
       {
-        name: 'Stretch',
+        name: languageService.language.ROUTES.stretch,
         value: 'stretch'
       }
     ];
     vm.units = [
       {
-        name: 'Minutes',
+        name: languageService.language.ROUTES.minutes,
         value: 'minutes'
       },
       {
-        name: 'Seconds',
+        name: languageService.language.ROUTES.seconds,
         value: 'seconds'
       },
       {
-        name: 'Repeats',
+        name: languageService.language.ROUTES.repeats,
         value: 'reps'
       }
     ];
@@ -50,7 +59,9 @@ app.controller('newChallengeCtrl', ['$scope', '$sce', '$location', 'challengeSer
       vm.challenge.unit = unit;
     };
 
-    vm.save = function(){
+    vm.save = function () {
+
+      //TODO Añadir condicionales para filtrado de datos
 
       let challenge =  {
         title: vm.challenge.title,
@@ -58,7 +69,7 @@ app.controller('newChallengeCtrl', ['$scope', '$sce', '$location', 'challengeSer
         description: vm.challenge.description,
         target: vm.challenge.target,
         unit: vm.challenge.unit,
-        instructions: vm.challenge.instructions,
+        instructions: 'instructions',
         reward: vm.challenge.reward,
         video: vm.videoId
       };
@@ -91,6 +102,17 @@ app.controller('newChallengeCtrl', ['$scope', '$sce', '$location', 'challengeSer
     }
 
     function initWatchers() {
+
+      vm.languageWatcher = $scope.$watch(
+        function () {
+          return languageService.formLanguageUpdated;
+        }, function (newValue) {
+          if (newValue === true) {
+            updateLanguage();
+            languageService.formLanguageUpdated = false;
+          }
+        }
+      );
 
       vm.newVideoWatcher = $scope.$watch(
         function () {

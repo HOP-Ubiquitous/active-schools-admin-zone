@@ -1,47 +1,69 @@
 'use strict';
 
-app.controller('editCourseCtrl', ['$scope', '$location', 'challengeService', 'challengeServiceData', '$routeParams', 'ICONS', 'COUNTRIES',
-  function ($scope, $location, challengeService, challengeServiceData, $routeParams, ICONS, COUNTRIES) {
+app.controller('editCourseCtrl', ['$scope', '$location', 'schoolService', 'schoolServiceData', 'userService', 'userServiceData', '$routeParams', 'ICONS', 'languageService',
+  function ($scope, $location, schoolService, schoolServiceData, userService, userServiceData, $routeParams, ICONS, languageService) {
 
     var vm = this;
     vm.icons = ICONS;
-    vm.countries = COUNTRIES.countries;
-    vm.id = $routeParams.challenge_id;
+    vm.id = $routeParams.course_id;
 
-    challengeService.getChallengeById(vm.id);
+    languageService.getSelectedLanguage();
 
-    function getChallenge () {
-      vm.challenge = challengeServiceData.challengeById;
+    function updateLanguage() {
+      vm.language = languageService.language;
+      vm.countries = languageService.countries;
     }
 
-    vm.getUnit = function (unit) {
-      vm.challenge.unit = unit;
-    };
+    updateLanguage();
+
+    userService.getUsers();
+
+    vm.getUsers = function () {
+      vm.users = userServiceData.userList;
+      return vm.users;
+    }
+
+    schoolService.getCourseById(vm.id);
+
+    function getCourse () {
+      vm.course = schoolServiceData.courseById;
+    }
 
     vm.edit = function () {
 
-      let challenge =  {
-        name: vm.challenge.name,
-        period: vm.challenge.period,
-        unit: vm.challenge.unit,
-        bonus: vm.challenge.bonus,
-        video: vm.challenge.video,
-        images: ['image1', 'image2']
+      let course =  {
+        course_name: vm.course.course_name,
+        teacher_id: vm.course.teacher_id
       };
 
-      challengeService.editChallenge(vm.id, challenge);
+      schoolService.editCourse(vm.id, course);
 
-  };
+    };
+
+    vm.goToSchools = function () {
+      $location.path('schools');
+    }
 
     function initWatchers() {
 
-      vm.postWatcher = $scope.$watch(
+      vm.languageWatcher = $scope.$watch(
         function () {
-          return challengeService.challengeByIdLoaded;
+          return languageService.formLanguageUpdated;
         }, function (newValue) {
           if (newValue === true) {
-            getChallenge();
-            challengeService.challengeByIdLoaded = false;
+            updateLanguage();
+            languageService.formLanguageUpdated = false;
+          }
+        }
+      );
+
+      vm.postWatcher = $scope.$watch(
+        function () {
+          return schoolService.courseByIdLoaded;
+        }, function (newValue) {
+          if (newValue === true) {
+            getCourse();
+            schoolService.courseByIdLoaded = false;
           }
         }
       );

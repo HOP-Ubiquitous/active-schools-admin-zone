@@ -1,14 +1,22 @@
 'use strict';
 
-app.controller('usersCtrl', ['$scope', '$location', 'userService', 'userServiceData', '$routeParams', 'ICONS', 'COUNTRIES',
-    function ($scope, $location, userService, userServiceData, $routeParams, ICONS, COUNTRIES) {
+app.controller('usersCtrl', ['$scope', '$location', 'userService', 'userServiceData', '$routeParams', 'ICONS', 'languageService',
+    function ($scope, $location, userService, userServiceData, $routeParams, ICONS, languageService) {
 
     var vm = this;
     vm.icons = ICONS;
-    vm.countries = COUNTRIES.countries;
     vm.loggedUser = userServiceData.loggedUser;
     vm.users = [];
     vm.userServiceData = userServiceData;
+
+    languageService.getSelectedLanguage();
+
+    function updateLanguage() {
+      vm.language = languageService.language;
+      vm.countries = languageService.countries;
+    }
+
+    updateLanguage();
 
     userService.getUsers();
 
@@ -18,7 +26,7 @@ app.controller('usersCtrl', ['$scope', '$location', 'userService', 'userServiceD
 
     vm.checkIfOwnUser = function(id) {
       if (id === vm.loggedUser.id) {
-        return '(YOU)';
+        return languageService.language.USERS.me;
       }
     }
 
@@ -40,6 +48,17 @@ app.controller('usersCtrl', ['$scope', '$location', 'userService', 'userServiceD
     };
 
     function initWatchers() {
+
+      vm.languageWatcher = $scope.$watch(
+        function () {
+          return languageService.languageUpdated;
+        }, function (newValue) {
+          if (newValue === true) {
+            updateLanguage();
+            languageService.languageUpdated = false;
+          }
+        }
+      );
 
       vm.userWatcher = $scope.$watch(
         function () {

@@ -12,8 +12,8 @@ app.controller('loginCtrl',
    'medicalCenterService',
    'medicalCenterServiceData',
    'ICONS',
-   'COUNTRIES',
    'FIREBASE',
+   'languageService',
    function ($scope,
              $timeout,
              $location,
@@ -25,11 +25,27 @@ app.controller('loginCtrl',
              medicalCenterService,
              medicalCenterServiceData,
              ICONS,
-             COUNTRIES,
-             FIREBASE) {
+             FIREBASE,
+             languageService) {
 
     var vm = this;
     vm.showRegister = false;
+
+    languageService.getSelectedLanguage();
+
+    function updateLanguage() {
+      vm.language = languageService.language;
+      vm.countries = languageService.countries;
+      vm.english = languageService.selectedEnglish;
+      vm.greece = languageService.selectedGreece;
+      vm.spanish = languageService.selectedSpanish;
+    }
+
+    updateLanguage();
+
+    vm.setLanguage = function (language) {
+      languageService.setLanguage(language);
+    }
 
     var firebaseConfig = FIREBASE;
 
@@ -44,14 +60,13 @@ app.controller('loginCtrl',
     console.log(provider);
 
     vm.icons = ICONS;
-    vm.countries = COUNTRIES.countries;
     vm.sexArray = [
       {
-        text: 'Female',
+        text: languageService.language.LOGIN.female,
         value: 'female'
       },
       {
-        text: 'Male',
+        text: languageService.language.LOGIN.male,
         value: 'male'
       }
     ];
@@ -163,7 +178,7 @@ app.controller('loginCtrl',
         vm.registerStep3 = false;
         vm.registerStep4 = false;
 
-        vm.errorMessage = 'Required field not filled in or incorrect';
+        vm.errorMessage = languageService.language.LOGIN.errorMessage;
 
         vm.openMessageWindow = true;
         $timeout(function () {vm.openMessageWindow = false;}, 3000);
@@ -344,7 +359,22 @@ app.controller('loginCtrl',
       $location.path('/privacy_policy');
     }
 
+    vm.goToWeb = () => {
+      $location.path('/web');
+    }
+
     function initWatchers() {
+
+      vm.languageWatcher = $scope.$watch(
+        function () {
+          return languageService.languageUpdated;
+        }, function (newValue) {
+          if (newValue === true) {
+            updateLanguage();
+            languageService.languageUpdated = false;
+          }
+        }
+      );
 
       vm.userWatcher = $scope.$watch(
         function () {

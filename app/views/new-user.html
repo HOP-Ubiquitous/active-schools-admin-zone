@@ -2,7 +2,7 @@
 
   <div class="new-route-form">
 
-    <form-section-header title="New User"
+    <form-section-header title="{{newUser.language.USERS.newUser}}"
                          icon="{{newUser.icons.add}}"
                          close-icon="{{newUser.icons.close}}"
                          close-function="newUser.goToUsers()">
@@ -13,7 +13,7 @@
        <select class="width-100"
                ng-model="newUser.user.rol"
                ng-options="rol.value as rol.text for rol in newUser.roles" required>
-              <option value="">Rol</option>
+              <option value="">{{newUser.language.USERS.rol}}</option>
        </select>
 
       <!-- <input type="text"
@@ -24,33 +24,33 @@
 
       <input type="text"
              autocomplete="new-username"
-             placeholder="Username"
+             placeholder="{{newUser.language.LOGIN.user}}"
              class="input-text"
              ng-model="newUser.user.username"
              required>
 
       <input type="password"
              autocomplete="new-password"
-             placeholder="Password"
+             placeholder="{{newUser.language.LOGIN.password}}"
              class="input-text"
              ng-model="newUser.user.password"
              required>
 
       <input type="password"
              autocomplete="repeat-new-password"
-             placeholder="Repeat Password"
+             placeholder="{{newUser.language.LOGIN.repeatPassword}}"
              class="input-text"
              ng-model="newUser.user.checkPassword"
              required>
 
       <input type="text"
-             placeholder="Name"
+             placeholder="{{newUser.language.LOGIN.name}}"
              class="input-text"
              ng-model="newUser.user.personal_data.name"
              required>
 
       <input type="text"
-             placeholder="Surname"
+             placeholder="{{newUser.language.LOGIN.surname}}"
              class="input-text"
              ng-model="newUser.user.personal_data.surname"
              required>
@@ -58,7 +58,7 @@
        <select class="width-100"
              ng-model="newUser.user.personal_data.sex"
              ng-options="sex.value as sex.text for sex in newUser.sex" required>
-              <option value="">Sex</option>
+              <option value="">{{newUser.language.LOGIN.sex}}</option>
        </select>
 
       <!-- <input type="text"
@@ -68,31 +68,31 @@
              required> -->
 
        <input type="number"
-             placeholder="Height"
+             placeholder="{{newUser.language.LOGIN.height}}"
              class="input-text"
              ng-model="newUser.user.personal_data.height"
              required>
 
       <input type="number"
-             placeholder="Weight"
+             placeholder="{{newUser.language.LOGIN.weight}}"
              class="input-text"
              ng-model="newUser.user.personal_data.weight"
              required>
 
       <input type="text"
-             placeholder="Address"
+             placeholder="{{newUser.language.LOGIN.address}}"
              class="input-text"
              ng-model="newUser.user.personal_data.address"
              required>
 
       <input type="text"
-             placeholder="City"
+             placeholder="{{newUser.language.LOGIN.city}}"
              class="input-text"
              ng-model="newUser.user.personal_data.city"
              required>
 
       <input type="text"
-             placeholder="Province"
+             placeholder="{{newUser.language.LOGIN.province}}"
              class="input-text"
              ng-model="newUser.user.personal_data.province"
              required>
@@ -100,7 +100,7 @@
        <select class="width-100"
                ng-model="newUser.user.personal_data.country"
                ng-options="country.code as country.name for country in newUser.countries" required>
-              <option value="">Country</option>
+              <option value="">{{newUser.language.LOGIN.country}}</option>
        </select>
 
       <!-- <input type="text"
@@ -113,7 +113,7 @@
 
       <button-form show-button="('users.new_user' | routeSegmentEqualsTo)"
                    click-button="newUser.addUser()"
-                   text-button="Add User">
+                   text-button="{{newUser.language.USERS.addUsers}}">
       </button-form>
 
     </form>

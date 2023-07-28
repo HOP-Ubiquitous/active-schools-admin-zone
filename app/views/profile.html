@@ -1,0 +1,119 @@
+<div class="root">
+
+  <main-menu></main-menu>
+
+<div class="main-container" >
+
+  <section-header ng-show="('profile' | routeSegmentStartsWith)"
+                  title="{{profile.language.HOME.profile}}"
+                  icon="{{profile.icons.profile}}"
+                  show-search-input="true">
+  </section-header>
+
+  <div class="main-container-inner" ng-class="{ 'main-container-inner-left' : ('profile.edit_profile' | routeSegmentEqualsTo) || ('profile.edit_profile.profile_id' | routeSegmentEqualsTo) }">
+
+    <div class="profile-container">
+      <div class="profile-container-inner">
+
+        <subsection-header title="{{profile.language.LOGIN.registerPersonalData}}"
+                       icon="{{profile.icons.profile}}"
+                       map-buttons="false"
+                       new-button-icon="{{routes.icons.add}}"
+                       new-button-title="{{routes.language.ROUTES.newRoute}}"
+                       new-button-function="routes.goToNewRoute()"
+                       hide-button-condition="false">
+        </subsection-header>
+
+        <br>
+
+        <span class="profile-paragraph">
+          <span class="profile-bold">{{profile.language.LOGIN.user}}:</span>
+          {{profile.loggedUser.username}}
+        </span>
+
+        <br>
+
+        <span class="profile-paragraph">
+          <span class="profile-bold">{{profile.language.LOGIN.name}}:</span>
+          {{profile.loggedUser.personal_data.name}}
+        </span>
+
+        <br>
+
+        <span class="profile-paragraph">
+          <span class="profile-bold">{{profile.language.LOGIN.surname}}:</span>
+          {{profile.loggedUser.personal_data.surname}}
+        </span>
+
+        <br>
+
+        <span class="profile-paragraph">
+          <span class="profile-bold">{{profile.language.LOGIN.address}}:</span>
+          {{profile.loggedUser.personal_data.address}}
+        </span>
+
+        <br>
+
+        <span class="profile-paragraph">
+          <span class="profile-bold">{{profile.language.LOGIN.city}}:</span>
+          {{profile.loggedUser.personal_data.city}}
+        </span>
+
+        <br>
+
+        <span class="profile-paragraph">
+          <span class="profile-bold">{{profile.language.LOGIN.province}}:</span>
+          {{profile.loggedUser.personal_data.province}}
+        </span>
+
+        <hr>
+
+        <span class="profile-paragraph">
+          <span class="profile-bold">{{profile.language.LOGIN.sex}}:</span>
+          {{profile.loggedUser.personal_data.sex}}
+        </span>
+
+        <br>
+
+        <span class="profile-paragraph">
+          <span class="profile-bold">{{profile.language.LOGIN.height}}:</span>
+          {{profile.loggedUser.personal_data.height}} cm
+        </span>
+
+        <br>
+
+        <span class="profile-paragraph">
+          <span class="profile-bold">{{profile.language.LOGIN.weight}}:</span>
+          {{profile.loggedUser.personal_data.weight}} kg
+        </span>
+
+        <hr>
+
+        <div class="popup-buttons-container profile-width-100">
+          <button class="delete-button" ng-click="showDeletePopup = true">{{profile.language.ROUTES.delete}}</button>
+          <button class="main-button" ng-click="profile.editProfile()">{{profile.language.USERS.editUser}}</button>
+        </div>
+
+      </div>
+    </div>
+
+    <div class="bg-popup" ng-show="showDeletePopup">
+
+      <div class="popup-container">
+        <span>{{profile.language.USERS.deleteUser}}</span>
+        <h5 class="bold">{{profile.loggedUser.personal_data.name}} {{profile.loggedUser.personal_data.surname}}</h5>
+        <div class="popup-buttons-container">
+          <button class="delete-button" ng-click="profile.deleteProfile(); showDeletePopup = false">{{profile.language.ROUTES.delete}}</button>
+          <button class="cancel-button"  ng-click="showDeletePopup = false">{{profile.language.ROUTES.cancel}}</button>
+        </div>
+      </div>
+
+    </div>
+
+  </div>
+
+  <div app-view-segment="2" ng-show="('profile.edit_profile.profile_id' | routeSegmentEqualsTo)"></div>
+
+  </div>
+
+</div>

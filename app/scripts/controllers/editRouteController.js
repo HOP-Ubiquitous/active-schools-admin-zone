@@ -1,13 +1,22 @@
 'use strict';
 
-app.controller('editRouteCtrl', ['$scope', '$location', '$window', '$routeParams', 'routeService', 'routeServiceData', 'challengeService', 'challengeServiceData', 'ICONS', 'COUNTRIES',
-function ($scope, $location, $window, $routeParams, routeService, routeServiceData, challengeService, challengeServiceData, ICONS, COUNTRIES) {
+app.controller('editRouteCtrl', ['$scope', '$location', '$window', '$routeParams', 'routeService', 'routeServiceData', 'challengeService', 'challengeServiceData', 'ICONS', 'languageService',
+function ($scope, $location, $window, $routeParams, routeService, routeServiceData, challengeService, challengeServiceData, ICONS, languageService) {
 
   var vm = this;
   vm.icons = ICONS;
-  vm.countries = COUNTRIES.countries;
   vm.selectedMode = '';
-  vm.selectedModeTitle = 'Route Edit Mode';
+
+  languageService.getSelectedLanguage();
+
+  function updateLanguage() {
+    vm.language = languageService.language;
+    vm.countries = languageService.countries;
+  }
+
+  updateLanguage();
+
+  vm.selectedModeTitle = languageService.language.ROUTES.modeRoute;
   vm.route = routeServiceData.routeList[$routeParams.route_id];
   vm.routeUpdated = routeService.routeUpdated;
 
@@ -114,7 +123,7 @@ function ($scope, $location, $window, $routeParams, routeService, routeServiceDa
 
     if (mode === 'route') {
 
-      vm.selectedModeTitle = 'Route Edit Mode';
+      vm.selectedModeTitle = languageService.language.ROUTES.modeRoute;
 
       routeMap.on('click', createPointWithClick);
 
@@ -128,7 +137,7 @@ function ($scope, $location, $window, $routeParams, routeService, routeServiceDa
 
     } else {
 
-      vm.selectedModeTitle = 'Challenge Positioning Mode';
+      vm.selectedModeTitle = languageService.language.ROUTES.modeChallenge;
 
       routeMap.off('click', createPointWithClick);
 
@@ -330,6 +339,17 @@ function ($scope, $location, $window, $routeParams, routeService, routeServiceDa
   };
 
   function initWatchers() {
+
+    vm.languageWatcher = $scope.$watch(
+      function () {
+        return languageService.formLanguageUpdated;
+      }, function (newValue) {
+        if (newValue === true) {
+          updateLanguage();
+          languageService.formLanguageUpdated = false;
+        }
+      }
+    );
 
     vm.routeWatcher = $scope.$watch(
       function () {

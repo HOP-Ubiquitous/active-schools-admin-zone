@@ -1,4 +1,4 @@
-<notification text="Challenge Updated!"
+<notification text="{{editChallenge.language.ROUTES.challengeUpdated}}"
               show-condition="editChallenge.challengeUpdated">
 </notification>
 
@@ -6,7 +6,7 @@
 
   <div class="new-route-form" ng-show="('challenges.edit_challenge.challenge_id' | routeSegmentEqualsTo)">
 
-    <form-section-header title="Edit Challenge"
+    <form-section-header title="{{editChallenge.language.ROUTES.editChallenge}}"
                          icon="{{editChallenge.icons.edit}}"
                          close-icon="{{editChallenge.icons.close}}"
                          close-function="editChallenge.goToChallenges()">
@@ -16,21 +16,21 @@
 
       <input type="text"
              ng-show="('challenges.edit_challenge.challenge_id' | routeSegmentEqualsTo)"
-             placeholder="Title"
+             placeholder="{{editChallenge.language.ROUTES.title}}"
              class="input-text"
              ng-model="editChallenge.challenge.title"
              required>
 
       <select class="width-100"
               ng-model="editChallenge.challenge.category"
-              placeholder="Select Category"
+              placeholder="{{editChallenge.language.ROUTES.selectCategory}}"
               ng-show="('challenges.edit_challenge.challenge_id' | routeSegmentEqualsTo)"
               ng-options="category.value as category.name for category in editChallenge.categories" required>
-        <option value="">Select Category</option>
+        <option value="">{{editChallenge.language.ROUTES.selectCategory}}</option>
       </select>
 
       <textarea ng-show="('challenges.edit_challenge.challenge_id' | routeSegmentEqualsTo)"
-                placeholder="Challenge Description"
+                placeholder="{{editChallenge.language.ROUTES.challengeDescription}}"
                 class="new-post-textArea"
                 ng-model="editChallenge.challenge.description"
                 required>
@@ -38,29 +38,29 @@
 
       <input type="number"
              ng-show="('challenges.edit_challenge.challenge_id' | routeSegmentEqualsTo)"
-             placeholder="Target"
+             placeholder="{{editChallenge.language.ROUTES.target}}"
              class="input-text"
              ng-model="editChallenge.challenge.target"
              required>
 
       <select class="width-100"
               ng-model="editChallenge.challenge.unit"
-              placeholder="Select Unit"
+              placeholder="{{editChallenge.language.ROUTES.selectUnit}}"
               ng-show="('challenges.edit_challenge' | routeSegmentEqualsTo)"
               ng-options="unit.value as unit.name for unit in editChallenge.units" required>
-        <option value="">Select Unit</option>
+        <option value="">{{editChallenge.language.ROUTES.selectUnit}}</option>
       </select>
 
-      <textarea ng-show="('challenges.edit_challenge.challenge_id' | routeSegmentEqualsTo)"
-                placeholder="Challenge Instructions"
+      <!-- <textarea ng-show="('challenges.edit_challenge.challenge_id' | routeSegmentEqualsTo)"
+                placeholder="{{editChallenge.language.ROUTES.challengeInstructions}}"
                 class="new-post-textArea"
                 ng-model="editChallenge.challenge.instructions"
                 required>
-      </textarea>
+      </textarea> -->
 
       <input type="number"
              ng-show="('challenges.edit_challenge.challenge_id' | routeSegmentEqualsTo)"
-             placeholder="Experience reward"
+             placeholder="{{editChallenge.language.ROUTES.experienceReward}}"
              class="input-text"
              ng-model="editChallenge.challenge.reward"
              required>
@@ -79,11 +79,18 @@
         </iframe>
       </div>
 
+      <span class="challenge-advise">
+        If you want to keep your videos <span class="bold">"Private"</span>, set the visibility to <span class="bold">"Unlisted"</span> in the YouTube platform. This way, the videos will only be accessible if you have the URL of the video.
+      </span>
+
+      <br>
+      <br>
+
       <hr class="space-new-route">
 
       <button-form show-button="('challenges.edit_challenge.challenge_id' | routeSegmentEqualsTo)"
                    click-button="editChallenge.edit()"
-                   text-button="Edit Challenge">
+                   text-button="{{editChallenge.language.ROUTES.editChallenge}}">
       </button-form>
 
     </form>

@@ -2,7 +2,7 @@
 
   <div class="new-route-form" ng-show="('teams.new_team' | routeSegmentEqualsTo)">
 
-    <form-section-header title="New Team"
+    <form-section-header title="{{newTeam.language.TEAMS.newTeam}}"
                          icon="{{newTeam.icons.add}}"
                          close-icon="{{newTeam.icons.close}}"
                          close-function="newTeam.goToTeams()">
@@ -12,24 +12,24 @@
 
       <input type="text"
              ng-show="('teams.new_team' | routeSegmentEqualsTo)"
-             placeholder="Name"
+             placeholder="{{newTeam.language.LOGIN.name}}"
              class="input-text"
              ng-model="newTeam.team.name"
              required>
 
-
-      <input type="number"
-             ng-show="('teams.new_team' | routeSegmentEqualsTo)"
-             placeholder="Bonus"
-             class="input-text"
-             ng-model="newTeam.team.bonus"
-             required>
+      <select class="width-100"
+              ng-show="newTeam.user.rol === 'superadmin'"
+              ng-model="newTeam.team.creator_id"
+              ng-options="user.id as (user.personal_data.name + ' ' + user.personal_data.surname) for user in newTeam.getUsers()"
+              required>
+              <option value="">{{newTeam.language.TEAMS.leader}}</option>
+      </select>
 
       <hr class="space-new-route">
 
       <button-form show-button="('teams.new_team' | routeSegmentEqualsTo)"
                    click-button="newTeam.save()"
-                   text-button="Add Team">
+                   text-button="{{newTeam.language.TEAMS.addTeam}}">
       </button-form>
 
     </form>

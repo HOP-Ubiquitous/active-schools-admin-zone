@@ -1,4 +1,4 @@
-<!-- <notification text="Route Created!"
+<!-- <notification text="{{newRoute.language.ROUTES.routeCreated}}"
               show-condition="newRoute.newRouteUpdated">
 </notification> -->
 
@@ -6,7 +6,7 @@
 
   <div class="map-container">
 
-    <subsection-header title="Route Map"
+    <subsection-header title="{{newRoute.language.ROUTES.routeMap}}"
                        icon="{{newRoute.icons.routes}}"
                        map-buttons="true"
                        hide-button-condition="false"
@@ -25,7 +25,7 @@
 
   <div class="new-route-form" ng-show="('routes.new_route' | routeSegmentEqualsTo)">
 
-    <form-section-header title="New Route"
+    <form-section-header title="{{newRoute.language.ROUTES.newRoute}}"
                          icon="{{newRoute.icons.add}}"
                          close-icon="{{newRoute.icons.close}}"
                          close-function="newRoute.goToRoutes()">
@@ -33,21 +33,22 @@
 
     <form>
 
-      <input type="text" placeholder="Name"
+      <input type="text"
+             placeholder="{{newRoute.language.LOGIN.name}}"
              class="input-text"
              ng-model="newRoute.route.route_name"
              ng-show="('routes.new_route' | routeSegmentEqualsTo)"
              required>
 
       <input type="text"
-             placeholder="City"
+             placeholder="{{newRoute.language.LOGIN.city}}"
              class="input-text"
              ng-model="newRoute.route.route_city"
              ng-show="('routes.new_route' | routeSegmentEqualsTo)"
              required>
 
       <input type="text"
-             placeholder="Province"
+             placeholder="{{newRoute.language.LOGIN.province}}"
              class="input-text"
              ng-model="newRoute.route.route_province"
              ng-show="('routes.new_route' | routeSegmentEqualsTo)"
@@ -56,12 +57,12 @@
       <select class="width-100"
               ng-model="newRoute.route.route_country"
               ng-options="country.code as country.name for country in newRoute.countries" required>
-        <option value="">Country</option>
+        <option value="">{{newRoute.language.LOGIN.country}}</option>
       </select>
 
       <hr class="space-new-route">
 
-      <form-section-header title="Selected Challenges"
+      <form-section-header title="{{newRoute.language.ROUTES.selectedChallenges}}"
                            icon="{{newRoute.icons.challenges}}"
                            hide-close-button="true"
                            ng-show="newRoute.challengesFormArray.length > 0">
@@ -70,19 +71,19 @@
       <select class="width-100"
               ng-model="newRoute.challengesFormArray[$index].challenge_id"
               ng-repeat="challenge in newRoute.challengesFormArray"
-              placeholder="Select Challenge"
+              placeholder="{{newRoute.language.ROUTES.selectChallenge}}"
               ng-show="('routes.new_route' | routeSegmentEqualsTo)"
               ng-options="challenge.challenge_id as challenge.title for challenge in newRoute.challenges"
               ng-change="newRoute.updateChallengeForm($index, newRoute.challengesFormArray[$index].challenge_id)"
               required>
-        <option value="">Select Challenge {{$index + 1}}</option>
+        <option value="">{{newRoute.language.ROUTES.selectChallenge}} {{$index + 1}}</option>
       </select>
 
       <hr ng-show="newRoute.challengesFormArray.length > 0" class="space-new-route">
 
       <button-form show-button="('routes.new_route' | routeSegmentEqualsTo)"
                    click-button="newRoute.save()"
-                   text-button="Add Route">
+                   text-button="{{newRoute.language.ROUTES.addRoute}}">
       </button-form>
 
     </form>

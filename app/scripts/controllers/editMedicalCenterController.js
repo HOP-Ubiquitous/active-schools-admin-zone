@@ -1,48 +1,20 @@
 'use strict';
 
-app.controller('editMedicalCenterCtrl', ['$scope', '$location', 'medicalCenterService', 'medicalCenterServiceData', '$routeParams', 'ICONS', 'COUNTRIES',
-  function ($scope, $location, medicalCenterService, medicalCenterServiceData, $routeParams, ICONS, COUNTRIES) {
+app.controller('editMedicalCenterCtrl', ['$scope', '$location', 'medicalCenterService', 'medicalCenterServiceData', '$routeParams', 'ICONS', 'languageService',
+  function ($scope, $location, medicalCenterService, medicalCenterServiceData, $routeParams, ICONS, languageService) {
 
     var vm = this;
     vm.icons = ICONS;
-    vm.countries = COUNTRIES.countries;
-    vm.categories = [
-      {
-        name: 'Aerobics',
-        value: 'aerobics'
-      },
-      {
-        name: 'Balance',
-        value: 'balance'
-      },
-      {
-        name: 'Mental',
-        value: 'mental'
-      },
-      {
-        name: 'Strength',
-        value: 'strength'
-      },
-      {
-        name: 'Stretch',
-        value: 'stretch'
-      }
-    ];
-    vm.units = [
-      {
-        name: 'Minutes',
-        value: 'minutes'
-      },
-      {
-        name: 'Seconds',
-        value: 'seconds'
-      },
-      {
-        name: 'Repeats',
-        value: 'reps'
-      }
-    ];
     vm.id = $routeParams.medical_center_id;
+
+    languageService.getSelectedLanguage();
+
+    function updateLanguage() {
+      vm.language = languageService.language;
+      vm.countries = languageService.countries;
+    }
+
+    updateLanguage();
 
     medicalCenterService.getMedicalCenterById(vm.id);
 
@@ -84,6 +56,17 @@ app.controller('editMedicalCenterCtrl', ['$scope', '$location', 'medicalCenterSe
   };
 
     function initWatchers() {
+
+      vm.languageWatcher = $scope.$watch(
+        function () {
+          return languageService.formLanguageUpdated;
+        }, function (newValue) {
+          if (newValue === true) {
+            updateLanguage();
+            languageService.formLanguageUpdated = false;
+          }
+        }
+      );
 
       vm.postWatcher = $scope.$watch(
         function () {

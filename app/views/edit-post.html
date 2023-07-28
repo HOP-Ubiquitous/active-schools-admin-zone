@@ -2,7 +2,7 @@
 
   <div class="new-route-form" ng-show="('posts.edit_post.post_id' | routeSegmentEqualsTo)">
 
-    <form-section-header title="Edit Post"
+    <form-section-header title="{{editPost.language.POSTS.editPost}}"
                          icon="{{editPost.icons.edit}}"
                          close-icon="{{editPost.icons.close}}"
                          close-function="editPost.goToPosts()">
@@ -12,14 +12,14 @@
 
       <input type="text"
              ng-show="('posts.edit_post.post_id' | routeSegmentEqualsTo)"
-             placeholder="Title"
+             placeholder="{{editPost.language.ROUTES.title}}"
              class="input-text"
              ng-model="editPost.post.title"
              required>
 
       <textarea name="post"
                 ng-show="('posts.edit_post.post_id' | routeSegmentEqualsTo)"
-                placeholder="Post Text"
+                placeholder="{{editPost.language.POSTS.postText}}"
                 class="new-post-textArea"
                 ng-model="editPost.post.content"
                 required>
@@ -27,22 +27,22 @@
 
       <hr class="space-new-route">
 
-      <input type="url"
-             placeholder="Url Image"
+      <!-- <input type="url"
+             placeholder="{{editPost.language.POSTS.imageUrl}}"
              class="input-text"
              ng-model="editPost.post.image"
              ng-show="('posts.edit_post.post_id' | routeSegmentEqualsTo)"
-             required>
+             required> -->
 
       <select class="width-100"
               ng-model="editPost.route.country"
               ng-options="country.code as country.name for country in editPost.countries" required>
-        <option value="">All</option>
+        <option value="">{{editPost.language.POSTS.all}}</option>
       </select>
 
       <button-form show-button="('posts.edit_post.post_id' | routeSegmentEqualsTo)"
                    click-button="editPost.edit()"
-                   text-button="Edit Post">
+                   text-button="{{editPost.language.POSTS.editPost}}">
       </button-form>
 
     </form>

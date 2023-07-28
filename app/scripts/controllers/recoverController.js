@@ -1,12 +1,21 @@
 'use strict';
 
-app.controller('recoverCtrl', ['$location', 'ICONS', 'COUNTRIES',
-  function ($location, ICONS, COUNTRIES) {
+app.controller('recoverCtrl', ['$location', '$scope', 'ICONS', 'languageService',
+  function ($location, $scope, ICONS, languageService) {
 
 
   var vm = this;
   vm.icons = ICONS;
-  vm.countries = COUNTRIES.countries;
+
+  languageService.getSelectedLanguage();
+
+  function updateLanguage() {
+    vm.language = languageService.language;
+    vm.countries = languageService.countries;
+  }
+
+  updateLanguage();
+  
 //vm.userService = userService;
 //vm.rootService = rootService;
 
@@ -25,11 +34,26 @@ app.controller('recoverCtrl', ['$location', 'ICONS', 'COUNTRIES',
   $location.path('/login');
 
 
-}
+  }
 
+  function initWatchers() {
 
+    vm.languageWatcher = $scope.$watch(
+      function () {
+        return languageService.languageUpdated;
+      }, function (newValue) {
+        if (newValue === true) {
+          updateLanguage();
+          languageService.languageUpdated = false;
+        }
+      }
+    );
 
-  }]);
+  }
+
+  initWatchers();
+
+}]);
 
 
 

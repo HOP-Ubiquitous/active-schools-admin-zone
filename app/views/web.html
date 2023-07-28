@@ -1,0 +1,331 @@
+<header class="web-header">
+
+  <a ng-click="web.goToWeb()">
+    <img src="../images/active-schools-icon.svg">
+  </a>
+  
+  <div class="web-left-header">
+    
+    <div class="web-language-container">
+
+      <div ng-click="web.setLanguage('en')">
+        <img class="language-unselected"
+             ng-class="{ 'language-selected' : web.english }"
+             src="../images/uk.png">
+      </div>
+  
+      <div ng-click="web.setLanguage('el')">
+        <img class="language-unselected"
+             ng-class="{ 'language-selected' : web.greece }"
+             src="../images/greece.png">
+      </div>
+  
+      <div ng-click="web.setLanguage('es')">
+        <img class="language-unselected"
+             ng-class="{ 'language-selected' : web.spanish }" 
+             src="../images/spain.png">
+      </div>
+  
+    </div>
+
+    <div class="header-button" ng-click="web.goToLogin()">
+      {{web.language.WEB.signIn}}
+    </div>
+
+  </div>
+
+</header>
+
+<div class="web-fullscreen-container">
+  <div class="web-fullscreen-overlay"></div>
+
+  <div class="web-inner-container web-inner-container-center">
+    <img class="web-app-image" src="../images/active-schools.svg">
+
+    <div class="web-app-text">
+      <h5>{{web.language.WEB.mainSlogan}}</h5>
+    </div>
+
+    <div class="web-app-buttons">
+
+      <a href="https://play.google.com/store/apps/details?id=hopu.active.schools.test" target="_blank">
+        <img src="../images/download-android.webp">
+      </a>
+
+      <a href="https://apps.apple.com/us/app/active-schools/id1624040972" target="_blank">
+        <img src="../images/download-ios.webp">
+      </a>
+
+    </div>
+
+  </div>
+</div>
+
+<div class="web-auto-transparent-container web-grey-container">
+  <div class="web-inner-container">
+    <h1 class="web-title">{{web.language.WEB.whatIs}}</h1>
+
+    <div class="web-image-gallery">
+      <img src="../images/erasmus.jpeg">
+      <img src="../images/active-schools.svg">
+    </div>
+
+    <p>
+      {{web.language.WEB.whatIsParagraph1}}
+    </p>
+
+    <div class="web-image-gallery web-mobile-gallery">
+      <img src="../images/app-mobile-1.png">
+      <img src="../images/app-mobile-2.png">
+      <img src="../images/app-mobile-3.png">
+    </div>
+
+    <p>
+      {{web.language.WEB.whatIsParagraph2}}
+    </p>
+
+    <p>
+      {{web.language.WEB.whatIsParagraph3}}
+    </p>
+
+  </div>
+</div>
+
+<div class="web-auto-gradient-container">
+  <div class="web-fullscreen-overlay"></div>
+
+  <div class="web-inner-container">
+    <h1 class="web-title">{{web.language.WEB.feature}}</h1>
+
+    <div class="web-features-container">
+
+      <div class="web-feature">
+
+        <div class="web-feature-image">
+          <span class="{{web.icons.routes}}"></span>
+        </div>
+
+        <div class="web-feature-title">
+          <h5>{{web.language.WEB.feature1}}</h5>
+        </div>
+
+        <div class="web-feature-text">
+          <p>
+            {{web.language.WEB.feature1paragraph1}}
+          </p>
+
+          <p>
+            {{web.language.WEB.feature1paragraph2}}
+          </p>
+
+        </div>
+
+      </div>
+
+
+      <div class="web-feature">
+
+        <div class="web-feature-image">
+          <span class="{{web.icons.challenges}}"></span>
+        </div>
+
+        <div class="web-feature-title">
+          <h5>{{web.language.WEB.feature2}}</h5>
+        </div>
+
+        <div class="web-feature-text">
+          <p>
+            {{web.language.WEB.feature2paragraph1}}
+          </p>
+          <p>
+            {{web.language.WEB.feature2paragraph2}}
+          </p>
+        </div>
+
+      </div>
+
+
+      <div class="web-feature">
+
+        <div class="web-feature-image">
+          <span class="{{web.icons.school}}"></span>
+        </div>
+
+        <div class="web-feature-title">
+          <h5>{{web.language.WEB.feature3}}</h5>
+        </div>
+
+        <div class="web-feature-text">
+          <p>
+            {{web.language.WEB.feature3paragraph1}}
+          </p>
+          <p>
+            {{web.language.WEB.feature3paragraph2}}
+          </p>
+        </div>
+
+      </div>
+
+
+      <div class="web-feature">
+
+        <div class="web-feature-image">
+          <span class="{{web.icons.teams}}"></span>
+        </div>
+
+        <div class="web-feature-title">
+          <h5>{{web.language.WEB.feature4}}</h5>
+        </div>
+
+        <div class="web-feature-text">
+          <p>
+            {{web.language.WEB.feature4paragraph1}}
+          </p>
+          <p>
+            {{web.language.WEB.feature4paragraph2}}
+          </p>
+        </div>
+
+      </div>
+
+
+      <div class="web-feature">
+
+        <div class="web-feature-image">
+          <img src="../images/shoe-prints-solid.svg">
+        </div>
+
+        <div class="web-feature-title">
+          <h5>{{web.language.WEB.feature5}}</h5>
+        </div>
+
+        <div class="web-feature-text">
+          <p>
+            {{web.language.WEB.feature5paragraph1}}
+          </p>
+          <p>
+            {{web.language.WEB.feature5paragraph2}}
+          </p>
+        </div>
+
+      </div>
+
+
+      <div class="web-feature">
+
+        <div class="web-feature-image">
+          <span class="{{web.icons.posts}}"></span>
+        </div>
+
+        <div class="web-feature-title">
+          <h5>{{web.language.WEB.feature6}}</h5>
+        </div>
+
+        <div class="web-feature-text">
+          <p>
+            {{web.language.WEB.feature6paragraph1}}
+          </p>
+          <p>
+            {{web.language.WEB.feature6paragraph2}}
+          </p>
+        </div>
+
+      </div>
+
+
+    </div>
+
+  </div>
+
+</div>
+
+<div class="web-auto-transparent-container web-grey-container">
+  <div class="web-inner-container">
+    <h1 class="web-title">{{web.language.WEB.media}}</h1>
+
+    <video src="../videos/active-schools-all-video.mp4" controls preload="auto"></video>
+
+  </div>
+</div>
+
+<div class="web-auto-gradient-container">
+  <div class="web-fullscreen-overlay"></div>
+
+  <div class="web-inner-container">
+    <h1 class="web-title">{{web.language.WEB.documents}}</h1>
+  
+      <div class="web-features-container">
+  
+        <a href="../documents/Active_Schools-Gamification_App.pdf" target="_blank">
+          <div class="web-feature">
+    
+            <div class="web-feature-image">
+              <span class="{{web.icons.pdf}}"></span>
+            </div>
+    
+            <div class="web-feature-title">
+              <h5>
+                {{web.language.WEB.document1}}
+                <br>
+                {{web.language.WEB.download}}
+              </h5>
+            </div>
+    
+          </div>
+        </a>
+  
+  
+        <a href="../documents/Active_Schools-Mockup.pdf" target="_blank">
+          <div class="web-feature">
+    
+            <div class="web-feature-image">
+              <span class="{{web.icons.pdf}}"></span>
+            </div>
+    
+            <div class="web-feature-title">
+              <h5>
+                {{web.language.WEB.document2}}
+                <br>
+                {{web.language.WEB.download}}
+              </h5>
+            </div>
+    
+          </div>
+        </a>
+  
+        <a href="../documents/Active_Schools-Manual.pdf" target="_blank">
+          <div class="web-feature">
+    
+            <div class="web-feature-image">
+              <span class="{{web.icons.pdf}}"></span>
+            </div>
+    
+            <div class="web-feature-title">
+              <h5>
+                {{web.language.WEB.document1}}
+                <br>
+                {{web.language.WEB.download}}
+              </h5>
+            </div>
+    
+          </div>
+        </a>
+
+      </div>
+
+  </div>
+
+</div>
+
+<footer class="web-footer">
+
+  <div class="web-inner-container">
+    <img src="../images/erasmus.jpeg">
+
+    <a ng-click="web.goToPrivacyPolicy()">
+      Política de privacidad
+    </a>
+
+  </div>
+
+</footer>

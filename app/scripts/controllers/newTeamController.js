@@ -1,33 +1,72 @@
 'use strict';
 
-app.controller('newTeamCtrl', ['$location', 'challengeService', 'ICONS', 'COUNTRIES',
-  function ($location, challengeService, ICONS, COUNTRIES) {
+app.controller('newTeamCtrl', ['$location', '$scope', 'userService', 'userServiceData', 'teamService', 'ICONS', 'languageService',
+  function ($location, $scope, userService, userServiceData, teamService, ICONS, languageService) {
 
     var vm = this;
     vm.icons = ICONS;
-    vm.countries = COUNTRIES.countries;
-    vm.challenge = {};
+    vm.users = [];
+    vm.team = {};
 
-    vm.getUnit = function (unit) {
-      vm.challenge.unit = unit;
-    };
+    vm.userServiceData = userServiceData;
+    vm.user = userServiceData.loggedUser;
+
+    languageService.getSelectedLanguage();
+
+    function updateLanguage() {
+      vm.language = languageService.language;
+      vm.countries = languageService.countries;
+    }
+
+    updateLanguage();
+
+    userService.getUsers();
+
+    vm.getUsers = function () {
+      vm.users = userServiceData.userList;
+      return vm.users;
+    }
 
     vm.save = function(){
 
-      let challenge =  {
-        name: vm.challenge.name,
-        period: vm.challenge.period,
-        unit: vm.challenge.unit,
-        bonus: vm.challenge.bonus,
-        video: vm.challenge.video,
-        images: ['image1', 'image2']
+      let team =  {
+        team_name: vm.team.name,
+        creator_id: vm.user.rol === 'superadmin' ? vm.team.creator_id : vm.user.user_id
       };
 
-      challengeService.addChallenge(challenge);
+      teamService.addTeam(team);
     };
 
     vm.goToTeams = function(){
       $location.path('teams');
     };
+
+    function initWatchers() {
+
+      vm.languageWatcher = $scope.$watch(
+        function () {
+          return languageService.formLanguageUpdated;
+        }, function (newValue) {
+          if (newValue === true) {
+            updateLanguage();
+            languageService.formLanguageUpdated = false;
+          }
+        }
+      );
+
+      vm.userWatcher = $scope.$watch(
+        function () {
+          return userService.usersLoaded;
+        }, function (newValue) {
+          if (newValue === true) {
+            vm.getUsers();
+            userService.usersLoaded = false;
+          }
+        }
+      );
+
+    }
+
+    initWatchers();
 
   }]);

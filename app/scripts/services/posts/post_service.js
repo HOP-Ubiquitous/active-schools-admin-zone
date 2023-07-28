@@ -1,11 +1,13 @@
 'use strict';
 
-app.service('postService', ['postServiceApi', 'postServiceData','$q',
-  function(postServiceApi, postServiceData, $q){
+app.service('postService', ['postServiceApi', 'postServiceData','$q', '$timeout', '$location',
+  function(postServiceApi, postServiceData, $q, $timeout, $location){
 
     var service = this;
     service.postsLoaded = false;
     service.postByIdLoaded = false;
+    service.newPostUpdated = false;
+    service.postUpdated = false;
 
     service.getPosts = function () {
 
@@ -54,6 +56,14 @@ app.service('postService', ['postServiceApi', 'postServiceData','$q',
 
       postServiceApi.add_post(data).then(
         function success(response){
+
+          service.newPostUpdated = true;
+
+          $timeout(function(){
+            $location.path('/posts')
+            service.newPostUpdated = false;
+          }, 4000);
+
           service.getPosts();
           console.log('\x1b[32m%s\x1b[0m', 'Noticia añadida con éxito! :)');
         }
@@ -73,6 +83,14 @@ app.service('postService', ['postServiceApi', 'postServiceData','$q',
 
       postServiceApi.edit_post(post_id, data).then(
         function success(response){
+
+          service.postUpdated = true;
+
+          $timeout(function(){
+            $location.path('/posts')
+            service.postUpdated = false;
+          }, 4000);
+
           service.getPosts();
           console.log('\x1b[32m%s\x1b[0m', 'Noticia con id ' + post_id + ' editada con éxito! :)');
         }
@@ -92,7 +110,10 @@ app.service('postService', ['postServiceApi', 'postServiceData','$q',
 
       postServiceApi.delete_post(post_id).then(
         function success(response){
+          
+          service.getPosts();
           console.log('\x1b[32m%s\x1b[0m', 'Noticia con id ' + post_id + ' borrada con éxito! :)');
+          
         }
       ).catch(
         function () {

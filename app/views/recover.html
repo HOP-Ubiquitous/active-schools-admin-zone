@@ -4,14 +4,14 @@
 
     <img src="../images/active-schools-logo-color.svg" class="size">
 
-    <h5>Admin zone</h5>
+    <h5>{{recover.language.LOGIN.adminZone}}</h5>
 
-    <h5>Recover password</h5>
+    <h5>{{recover.language.RECOVER_PASSWORD.recoverPassword}}</h5>
 
     <div class="form-container">
       <form class="login-form">
-        <input id="useremail" type="email" placeholder="E-mail" ng-model="alias" required>
-        <input class="button" type="submit" value="Send" ng-disabled="!alias" ng-click="recover.recover()">
+        <input id="useremail" type="email" placeholder="{{recover.language.LOGIN.email}}" ng-model="alias" required>
+        <input class="button" type="submit" value="{{recover.language.RECOVER_PASSWORD.send}}" ng-disabled="!alias" ng-click="recover.recover()">
       </form>
     </div>
 

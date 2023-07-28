@@ -5,18 +5,18 @@
 <div class="main-container" >
 
   <section-header ng-show="('users' | routeSegmentStartsWith)"
-                  title="Users"
+                  title="{{users.language.HOME.users}}"
                   icon="{{users.icons.users}}"
                   show-search-input="true">
   </section-header>
 
   <div class="main-container-inner" ng-class="{ 'main-container-inner-left' : ('users.new_user' | routeSegmentEqualsTo) || ('users.edit_user.user_id' | routeSegmentEqualsTo) }">
 
-    <subsection-header title="User List"
+    <subsection-header title="{{users.language.USERS.userList}}"
                        icon="{{users.icons.users}}"
                        map-buttons="false"
                        new-button-icon="{{users.icons.add}}"
-                       new-button-title="New User"
+                       new-button-title="{{users.language.USERS.newUser}}"
                        new-button-function="users.goToNewUser()"
                        hide-button-condition="('users.new_user' | routeSegmentEqualsTo) || ('users.edit_user.user_id' | routeSegmentEqualsTo)">
     </subsection-header>
@@ -24,13 +24,13 @@
     <table class="tabla">
       <thead>
       <tr>
-        <th scope="col">Name</th>
-        <th scope="col">Surname</th>
-        <th scope="col">Role</th>
-        <th scope="col">Usename</th>
-        <th scope="col">City</th>
-        <th scope="col">Province</th>
-        <th scope="col" class="option-header">Options</th>
+        <th scope="col">{{users.language.LOGIN.name}}</th>
+        <th scope="col">{{users.language.LOGIN.surname}}</th>
+        <th scope="col">{{users.language.USERS.rol}}</th>
+        <th scope="col">{{users.language.LOGIN.user}}</th>
+        <th scope="col">{{users.language.LOGIN.city}}</th>
+        <th scope="col">{{users.language.LOGIN.province}}</th>
+        <th scope="col" class="option-header">{{users.language.ROUTES.options}}</th>
       </tr>
       </thead>
       <tbody ng-repeat="user in users.users | orderBy: '-date'">
@@ -55,11 +55,11 @@
           <div class="bg-popup" ng-show="showDeletePopup[$index]">
 
             <div class="popup-container">
-              <span>are you sure you want to delete this user?</span>
+              <span>{{users.language.USERS.deleteUser}}</span>
               <h5 class="bold">{{user.personal_data.name}} {{user.personal_data.surname}}</h5>
               <div class="popup-buttons-container">
-                <button class="delete-button" ng-click="users.deleteUser(user.id); showDeletePopup[$index] = false">Delete</button>
-                <button class="cancel-button"  ng-click="showDeletePopup[$index] = false">Cancel</button>
+                <button class="delete-button" ng-click="users.deleteUser(user.id); showDeletePopup[$index] = false">{{users.language.ROUTES.delete}}</button>
+                <button class="cancel-button"  ng-click="showDeletePopup[$index] = false">{{users.language.ROUTES.cancel}}</button>
               </div>
             </div>
 

@@ -1,15 +1,14 @@
 'use strict';
 
-app.controller('newRouteCtrl', ['$scope', '$location', '$window', '$routeParams', 'routeService', 'challengeService', 'challengeServiceData', 'ROUTE', 'ICONS', 'COUNTRIES',
-  function ($scope, $location, $window, $routeParams, routeService, challengeService, challengeServiceData, ROUTE, ICONS, COUNTRIES) {
+app.controller('newRouteCtrl', ['$scope', '$location', '$window', '$routeParams', 'routeService', 'challengeService', 'challengeServiceData', 'ROUTE', 'ICONS', 'languageService',
+  function ($scope, $location, $window, $routeParams, routeService, challengeService, challengeServiceData, ROUTE, ICONS, languageService) {
 
     var vm = this;
     vm.icons = ICONS;
-    vm.countries = COUNTRIES.countries;
     vm.newRouteUpdated = routeService.newRouteUpdated;
 
     vm.selectedMode = '';
-    vm.selectedModeTitle = 'Route Edit Mode';
+    vm.selectedModeTitle = languageService.language.ROUTES.modeRoute;
 
     vm.route = {};
     vm.geoJSON = '';
@@ -21,6 +20,15 @@ app.controller('newRouteCtrl', ['$scope', '$location', '$window', '$routeParams'
     vm.challengesFormArray = [];
 
     vm.markers;
+
+    languageService.getSelectedLanguage();
+
+    function updateLanguage() {
+      vm.language = languageService.language;
+      vm.countries = languageService.countries;
+    }
+
+    updateLanguage();
 
     challengeService.getChallenges();
 
@@ -76,7 +84,7 @@ app.controller('newRouteCtrl', ['$scope', '$location', '$window', '$routeParams'
 
       if (mode === 'route') {
 
-        vm.selectedModeTitle = 'Route Edit Mode';
+        vm.selectedModeTitle = languageService.language.ROUTES.modeRoute;
 
         routeMap.on('click', createPointWithClick);
 
@@ -90,7 +98,7 @@ app.controller('newRouteCtrl', ['$scope', '$location', '$window', '$routeParams'
 
       } else {
 
-        vm.selectedModeTitle = 'Challenge Positioning Mode';
+        vm.selectedModeTitle = languageService.language.ROUTES.modeChallenge;
 
         routeMap.off('click', createPointWithClick);
 
@@ -297,6 +305,17 @@ app.controller('newRouteCtrl', ['$scope', '$location', '$window', '$routeParams'
     };
 
     function initWatchers() {
+
+      vm.languageWatcher = $scope.$watch(
+        function () {
+          return languageService.formLanguageUpdated;
+        }, function (newValue) {
+          if (newValue === true) {
+            updateLanguage();
+            languageService.formLanguageUpdated = false;
+          }
+        }
+      );
 
       vm.newRouteChallengeWatcher = $scope.$watch(
         function () {

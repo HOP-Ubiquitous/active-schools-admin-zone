@@ -1,11 +1,10 @@
 'use strict';
 
-app.controller('schoolsCtrl', ['$scope', '$location', 'schoolService', 'schoolServiceData', '$routeParams', 'ICONS', 'COUNTRIES', 'userService', 'userServiceData',
-    function ($scope, $location, schoolService, schoolServiceData, $routeParams, ICONS, COUNTRIES, userService, userServiceData) {
+app.controller('schoolsCtrl', ['$scope', '$location', 'schoolService', 'schoolServiceData', '$routeParams', 'ICONS', 'userService', 'userServiceData', 'languageService',
+    function ($scope, $location, schoolService, schoolServiceData, $routeParams, ICONS, userService, userServiceData, languageService) {
 
     var vm = this;
     vm.icons = ICONS;
-    vm.countries = COUNTRIES.countries;
     vm.user = userServiceData.loggedUser;
     vm.userServiceData = userServiceData;
     vm.schools = [];
@@ -14,11 +13,36 @@ app.controller('schoolsCtrl', ['$scope', '$location', 'schoolService', 'schoolSe
     vm.courses = [];
     vm.students = [];
 
+    languageService.getSelectedLanguage();
+
+    function updateLanguage() {
+      vm.language = languageService.language;
+      vm.countries = languageService.countries;
+    }
+
+    updateLanguage();
+
     userService.getUsers();
     schoolService.getSchools();
 
     function getUsers () {
       vm.users = userServiceData.userList;
+    }
+
+    vm.getTitle = function () {
+      if (vm.user.rol === 'superadmin') {
+        return vm.language.HOME.schools;
+      } else {
+        return vm.language.SCHOOLS.yourSchool;
+      }
+    }
+
+    vm.getTitleData = function () {
+      if (vm.user.rol === 'superadmin') {
+        return vm.language.SCHOOLS.schoolList;
+      } else {
+        return vm.language.SCHOOLS.schoolData;
+      }
     }
 
     function getSchools() {
@@ -53,10 +77,6 @@ app.controller('schoolsCtrl', ['$scope', '$location', 'schoolService', 'schoolSe
       })
     }
 
-    function getStudents() {
-      vm.students = vm.students.push(schoolServiceData.studentsByCourse);
-    }
-
     vm.getUserName = function(id) {
       let i = 0;
 
@@ -68,6 +88,30 @@ app.controller('schoolsCtrl', ['$scope', '$location', 'schoolService', 'schoolSe
           i++;
         }
       }
+
+    }
+
+    vm.getCoursesBySchoolIndex = function (index) {
+
+      let selectedCourses = vm.schools[index].courses_data;
+
+      selectedCourses.forEach((course) => {
+        course.teacher_name = vm.getUserName(course.teacher_id);
+      })
+
+      vm.selectedSchoolCourses = selectedCourses;
+
+    }
+
+    vm.toggleCourses = (selectedIndex) => {
+
+      vm.schools.forEach((school, index) => {
+        if (index === selectedIndex) {
+          school.showCourses = true;
+        } else {
+          school.showCourses = false;
+        }
+      })
 
     }
 
@@ -92,16 +136,27 @@ app.controller('schoolsCtrl', ['$scope', '$location', 'schoolService', 'schoolSe
       $location.path('schools/new_course');
     }
 
-    vm.editSchool = function(course_id){
+    vm.editCourse = function(course_id){
       $routeParams.course_id = course_id;
       $location.path('schools/edit_course/' + $routeParams.course_id);
     };
 
-    vm.deleteSchool = function(id){
+    vm.deleteCourse = function(id){
       schoolService.deleteCourse(id);
     };
 
     function initWatchers() {
+
+      vm.languageWatcher = $scope.$watch(
+        function () {
+          return languageService.languageUpdated;
+        }, function (newValue) {
+          if (newValue === true) {
+            updateLanguage();
+            languageService.languageUpdated = false;
+          }
+        }
+      );
 
       vm.userWatcher = $scope.$watch(
         function () {
@@ -125,17 +180,6 @@ app.controller('schoolsCtrl', ['$scope', '$location', 'schoolService', 'schoolSe
         }
       );
 
-      vm.schoolByIdWatcher = $scope.$watch(
-        function () {
-          return schoolService.schoolByIdLoaded;
-        }, function (newValue) {
-          if (newValue === true) {
-            getSchoolById();
-            schoolService.schoolByIdLoaded = false;
-          }
-        }
-      );
-
       vm.coursesWatcher = $scope.$watch(
         function () {
           return schoolService.coursesLoaded;
@@ -143,17 +187,6 @@ app.controller('schoolsCtrl', ['$scope', '$location', 'schoolService', 'schoolSe
           if (newValue === true) {
             getCourses();
             schoolService.coursesLoaded = false;
-          }
-        }
-      );
-
-      vm.studendsWatcher = $scope.$watch(
-        function () {
-          return schoolService.studentsLoaded;
-        }, function (newValue) {
-          if (newValue === true) {
-            getStudents();
-            schoolService.studentsLoaded = false;
           }
         }
       );

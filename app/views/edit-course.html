@@ -1,28 +1,33 @@
 <div class="main-container-inner-right">
 
-  <div class="new-route-form" ng-show="('users.edit_course.course_id' | routeSegmentEqualsTo)">
+  <div class="new-route-form" ng-show="('schools.edit_course.course_id' | routeSegmentEqualsTo)">
+
+    <form-section-header title="{{editCourse.language.SCHOOLS.editCourse}}"
+                         icon="{{editCourse.icons.edit}}"
+                         close-icon="{{editCourse.icons.close}}"
+                         close-function="editCourse.goToSchools()">
+    </form-section-header>
 
     <form>
 
       <input type="text"
-             ng-show="('users.edit_course.course_id' | routeSegmentEqualsTo)"
-             placeholder="Name"
+             placeholder="{{editCourse.language.SCHOOLS.courseName}}"
              class="input-text"
-             ng-model="editCourse.user.name"
+             ng-model="editCourse.course.course_name"
              required>
 
-      <input type="number"
-             ng-show="('users.edit_course.course_id' | routeSegmentEqualsTo)"
-             placeholder="Bonus"
-             class="input-text"
-             ng-model="editCourse.user.bonus"
-             required>
+      <select class="width-100"
+              ng-model="editCourse.course.teacher_id"
+              ng-options="user.id as (user.personal_data.name + ' ' + user.personal_data.surname) for user in editCourse.getUsers()"
+              required>
+              <option value="">{{newCourse.language.SCHOOLS.tutor}}</option>
+      </select>
 
       <hr class="space-new-route">
 
-      <button-form show-button="('users.edit_course.course_id' | routeSegmentEqualsTo)"
+      <button-form show-button="('schools.edit_course.course_id' | routeSegmentEqualsTo)"
                    click-button="editCourse.edit()"
-                   text-button="Edit Course">
+                   text-button="{{editCourse.language.SCHOOLS.editCourse}}">
       </button-form>
 
     </form>

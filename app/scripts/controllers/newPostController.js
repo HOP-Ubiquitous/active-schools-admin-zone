@@ -1,15 +1,22 @@
 'use strict';
 
-app.controller('newPostCtrl', ['$location', 'postService', 'postServiceData', 'ICONS', 'COUNTRIES',
-  function ($location, postService, postServiceData, ICONS, COUNTRIES) {
+app.controller('newPostCtrl', ['$location', '$scope', 'postService', 'postServiceData', 'ICONS', 'languageService',
+  function ($location, $scope, postService, postServiceData, ICONS, languageService) {
 
     var vm = this;
     vm.icons = ICONS;
-    vm.countries = COUNTRIES.countries;
     vm.post = {};
 
+    languageService.getSelectedLanguage();
+
+    function updateLanguage() {
+      vm.language = languageService.language;
+      vm.countries = languageService.countries;
+    }
+
+    updateLanguage();
+
     vm.getCountry = function (country) {
-      debugger;
       vm.post.country = country;
       vm.showOptions = false;
     };
@@ -20,7 +27,7 @@ app.controller('newPostCtrl', ['$location', 'postService', 'postServiceData', 'I
          date: new Date().toISOString(),
          title: vm.post.title,
          content: vm.post.description,
-         image: vm.post.image,
+         image: 'assets/icon/post-bg.svg',
          language: vm.post.country === undefined ? 'ALL' : vm.post.country
        };
 
@@ -31,5 +38,22 @@ app.controller('newPostCtrl', ['$location', 'postService', 'postServiceData', 'I
     vm.goToPosts = function() {
       $location.path('posts');
     };
+
+    function initWatchers() {
+
+      vm.languageWatcher = $scope.$watch(
+        function () {
+          return languageService.formLanguageUpdated;
+        }, function (newValue) {
+          if (newValue === true) {
+            updateLanguage();
+            languageService.formLanguageUpdated = false;
+          }
+        }
+      );
+
+    }
+
+    initWatchers();
 
   }]);

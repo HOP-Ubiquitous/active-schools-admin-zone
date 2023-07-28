@@ -1,18 +1,43 @@
 'use strict';
 
-app.controller('teamsCtrl', ['$scope', '$location', 'challengeService', 'challengeServiceData', '$routeParams', 'ICONS', 'COUNTRIES',
-    function ($scope, $location, challengeService, challengeServiceData, $routeParams, ICONS, COUNTRIES) {
+app.controller('teamsCtrl', ['$scope', '$location', 'teamService', 'teamServiceData', 'userService', 'userServiceData', '$routeParams', 'ICONS', 'languageService',
+    function ($scope, $location, teamService, teamServiceData, userService, userServiceData, $routeParams, ICONS, languageService) {
 
     var vm = this;
     vm.icons = ICONS;
-    vm.countries = COUNTRIES.countries;
-
+    vm.users = userServiceData.userList;
     vm.challenges = [];
 
-    challengeService.getChallenges();
+    languageService.getSelectedLanguage();
 
-    function getChallenges () {
-      vm.challenges = challengeServiceData.challengeList;
+    function updateLanguage() {
+      vm.language = languageService.language;
+      vm.countries = languageService.countries;
+    }
+
+    updateLanguage();
+
+    userService.getUsers();
+
+    function getUsers () {
+      vm.users = userServiceData.userList;
+    }
+
+    teamService.getTeams();
+
+    function getTeams () {
+      vm.teams = teamServiceData.teamList;
+    }
+
+    vm.getUsername = function (id) {
+      let obj = vm.users.find(o => o.id === id);
+      
+      if (obj !== undefined) {
+        return obj.personal_data.name + ' ' + obj.personal_data.surname;
+      } else {
+        return;
+      }
+
     }
 
     vm.goToNewTeam = function(){
@@ -24,32 +49,45 @@ app.controller('teamsCtrl', ['$scope', '$location', 'challengeService', 'challen
     };
 
     vm.deleteTeam = function(id){
-      //Con backend
-      challengeService.deleteChallenge(id);
-
-      //Sin backend
-      // vm.challenges.forEach(function (challenge, index) {
-      //   if (id === challenge.id) {
-      //     vm.challenges.splice(index, 1);
-      //   }
-      // });
-
+      teamService.deleteTeam(id);
     };
 
-    vm.editChallenge = function(challenge_id){
-      $routeParams.challenge_id = challenge_id;
-      $location.path('challenges/edit_challenge/' + $routeParams.challenge_id);
+    vm.editTeam = function(team_id){
+      $routeParams.team_id = team_id;
+      $location.path('teams/edit_team/' + $routeParams.team_id);
     };
 
     function initWatchers() {
 
-      vm.challengeWatcher = $scope.$watch(
+      vm.languageWatcher = $scope.$watch(
         function () {
-          return challengeService.challengesLoaded;
+          return languageService.languageUpdated;
         }, function (newValue) {
           if (newValue === true) {
-            getChallenges();
-            challengeService.challengesLoaded = false;
+            updateLanguage();
+            languageService.languageUpdated = false;
+          }
+        }
+      );
+
+      vm.userWatcher = $scope.$watch(
+        function () {
+          return userService.usersLoaded;
+        }, function (newValue) {
+          if (newValue === true) {
+            getUsers();
+            userService.usersLoaded = false;
+          }
+        }
+      );
+
+      vm.teamWatcher = $scope.$watch(
+        function () {
+          return teamService.teamsLoaded;
+        }, function (newValue) {
+          if (newValue === true) {
+            getTeams();
+            teamService.teamsLoaded = false;
           }
         }
       );

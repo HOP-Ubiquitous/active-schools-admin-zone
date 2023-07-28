@@ -1,17 +1,33 @@
 'use strict';
 
-app.controller('newSchoolCtrl', ['$location', 'schoolService', 'userServiceData', 'ICONS', 'COUNTRIES',
-  function ($location, schoolService, userServiceData, ICONS, COUNTRIES) {
+app.controller('newSchoolCtrl', ['$location', 'schoolService', 'userServiceData', 'ICONS', 'languageService',
+  function ($location, schoolService, userServiceData, ICONS, languageService) {
 
     var vm = this;
     vm.icons = ICONS;
-    vm.countries = COUNTRIES.countries;
     vm.user = userServiceData.loggedUser;
     
     vm.school = {};
 
+    languageService.getSelectedLanguage();
+
+    function updateLanguage() {
+      vm.language = languageService.language;
+      vm.countries = languageService.countries;
+    }
+
+    updateLanguage();
+
     if (vm.user.rol !== 'superadmin') {
       vm.school.director_id = vm.user.id;
+    }
+
+    vm.getTitle = function () {
+      if (vm.user.rol === 'superadmin') {
+        return vm.language.SCHOOLS.newSchool;
+      } else {
+        return vm.language.SCHOOLS.createSchool;
+      }
     }
 
     vm.addSchool = function(){
@@ -47,5 +63,22 @@ app.controller('newSchoolCtrl', ['$location', 'schoolService', 'userServiceData'
     vm.goToSchools = function(){
       $location.path('schools');
     };
+
+    function initWatchers() {
+
+      vm.languageWatcher = $scope.$watch(
+        function () {
+          return languageService.formLanguageUpdated;
+        }, function (newValue) {
+          if (newValue === true) {
+            updateLanguage();
+            languageService.formLanguageUpdated = false;
+          }
+        }
+      );
+
+    }
+
+    initWatchers();
 
   }]);

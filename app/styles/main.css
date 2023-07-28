@@ -19,7 +19,7 @@
 }
 
 .main-container-inner-right {
-  height: calc(100vh - 60px);
+  min-height: calc(100vh - 60px);
   width: 450px;
   padding: 10px 0 10px 20px;
   float: right;
@@ -391,6 +391,11 @@ ul.tabs li {
   aspect-ratio: 16 / 9;
 }
 
+.challenge-advise {
+  font-size: 12px;
+  color: var(--red);
+}
+
 .new-challenge-table{
   border: 1px solid white;
   width: 59%;
@@ -469,12 +474,12 @@ ul.tabs li {
 /*--- Delete Popup ---*/
 
 .bg-popup {
-  position: absolute; /*position: fixed;*/
+  position: fixed;
   top: 0;
   left: 0;
   width: 100vw;
   height: 100vh;
-  background-color: rgba(0,0,0,0.5);
+  background-color: rgba(128,128,128,0.5);
   backdrop-filter: blur(10px);
   display: flex;
   justify-content: center;
@@ -500,6 +505,19 @@ ul.tabs li {
   display: flex;
   justify-content: space-between;
   align-items: center;
+}
+
+.main-button {
+  background: var(--green);
+  width: calc(50% - 10px);
+  height: 40px;
+  border: none;
+  color: #fff;
+  transition: 0.3s ease all;
+}
+
+.main-button:hover {
+  background: var(--green-selected);
 }
 
 .delete-button {

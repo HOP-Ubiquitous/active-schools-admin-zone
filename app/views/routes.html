@@ -5,18 +5,18 @@
   <div class="main-container">
 
     <section-header ng-show="('routes' | routeSegmentStartsWith)"
-                    title="Routes"
+                    title="{{routes.language.HOME.routes}}"
                     icon="{{routes.icons.routes}}"
                     show-search-input="true">
     </section-header>
 
     <div class="main-container-inner" ng-show="('routes' | routeSegmentEqualsTo)">
 
-      <subsection-header title="Route List"
+      <subsection-header title="{{routes.language.ROUTES.routeList}}"
                        icon="{{routes.icons.routes}}"
                        map-buttons="false"
                        new-button-icon="{{routes.icons.add}}"
-                       new-button-title="New Route"
+                       new-button-title="{{routes.language.ROUTES.newRoute}}"
                        new-button-function="routes.goToNewRoute()"
                        hide-button-condition="('routes.new_route' | routeSegmentEqualsTo) || ('routes.edit_route.route_id' | routeSegmentEqualsTo)">
       </subsection-header>
@@ -24,12 +24,12 @@
       <table class="tabla">
         <thead>
         <tr>
-          <th>Name</th>
-          <th>City</th>
-          <th>Province</th>
-          <th>Country</th>
-          <th>Challenges</th>
-          <th class="option-header">Options</th>
+          <th>{{routes.language.LOGIN.name}}</th>
+          <th>{{routes.language.LOGIN.city}}</th>
+          <th>{{routes.language.LOGIN.province}}</th>
+          <th>{{routes.language.LOGIN.country}}</th>
+          <th>{{routes.language.HOME.challenges}}</th>
+          <th class="option-header">{{routes.language.ROUTES.options}}</th>
         </tr>
         </thead>
         <tbody ng-repeat="route in routes.routes track by $index">
@@ -59,11 +59,11 @@
             <div class="bg-popup" ng-show="showDeletePopup[$index]">
 
               <div class="popup-container">
-                <span>are you sure you want to delete this route?</span>
+                <span>{{routes.language.ROUTES.deleteRoute}}</span>
                 <h5 class="bold">{{route.route_name}}</h5>
                 <div class="popup-buttons-container">
-                  <button class="delete-button" ng-click="routes.deleteRoute(route.route_id); showDeletePopup[$index] = false">Delete</button>
-                  <button class="cancel-button"  ng-click="showDeletePopup[$index] = false">Cancel</button>
+                  <button class="delete-button" ng-click="routes.deleteRoute(route.route_id); showDeletePopup[$index] = false">{{routes.language.ROUTES.delete}}</button>
+                  <button class="cancel-button"  ng-click="showDeletePopup[$index] = false">{{routes.language.ROUTES.cancel}}</button>
                 </div>
               </div>
 
@@ -75,15 +75,15 @@
           <td colspan="7">
             <table id="table-2" class="table-see">
               <tr>
-                <th scope="col">Title</th>
-                <th scope="col">Category</th>
+                <th scope="col">{{routes.language.ROUTES.title}}</th>
+                <th scope="col">{{routes.language.ROUTES.category}}</th>
                 <!-- <th scope="col">Description</th> -->
-                <th scope="col">Target</th>
-                <th scope="col">Unit</th>
+                <th scope="col">{{routes.language.ROUTES.target}}</th>
+                <th scope="col">{{routes.language.ROUTES.unit}}</th>
                 <!-- <th scope="col">Instructions</th> -->
-                <th scope="col">Reward</th>
+                <th scope="col">{{routes.language.ROUTES.reward}}</th>
                 <!-- <th scope="col">Video</th> -->
-                <th scope="col" class="option-header">Options</th>
+                <th scope="col" class="option-header">{{routes.language.ROUTES.options}}</th>
               </tr>
               <tr ng-repeat="challenge in routes.challengesLoaded">
                 <td class="bold">{{challenge.title}}</td>
@@ -109,11 +109,11 @@
                   <div class="bg-popup" ng-show="showDeletePopup[$index]">
 
                     <div class="popup-container">
-                      <span>are you sure you want to delete this challenge?</span>
+                      <span>{{routes.language.ROUTES.deleteChallenge}}</span>
                       <h5 class="bold">{{challenge.title}}</h5>
                       <div class="popup-buttons-container">
-                        <button class="delete-button" ng-click="routes.deleteChallenge(challenge.challenge_id); showDeletePopup[$index] = false">Delete</button>
-                        <button class="cancel-button"  ng-click="showDeletePopup[$index] = false">Cancel</button>
+                        <button class="delete-button" ng-click="routes.deleteChallenge(challenge.challenge_id); showDeletePopup[$index] = false">{{routes.language.ROUTES.delete}}</button>
+                        <button class="cancel-button"  ng-click="showDeletePopup[$index] = false">{{routes.language.ROUTES.cancel}}</button>
                       </div>
                     </div>
 

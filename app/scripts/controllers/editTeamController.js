@@ -3,47 +3,48 @@
 app.controller("editTeamCtrl", [
   "$scope",
   "$location",
-  "challengeService",
-  "challengeServiceData",
+  "teamService",
+  "teamServiceData",
   "$routeParams",
   "ICONS",
-  "COUNTRIES",
+  'languageService',
   function (
     $scope,
     $location,
-    challengeService,
-    challengeServiceData,
+    teamService,
+    teamServiceData,
     $routeParams,
     ICONS,
-    COUNTRIES
+    languageService
   ) {
 
     var vm = this;
     vm.icons = ICONS;
-    vm.countries = COUNTRIES.countries;
-    vm.id = $routeParams.challenge_id;
+    vm.id = $routeParams.team_id;
 
-    challengeService.getChallengeById(vm.id);
+    languageService.getSelectedLanguage();
 
-    function getChallenge() {
-      vm.challenge = challengeServiceData.challengeById;
+    function updateLanguage() {
+      vm.language = languageService.language;
+      vm.countries = languageService.countries;
     }
 
-    vm.getUnit = function (unit) {
-      vm.challenge.unit = unit;
-    };
+    updateLanguage();
+
+    teamService.getTeamById(vm.id);
+
+    function getTeam() {
+      vm.team = teamServiceData.teamById;
+      debugger;
+    }
 
     vm.edit = function () {
-      let challenge = {
-        name: vm.challenge.name,
-        period: vm.challenge.period,
-        unit: vm.challenge.unit,
-        bonus: vm.challenge.bonus,
-        video: vm.challenge.video,
-        images: ["image1", "image2"],
+      let team = {
+        creator_id : vm.team.creator_id,
+        team_name: vm.team.team_name
       };
 
-      challengeService.editChallenge(vm.id, challenge);
+      teamService.editTeam(team, vm.id);
 
     };
 
@@ -53,13 +54,24 @@ app.controller("editTeamCtrl", [
 
     function initWatchers() {
 
-      vm.postWatcher = $scope.$watch(
+      vm.languageWatcher = $scope.$watch(
         function () {
-          return challengeService.challengeByIdLoaded;
+          return languageService.formLanguageUpdated;
+        }, function (newValue) {
+          if (newValue === true) {
+            updateLanguage();
+            languageService.formLanguageUpdated = false;
+          }
+        }
+      );
+
+      vm.teamWatcher = $scope.$watch(
+        function () {
+          return teamService.teamByIdLoaded;
         },function (newValue) {
           if (newValue === true) {
-            getChallenge();
-            challengeService.challengeByIdLoaded = false;
+            getTeam();
+            teamService.teamByIdLoaded = false;
           }
         }
       );

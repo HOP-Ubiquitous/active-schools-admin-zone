@@ -1,0 +1,84 @@
+<div class="main-container-inner-right"  ng-show="('profile.edit_profile.profile_id' | routeSegmentEqualsTo)">
+
+  <div class="new-route-form">
+
+    <form-section-header title="{{editProfile.language.USERS.editUser}}"
+                         icon="{{editProfile.icons.edit}}"
+                         close-icon="{{editProfile.icons.close}}"
+                         close-function="editProfile.goToProfile()">
+    </form-section-header>
+
+    <form>
+
+      <input type="text"
+             placeholder="{{editProfile.language.LOGIN.user}}"
+             class="input-text"
+             ng-model="editProfile.user.username"
+             required>
+
+      <input type="text"
+             placeholder="{{editProfile.language.LOGIN.name}}"
+             class="input-text"
+             ng-model="editProfile.user.personal_data.name"
+             required>
+
+      <input type="text"
+             placeholder="{{editProfile.language.LOGIN.surname}}"
+             class="input-text"
+             ng-model="editProfile.user.personal_data.surname"
+             required>
+
+       <select class="width-100"
+             ng-model="editProfile.user.personal_data.sex"
+             ng-options="sex.value as sex.text for sex in editProfile.sex" required>
+              <option value="">{{editProfile.language.LOGIN.sex}}</option>
+       </select>
+
+       <input type="number"
+             placeholder="{{editProfile.language.LOGIN.height}}"
+             class="input-text"
+             ng-model="editProfile.user.personal_data.height"
+             required>
+
+      <input type="number"
+             placeholder="{{editProfile.language.LOGIN.weight}}"
+             class="input-text"
+             ng-model="editProfile.user.personal_data.weight"
+             required>
+
+      <input type="text"
+             placeholder="{{editProfile.language.LOGIN.address}}"
+             class="input-text"
+             ng-model="editProfile.user.personal_data.address"
+             required>
+
+      <input type="text"
+             placeholder="{{editProfile.language.LOGIN.city}}"
+             class="input-text"
+             ng-model="editProfile.user.personal_data.city"
+             required>
+
+      <input type="text"
+             placeholder="{{editProfile.language.LOGIN.province}}"
+             class="input-text"
+             ng-model="editProfile.user.personal_data.province"
+             required>
+
+       <select class="width-100"
+             ng-model="editProfile.user.personal_data.country"
+             ng-options="country.code as country.name for country in editProfile.countries" required>
+            <option value="">{{editProfile.language.LOGIN.country}}</option>
+       </select>
+
+      <br>
+
+      <button-form show-button="('profile.edit_profile.profile_id' | routeSegmentEqualsTo)"
+                   click-button="editProfile.editProfile()"
+                   text-button="{{editProfile.language.USERS.editUser}}">
+      </button-form>
+
+    </form>
+
+  </div>
+
+</div>

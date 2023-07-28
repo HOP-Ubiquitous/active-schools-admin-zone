@@ -5,14 +5,14 @@
   <div class="main-container">
 
     <section-header ng-show="('home' | routeSegmentEqualsTo)"
-                    title="Home"
+                    title="{{home.language.HOME.home}}"
                     icon="{{home.icons.home}}">
     </section-header>
 
     <div class="home-title-container">
       <div class="home-title-inner-container">
         <img src="../images/active-schools.svg">
-        <p>Welcome {{home.user.personal_data.name}}!</p>
+        <p>{{home.language.HOME.welcome}} {{home.user.personal_data.name}}!</p>
       </div>
     </div>
 
@@ -21,54 +21,55 @@
       <div class="home-content">
 
         <button class="home-button"
-                title="Go to Routes"
+                title="{{home.language.HOME.goToRoutes}}s"
                 ng-click="home.goToRoutes()">
           <span class="{{home.icons.routes}}"></span>
-          <p>Routes</p>
+          <p>{{home.language.HOME.routes}}</p>
         </button>
 
         <button class="home-button"
-                title="Go to Challenges"
+                title="{{home.language.HOME.goToChallenges}}"
                 ng-click="home.goToChallenges()">
           <span class="{{home.icons.challenges}}"></span>
-          <p>Challenges</p>
+          <p>{{home.language.HOME.challenges}}</p>
         </button>
 
-        <button class="home-button home-button-unactive"
+        <button class="home-button"
                 ng-click="home.goToSchools()"
-                title="Go to Schools">
+                title="{{home.language.HOME.goToSchools}}">
           <span class="{{home.icons.school}}"></span>
-          <p>Schools</p>
+          <p>{{home.language.HOME.schools}}</p>
         </button>
 
-        <button class="home-button home-button-unactive"
+        <button class="home-button"
                 ng-click="home.goToPosts()"
-                title="Go to Posts">
+                title="{{home.language.HOME.goToPosts}}">
           <span class="{{home.icons.posts}}"></span>
-          <p>Posts</p>
+          <p>{{home.language.HOME.posts}}</p>
         </button>
 
-        <button class="home-button home-button-unactive"
-                title="Go to Teams">
+        <button class="home-button"
+                ng-click="home.goToTeams()"
+                title="{{home.language.HOME.goToTeams}}">
           <span class="{{home.icons.teams}}"></span>
-          <p>Teams</p>
+          <p>{{home.language.HOME.teams}}</p>
         </button>
 
         <div class="home-button home-button-span">
           
           <div class="home-stat">
             <span>{{home.routes.length}}</span>
-            <p>Routes</p>
+            <p>{{home.language.HOME.routes}}</p>
           </div>
 
           <div class="home-stat">
             <span>{{home.challenges.length}}</span>
-            <p>Challenges</p>
+            <p>{{home.language.HOME.challenges}}</p>
           </div>
 
           <div class="home-stat">
             <span>{{home.users.length}}</span>
-            <p>Users</p>
+            <p>{{home.language.HOME.users}}</p>
           </div>
 
         </div>

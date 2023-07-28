@@ -2,7 +2,7 @@
 
   <div class="new-route-form">
 
-    <form-section-header title="Edit User"
+    <form-section-header title="{{editUser.language.USERS.editUser}}"
                          icon="{{editUser.icons.edit}}"
                          close-icon="{{editUser.icons.close}}"
                          close-function="editUser.goToUsers()">
@@ -13,7 +13,7 @@
        <select class="width-100"
                ng-model="editUser.user.rol"
                ng-options="rol.value as rol.text for rol in editUser.roles" required>
-              <option value="">Rol</option>
+              <option value="">{{editUser.language.USERS.rol}}</option>
        </select>
 
       <!-- <input type="text"
@@ -23,7 +23,7 @@
              required> -->
 
       <input type="text"
-             placeholder="Username"
+             placeholder="{{editUser.language.LOGIN.user}}"
              class="input-text"
              ng-model="editUser.user.username"
              required>
@@ -43,13 +43,13 @@
              required> -->
 
       <input type="text"
-             placeholder="Name"
+             placeholder="{{editUser.language.LOGIN.name}}"
              class="input-text"
              ng-model="editUser.user.personal_data.name"
              required>
 
       <input type="text"
-             placeholder="Surname"
+             placeholder="{{editUser.language.LOGIN.surname}}"
              class="input-text"
              ng-model="editUser.user.personal_data.surname"
              required>
@@ -57,7 +57,7 @@
        <select class="width-100"
              ng-model="editUser.user.personal_data.sex"
              ng-options="sex.value as sex.text for sex in editUser.sex" required>
-              <option value="">Sex</option>
+              <option value="">{{editUser.language.LOGIN.sex}}</option>
        </select>
 
       <!-- <input type="text"
@@ -67,31 +67,31 @@
              required> -->
 
        <input type="number"
-             placeholder="Height"
+             placeholder="{{editUser.language.LOGIN.height}}"
              class="input-text"
              ng-model="editUser.user.personal_data.height"
              required>
 
       <input type="number"
-             placeholder="Weight"
+             placeholder="{{editUser.language.LOGIN.weight}}"
              class="input-text"
              ng-model="editUser.user.personal_data.weight"
              required>
 
       <input type="text"
-             placeholder="Address"
+             placeholder="{{editUser.language.LOGIN.address}}"
              class="input-text"
              ng-model="editUser.user.personal_data.address"
              required>
 
       <input type="text"
-             placeholder="City"
+             placeholder="{{editUser.language.LOGIN.city}}"
              class="input-text"
              ng-model="editUser.user.personal_data.city"
              required>
 
       <input type="text"
-             placeholder="Province"
+             placeholder="{{editUser.language.LOGIN.province}}"
              class="input-text"
              ng-model="editUser.user.personal_data.province"
              required>
@@ -99,7 +99,7 @@
        <select class="width-100"
              ng-model="editUser.user.personal_data.country"
              ng-options="country.code as country.name for country in editUser.countries" required>
-            <option value="">Country</option>
+            <option value="">{{editUser.language.LOGIN.country}}</option>
        </select>
 
       <!-- <input type="text"
@@ -112,7 +112,7 @@
 
       <button-form show-button="('users.edit_user.user_id' | routeSegmentEqualsTo)"
                    click-button="editUser.editUser()"
-                   text-button="Edit User">
+                   text-button="{{editUser.language.USERS.editUser}}">
       </button-form>
 
     </form>

@@ -1,48 +1,20 @@
 'use strict';
 
-app.controller('newMedicalCenterCtrl', ['$location', 'medicalCenterService', 'ICONS', 'COUNTRIES',
-  function ($location, medicalCenterService, ICONS, COUNTRIES) {
+app.controller('newMedicalCenterCtrl', ['$location', 'medicalCenterService', 'ICONS', 'languageService',
+  function ($location, medicalCenterService, ICONS, languageService) {
 
     var vm = this;
     vm.icons = ICONS;
-    vm.countries = COUNTRIES.countries;
-    vm.categories = [
-      {
-        name: 'Aerobics',
-        value: 'aerobics'
-      },
-      {
-        name: 'Balance',
-        value: 'balance'
-      },
-      {
-        name: 'Mental',
-        value: 'mental'
-      },
-      {
-        name: 'Strength',
-        value: 'strength'
-      },
-      {
-        name: 'Stretch',
-        value: 'stretch'
-      }
-    ];
-    vm.units = [
-      {
-        name: 'Minutes',
-        value: 'minutes'
-      },
-      {
-        name: 'Seconds',
-        value: 'seconds'
-      },
-      {
-        name: 'Repeats',
-        value: 'reps'
-      }
-    ];
     vm.medical_center = {};
+
+    languageService.getSelectedLanguage();
+
+    function updateLanguage() {
+      vm.language = languageService.language;
+      vm.countries = languageService.countries;
+    }
+
+    updateLanguage();
 
     vm.getUnit = function (unit) {
       vm.medical_center.unit = unit;
@@ -77,5 +49,22 @@ app.controller('newMedicalCenterCtrl', ['$location', 'medicalCenterService', 'IC
     vm.goToMedicalCenters = function(){
       $location.path('medical_centers');
     };
+
+    function initWatchers() {
+
+      vm.languageWatcher = $scope.$watch(
+        function () {
+          return languageService.formLanguageUpdated;
+        }, function (newValue) {
+          if (newValue === true) {
+            updateLanguage();
+            languageService.formLanguageUpdated = false;
+          }
+        }
+      );
+
+    }
+
+    initWatchers();
 
   }]);

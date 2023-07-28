@@ -21,6 +21,67 @@
   background: linear-gradient(90deg, rgba(237,103,29,1) 0%, rgba(111,75,154,1) 50%, rgba(201,5,103,1) 100%);
 }
 
+.language-container {
+  height: 40px;
+  width: auto;
+  background-color: rgba(255, 255, 255, 0.75);
+  position: fixed;
+  backdrop-filter: blur(3px);
+  z-index: 1;
+  top: 20px;
+  right: 20px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px;
+}
+
+.language-mobile-container {
+  background-color: transparent;
+  backdrop-filter: none;
+  width: calc(100% - 140px);
+  position: relative;
+  right: unset;
+  margin: auto;
+}
+
+.language-mobile-container img {
+  width: 30px !important;
+  height: 30px !important;
+}
+
+.language-container div {
+  height: 20px;
+  width: 20px;
+  margin: 0;
+}
+
+.language-container div:nth-child(2) {
+  margin: 0 10px;
+}
+
+.language-container img {
+  width: 20px;
+  height: 20px;
+  position: relative;
+  top: -1px;
+  cursor: pointer;
+  transition: 0.2s ease all;
+}
+
+.language-container img:hover {
+  filter: saturate(1);
+  transform: scale(1.2);
+}
+
+.language-unselected {
+  filter: saturate(0);
+}
+
+.language-selected {
+  filter: saturate(1);
+}
+
 .text-container{
   text-align: center;
   width: 350px;

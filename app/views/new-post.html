@@ -3,7 +3,7 @@
   <!--newPost-->
   <div class="new-route-form" ng-show="('posts.new_post' | routeSegmentEqualsTo)">
 
-    <form-section-header title="New Post"
+    <form-section-header title="{{newPost.language.POSTS.newPost}}"
                          icon="{{newPost.icons.add}}"
                          close-icon="{{newPost.icons.close}}"
                          close-function="newPost.goToPosts()">
@@ -13,14 +13,14 @@
 
       <input type="text"
              ng-show="('posts.new_post' | routeSegmentEqualsTo)"
-             placeholder="Title"
+             placeholder="{{newPost.language.ROUTES.title}}"
              class="input-text"
              ng-model="newPost.post.title"
              required>
 
       <textarea name="post"
                 ng-show="('posts.new_post' | routeSegmentEqualsTo)"
-                placeholder="Post Text"
+                placeholder="{{newPost.language.POSTS.postText}}"
                 class="new-post-textArea"
                 ng-model="newPost.post.description"
                 required>
@@ -28,22 +28,22 @@
 
       <hr class="space-new-route">
 
-      <input type="url"
-             placeholder="Url Image"
+      <!-- <input type="url"
+             placeholder="{{newPost.language.POSTS.imageUrl}}"
              class="input-text"
              ng-model="newPost.post.image"
              ng-show="('posts.new_post' | routeSegmentEqualsTo)"
-             required>
+             required> -->
 
       <select class="width-100"
               ng-model="newPost.post.country"
               ng-options="country.code as country.name for country in newPost.countries" required>
-        <option value="">All</option>
+        <option value="">{{newPost.language.POSTS.all}}</option>
       </select>
 
       <button-form show-button="('posts.new_post' | routeSegmentEqualsTo)"
                    click-button="newPost.save()"
-                   text-button="Add Post">
+                   text-button="{{newPost.language.POSTS.addPost}}">
       </button-form>
 
     </form>

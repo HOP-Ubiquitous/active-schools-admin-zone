@@ -2,7 +2,7 @@
 
   <div class="new-route-form" ng-show="('schools.edit_school.school_id' | routeSegmentEqualsTo)">
 
-		<form-section-header title="Edit School"
+		<form-section-header title="{{editSchool.language.SCHOOLS.editSchool}}"
                          icon="{{editSchool.icons.edit}}"
                          close-icon="{{editSchool.icons.close}}"
                          close-function="editSchool.goToSchools()">
@@ -12,42 +12,35 @@
 
       <input type="text"
              ng-show="('schools.edit_school.school_id' | routeSegmentEqualsTo)"
-             placeholder="Director_id"
-             class="input-text"
-             ng-model="editSchool.school.director_id"
-             required>
-
-      <input type="text"
-             ng-show="('schools.edit_school.school_id' | routeSegmentEqualsTo)"
-             placeholder="Name"
+             placeholder="{{editSchool.language.SCHOOL.schoolName}}"
              class="input-text"
              ng-model="editSchool.school.school_name"
              required>
 
       <input type="text"
              ng-show="('schools.edit_school.school_id' | routeSegmentEqualsTo)"
-             placeholder="Address"
+             placeholder="{{editSchool.language.SCHOOL.schoolAddress}}"
              class="input-text"
              ng-model="editSchool.school.school_address"
              required>
 
       <input type="text"
              ng-show="('schools.edit_school.school_id' | routeSegmentEqualsTo)"
-             placeholder="Postal Code"
+             placeholder="{{editSchool.language.LOGIN.postalCode}}"
              class="input-text"
              ng-model="editSchool.school.school_postal_code"
              required>
 
       <input type="text"
              ng-show="('schools.edit_school.school_id' | routeSegmentEqualsTo)"
-             placeholder="City"
+             placeholder="{{editSchool.language.LOGIN.city}}"
              class="input-text"
              ng-model="editSchool.school.school_city"
              required>
 
       <input type="text"
              ng-show="('schools.edit_school.school_id' | routeSegmentEqualsTo)"
-             placeholder="Province"
+             placeholder="{{editSchool.language.LOGIN.province}}"
              class="input-text"
              ng-model="editSchool.school.school_province"
              required>
@@ -56,14 +49,14 @@
                ng-model="editSchool.school.country"
                ng-options="country.code as country.name for country in editSchool.countries"
                required>
-              <option value="">Country</option>
+              <option value="">{{editSchool.language.LOGIN.country}}</option>
        </select>
 
       <br>
 
       <button-form show-button="('schools.edit_school.school_id' | routeSegmentEqualsTo)"
                    click-button="editSchool.editSchool()"
-                   text-button="Edit School">
+                   text-button="{{editSchool.language.SCHOOLS.editSchool}}">
       </button-form>
 
     </form>

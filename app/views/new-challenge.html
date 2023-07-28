@@ -1,4 +1,4 @@
-<notification text="Challenge Created!"
+<notification text="{{newChallenge.language.ROUTES.challengeCreated}}"
               show-condition="newChallenge.newChallengeUpdated">
 </notification>
 
@@ -6,7 +6,7 @@
 
   <div class="new-route-form" ng-show="('challenges.new_challenge' | routeSegmentEqualsTo)">
 
-    <form-section-header title="New Challenge"
+    <form-section-header title="{{newChallenge.language.ROUTES.newChallenge}}"
                          icon="{{newChallenge.icons.add}}"
                          close-icon="{{newChallenge.icons.close}}"
                          close-function="newChallenge.goToChallenges()">
@@ -16,21 +16,21 @@
 
       <input type="text"
              ng-show="('challenges.new_challenge' | routeSegmentEqualsTo)"
-             placeholder="Title"
+             placeholder="{{newChallenge.language.ROUTES.title}}"
              class="input-text"
              ng-model="newChallenge.challenge.title"
              required>
 
       <select class="width-100"
               ng-model="newChallenge.challenge.category"
-              placeholder="Select Category"
+              placeholder="{{newChallenge.language.ROUTES.selectCategory}}"
               ng-show="('challenges.new_challenge' | routeSegmentEqualsTo)"
               ng-options="category.value as category.name for category in newChallenge.categories" required>
-        <option value="">Select Category</option>
+        <option value="">{{newChallenge.language.ROUTES.selectCategory}}</option>
       </select>
 
       <textarea ng-show="('challenges.new_challenge' | routeSegmentEqualsTo)"
-                placeholder="Challenge Description"
+                placeholder="{{newChallenge.language.ROUTES.challengeDescription}}"
                 class="new-post-textArea"
                 ng-model="newChallenge.challenge.description"
                 required>
@@ -38,29 +38,29 @@
 
       <input type="number"
              ng-show="('challenges.new_challenge' | routeSegmentEqualsTo)"
-             placeholder="Target"
+             placeholder="{{newChallenge.language.ROUTES.target}}"
              class="input-text"
              ng-model="newChallenge.challenge.target"
              required>
 
       <select class="width-100"
               ng-model="newChallenge.challenge.unit"
-              placeholder="Select Unit"
+              placeholder="{{newChallenge.language.ROUTES.selectUnit}}"
               ng-show="('challenges.new_challenge' | routeSegmentEqualsTo)"
               ng-options="unit.value as unit.name for unit in newChallenge.units" required>
-        <option value="">Select Unit</option>
+        <option value="">{{newChallenge.language.ROUTES.selectUnit}}</option>
       </select>
 
-      <textarea ng-show="('challenges.new_challenge' | routeSegmentEqualsTo)"
-                placeholder="Challenge Instructions"
+      <!-- <textarea ng-show="('challenges.new_challenge' | routeSegmentEqualsTo)"
+                placeholder="{{newChallenge.language.ROUTES.challengeInstructions}}"
                 class="new-post-textArea"
                 ng-model="newChallenge.challenge.instructions"
                 required>
-      </textarea>
+      </textarea> -->
 
       <input type="number"
              ng-show="('challenges.new_challenge' | routeSegmentEqualsTo)"
-             placeholder="Experience reward"
+             placeholder="{{newChallenge.language.ROUTES.experienceReward}}"
              class="input-text"
              ng-model="newChallenge.challenge.reward"
              required>
@@ -77,11 +77,18 @@
         </iframe>
       </div>
 
+      <span class="challenge-advise">
+        If you want to keep your videos <span class="bold">"Private"</span>, set the visibility to <span class="bold">"Unlisted"</span> in the YouTube platform. This way, the videos will only be accessible if you have the URL of the video.
+      </span>
+
+      <br>
+      <br>
+
       <hr class="space-new-route">
 
       <button-form show-button="('challenges.new_challenge' | routeSegmentEqualsTo)"
                    click-button="newChallenge.save()"
-                   text-button="Add Challenge">
+                   text-button="{{newChallenge.language.ROUTES.addChallenge}}">
       </button-form>
 
     </form>

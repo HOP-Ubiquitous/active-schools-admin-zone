@@ -1,30 +1,91 @@
+<header class="web-header">
+
+  <a ng-click="login.goToWeb()">
+    <img src="../images/active-schools-icon.svg">
+  </a>
+  
+  <div class="web-left-header">
+    
+    <div class="web-language-container">
+
+      <div ng-click="login.setLanguage('en')">
+        <img class="language-unselected"
+             ng-class="{ 'language-selected' : login.english }"
+             src="../images/uk.png">
+      </div>
+  
+      <div ng-click="login.setLanguage('el')">
+        <img class="language-unselected"
+             ng-class="{ 'language-selected' : login.greece }"
+             src="../images/greece.png">
+      </div>
+  
+      <div ng-click="login.setLanguage('es')">
+        <img class="language-unselected"
+             ng-class="{ 'language-selected' : login.spanish }" 
+             src="../images/spain.png">
+      </div>
+  
+    </div>
+
+    <div class="header-button" ng-click="login.goToWeb()">
+      <span class="fas fa-chevron-left"></span>
+      {{login.language.LOGIN.back}}
+    </div>
+
+  </div>
+
+</header>
+
 <div class="login-container">
 <div class="login-overlay"></div>
+
+  <!-- <div class="language-container">
+
+    <div ng-click="login.setLanguage('en')">
+      <img class="language-unselected"
+           ng-class="{ 'language-selected' : login.english }"
+           src="../images/uk.png">
+    </div>
+
+    <div ng-click="login.setLanguage('el')">
+      <img class="language-unselected"
+           ng-class="{ 'language-selected' : login.greece }"
+           src="../images/greece.png">
+    </div>
+
+    <div ng-click="login.setLanguage('es')">
+      <img class="language-unselected"
+           ng-class="{ 'language-selected' : login.spanish }" 
+           src="../images/spain.png">
+    </div>
+
+  </div> -->
   
   <div class="text-container" ng-init="login.showRegister = false" ng-show="login.showRegister === false">
 
     <img src="../images/active-schools.svg" class="size">
-    <h5 class="admin-zone">Admin zone</h5>
+    <h5 class="admin-zone">{{login.language.LOGIN.adminZone}}</h5>
 
     <div class="form-container">
       
       <form class="login-form">
-        <input id="username" type="text" placeholder="User" ng-model="login.user.username" autocomplete="current-username" required>
-        <input id="password" type="password" placeholder="Password" ng-model="login.user.password" autocomplete="current-password"  required>
-        <input class="button" type="submit" value="Enter" ng-click="login.login()">
+        <input id="username" type="text" placeholder="{{login.language.LOGIN.user}}" ng-model="login.user.username" autocomplete="current-username" required>
+        <input id="password" type="password" placeholder="{{login.language.LOGIN.password}}" ng-model="login.user.password" autocomplete="current-password"  required>
+        <input class="button" type="submit" value="{{login.language.LOGIN.enter}}" ng-click="login.login()">
       </form>
 
       <span class="login-error" ng-show="login.errorMessage !== '' && login.openMessageWindow">{{ login.errorMessage }}</span>
 
       <div class="term-container">
         <a href="#recover" class="color-font">
-          Have you forgotten the password?
+          {{login.language.LOGIN.forgotPassword}}
         </a>
       </div>
 
       <div class="login-separator">
         <hr>
-        <span>or</span>
+        <span>{{login.language.LOGIN.or}}</span>
         <hr>
       </div>
 
@@ -33,7 +94,7 @@
           <img src="../images/google-icon.png">
         </div>
         <span>
-          Sign in with Google
+          {{login.language.LOGIN.signGoogle}}
         </span>
       </div>
 
@@ -43,9 +104,9 @@
 
       <div ng-click="login.showRegister = true; login.registerStep1 = true; login.showRegisterForm = true" class="new-user-container">
         <a class="color-font">
-          Are you the principal of a school?
+          {{login.language.LOGIN.principalQuestion}}
           <br>
-          Please register it.
+          {{login.language.LOGIN.register}}
         </a>
       </div>
 
@@ -55,8 +116,30 @@
 
       <div ng-click="login.goToPrivacyPolicy()" class="new-user-container">
         <a class="color-font">
-          Privacy Policy
+          {{login.language.LOGIN.privacyPolicy}}
         </a>
+      </div>
+
+      <div class="language-container language-mobile-container">
+
+        <div ng-click="login.setLanguage('en')">
+          <img class="language-unselected"
+               ng-class="{ 'language-selected' : login.english }"
+               src="../images/uk.png">
+        </div>
+    
+        <div ng-click="login.setLanguage('el')">
+          <img class="language-unselected"
+               ng-class="{ 'language-selected' : login.greece }"
+               src="../images/greece.png">
+        </div>
+    
+        <div ng-click="login.setLanguage('es')">
+          <img class="language-unselected"
+               ng-class="{ 'language-selected' : login.spanish }" 
+               src="../images/spain.png">
+        </div>
+    
       </div>
 
     </div>
@@ -68,10 +151,10 @@
     <div class="form-container">
 
       <div class="login-register-title-container">
-        <h5 ng-show="login.registerStep1 && login.showRegisterForm">Register Credentials</h5>
-        <h5 ng-show="login.registerStep2">Register Personal Data</h5>
-        <h5 ng-show="login.registerStep3">Register School Data</h5>
-        <!-- <h5 ng-show="login.registerStep4">Register Medical Center</h5> -->
+        <h5 ng-show="login.registerStep1 && login.showRegisterForm">{{login.language.LOGIN.registerCredentials}}</h5>
+        <h5 ng-show="login.registerStep2">{{login.language.LOGIN.registerPersonalData}}</h5>
+        <h5 ng-show="login.registerStep3">{{login.language.LOGIN.registerSchoolData}}</h5>
+        <!-- <h5 ng-show="login.registerStep4">{{login.language.LOGIN.registerMedicalCenter}}</h5> -->
         <span ng-click="login.showRegister = false" class="fa fa-remove"></span>
       </div>
 
@@ -103,47 +186,47 @@
       </div>
       
       <form class="login-form" ng-show="login.registerStep1 && login.showRegisterForm">
-        <input id="email" class="input-login" type="email" placeholder="E-mail" ng-model="login.newUser.email" autocomplete="new-username" required>
-        <input id="registerPassword" class="input-login" type="password" placeholder="Password" autocomplete="new-password" ng-model="login.newUser.password"  required>
-        <input id="checkPassword" class="input-login" type="password" placeholder="Repeat Password" autocomplete="new-password" ng-model="login.newUser.checkPassword"  required>
-        <input class="button" type="submit" value="Next" ng-click="login.checkRegister()">
+        <input id="email" class="input-login" type="email" placeholder="{{login.language.LOGIN.email}}" ng-model="login.newUser.email" autocomplete="new-username" required>
+        <input id="registerPassword" class="input-login" type="password" placeholder="{{login.language.LOGIN.password}}" autocomplete="new-password" ng-model="login.newUser.password"  required>
+        <input id="checkPassword" class="input-login" type="password" placeholder="{{login.language.LOGIN.repeatPassword}}" autocomplete="new-password" ng-model="login.newUser.checkPassword"  required>
+        <input class="button" type="submit" value="{{login.language.LOGIN.next}}" ng-click="login.checkRegister()">
       </form>
 
       <form class="login-form" ng-show="login.registerStep2">
-        <input id="personalDataUsername" class="input-login" type="text" placeholder="Name" ng-model="login.newUser.username" required>
-        <input id="personalDataSurname" class="input-login" type="text" placeholder="Surname" ng-model="login.newUser.surname" required>
+        <input id="personalDataUsername" class="input-login" type="text" placeholder="{{login.language.LOGIN.name}}" ng-model="login.newUser.username" required>
+        <input id="personalDataSurname" class="input-login" type="text" placeholder="{{login.language.LOGIN.surname}}" ng-model="login.newUser.surname" required>
 
         <select class="input-login" ng-model="login.newUser.sex" ng-options="sex.value as sex.text for sex in login.sexArray" required>
-          <option value="">Sex</option>
+          <option value="">{{login.language.LOGIN.sex}}</option>
         </select>
         
-        <input id="personalDataHeight" class="input-login" type="number" placeholder="Height" ng-model="login.newUser.height" required>
-        <input id="personalDataWeight" class="input-login" type="number" placeholder="Weight" ng-model="login.newUser.weight" required>
-        <input id="personalDataAddress" class="input-login" type="text" placeholder="Address" ng-model="login.newUser.address" required>
-        <input id="personalDataCity" class="input-login" type="text" placeholder="City" ng-model="login.newUser.city" required>
-        <input id="personalDataProvince" class="input-login" type="text" placeholder="Province" ng-model="login.newUser.province" required>
+        <input id="personalDataHeight" class="input-login" type="number" placeholder="{{login.language.LOGIN.height}}" ng-model="login.newUser.height" required>
+        <input id="personalDataWeight" class="input-login" type="number" placeholder="{{login.language.LOGIN.weight}}" ng-model="login.newUser.weight" required>
+        <input id="personalDataAddress" class="input-login" type="text" placeholder="{{login.language.LOGIN.address}}" ng-model="login.newUser.address" required>
+        <input id="personalDataCity" class="input-login" type="text" placeholder="{{login.language.LOGIN.city}}" ng-model="login.newUser.city" required>
+        <input id="personalDataProvince" class="input-login" type="text" placeholder="{{login.language.LOGIN.province}}" ng-model="login.newUser.province" required>
 
         <select ng-model="login.newUser.country" ng-options="country.code as country.name for country in login.countries" required>
-          <option value="">Country</option>
+          <option value="">{{login.language.LOGIN.country}}</option>
         </select>
 
-        <input class="button" type="submit" value="Next" ng-click="login.checkUserInfo()">
-        <input ng-show="login.showRegisterForm" class="button" type="submit" value="Back" ng-click="login.registerStep1 = true; login.registerStep2 = false">
+        <input class="button" type="submit" value="{{login.language.LOGIN.next}}" ng-click="login.checkUserInfo()">
+        <input ng-show="login.showRegisterForm" class="button" type="submit" value="{{login.language.LOGIN.back}}" ng-click="login.registerStep1 = true; login.registerStep2 = false">
       </form>
 
       <form class="login-form" ng-show="login.registerStep3"> <!-- School Info -->
-        <input id="schoolName" class="input-login" type="text" placeholder="Name" ng-model="login.school.name" required>
-        <input id="schoolAddress" class="input-login" type="text" placeholder="Address" ng-model="login.school.address" required>
-        <input id="schoolPostalCode" class="input-login" type="text" placeholder="Postal Code" ng-model="login.school.postalCode" required>
-        <input id="schoolCity" type="text" class="input-login" placeholder="City" ng-model="login.school.city" required>
-        <input id="schoolProvince" class="input-login" type="text" placeholder="Province" ng-model="login.school.province" required>
+        <input id="schoolName" class="input-login" type="text" placeholder="{{login.language.LOGIN.name}}" ng-model="login.school.name" required>
+        <input id="schoolAddress" class="input-login" type="text" placeholder="{{login.language.LOGIN.address}}" ng-model="login.school.address" required>
+        <input id="schoolPostalCode" class="input-login" type="text" placeholder="{{login.language.LOGIN.postalCode}}" ng-model="login.school.postalCode" required>
+        <input id="schoolCity" type="text" class="input-login" placeholder="{{login.language.LOGIN.city}}" ng-model="login.school.city" required>
+        <input id="schoolProvince" class="input-login" type="text" placeholder="{{login.language.LOGIN.province}}" ng-model="login.school.province" required>
 
         <select class="input-login" ng-model="login.school.country" ng-options="country.code as country.name for country in login.countries" required>
-          <option value="">Country</option>
+          <option value="">{{login.language.LOGIN.country}}</option>
         </select>
 
-        <input class="button" type="submit" value="Next" ng-click="login.checkSchoolInfo()">
-        <input class="button" type="submit" value="Back" ng-click="login.registerStep2 = true; login.registerStep3 = false">
+        <input class="button" type="submit" value="{{login.language.LOGIN.next}}" ng-click="login.checkSchoolInfo()">
+        <input class="button" type="submit" value="{{login.language.LOGIN.back}}" ng-click="login.registerStep2 = true; login.registerStep3 = false">
       </form>
 
       <!-- Health Info
@@ -151,40 +234,40 @@
         
         <div class="button div-button"
              ng-click="login.toggleDropdownMedicalCenter()">
-          <span ng-show="login.showNewMedicalCenterList === true">Add new Medical Center</span>
-          <span ng-show="login.showNewMedicalCenterList === false">Add Medical Center from List</span>
+          <span ng-show="login.showNewMedicalCenterList === true">{{login.language.LOGIN.newMedicalCenter}}</span>
+          <span ng-show="login.showNewMedicalCenterList === false">{{login.language.LOGIN.medicalCenterFromList}}</span>
         </div>
 
         <div class="button div-button"
              ng-show="login.showNewMedicalCenterList = true"
              ng-click="login.showNewMedicalCenterList = false">
-          Add Medical Center from List
+          {{login.language.LOGIN.medicalCenterFromList}}
         </div>
 
         <select class="input-login"
                 ng-model="login.medicalCenterSelected"
                 ng-show="login.showNewMedicalCenterList === true"
                 ng-options="medical.medical_center_id as medical.medical_center_name for medical in login.medicalCenters" required>
-          <option value="">Medical Center</option>
+          <option value="">{{login.language.LOGIN.registerMedicalCenter}}</option>
         </select>
 
         <div ng-show="login.showNewMedicalCenterList === false">
-          <input id="medicalCenterName" class="input-login" type="text" placeholder="Name" ng-model="login.medicalCenter.name" required>
-          <input id="medicalCenterAddress" class="input-login" type="text" placeholder="Address" ng-model="login.medicalCenter.address" required>
-          <input id="medicalCenterPostalCode" class="input-login" type="text" placeholder="Postal Code" ng-model="login.medicalCenter.postalCode" required>
-          <input id="medicalCenterCity" class="input-login" type="text" placeholder="City" ng-model="login.medicalCenter.city" required>
-          <input id="medicalCenterProvince" class="input-login" type="text" placeholder="Province" ng-model="login.medicalCenter.province" required>
+          <input id="medicalCenterName" class="input-login" type="text" placeholder="{{login.language.LOGIN.name}}" ng-model="login.medicalCenter.name" required>
+          <input id="medicalCenterAddress" class="input-login" type="text" placeholder="{{login.language.LOGIN.address}}" ng-model="login.medicalCenter.address" required>
+          <input id="medicalCenterPostalCode" class="input-login" type="text" placeholder="{{login.language.LOGIN.postalCode}}" ng-model="login.medicalCenter.postalCode" required>
+          <input id="medicalCenterCity" class="input-login" type="text" placeholder="{{login.language.LOGIN.city}}" ng-model="login.medicalCenter.city" required>
+          <input id="medicalCenterProvince" class="input-login" type="text" placeholder="{{login.language.LOGIN.province}}" ng-model="login.medicalCenter.province" required>
 
           <select ng-model="login.medicalCenter.country" ng-options="country.code as country.name for country in login.countries" required>
-            <option value="">Country</option>
+            <option value="">{{login.language.LOGIN.country}}</option>
           </select>
           
-          <input id="doctorName" type="text" placeholder="Name" ng-model="login.doctor.name" required>
-          <input id="doctorLicense" type="text" placeholder="License" ng-model="login.doctor.license">
+          <input id="doctorName" type="text" placeholder="{{login.language.LOGIN.name}}" ng-model="login.doctor.name" required>
+          <input id="doctorLicense" type="text" placeholder="{{login.language.LOGIN.license}}" ng-model="login.doctor.license">
         </div>
 
-        <input class="button" type="submit" value="Finish" ng-click="login.checkMedicalCenter()">
-        <input class="button" type="submit" value="Back" ng-click="login.registerStep3 = true; login.registerStep4 = false">
+        <input class="button" type="submit" value="{{login.language.LOGIN.finish}}" ng-click="login.checkMedicalCenter()">
+        <input class="button" type="submit" value="{{login.language.LOGIN.back}}" ng-click="login.registerStep3 = true; login.registerStep4 = false">
         
       </form>
     -->

@@ -1,33 +1,42 @@
 'use strict';
 
-app.controller('newUserCtrl', ['$scope', '$location', 'userService', 'userServiceData', 'ICONS', 'COUNTRIES',
-  function ($scope, $location, userService, userServiceData, ICONS, COUNTRIES) {
+app.controller('newUserCtrl', ['$scope', '$location', 'userService', 'userServiceData', 'ICONS', 'languageService',
+  function ($scope, $location, userService, userServiceData, ICONS, languageService) {
 
     var vm = this;
     vm.icons = ICONS;
-    vm.countries = COUNTRIES.countries;
+
+    languageService.getSelectedLanguage();
+
+    function updateLanguage() {
+      vm.language = languageService.language;
+      vm.countries = languageService.countries;
+    }
+
+    updateLanguage();
+
     vm.sex = [
       {
-        text: 'Female',
+        text: languageService.language.LOGIN.female,
         value: 'female'
       },
       {
-        text: 'Male',
+        text: languageService.language.LOGIN.male,
         value: 'male'
       }
     ]
 
     vm.roles = [
       {
-        text: 'Director',
+        text: languageService.language.USERS.principal,
         value: 'admin'
       },
       {
-        text: 'Teacher',
+        text: languageService.language.USERS.teacher,
         value: 'editor'
       },
       {
-        text: 'Student',
+        text: languageService.language.USERS.student,
         value: 'user'
       }
     ]
@@ -78,5 +87,22 @@ app.controller('newUserCtrl', ['$scope', '$location', 'userService', 'userServic
     vm.goToUsers = function(){
       $location.path('users');
     };
+
+    function initWatchers() {
+
+      vm.languageWatcher = $scope.$watch(
+        function () {
+          return languageService.formLanguageUpdated;
+        }, function (newValue) {
+          if (newValue === true) {
+            updateLanguage();
+            languageService.formLanguageUpdated = false;
+          }
+        }
+      );
+
+    }
+
+    initWatchers();
 
   }]);

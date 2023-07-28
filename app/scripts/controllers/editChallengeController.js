@@ -1,46 +1,55 @@
 'use strict';
 
-app.controller('editChallengeCtrl', ['$scope', '$location', '$sce', 'challengeService', 'challengeServiceData', '$routeParams', 'ICONS', 'COUNTRIES',
-  function ($scope, $location, $sce, challengeService, challengeServiceData, $routeParams, ICONS, COUNTRIES) {
+app.controller('editChallengeCtrl', ['$scope', '$location', '$sce', 'challengeService', 'challengeServiceData', '$routeParams', 'ICONS', 'languageService',
+  function ($scope, $location, $sce, challengeService, challengeServiceData, $routeParams, ICONS, languageService) {
 
     var vm = this;
     vm.icons = ICONS;
-    vm.countries = COUNTRIES.countries;
     vm.challengeUpdated = challengeService.challengeUpdated;
     vm.videoTransformed = false;
+
+    languageService.getSelectedLanguage();
+
+    function updateLanguage() {
+      vm.language = languageService.language;
+      vm.countries = languageService.countries;
+    }
+
+    updateLanguage();
+
     vm.categories = [
       {
-        name: 'Aerobics',
+        name: languageService.language.ROUTES.aerobics,
         value: 'aerobics'
       },
       {
-        name: 'Balance',
+        name: languageService.language.ROUTES.balance,
         value: 'balance'
       },
       {
-        name: 'Mental',
+        name: languageService.language.ROUTES.mental,
         value: 'mental'
       },
       {
-        name: 'Strength',
+        name: languageService.language.ROUTES.strength,
         value: 'strength'
       },
       {
-        name: 'Stretch',
+        name: languageService.language.ROUTES.stretch,
         value: 'stretch'
       }
     ];
     vm.units = [
       {
-        name: 'Minutes',
+        name: languageService.language.ROUTES.minutes,
         value: 'minutes'
       },
       {
-        name: 'Seconds',
+        name: languageService.language.ROUTES.seconds,
         value: 'seconds'
       },
       {
-        name: 'Repeats',
+        name: languageService.language.ROUTES.repeats,
         value: 'reps'
       }
     ];
@@ -50,6 +59,10 @@ app.controller('editChallengeCtrl', ['$scope', '$location', '$sce', 'challengeSe
 
     function getChallenge () {
       vm.challenge = challengeServiceData.challengeById;
+      vm.challenge.video = 'https://www.youtube.com/watch?v=' + vm.challenge.video;
+
+      vm.getEmbedUrl(vm.challenge.video);
+      getVideoTransformed();
     }
 
     vm.getUnit = function (unit) {
@@ -66,7 +79,7 @@ app.controller('editChallengeCtrl', ['$scope', '$location', '$sce', 'challengeSe
         unit: vm.challenge.unit,
         instructions: vm.challenge.instructions,
         reward: vm.challenge.reward,
-        video: vm.challenge.video
+        video: vm.videoId
       };
 
       challengeService.editChallenge(vm.id, challenge);
@@ -82,7 +95,7 @@ app.controller('editChallengeCtrl', ['$scope', '$location', '$sce', 'challengeSe
     vm.videoId = '';
 
     var regExp = /^.*((youtu.be\/)|(v\/)|(\/u\/\w\/)|(embed\/)|(watch\?))\??v?=?([^#&?]*).*/;
-    var match = event.currentTarget.value.match(regExp);
+    var match = event.currentTarget === undefined ? event.match(regExp) : event.currentTarget.value.match(regExp);
     vm.videoId = (match&&match[7].length==11)? match[7] : false;
 
     vm.videoTransformed = true;
@@ -98,6 +111,17 @@ app.controller('editChallengeCtrl', ['$scope', '$location', '$sce', 'challengeSe
   }
 
     function initWatchers() {
+
+      vm.languageWatcher = $scope.$watch(
+        function () {
+          return languageService.formLanguageUpdated;
+        }, function (newValue) {
+          if (newValue === true) {
+            updateLanguage();
+            languageService.formLanguageUpdated = false;
+          }
+        }
+      );
 
       vm.postWatcher = $scope.$watch(
         function () {

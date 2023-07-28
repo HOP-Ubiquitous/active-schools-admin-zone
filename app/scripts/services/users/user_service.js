@@ -1,7 +1,7 @@
 'use strict';
 
-app.service('userService', ['userServiceApi', 'userServiceData', '$location', '$q', '$cookies', '$timeout',
-  function(userServiceApi, userServiceData, $location, $q, $cookies, $timeout){
+app.service('userService', ['userServiceApi', 'userServiceData', '$location', '$q', '$cookies', '$timeout', '$window',
+  function(userServiceApi, userServiceData, $location, $q, $cookies, $timeout, $window){
 
   var service = this;
   service.usersLoaded = false;
@@ -37,7 +37,13 @@ app.service('userService', ['userServiceApi', 'userServiceData', '$location', '$
 
     userServiceApi.get_user_by_id(user_id).then(
       function success (response) {
-        userServiceData.userById = response.data;
+
+        if (type === 'profile') {
+          userServiceData.loggedUser = response.data;
+        } else {
+          userServiceData.userById = response.data;
+        }
+        
         service.userByIdLoaded = true;
         console.log('\x1b[32m%s\x1b[0m', 'El usuario ' + user_id + ' cargado con éxito! :)');
       }
@@ -101,7 +107,13 @@ app.service('userService', ['userServiceApi', 'userServiceData', '$location', '$
         }
 
         service.getUsers();
-        $location.path('/users');
+
+        if (type === 'profile') {
+          $location.path('/profile');
+        } else {
+          $location.path('/users');
+        }
+
         console.log('\x1b[32m%s\x1b[0m', 'El usuario ' + user_id + ' ha sido editado con éxito! :)');
       }
     ).catch(
@@ -113,14 +125,20 @@ app.service('userService', ['userServiceApi', 'userServiceData', '$location', '$
     return promise;
   };
 
-  service.deleteUser = function (user_id) {
+  service.deleteUser = function (user_id, type) {
 
     var deferred = $q.defer();
     var promise = deferred.promise;
 
     userServiceApi.delete_user(user_id).then(
       function success(response){
-        service.getUsers();
+
+        if (type === 'profile') {
+          service.logout();
+        } else {
+          service.getUsers();
+        }
+
         console.log('\x1b[32m%s\x1b[0m', 'El usuario ' + user_id + ' borrado con éxito! :)');
       }
     ).catch(
@@ -221,6 +239,10 @@ app.service('userService', ['userServiceApi', 'userServiceData', '$location', '$
         service.newGoogleUser = false;
 
         $location.path('/home');
+
+        $timeout(() => {
+          $window.reload();
+        }, 500)
 
         console.log('\x1b[32m%s\x1b[0m', 'Usuario logueado con éxito! :)');
 

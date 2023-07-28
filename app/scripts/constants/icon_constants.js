@@ -23,6 +23,8 @@ app.constant('ICONS',{
 
   arrowDown: 'fas fa-chevron-down',
 
-  close: 'fas fa-times'
+  close: 'fas fa-times',
+
+  pdf: 'fa fa-file-pdf-o'
 
 });

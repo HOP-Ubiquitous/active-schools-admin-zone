@@ -1,13 +1,21 @@
 'use strict';
 
-app.controller('medicalCentersCtrl', ['$scope', '$location', 'medicalCenterService', 'medicalCenterServiceData', '$routeParams', 'ICONS', 'COUNTRIES', 'userService', 'userServiceData',
-    function ($scope, $location, medicalCenterService, medicalCenterServiceData, $routeParams, ICONS, COUNTRIES, userService, userServiceData) {
+app.controller('medicalCentersCtrl', ['$scope', '$location', 'medicalCenterService', 'medicalCenterServiceData', '$routeParams', 'ICONS', 'userService', 'userServiceData', 'languageService',
+    function ($scope, $location, medicalCenterService, medicalCenterServiceData, $routeParams, ICONS, userService, userServiceData, languageService) {
 
     var vm = this;
     vm.icons = ICONS;
-    vm.countries = COUNTRIES.countries;
     vm.user = userServiceData.loggedUser;
     vm.medical_centers = [];
+
+    languageService.getSelectedLanguage();
+
+    function updateLanguage() {
+      vm.language = languageService.language;
+      vm.countries = languageService.countries;
+    }
+
+    updateLanguage();
 
     medicalCenterService.getMedicalCenters();
 
@@ -47,6 +55,17 @@ app.controller('medicalCentersCtrl', ['$scope', '$location', 'medicalCenterServi
     }
 
     function initWatchers() {
+
+      vm.languageWatcher = $scope.$watch(
+        function () {
+          return languageService.languageUpdated;
+        }, function (newValue) {
+          if (newValue === true) {
+            updateLanguage();
+            languageService.languageUpdated = false;
+          }
+        }
+      );
 
       vm.medicalCenterWatcher = $scope.$watch(
         function () {

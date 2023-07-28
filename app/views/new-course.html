@@ -2,7 +2,7 @@
 
   <div class="new-route-form" ng-show="('schools.new_course' | routeSegmentEqualsTo)">
 
-    <form-section-header title="{{newCourse.user.rol === 'superadmin' ? 'New School' : 'Create School'}}"
+    <form-section-header title="{{newCourse.getTitle()}}"
                          icon="{{newCourse.icons.add}}"
                          close-icon="{{newCourse.icons.close}}"
                          close-function="newCourse.goToSchools()">
@@ -12,7 +12,7 @@
 
       <input type="text"
              ng-show="('schools.new_course' | routeSegmentEqualsTo)"
-             placeholder="Course Name"
+             placeholder="{{newCourse.language.SCHOOLS.courseName}}"
              class="input-text"
              ng-model="newCourse.course.course_name"
              required>
@@ -21,14 +21,14 @@
              ng-model="newCourse.course.teacher_id"
              ng-options="user.id as (user.personal_data.name + ' ' + user.personal_data.surname) for user in newCourse.getUsers()"
              required>
-              <option value="">Tutor</option>
+              <option value="">{{newCourse.language.SCHOOLS.tutor}}</option>
       </select>
 
       <br>
 
       <button-form show-button="('schools.new_course' | routeSegmentEqualsTo)"
                    click-button="newCourse.addCourse()"
-                   text-button="Add Course">
+                   text-button="{{newCourse.language.SCHOOLS.addCourse}}">
       </button-form>
 
     </form>

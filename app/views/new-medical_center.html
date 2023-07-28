@@ -2,7 +2,7 @@
 
   <div class="new-route-form" ng-show="('medical_centers.new_medical_center' | routeSegmentEqualsTo)">
 
-		<form-section-header title="New Medical Center"
+		<form-section-header title="{{newMedicalCenter.language.MEDICAL_CENTER.newMedicalCenterLarge}}"
                          icon="{{newMedicalCenter.icons.add}}"
                          close-icon="{{newMedicalCenter.icons.close}}"
                          close-function="newMedicalCenter.goToMedicalCenters()">
@@ -12,42 +12,42 @@
 
       <input type="text"
              ng-show="('medical_centers.new_medical_center' | routeSegmentEqualsTo)"
-             placeholder="Name"
+             placeholder="{{newMedicalCenter.language.LOGIN.name}}"
              class="input-text"
              ng-model="newMedicalCenter.medical_center.medical_center_name"
              required>
 
       <input type="text"
              ng-show="('medical_centers.new_medical_center' | routeSegmentEqualsTo)"
-             placeholder="Address"
+             placeholder="{{newMedicalCenter.language.LOGIN.address}}"
              class="input-text"
              ng-model="newMedicalCenter.medical_center.medical_center_address"
              required>
 
       <input type="text"
              ng-show="('medical_centers.new_medical_center' | routeSegmentEqualsTo)"
-             placeholder="Postal Code"
+             placeholder="{{newMedicalCenter.language.LOGIN.postalCode}}"
              class="input-text"
              ng-model="newMedicalCenter.medical_center.medical_center_postal_code"
              required>
 
       <input type="text"
              ng-show="('medical_centers.new_medical_center' | routeSegmentEqualsTo)"
-             placeholder="City"
+             placeholder="{{newMedicalCenter.language.LOGIN.city}}"
              class="input-text"
              ng-model="newMedicalCenter.medical_center.medical_center_city"
              required>
 
       <input type="text"
              ng-show="('medical_centers.new_medical_center' | routeSegmentEqualsTo)"
-             placeholder="Province"
+             placeholder="{{newMedicalCenter.language.LOGIN.province}}"
              class="input-text"
              ng-model="newMedicalCenter.medical_center.medical_center_province"
              required>
 
       <input type="text"
              ng-show="('medical_centers.new_medical_center' | routeSegmentEqualsTo)"
-             placeholder="Country"
+             placeholder="{{newMedicalCenter.language.LOGIN.country}}"
              class="input-text"
              ng-model="newMedicalCenter.medical_center.medical_center_country"
              required>
@@ -56,7 +56,7 @@
 
       <button-form show-button="('medical_centers.new_medical_center' | routeSegmentEqualsTo)"
                    click-button="newMedicalCenter.addMedicalCenter()"
-                   text-button="Add MedicalCenter">
+                   text-button="{{newMedicalCenter.language.MEDICAL_CENTER.addMedicalCenter}}">
       </button-form>
 
     </form>

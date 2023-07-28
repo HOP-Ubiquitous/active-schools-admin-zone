@@ -36,6 +36,8 @@ app.config([
 
     $routeSegmentProvider
 
+      .when("/web", "web")
+
       .when("/login", "login")
       .when("/privacy_policy", "privacy_policy")
       .when("/recover", "recover")
@@ -79,6 +81,16 @@ app.config([
       .when("/schools/new_course", "schools.new_course")
       .when("/schools/edit_course", "schools.edit_course")
       .when("/schools/edit_course/:course_id", "schools.edit_course.course_id")
+
+      .when("/profile", "profile")
+      .when("/profile/edit_profile", "profile.edit_profile")
+      .when("/profile/edit_profile/:profile_id", "profile.edit_profile.profile_id")
+
+      .segment("web", {
+        templateUrl: "views/web.html",
+        controller: "webCtrl",
+        controllerAs: "web",
+      })
 
       .segment("login", {
         templateUrl: "views/login.html",
@@ -314,10 +326,32 @@ app.config([
         controller: "editCourseCtrl",
         controllerAs: "editCourse",
         dependencies: ["course_id"],
+      })
+
+      .up()
+      .up()
+
+      .segment("profile", {
+        templateUrl: "views/profile.html",
+        controller: "profileCtrl",
+        controllerAs: "profile",
+      })
+
+      .within()
+
+      .segment("edit_profile", {})
+
+      .within()
+
+      .segment("profile_id", {
+        templateUrl: "views/edit-profile.html",
+        controller: "editProfileCtrl",
+        controllerAs: "editProfile",
+        dependencies: ["profile_id"],
       });
 
     $routeProvider.otherwise({
-      redirectTo: "login",
+      redirectTo: "web",
     });
 
   }

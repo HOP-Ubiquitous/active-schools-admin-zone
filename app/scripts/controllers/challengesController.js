@@ -1,12 +1,20 @@
 'use strict';
 
-app.controller('challengesCtrl', ['$scope', '$location', 'challengeService', 'challengeServiceData', '$routeParams', 'ICONS', 'COUNTRIES',
-    function ($scope, $location, challengeService, challengeServiceData, $routeParams, ICONS, COUNTRIES) {
+app.controller('challengesCtrl', ['$scope', '$location', 'challengeService', 'challengeServiceData', '$routeParams', 'ICONS', 'languageService',
+    function ($scope, $location, challengeService, challengeServiceData, $routeParams, ICONS, languageService) {
 
     var vm = this;
     vm.icons = ICONS;
-    vm.countries = COUNTRIES.countries;
     vm.challenges = [];
+
+    languageService.getSelectedLanguage();
+
+    function updateLanguage() {
+      vm.language = languageService.language;
+      vm.countries = languageService.countries;
+    }
+
+    updateLanguage();
 
     challengeService.getChallenges();
 
@@ -32,6 +40,17 @@ app.controller('challengesCtrl', ['$scope', '$location', 'challengeService', 'ch
     };
 
     function initWatchers() {
+
+      vm.languageWatcher = $scope.$watch(
+        function () {
+          return languageService.languageUpdated;
+        }, function (newValue) {
+          if (newValue === true) {
+            updateLanguage();
+            languageService.languageUpdated = false;
+          }
+        }
+      );
 
       vm.challengeWatcher = $scope.$watch(
         function () {

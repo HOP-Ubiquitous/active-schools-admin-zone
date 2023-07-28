@@ -1,7 +1,7 @@
 'use strict';
 
-app.service('schoolService', ['schoolServiceApi', 'schoolServiceData', '$location', '$q',
-  function(schoolServiceApi, schoolServiceData, $location, $q){
+app.service('schoolService', ['schoolServiceApi', 'schoolServiceData', '$location', '$q', '$timeout',
+  function(schoolServiceApi, schoolServiceData, $location, $q, $timeout){
 
   var service = this;
   service.schoolsLoaded = false;
@@ -10,6 +10,16 @@ app.service('schoolService', ['schoolServiceApi', 'schoolServiceData', '$locatio
   service.courseByIdLoaded = false;
   service.studentsLoaded = false;
   service.studentByIdLoaded = false;
+
+  service.newSchoolUpdated = false;
+  service.schoolUpdated = false;
+  service.deleteSchoolUpdated = false;
+  service.newCourseUpdated = false;
+  service.courseUpdated = false;
+  service.deleteCourseUpdated = false;
+  service.newStudentUpdated = false;
+  service.studentUpdated = false;
+  service.deleteStudentUpdated = false;
 
   service.getSchools = function () {
 
@@ -58,6 +68,13 @@ app.service('schoolService', ['schoolServiceApi', 'schoolServiceData', '$locatio
 
     schoolServiceApi.add_school(data).then(
       function success(response){
+
+        service.newSchoolUpdated = true;
+
+        $timeout(function(){
+          $location.path('/schools')
+          service.newSchoolUpdated = false;
+        }, 4000);
         
         if(type === 'signin') {
           $location.path('/home');
@@ -86,6 +103,14 @@ app.service('schoolService', ['schoolServiceApi', 'schoolServiceData', '$locatio
 
     schoolServiceApi.edit_school(school_id, data).then(
       function success(response){
+
+        service.schoolUpdated = true;
+
+        $timeout(function(){
+          $location.path('/schools')
+          service.schoolUpdated = false;
+        }, 4000);
+
         service.getSchools();
         console.log('\x1b[32m%s\x1b[0m', 'El colegio ' + school_id + ' editado con éxito! :)');
       }
@@ -105,6 +130,14 @@ app.service('schoolService', ['schoolServiceApi', 'schoolServiceData', '$locatio
 
     schoolServiceApi.delete_school(school_id).then(
       function success(response){
+
+        service.deleteSchoolUpdated = true;
+
+        $timeout(function(){
+          $location.path('/schools')
+          service.deleteSchoolUpdated = false;
+        }, 4000);
+
         service.getSchools();
         console.log('\x1b[32m%s\x1b[0m', 'El colegio ' + school_id + ' ha sido borrado con éxito! :)');
       }
@@ -166,6 +199,14 @@ app.service('schoolService', ['schoolServiceApi', 'schoolServiceData', '$locatio
 
     schoolServiceApi.add_course(school_id, data).then(
       function success(response){
+
+        service.newCourseUpdated = true;
+
+        $timeout(function(){
+          $location.path('/schools')
+          service.newCourseUpdated = false;
+        }, 4000);
+
         service.getCoursesBySchool(school_id);
         console.log('\x1b[32m%s\x1b[0m', 'Curso añadido con éxito al colegio ' + school_id + '! :)');
       }
@@ -185,6 +226,14 @@ app.service('schoolService', ['schoolServiceApi', 'schoolServiceData', '$locatio
 
     schoolServiceApi.edit_course(course_id, data).then(
       function success(response){
+
+        service.courseUpdated = false;
+
+        $timeout(function(){
+          $location.path('/schools')
+          service.courseUpdated = false;
+        }, 4000);
+
         service.getCourseById(course_id);
         console.log('\x1b[32m%s\x1b[0m', 'El curso ' + course_id + ' ha sido editado con éxito! :)');
       }
@@ -204,6 +253,14 @@ app.service('schoolService', ['schoolServiceApi', 'schoolServiceData', '$locatio
 
     schoolServiceApi.delete_course(course_id).then(
       function success(response){
+
+        service.deleteCourseUpdated = true;
+
+        $timeout(function(){
+          $location.path('/schools')
+          service.deleteCourseUpdated = false;
+        }, 4000);
+
         service.getCourseById(course_id);
         console.log('\x1b[32m%s\x1b[0m', 'El curso ' + course_id + ' ha sido borrado con éxito! :)');
       }
@@ -265,6 +322,14 @@ app.service('schoolService', ['schoolServiceApi', 'schoolServiceData', '$locatio
 
     schoolServiceApi.add_student(course_id, student_id, data).then(
       function success(response){
+
+        service.newStudentUpdated = true;
+
+        $timeout(function(){
+          $location.path('/schools')
+          service.newStudentUpdated = false;
+        }, 4000);
+
         service.getStudentsByCourse(course_id);
         console.log('\x1b[32m%s\x1b[0m', 'Estudiante con id ' + student_id + ' añadido con éxito al curso ' + course_id + '! :)');
       }
@@ -284,6 +349,14 @@ app.service('schoolService', ['schoolServiceApi', 'schoolServiceData', '$locatio
 
     schoolServiceApi.edit_student(course_id, student_id, data).then(
       function success(response){
+
+        service.studentUpdated = true;
+
+        $timeout(function(){
+          $location.path('/schools')
+          service.studentUpdated = false;
+        }, 4000);
+
         service.getStudentById(course_id, student_id);
         console.log('\x1b[32m%s\x1b[0m', 'El estudiante ' + student_id + ' del curso ' + course_id + ' ha sido editado con éxito! :)');
       }
@@ -303,6 +376,14 @@ app.service('schoolService', ['schoolServiceApi', 'schoolServiceData', '$locatio
 
     schoolServiceApi.delete_student(course_id, student_id).then(
       function success(response){
+
+        service.deleteStudentUpdated = true;
+
+        $timeout(function(){
+          $location.path('/schools')
+          service.deleteStudentUpdated = false;
+        }, 4000);
+
         service.getStudentById(course_id, student_id);
         console.log('\x1b[32m%s\x1b[0m', 'El estudiante ' + student_id + ' del curso ' + course_id + ' ha sido borrado con éxito! :)');
       }

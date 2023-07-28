@@ -1,58 +1,26 @@
 'use strict';
 
-app.controller('editSchoolCtrl', ['$scope', '$location', 'schoolService', 'schoolServiceData', '$routeParams', 'ICONS', 'COUNTRIES',
-  function ($scope, $location, schoolService, schoolServiceData, $routeParams, ICONS, COUNTRIES) {
+app.controller('editSchoolCtrl', ['$scope', '$location', 'schoolService', 'schoolServiceData', '$routeParams', 'ICONS', 'languageService',
+  function ($scope, $location, schoolService, schoolServiceData, $routeParams, ICONS, languageService) {
 
     var vm = this;
     vm.icons = ICONS;
-    vm.countries = COUNTRIES.countries;
-    vm.categories = [
-      {
-        name: 'Aerobics',
-        value: 'aerobics'
-      },
-      {
-        name: 'Balance',
-        value: 'balance'
-      },
-      {
-        name: 'Mental',
-        value: 'mental'
-      },
-      {
-        name: 'Strength',
-        value: 'strength'
-      },
-      {
-        name: 'Stretch',
-        value: 'stretch'
-      }
-    ];
-    vm.units = [
-      {
-        name: 'Minutes',
-        value: 'minutes'
-      },
-      {
-        name: 'Seconds',
-        value: 'seconds'
-      },
-      {
-        name: 'Repeats',
-        value: 'reps'
-      }
-    ];
     vm.id = $routeParams.school_id;
+
+    languageService.getSelectedLanguage();
+
+    function updateLanguage() {
+      vm.language = languageService.language;
+      vm.countries = languageService.countries;
+    }
+
+    updateLanguage();
 
     schoolService.getSchoolById(vm.id);
 
     function getSchool () {
       vm.school = schoolServiceData.schoolById;
     }
-
-    vm.getUnit = function (unit) {
-      vm.school.unit = unit;
-    };
 
     vm.editSchool = function () {
 
@@ -64,6 +32,7 @@ app.controller('editSchoolCtrl', ['$scope', '$location', 'schoolService', 'schoo
           (vm.school.school_country !== undefined && vm.school.school_country !== '')) {
 
             let school =  {
+              director_id: vm.school.director_id,
               school_name: vm.school.school_name,
               school_address: vm.school.school_address,
               school_postal_code: vm.school.school_postal_code,
@@ -83,6 +52,17 @@ app.controller('editSchoolCtrl', ['$scope', '$location', 'schoolService', 'schoo
   };
 
     function initWatchers() {
+
+      vm.languageWatcher = $scope.$watch(
+        function () {
+          return languageService.formLanguageUpdated;
+        }, function (newValue) {
+          if (newValue === true) {
+            updateLanguage();
+            languageService.formLanguageUpdated = false;
+          }
+        }
+      );
 
       vm.postWatcher = $scope.$watch(
         function () {

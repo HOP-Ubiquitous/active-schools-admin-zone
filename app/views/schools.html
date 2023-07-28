@@ -5,7 +5,7 @@
 <div class="main-container">
 
   <section-header ng-show="('schools' | routeSegmentStartsWith)"
-                  title="{{schools.user.rol === 'superadmin' ? 'Schools' : 'Your School'}}"
+                  title="{{schools.getTitle()}}"
                   icon="{{schools.icons.school}}"
                   show-search-input="true">
   </section-header>
@@ -16,11 +16,11 @@
                                                  ('schools.new_course' | routeSegmentEqualsTo) ||
                                                  ('schools.edit_course.course_id' | routeSegmentEqualsTo) }">
 
-    <subsection-header title="{{schools.user.rol === 'superadmin' ? 'School List' : 'School Data'}}"
+    <subsection-header title="{{schools.getTitleData()}}"
                        icon="{{schools.icons.school}}"
                        map-buttons="false"
                        new-button-icon="{{schools.icons.add}}"
-                       new-button-title="Create School"
+                       new-button-title="{{schools.language.SCHOOLS.createSchool}}"
                        new-button-function="schools.goToNewSchool()"
                        hide-button-condition="schools.directorCheck === true || ('schools.new_school' | routeSegmentEqualsTo) || ('schools.edit_school.school_id' | routeSegmentEqualsTo)">
     </subsection-header>
@@ -28,13 +28,13 @@
     <table class="tabla" ng-show="schools.directorCheck === true || schools.user.rol === 'superadmin'">
       <thead>
       <tr>
-        <th scope="col">Name</th>
-        <th scope="col">Address</th>
-        <th scope="col">Postal Code</th>
-        <th scope="col">City</th>
-        <th scope="col">Province</th>
-        <th scope="col">Country</th>
-        <th scope="col" class="option-header">Options</th>
+        <th scope="col">{{schools.language.LOGIN.name}}</th>
+        <th scope="col">{{schools.language.LOGIN.address}}</th>
+        <th scope="col">{{schools.language.LOGIN.postalCode}}</th>
+        <th scope="col">{{schools.language.LOGIN.city}}</th>
+        <th scope="col">{{schools.language.LOGIN.province}}</th>
+        <th scope="col">{{schools.language.LOGIN.country}}</th>
+        <th scope="col" class="option-header">{{schools.language.LOGIN.options}}</th>
       </tr>
       </thead>
       <tbody ng-repeat="school in schools.schools">
@@ -55,21 +55,28 @@
           </div>
 
           <div class="rombo-table small-square delete-bg"
-               ng-show="schools.user.rol === 'admin' || schools.user.rol === 'superadmin'"
+               ng-show="schools.user.rol === 'superadmin'"
                ng-click="showDeletePopup[$index] = !showDeletePopup[$index]">
             <i class="{{schools.icons.deleteDocument}} icon-size"></i>
           </div>
 
+          <div class="rombo-table small-square see-bg"
+               ng-show="schools.user.rol === 'superadmin' && school.courses_data.length !== 0"
+               ng-class="{ 'rombo-table-see-selected' : school.showCourses === true }"
+               ng-click="schools.toggleCourses($index); schools.getCoursesBySchoolIndex($index)">
+              <i class="{{schools.icons.details}} icon-size"></i>
+          </div>
+
           <!-- TODO Hacer Directiva -->
 
-          <div class="bg-popup" ng-show="showDeletePopup[$index]">
+          <div class="bg-popup" ng-show="showDeletePopup[$index] && schools.user.rol === 'superadmin'">
 
             <div class="popup-container">
-              <span>are you sure you want to delete this school?</span>
+              <span>{{schools.language.SCHOOLS.deleteSchool}}</span>
               <h5 class="bold">{{school.school_name}}</h5>
               <div class="popup-buttons-container">
-                <button class="delete-button" ng-click="schools.deleteSchool(school.school_id); showDeletePopup[$index] = false">Delete</button>
-                <button class="cancel-button"  ng-click="showDeletePopup[$index] = false">Cancel</button>
+                <button class="delete-button" ng-click="schools.deleteSchool(school.school_id); showDeletePopup[$index] = false">{{schools.language.ROUTES.delete}}</button>
+                <button class="cancel-button"  ng-click="showDeletePopup[$index] = false">{{schools.language.ROUTES.cancel}}</button>
               </div>
             </div>
 
@@ -81,22 +88,66 @@
 
       </tr>
 
+      <tr ng-show="school.showCourses === true">
+        <td colspan="7">
+          <table id="table-2" class="table-see">
+            <tr>
+              <th scope="col">{{schools.language.LOGIN.name}}</th>
+              <th scope="col">{{schools.language.SCHOOLS.tutor}}</th>
+              <th scope="col">{{schools.language.SCHOOLS.students}}</th>
+              <th scope="col" class="option-header">{{schools.language.ROUTES.options}}</th>
+            </tr>
+            <tr ng-repeat="course in schools.selectedSchoolCourses">
+              <td class="bold">{{course.course_name}}</td>
+              <td>{{course.teacher_name}}</td>
+              <!-- <td>{{challenge.description}}</td> -->
+              <td>{{course.students.length}}</td>
+              <td class="option">
+
+                <div class="rombo-table small-square edit-bg" ng-click="schools.editCourse(course.course_id)">
+                  <i class="{{schools.icons.edit}} icon-size"></i>
+                </div>
+
+                <div class="rombo-table small-square delete-bg" ng-click="showDeletePopup[$index] = !showDeletePopup[$index]">
+                  <i class="{{schools.icons.deleteDocument}} icon-size"></i>
+                </div>
+
+                <!-- TODO Hacer Directiva -->
+
+                <div class="bg-popup" ng-show="showDeletePopup[$index]">
+
+                  <div class="popup-container">
+                    <span>{{schools.language.SCHOOLS.deleteCourse}}</span>
+                    <h5 class="bold">{{course.course_name}}</h5>
+                    <div class="popup-buttons-container">
+                      <button class="delete-button" ng-click="schools.deleteCourse(course.course_id); showDeletePopup[$index] = false">{{schools.language.ROUTES.delete}}</button>
+                      <button class="cancel-button"  ng-click="showDeletePopup[$index] = false">{{schools.language.ROUTES.cancel}}</button>
+                    </div>
+                  </div>
+
+                </div>
+              </td>
+            </tr>
+
+          </table>
+        </td>
+      </tr>
+
       </tbody>
     </table>
 
     <div class="centered-window" ng-show="schools.directorCheck === false && schools.user.rol !== 'superadmin'">
 
       <p>
-        As a principal, you can create a school associated with your user.
+        {{schools.language.SCHOOLS.paragraph1}}
       </p>
 
       <p>
-        It will automatically appear in the app and users will be able to link to your school when they register.
+        {{schools.language.SCHOOLS.paragraph2}}
       </p>
 
       <p>
-        You will be able to divide your registered users by courses and modify the role of the users you choose
-        by transforming them into "teacher" and linking them to a course.
+        {{schools.language.SCHOOLS.paragraph3}}
       </p>
 
       <hr>
@@ -106,7 +157,7 @@
           <span class="{{schools.icons.add}}"></span>
         </div>
         <div class="sub-section-new-button-text">
-          <span>Create School</span>
+          <span>{{schools.language.SCHOOLS.createSchool}}</span>
         </div>
       </div>
 
@@ -114,23 +165,23 @@
 
     <div class="margin-40"></div>
 
-    <subsection-header title="Course List"
+    <subsection-header title="{{schools.language.SCHOOLS.courseList}}"
                        ng-show="schools.user.rol !== 'superadmin'"
                        icon="{{schools.icons.school}}"
                        map-buttons="false"
                        new-button-icon="{{schools.icons.add}}"
-                       new-button-title="Create Course"
+                       new-button-title="{{schools.language.SCHOOLS.createCourse}}"
                        new-button-function="schools.goToNewCourse()"
                        hide-button-condition="('schools.new_course' | routeSegmentEqualsTo) || ('schools.edit_course.course_id' | routeSegmentEqualsTo)">
     </subsection-header>
 
-    <table class="tabla" ng-show="schools.directorCheck === true || schools.user.rol === 'superadmin'">
+    <table class="tabla" ng-show="schools.directorCheck === true && schools.user.rol !== 'superadmin'">
       <thead>
       <tr>
-        <th scope="col">Name</th>
-        <th scope="col">Tutor</th>
-        <th scope="col">Students</th>
-        <th scope="col" class="option-header">Options</th>
+        <th scope="col">{{schools.language.LOGIN.name}}</th>
+        <th scope="col">{{schools.language.SCHOOLS.tutor}}</th>
+        <th scope="col">{{schools.language.SCHOOLS.students}}</th>
+        <th scope="col" class="option-header">{{schools.language.ROUTES.options}}</th>
       </tr>
       </thead>
       <tbody ng-repeat="course in schools.courses">
@@ -138,7 +189,7 @@
       <tr>
         <td class="bold">{{course.course_name}}</td>
         <td>{{schools.getUserName(course.teacher_id)}}</td>
-        <td>{{course.students}}</td>
+        <td>{{course.students.length}}</td>
         <td class="option">
 
           <div class="rombo-table small-square edit-bg"
@@ -158,11 +209,11 @@
           <div class="bg-popup" ng-show="showDeleteCoursePopup[$index]">
 
             <div class="popup-container">
-              <span>are you sure you want to delete this course?</span>
+              <span>{{schools.language.SCHOOLS.deleteCourse}}</span>
               <h5 class="bold">{{course.course_name}}</h5>
               <div class="popup-buttons-container">
-                <button class="delete-button" ng-click="schools.deleteCourse(course.course_id); showDeleteCoursePopup[$index] = false">Delete</button>
-                <button class="cancel-button"  ng-click="showDeleteCoursePopup[$index] = false">Cancel</button>
+                <button class="delete-button" ng-click="schools.deleteCourse(course.course_id); showDeleteCoursePopup[$index] = false">{{schools.language.ROUTES.delete}}</button>
+                <button class="cancel-button"  ng-click="showDeleteCoursePopup[$index] = false">{{schools.language.ROUTES.cancel}}</button>
               </div>
             </div>
 
